@@ -1,0 +1,91 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table usuarios {
+  id int [pk]
+  nombre string [unique]
+  password string
+  token string
+}
+
+Table socios {
+  id int [pk]
+  dni string [unique]
+  nombre string
+  apellidos string
+  email string [unique]
+  telefono int [unique]
+  fecha_nac date
+  usuario_id int [unique, ref:- usuarios.id]
+}
+
+Table entrenadores {
+  id int [pk]
+  nombre string [unique]
+  email string [unique]
+  telefono int [unique]
+  usuario_id int [unique, ref:- usuarios.id]
+}
+
+Table entrenamientos {
+  id int [pk]
+  nombre string [unique]
+  descripcion string
+  categoria string //pierna, hombro, ...
+  imagen string [unique]
+}
+
+Table tarifas {
+  id int [pk]
+  nombre string [unique]
+  descripcion string
+  duracion integer //6 meses, 12 meses, ...
+  precio decimal
+}
+
+Table productos {
+  id int [pk]
+  nombre string [unique]
+  descripcion string
+  precio decimal
+}
+
+Table socios_tarifas {
+  socio_id int [unique, ref:> socios.id]
+  oferta_id int [ref:> tarifas.id]
+  inicio date
+  fin date
+}
+
+Table rutinas {
+  entrenamiendo_id integer [ref:> entrenamientos.id]
+  socio_id integer [ref:> socios.id]
+  series int
+  repeticiones int
+}
+
+Table seguimientos {
+  socio_id int [ref:> socios.id]
+  entrenamiento int [ref:> entrenamientos.id]
+  fecha date
+}
+
+Table taquillas {
+  id int [pk]
+  socio_id int [unique, ref:-socios.id]
+  fecha date
+}
+
+Table productos_socios {
+  producto_id int [ref:> productos.id]
+  socio_id int [ref:> socios.id]
+  fecha date
+  cantidad int
+}
+
+Table accesos {
+  id int [pk]
+  hora_entrada datetime
+  hora_salida datetime
+  socio_id int [ref:> socios.id]
+}
