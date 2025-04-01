@@ -1,11 +1,11 @@
 // Use DBML to define your database structure
 // Docs: https://dbml.dbdiagram.io/docs
 
-Table usuarios {
+Table users {
   id int [pk]
-  nombre string [unique]
+  name string [unique]
   password string
-  token string
+  rememberToken string
 }
 
 Table socios {
@@ -16,7 +16,7 @@ Table socios {
   email string [unique]
   telefono int [unique]
   fecha_nac date
-  usuario_id int [unique, ref:- usuarios.id]
+  user_id int [unique, ref:- users.id]
 }
 
 Table entrenadores {
@@ -24,62 +24,66 @@ Table entrenadores {
   nombre string [unique]
   email string [unique]
   telefono int [unique]
-  usuario_id int [unique, ref:- usuarios.id]
+  user_id int [unique, ref:- users.id]
 }
 
-Table entrenamientos {
+Table ejercicios {
   id int [pk]
   nombre string [unique]
-  descripcion string
-  categoria string //pierna, hombro, ...
+  descripcion text
   imagen string [unique]
+  grupo_id string [ref:- grupos_musculares.id]
 }
 
 Table tarifas {
   id int [pk]
   nombre string [unique]
   descripcion string
-  duracion integer //6 meses, 12 meses, ...
+  duracion integer
   precio decimal
 }
 
 Table productos {
   id int [pk]
   nombre string [unique]
-  descripcion string
+  descripcion text
   precio decimal
 }
 
 Table socios_tarifas {
   socio_id int [unique, ref:> socios.id]
-  oferta_id int [ref:> tarifas.id]
-  inicio date
-  fin date
+  tarifa_id int [ref:> tarifas.id]
+  fecha_inicio date
+  fecha_fin date
 }
 
 Table rutinas {
-  entrenamiendo_id integer [ref:> entrenamientos.id]
-  socio_id integer [ref:> socios.id]
-  series int
-  repeticiones int
+  ejercicio_id int [ref:> ejercicios.id]
+  socio_id int [ref:> socios.id]
+  num_series int
+  num_repeticiones int
+
+  indexes {
+    (ejercicio_id, socio_id) [unique, name: "UNQ_ejercicio_socio"]
+  }
 }
 
 Table seguimientos {
+  ejercicio_id int [ref:> ejercicios.id]
   socio_id int [ref:> socios.id]
-  entrenamiento int [ref:> entrenamientos.id]
   fecha date
 }
 
 Table taquillas {
   id int [pk]
-  socio_id int [unique, ref:-socios.id]
-  fecha date
+  socio_id int [null, unique, ref:-socios.id]
+  fecha_compra datetime [null]
 }
 
 Table productos_socios {
   producto_id int [ref:> productos.id]
   socio_id int [ref:> socios.id]
-  fecha date
+  fecha_compra datetime
   cantidad int
 }
 
@@ -88,4 +92,9 @@ Table accesos {
   hora_entrada datetime
   hora_salida datetime
   socio_id int [ref:> socios.id]
+}
+
+Table grupos_musculares {
+  id int [pk]
+  nombre string [unique]
 }
