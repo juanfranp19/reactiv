@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('taquillas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('socio_id')->nullable()->unique();
-            $table->datetime('purchased_at')->nullable();
+            $table->datetime('fecha_compra')->nullable();
 
             $table->foreign('socio_id')->references('id')->on('socios');
         });

@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('entrenamientos', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre')->unique();
-            $table->string('descripcion');
-            $table->string('categoria');
-            $table->string('imagen')->unique();
-            $table->timestamps();
+        Schema::table('ejercicios', function (Blueprint $table) {
+            $table->foreign('grupo_id')->references('id')->on('grupos_musculares');
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('entrenamientos');
+        Schema::table('ejercicios', function (Blueprint $table) {
+            //
+        });
     }
 };

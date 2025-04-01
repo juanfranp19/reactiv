@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('nombre')->unique();
             $table->string('email')->unique();
             $table->integer('telefono')->unique();
-            $table->unsignedBigInteger('usuario_id')->unique();
+            $table->unsignedBigInteger('user_id')->unique();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
