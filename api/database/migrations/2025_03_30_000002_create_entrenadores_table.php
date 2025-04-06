@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('entrenadores', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->unique();
+            $table->string('nombre');
+            $table->string('apellidos');
             $table->string('email')->unique();
             $table->integer('telefono')->unique();
             $table->unsignedBigInteger('user_id')->unique();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
