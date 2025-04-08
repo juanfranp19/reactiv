@@ -6,7 +6,7 @@ use App\Models\Socio;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class SociosTableSeeder extends Seeder
+class SocioSeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -6,7 +6,7 @@ use App\Models\Entrenador;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
-class EntrenadoresTableSeeder extends Seeder
+class EntrenadorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
