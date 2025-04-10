@@ -33,19 +33,20 @@ class GrupoMuscularSeeder extends Seeder
             'nombre' => 'hombros',
         ],
         [
+            'nombre' => 'bíceps',
+        ],
+        [
             'nombre' => 'trapecio',
         ],
+
         [
-            'nombre' => 'biceps',
-        ],
-        [
-            'nombre' => 'triceps',
-        ],
-        [
-            'nombre' => 'gemelos',
+            'nombre' => 'tríceps',
         ],
         [
             'nombre' => 'piernas',
+        ],
+        [
+            'nombre' => 'gemelos',
         ],
         [
             'nombre' => 'abdominales',

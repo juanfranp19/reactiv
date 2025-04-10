@@ -33,6 +33,10 @@ Table ejercicios {
   descripcion text
   imagen string [unique]
   grupo_id string [ref:- grupos_musculares.id]
+
+  indexes {
+    (nombre, grupo_id) [unique, name: "UNQ_nombre_grupoid"]
+  }
 }
 
 Table tarifas {

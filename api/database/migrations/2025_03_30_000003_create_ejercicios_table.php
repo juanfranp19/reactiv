@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('ejercicios', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->unique();
+            $table->string('nombre');
             $table->text('descripcion');
-            $table->string('imagen')->unique();
+            $table->string('imagen')->unique()->nullable();
             $table->unsignedBigInteger('grupo_id');
             $table->timestamps();
+
+            $table->unique(['nombre', 'grupo_id'], 'UNQ_nombre_grupoid');
         });
     }
 
