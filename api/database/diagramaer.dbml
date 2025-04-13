@@ -6,6 +6,8 @@ Table users {
   name string [unique]
   password string
   rememberToken string
+  created_at datetime
+  updated_ar datetime
 }
 
 Table socios {
@@ -17,22 +19,29 @@ Table socios {
   telefono int [unique]
   fecha_nac date
   user_id int [unique, ref:- users.id]
+  created_at datetime
+  updated_ar datetime
 }
 
 Table entrenadores {
   id int [pk]
   nombre string [unique]
+  apellidos string
   email string [unique]
   telefono int [unique]
   user_id int [unique, ref:- users.id]
+  created_at datetime
+  updated_ar datetime
 }
 
 Table ejercicios {
   id int [pk]
-  nombre string [unique]
+  nombre string
   descripcion text
-  imagen string [unique]
+  imagen string [unique, null]
   grupo_id string [ref:- grupos_musculares.id]
+  created_at datetime
+  updated_ar datetime
 
   indexes {
     (nombre, grupo_id) [unique, name: "UNQ_nombre_grupoid"]
@@ -45,6 +54,8 @@ Table tarifas {
   descripcion string
   duracion integer
   precio decimal
+  created_at datetime
+  updated_ar datetime
 }
 
 Table productos {
@@ -52,6 +63,8 @@ Table productos {
   nombre string [unique]
   descripcion text
   precio decimal
+  created_at datetime
+  updated_ar datetime
 }
 
 Table socios_tarifas {
@@ -64,8 +77,10 @@ Table socios_tarifas {
 Table rutinas {
   id int [pk]
   nombre string
-  descripcion text
+  descripcion text [null]
   socio_id int [ref:> socios.id]
+  created_at datetime
+  updated_ar datetime
 
   indexes {
     (nombre, socio_id) [unique, name: "UNQ_nombre_socioId"]
@@ -75,7 +90,7 @@ Table rutinas {
 Table seguimientos {
   id int [pk]
   socio_id int [ref:> socios.id]
-  rutina_id int [ref:> rutinas.id]
+  rutina_id int [null, ref:> rutinas.id]
   observaciones text
   fecha date
 
