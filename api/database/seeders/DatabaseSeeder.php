@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(EntrenadorSeeder::class);
         $this->call(GrupoMuscularSeeder::class);
         $this->call(EjercicioSeeder::class);
+        $this->call(RutinaSeeder::class);
     }
 }
