@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TaquillaSeeder::class);
         $this->call(ProductoSeeder::class);
         $this->call(ProductoSocioSeeder::class);
+        $this->call(TarifaSeeder::class);
     }
 }

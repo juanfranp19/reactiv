@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre')->unique();
             $table->string('descripcion');
-            $table->integer('duracion'); //en meses
+            $table->integer('duracion'); //en días
             $table->decimal('precio', 5, 2); //999.99
             $table->timestamps();
         });
