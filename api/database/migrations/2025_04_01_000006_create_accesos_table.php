@@ -17,7 +17,7 @@ return new class extends Migration
             $table->datetime('hora_salida');
             $table->unsignedBigInteger('socio_id');
 
-            $table->foreign('socio_id')->references('id')->on('socios');
+            $table->foreign('socio_id')->references('id')->on('socios')->onDelete('cascade');
         });
     }
 
