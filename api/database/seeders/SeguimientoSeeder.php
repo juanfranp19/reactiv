@@ -15,6 +15,8 @@ class SeguimientoSeeder extends Seeder
      */
     public function run(): void
     {
+        Seguimiento::query()->delete();
+
         $socios = Socio::all();
 
         foreach ($socios as $socio) {
