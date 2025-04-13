@@ -11,17 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('seguimientos', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('socio_id');
+        Schema::create('ejercicios_rutinas', function (Blueprint $table) {
             $table->unsignedBigInteger('rutina_id');
-            $table->text('observaciones');
-            $table->date('fecha');
+            $table->unsignedBigInteger('ejercicio_id');
+            $table->integer('num_series');
+            $table->integer('num_repeticiones');
 
-            $table->unique(['socio_id', 'fecha'], 'UNQ_socioId_fecha');
-
-            $table->foreign('socio_id')->references('id')->on('socios')->onDelete('cascade');
             $table->foreign('rutina_id')->references('id')->on('rutinas')->onDelete('cascade');
+            $table->foreign('ejercicio_id')->references('id')->on('ejercicios')->onDelete('cascade');
         });
     }
 
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('seguimientos');
+        Schema::dropIfExists('ejercicios_rutinas');
     }
 };

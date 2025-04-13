@@ -12,16 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rutinas', function (Blueprint $table) {
-            $table->unsignedBigInteger('ejercicio_id');
+            $table->id();
+            $table->string('nombre');
+            $table->text('descripcion')->nullable();
             $table->unsignedBigInteger('socio_id');
-            $table->integer('num_series');
-            $table->integer('num_repeticiones');
             $table->timestamps();
 
-            $table->unique(['ejercicio_id', 'socio_id'], 'UNQ_ejercicio_socio');
+            $table->unique(['nombre', 'socio_id'], 'UNQ_nombre_socioId');
 
-            $table->foreign('ejercicio_id')->references('id')->on('ejercicios');
-            $table->foreign('socio_id')->references('id')->on('socios');
+            $table->foreign('socio_id')->references('id')->on('socios')->onDelete('cascade');
         });
     }
 

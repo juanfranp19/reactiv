@@ -62,20 +62,26 @@ Table socios_tarifas {
 }
 
 Table rutinas {
-  ejercicio_id int [ref:> ejercicios.id]
+  id int [pk]
+  nombre string
+  descripcion text
   socio_id int [ref:> socios.id]
-  num_series int
-  num_repeticiones int
 
   indexes {
-    (ejercicio_id, socio_id) [unique, name: "UNQ_ejercicio_socio"]
+    (nombre, socio_id) [unique, name: "UNQ_nombre_socioId"]
   }
 }
 
 Table seguimientos {
-  ejercicio_id int [ref:> ejercicios.id]
+  id int [pk]
   socio_id int [ref:> socios.id]
+  rutina_id int [ref:> rutinas.id]
+  observaciones text
   fecha date
+
+  indexes {
+    (socio_id, fecha) [unique, name: "UNQ_socioId_fecha"]
+  }
 }
 
 Table taquillas {
@@ -101,4 +107,20 @@ Table accesos {
 Table grupos_musculares {
   id int [pk]
   nombre string [unique]
+}
+
+Table ejercicios_rutinas {
+  rutina_id int [ref:> rutinas.id]
+  ejercicio_id int [ref:> ejercicios.id]
+  num_series int
+  num_repeticiones int
+}
+
+Table ejercicios_seguimientos {
+  seguimiento_id int [ref:> seguimientos.id]
+  ejercicio_id int [ref:> ejercicios.id]
+
+  indexes {
+    (seguimiento_id, ejercicio_id) [unique, name: "UNQ_seguimientoId_ejercicioId"]
+  }
 }
