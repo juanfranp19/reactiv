@@ -17,8 +17,8 @@ return new class extends Migration
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
 
-            $table->foreign('socio_id')->references('id')->on('socios');
-            $table->foreign('tarifa_id')->references('id')->on('tarifas');
+            $table->foreign('socio_id')->references('id')->on('socios')->onDelete('cascade');
+            $table->foreign('tarifa_id')->references('id')->on('tarifas')->onDelete('cascade');
         });
     }
 
