@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Rutina;
 use App\Models\Socio;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class RutinaSeeder extends Seeder

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('seguimientos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('socio_id');
-            $table->unsignedBigInteger('rutina_id');
+            $table->unsignedBigInteger('rutina_id')->nullable();
             $table->text('observaciones');
             $table->date('fecha');
 
