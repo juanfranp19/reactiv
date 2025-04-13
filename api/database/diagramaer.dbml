@@ -87,7 +87,7 @@ Table seguimientos {
 Table taquillas {
   id int [pk]
   socio_id int [null, unique, ref:-socios.id]
-  fecha_compra datetime [null]
+  fecha_fianza datetime [null]
 }
 
 Table productos_socios {
@@ -120,7 +120,7 @@ Table ejercicios_seguimientos {
   seguimiento_id int [ref:> seguimientos.id]
   ejercicio_id int [ref:> ejercicios.id]
 
-  indexes {
-    (seguimiento_id, ejercicio_id) [unique, name: "UNQ_seguimientoId_ejercicioId"]
-  }
+  //indexes {
+    //(seguimiento_id, ejercicio_id) [unique, name: "UNQ_seguimientoId_ejercicioId"]
+  //}
 }
