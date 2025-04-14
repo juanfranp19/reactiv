@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('calentamientos_seguimientos', function (Blueprint $table) {
             $table->unsignedBigInteger('seguimiento_id');
-            $table->unsignedBigInteger('calentamineto_id');
+            $table->unsignedBigInteger('calentamiento_id');
 
             $table->foreign('seguimiento_id')->references('id')->on('seguimientos')->onDelete('cascade');
-            $table->foreign('calentamineto_id')->references('id')->on('calentamientos')->onDelete('cascade');
+            $table->foreign('calentamiento_id')->references('id')->on('calentamientos')->onDelete('cascade');
         });
     }
 

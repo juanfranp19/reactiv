@@ -63,6 +63,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CalentamientoRutinaSeeder::class);
         $this->command->info('registros de tabla *calentamientos_rutinas* cargados correctamentes');
 
+        $this->call(CalentamientoSeguimientoSeeder::class);
+        $this->command->info('registros de tabla *calentamientos_seguimientos* cargados correctamentes');
+
         $this->command->info('*****************************************');
         $this->command->info('TODOS LOS SEEDERS CARGADOS CORRECTAMENTE');
         $this->command->info('*****************************************');
