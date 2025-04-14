@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('calentamientos_rutinas', function (Blueprint $table) {
             $table->unsignedBigInteger('rutina_id');
-            $table->unsignedBigInteger('calentamineto_id');
+            $table->unsignedBigInteger('calentamiento_id');
             $table->integer('tiempo'); // minutos
 
             $table->foreign('rutina_id')->references('id')->on('rutinas')->onDelete('cascade');
-            $table->foreign('calentamineto_id')->references('id')->on('calentamientos')->onDelete('cascade');
+            $table->foreign('calentamiento_id')->references('id')->on('calentamientos')->onDelete('cascade');
         });
     }
 
