@@ -57,6 +57,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AccesoSeeder::class);
         $this->command->info('registros de tabla *accesos* cargados correctamentes');
 
+        $this->call(CalentamientoSeeder::class);
+        $this->command->info('registros de tabla *calentamientos* cargados correctamentes');
+
         $this->command->info('*****************************************');
         $this->command->info('TODOS LOS SEEDERS CARGADOS CORRECTAMENTE');
         $this->command->info('*****************************************');
