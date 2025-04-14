@@ -7,7 +7,7 @@ Table users {
   password string
   rememberToken string
   created_at datetime
-  updated_ar datetime
+  updated_at datetime
 }
 
 Table socios {
@@ -20,7 +20,7 @@ Table socios {
   fecha_nac date
   user_id int [unique, ref:- users.id]
   created_at datetime
-  updated_ar datetime
+  updated_at datetime
 }
 
 Table entrenadores {
@@ -31,7 +31,7 @@ Table entrenadores {
   telefono int [unique]
   user_id int [unique, ref:- users.id]
   created_at datetime
-  updated_ar datetime
+  updated_at datetime
 }
 
 Table ejercicios {
@@ -41,7 +41,7 @@ Table ejercicios {
   imagen string [unique, null]
   grupo_id string [ref:- grupos_musculares.id]
   created_at datetime
-  updated_ar datetime
+  updated_at datetime
 
   indexes {
     (nombre, grupo_id) [unique, name: "UNQ_nombre_grupoid"]
@@ -55,7 +55,7 @@ Table tarifas {
   duracion integer
   precio decimal
   created_at datetime
-  updated_ar datetime
+  updated_at datetime
 }
 
 Table productos {
@@ -64,7 +64,7 @@ Table productos {
   descripcion text
   precio decimal
   created_at datetime
-  updated_ar datetime
+  updated_at datetime
 }
 
 Table socios_tarifas {
@@ -80,7 +80,7 @@ Table rutinas {
   descripcion text [null]
   socio_id int [ref:> socios.id]
   created_at datetime
-  updated_ar datetime
+  updated_at datetime
 
   indexes {
     (nombre, socio_id) [unique, name: "UNQ_nombre_socioId"]
@@ -138,4 +138,24 @@ Table ejercicios_seguimientos {
   //indexes {
     //(seguimiento_id, ejercicio_id) [unique, name: "UNQ_seguimientoId_ejercicioId"]
   //}
+}
+
+Table calentamientos {
+  id int [pk]
+  nombre string [unique]
+  descripcion text
+  imagen string [unique, null]
+  created_at datetime
+  updated_at datetime
+}
+
+Table calentamientos_rutinas {
+  rutina_id int [ref:> rutinas.id]
+  calentamineto_id int [ref:> calentamientos.id]
+  tiempo int
+}
+
+Table calentamientos_seguimientos {
+  seguimiento_id int [ref:> seguimientos.id]
+  calentamineto_id int [ref:> calentamientos.id]
 }
