@@ -1,0 +1,51 @@
+.top-bar {
+  text-align: center;
+  height: 100px;
+}
+.top-bar .logo-reactiv {
+  width: 100px;
+  padding: 10px;
+}
+
+.carousel {
+  height: calc(100vh - 100px - 100px);
+  padding: 0;
+}
+.carousel .carousel-item img {
+  height: calc(100vh - 100px - 100px);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.bajar-carousel {
+  text-align: center;
+  height: 100px;
+  padding: 20px 0;
+}
+.bajar-carousel button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.bajar-carousel button .bi {
+  font-size: 36px;
+  display: inline-block;
+  animation: flecha-sube-baja 1.5s infinite;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+}
+.bajar-carousel button:hover .bi:hover {
+  transform: translateY(5px);
+  font-size: 50px;
+}
+
+@keyframes flecha-sube-baja {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}/*# sourceMappingURL=style.css.map */

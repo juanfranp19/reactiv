@@ -1,0 +1,50 @@
+// cálculo para que el carousel con el TopBar y la flecha para bajar ocupe siempre toda la altura de la pantalla
+$altura-total-carousel: calc(#{$altura-car} - #{$altura-topbar-car} - #{$altura-bajar-car});
+
+.carousel {
+    height: $altura-total-carousel;
+    padding: 0;
+
+    .carousel-item img {
+        height: $altura-total-carousel;
+        object-fit: cover;
+    }
+}
+
+.bajar-carousel {
+    text-align: center;
+    height: $altura-bajar-car;
+    padding: 20px 0;
+
+    button {
+        background: none;
+        border: none;
+        cursor: pointer;
+    
+        .bi {
+            font-size: $flecha-size-car;
+            display: inline-block;
+            animation: flecha-sube-baja 1.5s infinite;
+            transition: transform 0.3s ease, font-size 0.3s ease;
+        }
+
+        &:hover .bi:hover {
+            transform: translateY(5px);
+            font-size: $flecha-hover-size-car;
+        }
+    }
+}
+
+@keyframes flecha-sube-baja {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
