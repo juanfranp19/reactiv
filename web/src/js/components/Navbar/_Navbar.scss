@@ -1,0 +1,45 @@
+.navbar {
+
+    .logo-reactiv {
+        width: 30px;
+    }
+
+    .dropdown {
+
+        .nav-link {
+
+            // icono de usuario
+            .bi-person-circle {
+                font-size: 30px;
+                padding-right: 5px;
+            }
+    
+            // iconos de flecha
+            .bi-caret-down, .bi-caret-down-fill {
+                font-size: 20px;
+            }
+
+            .bi-caret-down {
+                display: inline;
+            }
+    
+            .bi-caret-down-fill {
+                display: none;
+            }
+    
+            &:focus {
+
+                .bi-caret-down {
+                    display: none;
+                }
+    
+                .bi-caret-down-fill {
+                    display: inline;
+                }
+            }
+        
+        }
+
+    }
+    
+}
