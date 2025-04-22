@@ -50,7 +50,30 @@
   }
 }
 .navbar .logo-reactiv {
-  width: 30px;
+  width: 45px;
+  padding: 0 5px;
+}
+.navbar .navbar-toggler {
+  font-size: 30px;
+}
+.navbar .navbar-toggler .bi-list-nested {
+  color: var(--bs-navbar-hover-color);
+  display: none;
+}
+.navbar .navbar-toggler:hover .bi-list, .navbar .navbar-toggler:focus .bi-list {
+  display: none;
+}
+.navbar .navbar-toggler:hover .bi-list-nested, .navbar .navbar-toggler:focus .bi-list-nested {
+  display: inline;
+}
+.navbar .btn-close, .navbar .navbar-toggler {
+  border: 0;
+}
+.navbar .btn-close:focus, .navbar .navbar-toggler:focus {
+  box-shadow: none;
+}
+.navbar .dropdown .dropdown-fuera-offcanvas {
+  position: absolute;
 }
 .navbar .dropdown .nav-link .bi-person-circle {
   font-size: 30px;
