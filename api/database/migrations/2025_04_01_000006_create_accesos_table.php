@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('accesos', function (Blueprint $table) {
             $table->id();
             $table->datetime('hora_entrada');
-            $table->datetime('hora_salida');
+            $table->datetime('hora_salida')->nullable();
             $table->unsignedBigInteger('socio_id');
 
             $table->foreign('socio_id')->references('id')->on('socios')->onDelete('cascade');

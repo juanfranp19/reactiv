@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AccesoController;
 use App\Http\Controllers\API\CalentamientoController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
@@ -12,13 +13,26 @@ Route::get('/user', function (Request $request) {
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/calentamientos', [CalentamientoController::class, 'index']);
-Route::post('/calentamientos', [CalentamientoController::class, 'store']);
-Route::get('/calentamientos/{id}', [CalentamientoController::class, 'show']);
-Route::put('/calentamientos/{id}', [CalentamientoController::class, 'update']);
-Route::delete('/calentamientos/{id}', [CalentamientoController::class, 'destroy']);
-
 Route::middleware(['auth:sanctum'])->group(function () {
-
     Route::get('/logout', [AuthController::class, 'logout']);
 });
+
+Route::prefix('/v1')->group(function () {
+
+    Route::get('/accesos', [AccesoController::class, 'index']);
+    Route::post('/accesos', [AccesoController::class, 'store']);
+    Route::get('/accesos/{id}', [AccesoController::class, 'show']);
+    Route::put('/accesos/{id}', [AccesoController::class, 'update']);
+    Route::delete('/accesos/{id}', [AccesoController::class, 'destroy']);
+
+    Route::get('/calentamientos', [CalentamientoController::class, 'index']);
+    Route::post('/calentamientos', [CalentamientoController::class, 'store']);
+    Route::get('/calentamientos/{id}', [CalentamientoController::class, 'show']);
+    Route::put('/calentamientos/{id}', [CalentamientoController::class, 'update']);
+    Route::delete('/calentamientos/{id}', [CalentamientoController::class, 'destroy']);
+
+});
+
+
+
+
