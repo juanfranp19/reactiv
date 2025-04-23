@@ -4,6 +4,7 @@ use App\Http\Controllers\API\AccesoController;
 use App\Http\Controllers\API\CalentamientoController;
 use App\Http\Controllers\API\EjercicioController;
 use App\Http\Controllers\API\EntrenadorController;
+use App\Http\Controllers\API\GrupoMuscularController;
 use App\Http\Controllers\API\SocioController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
@@ -45,6 +46,12 @@ Route::prefix('/v1')->group(function () {
     Route::get('/entrenadores/{id}', [EntrenadorController::class, 'show']);
     Route::put('/entrenadores/{id}', [EntrenadorController::class, 'update']);
     Route::delete('/entrenadores/{id}', [EntrenadorController::class, 'destroy']);
+
+    Route::get('/grupos-musculares', [GrupoMuscularController::class, 'index']);
+    Route::post('/grupos-musculares', [GrupoMuscularController::class, 'store']);
+    Route::get('/grupos-musculares/{id}', [GrupoMuscularController::class, 'show']);
+    Route::put('/grupos-musculares/{id}', [GrupoMuscularController::class, 'update']);
+    Route::delete('/grupos-musculares/{id}', [GrupoMuscularController::class, 'destroy']);
 
 
 
