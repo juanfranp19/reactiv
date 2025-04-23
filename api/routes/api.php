@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AccesoController;
 use App\Http\Controllers\API\CalentamientoController;
+use App\Http\Controllers\API\EjercicioController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,12 @@ Route::prefix('/v1')->group(function () {
     Route::get('/calentamientos/{id}', [CalentamientoController::class, 'show']);
     Route::put('/calentamientos/{id}', [CalentamientoController::class, 'update']);
     Route::delete('/calentamientos/{id}', [CalentamientoController::class, 'destroy']);
+
+    Route::get('/ejercicios', [EjercicioController::class, 'index']);
+    Route::post('/ejercicios', [EjercicioController::class, 'store']);
+    Route::get('/ejercicios/{id}', [EjercicioController::class, 'show']);
+    Route::put('/ejercicios/{id}', [EjercicioController::class, 'update']);
+    Route::delete('/ejercicios/{id}', [EjercicioController::class, 'destroy']);
 
 });
 
