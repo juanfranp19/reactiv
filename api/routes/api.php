@@ -9,6 +9,7 @@ use App\Http\Controllers\API\ProductoController;
 use App\Http\Controllers\API\RutinaController;
 use App\Http\Controllers\API\SeguimientoController;
 use App\Http\Controllers\API\SocioController;
+use App\Http\Controllers\API\TaquillaController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -74,14 +75,17 @@ Route::prefix('/v1')->group(function () {
     Route::put('/seguimientos/{id}', [SeguimientoController::class, 'update']);
     Route::delete('/seguimientos/{id}', [SeguimientoController::class, 'destroy']);
 
-
-
-
     Route::get('/socios', [SocioController::class, 'index']);
     Route::post('/socios', [SocioController::class, 'store']);
     Route::get('/socios/{id}', [SocioController::class, 'show']);
     Route::put('/socios/{id}', [SocioController::class, 'update']);
     Route::delete('/socios/{id}', [SocioController::class, 'destroy']);
+
+    Route::get('/taquillas', [TaquillaController::class, 'index']);
+    Route::post('/taquillas', [TaquillaController::class, 'store']);
+    Route::get('/taquillas/{id}', [TaquillaController::class, 'show']);
+    Route::put('/taquillas/{id}', [TaquillaController::class, 'update']);
+    Route::delete('/taquillas/{id}', [TaquillaController::class, 'destroy']);
 
 });
 
