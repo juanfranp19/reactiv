@@ -10,6 +10,7 @@ use App\Http\Controllers\API\RutinaController;
 use App\Http\Controllers\API\SeguimientoController;
 use App\Http\Controllers\API\SocioController;
 use App\Http\Controllers\API\TaquillaController;
+use App\Http\Controllers\API\TarifaController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -87,8 +88,9 @@ Route::prefix('/v1')->group(function () {
     Route::put('/taquillas/{id}', [TaquillaController::class, 'update']);
     Route::delete('/taquillas/{id}', [TaquillaController::class, 'destroy']);
 
+    Route::get('/tarifas', [TarifaController::class, 'index']);
+    Route::post('/tarifas', [TarifaController::class, 'store']);
+    Route::get('/tarifas/{id}', [TarifaController::class, 'show']);
+    Route::put('/tarifas/{id}', [TarifaController::class, 'update']);
+    Route::delete('/tarifas/{id}', [TarifaController::class, 'destroy']);
 });
-
-
-
-
