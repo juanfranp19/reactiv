@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AccesoController;
 use App\Http\Controllers\API\CalentamientoController;
 use App\Http\Controllers\API\EjercicioController;
+use App\Http\Controllers\API\EntrenadorController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,12 @@ Route::prefix('/v1')->group(function () {
     Route::get('/ejercicios/{id}', [EjercicioController::class, 'show']);
     Route::put('/ejercicios/{id}', [EjercicioController::class, 'update']);
     Route::delete('/ejercicios/{id}', [EjercicioController::class, 'destroy']);
+
+    Route::get('/entrenadores', [EntrenadorController::class, 'index']);
+    Route::post('/entrenadores', [EntrenadorController::class, 'store']);
+    Route::get('/entrenadores/{id}', [EntrenadorController::class, 'show']);
+    Route::put('/entrenadores/{id}', [EntrenadorController::class, 'update']);
+    Route::delete('/entrenadores/{id}', [EntrenadorController::class, 'destroy']);
 
 });
 
