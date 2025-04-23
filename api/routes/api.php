@@ -4,6 +4,7 @@ use App\Http\Controllers\API\AccesoController;
 use App\Http\Controllers\API\CalentamientoController;
 use App\Http\Controllers\API\EjercicioController;
 use App\Http\Controllers\API\EntrenadorController;
+use App\Http\Controllers\API\SocioController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,15 @@ Route::prefix('/v1')->group(function () {
     Route::get('/entrenadores/{id}', [EntrenadorController::class, 'show']);
     Route::put('/entrenadores/{id}', [EntrenadorController::class, 'update']);
     Route::delete('/entrenadores/{id}', [EntrenadorController::class, 'destroy']);
+
+
+
+
+    Route::get('/socios', [SocioController::class, 'index']);
+    Route::post('/socios', [SocioController::class, 'store']);
+    Route::get('/socios/{id}', [SocioController::class, 'show']);
+    Route::put('/socios/{id}', [SocioController::class, 'update']);
+    Route::delete('/socios/{id}', [SocioController::class, 'destroy']);
 
 });
 
