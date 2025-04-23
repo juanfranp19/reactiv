@@ -6,6 +6,7 @@ use App\Http\Controllers\API\EjercicioController;
 use App\Http\Controllers\API\EntrenadorController;
 use App\Http\Controllers\API\GrupoMuscularController;
 use App\Http\Controllers\API\ProductoController;
+use App\Http\Controllers\API\RutinaController;
 use App\Http\Controllers\API\SocioController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
@@ -59,6 +60,12 @@ Route::prefix('/v1')->group(function () {
     Route::get('/productos/{id}', [ProductoController::class, 'show']);
     Route::put('/productos/{id}', [ProductoController::class, 'update']);
     Route::delete('/productos/{id}', [ProductoController::class, 'destroy']);
+
+    Route::get('/rutinas', [RutinaController::class, 'index']);
+    Route::post('/rutinas', [RutinaController::class, 'store']);
+    Route::get('/rutinas/{id}', [RutinaController::class, 'show']);
+    Route::put('/rutinas/{id}', [RutinaController::class, 'update']);
+    Route::delete('/rutinas/{id}', [RutinaController::class, 'destroy']);
 
 
 
