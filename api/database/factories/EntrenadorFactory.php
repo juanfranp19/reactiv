@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Entrenador;
 use App\Models\Socio;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -99,12 +100,30 @@ class EntrenadorFactory extends Factory
             $telefono_return = $tlf_primerDigito . $tlf_demasDigitos;
         }
 
+        /**
+         *  user_id
+         */
+        do {
+
+            // cocge el id del primer usuario que no esté cogido por ningún socio
+            // y además que no se encuentre tampoco en la propia tabla de entrenaodres
+            $user_id = User::whereNotIn('id', function ($query) {
+                $query->select('user_id')->from('socios');
+            })->whereNotIn('id', function ($query) {
+                $query->select('user_id')->from('entrenadores');
+            })->pluck('id')->first();
+
+        } while (Entrenador::where('user_id', $user_id)->exists());
+
+        /**
+         *  return
+         */
         return [
             'nombre' => $nombre_return,
             'apellidos' => $apellidos_return,
             'email' => $email_return,
             'telefono' => $telefono_return,
-            //'user_id' => ,
+            'user_id' => $user_id,
         ];
     }
 }

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Entrenador;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class EntrenadorSeeder extends Seeder
@@ -15,15 +14,11 @@ class EntrenadorSeeder extends Seeder
     {
         Entrenador::query()->delete();
 
-        $users = User::whereNotIn('id', Entrenador::pluck('user_id'))->get();
-
         $numEntrenadores = env('FACTORY_ENTRENADORES_NUM', 3);
+
+        // de esta forma con el for porque sinó da error de clave única con los user_id
         for ($i = 0; $i < $numEntrenadores; $i++) {
-
-            Entrenador::factory()->create([
-                'user_id' => $users[$i]->id,
-            ]);
-
+            Entrenador::factory()->create();
         }
     }
 }
