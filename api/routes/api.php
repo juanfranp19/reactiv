@@ -11,6 +11,7 @@ use App\Http\Controllers\API\SeguimientoController;
 use App\Http\Controllers\API\SocioController;
 use App\Http\Controllers\API\TaquillaController;
 use App\Http\Controllers\API\TarifaController;
+use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -93,4 +94,10 @@ Route::prefix('/v1')->group(function () {
     Route::get('/tarifas/{id}', [TarifaController::class, 'show']);
     Route::put('/tarifas/{id}', [TarifaController::class, 'update']);
     Route::delete('/tarifas/{id}', [TarifaController::class, 'destroy']);
+
+    Route::get('/users', [UserController::class, 'index']);
+    //Route::post('/users', [UserController::class, 'store']);
+    Route::get('/users/{id}', [UserController::class, 'show']);
+    Route::put('/users/{id}', [UserController::class, 'update']);
+    Route::delete('/users/{id}', [UserController::class, 'destroy']);
 });
