@@ -39,7 +39,7 @@ class CalentamientoRutinaController extends Controller
     /**
      * Almacena un calentamiento a la rutina
      */
-    public function atach(Request $request, $rutina_id)
+    public function attach(Request $request, $rutina_id)
     {
         $rutina = Rutina::findOrFail($rutina_id);
 
@@ -53,7 +53,7 @@ class CalentamientoRutinaController extends Controller
             'tiempo' => $request->tiempo,
         ]);
 
-        return response('', 204);
+        return response()->json(['message' => 'attached'], 201);
     }
 
     /**

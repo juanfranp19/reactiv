@@ -105,12 +105,11 @@ Route::prefix('/v1')->group(function () {
 
 
     Route::get('/calentamientos-rutinas/{rutina_id}', [CalentamientoRutinaController::class, 'index']);
-    Route::post('/calentamientos-rutinas/{rutina_id}', [CalentamientoRutinaController::class, 'atach']);
+    Route::post('/calentamientos-rutinas/{rutina_id}', [CalentamientoRutinaController::class, 'attach']);
     Route::put('/calentamientos-rutinas/{rutina_id}', [CalentamientoRutinaController::class, 'update']);
     Route::delete('/calentamientos-rutinas/{rutina_id}', [CalentamientoRutinaController::class, 'detach']);
 
     Route::get('/calentamientos-seguimientos/{seguimiento_id}', [CalentamientoSeguimientoController::class, 'index']);
     Route::post('/calentamientos-seguimientos/{seguimiento_id}', [CalentamientoSeguimientoController::class, 'attach']);
-    Route::put('/calentamientos-seguimientos/{seguimiento_id}', [CalentamientoSeguimientoController::class, 'update']);
     Route::delete('/calentamientos-seguimientos/{seguimiento_id}', [CalentamientoSeguimientoController::class, 'detach']);
 });
