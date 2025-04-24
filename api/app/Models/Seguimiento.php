@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Seguimiento extends Model
 {
@@ -17,4 +18,9 @@ class Seguimiento extends Model
         'observaciones',
         'fecha',
     ];
+
+    public function calentamientos(): BelongsToMany
+    {
+        return $this->belongsToMany(Calentamiento::class, 'calentamientos_seguimientos');
+    }
 }
