@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\CalentamientoRutina;
 use App\Models\Rutina;
 use Illuminate\Http\Request;
 
@@ -15,12 +16,20 @@ class CalentamientoRutinaController extends Controller
     {
         try {
 
-            // llama a la turina específica con los calentamientos que están asociados
-            $rutina = Rutina::with('calentamientos')->findOrFail($rutina_id);
+            // si la rutina no está en la tabla calentamientos_rutinas, devuelve error
+            if (CalentamientoRutina::where('rutina_id', $rutina_id)->exists()) {
 
-            return response()->json([
-                'data' => $rutina,
-            ], 200);
+                // llama a la turina específica con los calentamientos que están asociados
+                $rutina = Rutina::with('calentamientos')->findOrFail($rutina_id);
+
+                return response()->json([
+                    'data' => $rutina,
+                ], 200);
+
+            } else {
+
+                return response()->json(['message' => 'rutina no encontrada'], 404);
+            }
 
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
