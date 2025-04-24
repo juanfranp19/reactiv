@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AccesoController;
 use App\Http\Controllers\API\CalentamientoController;
+use App\Http\Controllers\API\CalentamientoRutinaController;
 use App\Http\Controllers\API\EjercicioController;
 use App\Http\Controllers\API\EntrenadorController;
 use App\Http\Controllers\API\GrupoMuscularController;
@@ -100,4 +101,11 @@ Route::prefix('/v1')->group(function () {
     Route::get('/users/{id}', [UserController::class, 'show']);
     Route::put('/users/{id}', [UserController::class, 'update']);
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
+
+
+    Route::get('/calentamientos-rutinas/{rutina_id}', [CalentamientoRutinaController::class, 'index']);
+    Route::post('/calentamientos-rutinas/{rutina_id}', [CalentamientoRutinaController::class, 'atach']);
+    Route::put('/calentamientos-rutinas/{rutina_id}', [CalentamientoRutinaController::class, 'update']);
+    Route::delete('/calentamientos-rutinas/{rutina_id}', [CalentamientoRutinaController::class, 'detach']);
+
 });
