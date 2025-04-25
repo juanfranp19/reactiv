@@ -125,8 +125,8 @@ Route::prefix('/v1')->group(function () {
     Route::post('/ejercicios-seguimientos/{seguimiento_id}', [EjercicioSeguimientoController::class, 'attach']);
     Route::delete('/ejercicios-seguimientos/{seguimiento_id}', [EjercicioSeguimientoController::class, 'detach']);
 
-    Route::get('/productos-socios/{rutina_id}', [ProductoSocioController::class, 'index']);
-    Route::post('/productos-socios/{rutina_id}', [ProductoSocioController::class, 'attach']);
-    Route::put('/productos-socios/{rutina_id}', [ProductoSocioController::class, 'update']);
-    Route::delete('/productos-socios/{rutina_id}', [ProductoSocioController::class, 'detach']);
+    Route::get('/productos-socios/{socio_id}', [ProductoSocioController::class, 'index']);
+    Route::post('/productos-socios/{socio_id}', [ProductoSocioController::class, 'attach']);
+    Route::put('/productos-socios/{socio_id}', [ProductoSocioController::class, 'update']);
+    Route::delete('/productos-socios/{socio_id}', [ProductoSocioController::class, 'detach']);
 });
