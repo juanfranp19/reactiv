@@ -22,6 +22,11 @@ class Socio extends Model
 
     public function productos(): BelongsToMany
     {
-        return $this->belongsToMany(Producto::class, 'productos_socios')->withPivot('fecha_compra', 'cantidad');;
+        return $this->belongsToMany(Producto::class, 'productos_socios')->withPivot('fecha_compra', 'cantidad');
+    }
+
+    public function tarifas(): BelongsToMany
+    {
+        return $this->belongsToMany(Tarifa::class, 'socios_tarifas')->withPivot('fecha_inicio', 'fecha_fin');
     }
 }

@@ -14,6 +14,7 @@ use App\Http\Controllers\API\ProductoSocioController;
 use App\Http\Controllers\API\RutinaController;
 use App\Http\Controllers\API\SeguimientoController;
 use App\Http\Controllers\API\SocioController;
+use App\Http\Controllers\API\SocioTarifaController;
 use App\Http\Controllers\API\TaquillaController;
 use App\Http\Controllers\API\TarifaController;
 use App\Http\Controllers\API\UserController;
@@ -129,4 +130,9 @@ Route::prefix('/v1')->group(function () {
     Route::post('/productos-socios/{socio_id}', [ProductoSocioController::class, 'attach']);
     Route::put('/productos-socios/{socio_id}', [ProductoSocioController::class, 'update']);
     Route::delete('/productos-socios/{socio_id}', [ProductoSocioController::class, 'detach']);
+
+    Route::get('/socios-tarifas/{socio_id}', [SocioTarifaController::class, 'index']);
+    Route::post('/socios-tarifas/{socio_id}', [SocioTarifaController::class, 'attach']);
+    Route::put('/socios-tarifas/{socio_id}', [SocioTarifaController::class, 'update']);
+    Route::delete('/socios-tarifas/{socio_id}', [SocioTarifaController::class, 'detach']);
 });

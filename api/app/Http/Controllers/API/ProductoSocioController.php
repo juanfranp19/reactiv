@@ -19,7 +19,7 @@ class ProductoSocioController extends Controller
             // si el socio no está en la tabla productos_socios, devuelve error
             if (ProductoSocio::where('socio_id', $socio_id)->exists()) {
 
-                // llama a la turina específica con los calentamientos que están asociados
+                // llama al socio con los productos asociados
                 $socio = Socio::with('productos')->findOrFail($socio_id);
 
                 return response()->json([
