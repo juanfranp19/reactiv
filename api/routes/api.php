@@ -10,6 +10,7 @@ use App\Http\Controllers\API\EjercicioSeguimientoController;
 use App\Http\Controllers\API\EntrenadorController;
 use App\Http\Controllers\API\GrupoMuscularController;
 use App\Http\Controllers\API\ProductoController;
+use App\Http\Controllers\API\ProductoSocioController;
 use App\Http\Controllers\API\RutinaController;
 use App\Http\Controllers\API\SeguimientoController;
 use App\Http\Controllers\API\SocioController;
@@ -123,4 +124,9 @@ Route::prefix('/v1')->group(function () {
     Route::get('/ejercicios-seguimientos/{seguimiento_id}', [EjercicioSeguimientoController::class, 'index']);
     Route::post('/ejercicios-seguimientos/{seguimiento_id}', [EjercicioSeguimientoController::class, 'attach']);
     Route::delete('/ejercicios-seguimientos/{seguimiento_id}', [EjercicioSeguimientoController::class, 'detach']);
+
+    Route::get('/productos-socios/{rutina_id}', [ProductoSocioController::class, 'index']);
+    Route::post('/productos-socios/{rutina_id}', [ProductoSocioController::class, 'attach']);
+    Route::put('/productos-socios/{rutina_id}', [ProductoSocioController::class, 'update']);
+    Route::delete('/productos-socios/{rutina_id}', [ProductoSocioController::class, 'detach']);
 });

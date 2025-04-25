@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Socio extends Model
 {
@@ -18,4 +19,9 @@ class Socio extends Model
         'fecha_nac',
         'user_id',
     ];
+
+    public function productos(): BelongsToMany
+    {
+        return $this->belongsToMany(Producto::class, 'productos_socios')->withPivot('fecha_compra', 'cantidad');;
+    }
 }
