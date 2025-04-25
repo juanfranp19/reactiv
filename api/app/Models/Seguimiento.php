@@ -23,4 +23,9 @@ class Seguimiento extends Model
     {
         return $this->belongsToMany(Calentamiento::class, 'calentamientos_seguimientos');
     }
+
+    public function ejercicios(): BelongsToMany
+    {
+        return $this->belongsToMany(Ejercicio::class, 'ejercicios_seguimientos');
+    }
 }
