@@ -17,4 +17,9 @@ class Rutina extends Model
     {
         return $this->belongsToMany(Calentamiento::class, 'calentamientos_rutinas')->withPivot('tiempo');
     }
+
+    public function ejercicios(): BelongsToMany
+    {
+        return $this->belongsToMany(Ejercicio::class, 'ejercicios_rutinas')->withPivot('num_series', 'num_repeticiones');
+    }
 }
