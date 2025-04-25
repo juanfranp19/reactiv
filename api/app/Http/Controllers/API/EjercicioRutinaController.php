@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\EjercicioRutina;
 use App\Models\Rutina;
 use Illuminate\Http\Request;
 
@@ -15,18 +16,24 @@ class EjercicioRutinaController extends Controller
     {
         try {
 
-            // llama a la rutina con los ejercicios asociados
-            $rutina = Rutina::with('ejercicios')->findOrFail($rutina_id);
+            // si la rutina no está en la tabla ejercicios_rutinas, devuelve error
+            if (EjercicioRutina::where('rutina_id', $rutina_id)->exists()) {
 
+                // llama a la rutina con los ejercicios asociados
+                $rutina = Rutina::with('ejercicios')->findOrFail($rutina_id);
+
+                return response()->json([
+                    'data' => $rutina,
+                ], 200);
+
+            } else {
+
+                return response()->json(['message' => 'rutina no encontrada'], 404);
+            }
 
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
-
-        return response()->json([
-            'data' => $rutina,
-        ], 200);
-
     }
 
     /**
