@@ -14,6 +14,13 @@ class TaquillaResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        $taquilla_array = parent::toArray($request);
+        $socio_array = $this->socio;
+
+        unset($taquilla_array['socio_id']);
+
+        return array_merge($taquilla_array, [
+            'socio' => $socio_array,
+        ]);
     }
 }

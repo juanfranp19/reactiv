@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Socio extends Model
 {
@@ -38,5 +39,12 @@ class Socio extends Model
     public function accesos(): HasMany
     {
         return $this->hasMany(Acceso::class);
+    }
+
+    // relaciones One To One
+
+    public function taquilla(): HasOne
+    {
+        return $this->hasOne(Taquilla::class);
     }
 }
