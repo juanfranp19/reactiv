@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Socio extends Model
 {
@@ -20,6 +21,8 @@ class Socio extends Model
         'user_id',
     ];
 
+    // relaciones Many To Many
+
     public function productos(): BelongsToMany
     {
         return $this->belongsToMany(Producto::class, 'productos_socios')->withPivot('fecha_compra', 'cantidad');
@@ -28,5 +31,12 @@ class Socio extends Model
     public function tarifas(): BelongsToMany
     {
         return $this->belongsToMany(Tarifa::class, 'socios_tarifas')->withPivot('fecha_inicio', 'fecha_fin');
+    }
+
+    // relaciones One To Many
+
+    public function accesos(): HasMany
+    {
+        return $this->hasMany(Acceso::class);
     }
 }

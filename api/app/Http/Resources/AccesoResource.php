@@ -14,6 +14,13 @@ class AccesoResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        $acceso_array = parent::toArray($request);
+        $socio_array = $this->socio;
+
+        unset($acceso_array['socio_id']);
+
+        return array_merge($acceso_array, [
+            'socio' => $socio_array,
+        ]);
     }
 }

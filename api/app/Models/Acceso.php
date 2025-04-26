@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Acceso extends Model
 {
@@ -16,4 +17,11 @@ class Acceso extends Model
         'hora_salida',
         'socio_id',
     ];
+
+    // relaciones One To Many
+
+    public function socio(): BelongsTo
+    {
+        return $this->belongsTo(Socio::class);
+    }
 }

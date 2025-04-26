@@ -14,6 +14,11 @@ class SocioResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        $socio_array = parent::toArray($request);
+        $accesos_array = $this->accesos;
+
+        return array_merge($socio_array, [
+            'accesos' => $accesos_array,
+        ]);
     }
 }
