@@ -16,9 +16,11 @@ class UserResource extends JsonResource
     {
         $user_array = parent::toArray($request);
         $socio_array = $this->socio;
+        $entrenador_array = $this->entrenador;
 
         return array_merge($user_array, [
             'socio' => $socio_array,
+            'entrenador' => $entrenador_array,
         ]);
     }
 }

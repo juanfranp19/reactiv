@@ -14,6 +14,13 @@ class EntrenadorResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        $entrenador_array = parent::toArray($request);
+        $user_array = $this->user;
+
+        unset($entrenador_array['user_id']);
+
+        return array_merge($entrenador_array, [
+            'user' => $user_array,
+        ]);
     }
 }

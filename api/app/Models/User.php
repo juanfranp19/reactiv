@@ -53,4 +53,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Socio::class);
     }
+
+    public function entrenador(): HasOne
+    {
+        return $this->hasOne(Entrenador::class);
+    }
 }
