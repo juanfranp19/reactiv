@@ -16,11 +16,14 @@ class SeguimientoResource extends JsonResource
     {
         $seguimiento_array = parent::toArray($request);
         $rutina_array = $this->rutina;
+        $socio_array = $this->socio;
 
         unset($seguimiento_array['rutina_id']);
+        unset($seguimiento_array['socio_id']);
 
         return array_merge($seguimiento_array, [
             'rutina' => $rutina_array,
+            'socio' => $socio_array,
         ]);
     }
 }

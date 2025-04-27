@@ -42,6 +42,11 @@ class Socio extends Model
         return $this->hasMany(Acceso::class);
     }
 
+    public function seguimientos(): HasMany
+    {
+        return $this->hasMany(Seguimiento::class);
+    }
+
     // relaciones One To One
 
     public function taquilla(): HasOne

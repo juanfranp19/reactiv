@@ -38,4 +38,9 @@ class Seguimiento extends Model
     {
         return $this->belongsTo(Rutina::class);
     }
+
+    public function socio(): BelongsTo
+    {
+        return $this->belongsTo(Socio::class);
+    }
 }
