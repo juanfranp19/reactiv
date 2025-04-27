@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Seguimiento extends Model
@@ -19,6 +20,8 @@ class Seguimiento extends Model
         'fecha',
     ];
 
+    // relaciones Many To Many
+
     public function calentamientos(): BelongsToMany
     {
         return $this->belongsToMany(Calentamiento::class, 'calentamientos_seguimientos');
@@ -27,5 +30,12 @@ class Seguimiento extends Model
     public function ejercicios(): BelongsToMany
     {
         return $this->belongsToMany(Ejercicio::class, 'ejercicios_seguimientos');
+    }
+
+    // relaciones One To Many
+
+    public function rutina(): BelongsTo
+    {
+        return $this->belongsTo(Rutina::class);
     }
 }

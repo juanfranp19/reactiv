@@ -14,6 +14,13 @@ class SeguimientoResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        $seguimiento_array = parent::toArray($request);
+        $rutina_array = $this->rutina;
+
+        unset($seguimiento_array['rutina_id']);
+
+        return array_merge($seguimiento_array, [
+            'rutina' => $rutina_array,
+        ]);
     }
 }

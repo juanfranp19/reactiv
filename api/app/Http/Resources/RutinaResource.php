@@ -14,6 +14,11 @@ class RutinaResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        $rutina_array = parent::toArray($request);
+        $seguimientos_array = $this->seguimientos;
+
+        return array_merge($rutina_array, [
+            'seguimientos' => $seguimientos_array,
+        ]);
     }
 }
