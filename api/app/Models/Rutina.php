@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -31,5 +32,10 @@ class Rutina extends Model
     public function seguimientos(): HasMany
     {
         return $this->hasMany(Seguimiento::class);
+    }
+
+    public function socio(): BelongsTo
+    {
+        return $this->belongsTo(Socio::class);
     }
 }

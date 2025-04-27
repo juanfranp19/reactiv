@@ -19,6 +19,7 @@ class SocioResource extends JsonResource
         $taquilla_array = $this->taquilla;
         $user_array = $this->user;
         $seguimientos_array = $this->seguimientos;
+        $rutinas_array = $this->rutinas;
 
         unset($socio_array['user_id']);
 
@@ -27,6 +28,7 @@ class SocioResource extends JsonResource
             'taquilla' => $taquilla_array,
             'user' => $user_array,
             'seguimientos' => $seguimientos_array,
+            'rutinas' => $rutinas_array,
         ]);
     }
 }
