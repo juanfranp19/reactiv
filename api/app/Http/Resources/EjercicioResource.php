@@ -14,6 +14,13 @@ class EjercicioResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        $ejercicio_array = parent::toArray($request);
+        $grupoMuscular_array = $this->grupoMuscular;
+
+        unset($ejercicio_array['grupo_id']);
+
+        return array_merge($ejercicio_array, [
+            'grupo_muscular' => $grupoMuscular_array,
+        ]);
     }
 }
