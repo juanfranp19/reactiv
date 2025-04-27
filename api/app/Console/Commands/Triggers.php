@@ -50,9 +50,9 @@ class Triggers extends Command
         ');
         $this->info('trigger *asignar_fecha_fin*, creado correctamente');
 
-        $this->info('');
-        $this->info('*****************************************');
-        $this->info('TODOS LOS TRIGGERS CREADOS CORRECTAMENTE');
-        $this->info('*****************************************');
+        //$this->info('');
+        // $this->info('*****************************************');
+        // $this->info('TODOS LOS TRIGGERS CREADOS CORRECTAMENTE');
+        // $this->info('*****************************************');
     }
 }
