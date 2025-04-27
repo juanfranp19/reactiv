@@ -48,23 +48,13 @@ class SocioTarifaController extends Controller
             $request->validate([
                 'tarifa_id' => 'required|exists:tarifas,id',
                 'fecha_inicio' => 'required',
-                'fecha_fin' => 'required',
-
-
-
-
-                // TODO: TRIGGER
-
-
-
-
-
+                //'fecha_fin' => 'required',
             ]);
 
             // asocia la tarifa junto con los valores pivot
             $socio->tarifas()->attach($request->tarifa_id, [
                 'fecha_inicio' => $request->fecha_inicio,
-                'fecha_fin' => $request->fecha_fin,
+                //'fecha_fin' => $request->fecha_fin,
             ]);
 
             return response()->json(['message' => 'attached'], 201);
