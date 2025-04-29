@@ -37,4 +37,4 @@ Artisan::command('refresh-database', function () {
     $this->info('*****************************************');
     $this->info('TODOS LOS TRIGGERS CREADOS CORRECTAMENTE');
     $this->info('*****************************************');
-});
+})->purpose('Execute commands for database table migrations, seeders, and triggers');

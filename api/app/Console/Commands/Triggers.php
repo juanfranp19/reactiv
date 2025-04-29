@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class Triggers extends Command
 {
@@ -19,35 +20,31 @@ class Triggers extends Command
      *
      * @var string
      */
-    protected $description = 'Create the database triggers';
+    protected $description = 'Create the database triggers from database/triggers/';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        // trigger para asignar fecha_fin dependiendo de cuánto dure la tarifa del socio
-        DB::unprepared('
-            CREATE OR REPLACE TRIGGER asignar_fecha_fin
-            BEFORE INSERT ON socios_tarifas
-            FOR EACH ROW
-            BEGIN
-                DECLARE duracion INTEGER;
+        /**
+         * trigger para asignar fecha_fin dependiendo de cuánto dure la tarifa del socio
+         */
+        // coge el archivo
+        $asignar_fecha_fin_tarifa = database_path('triggers/asignar_fecha_fin_tarifa.sql');
 
-                -- consulta para sacar la duración de la tarifa
-                SELECT t.duracion
-                INTO duracion
-                FROM tarifas t
-                WHERE t.id = NEW.tarifa_id;
+        // verifica si existe
+        if (!File::exists($asignar_fecha_fin_tarifa)) {
+            $this->error('no existe asignar_fecha_fin_tarifa.sql');
+            return 0;
+        }
 
-                IF duracion IS NOT NULL THEN
+        // obtiene el código del trigger
+        $trigger_asignar_fecha_fin_tarifa = File::get($asignar_fecha_fin_tarifa);
 
-                    -- se le asigna a la fecha_fin la suma de la fecha_inicio y la duración de la tarifa
-                    SET NEW.fecha_fin = DATE_ADD(NEW.fecha_inicio, INTERVAL duracion DAY);
+        // lo ejecuta en la base de datos
+        DB::unprepared($trigger_asignar_fecha_fin_tarifa);
 
-                END IF;
-            END;
-        ');
         $this->info('trigger *asignar_fecha_fin*, creado correctamente');
 
         //$this->info('');
