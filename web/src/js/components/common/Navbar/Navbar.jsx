@@ -1,4 +1,4 @@
-import LogoReactiv from '@components/LogoReactiv/LogoReactiv';
+import LogoReactiv from '@components/ui/LogoReactiv/LogoReactiv';
 
 const Navbar = () => {
 

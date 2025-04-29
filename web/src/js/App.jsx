@@ -1,16 +1,11 @@
-import Carousel from '@components/Carousel/Carousel';
-import TopBar from '@components/TopBar/TopBar';
+import Home from './pages/Home';
 
 const App = () => {
 
     return (
         <div className='container-fluid'>
 
-            <TopBar></TopBar>
-                
-            <Carousel></Carousel>
-
-            <TopBar></TopBar>
+            <Home></Home>
 
         </div>
     );
