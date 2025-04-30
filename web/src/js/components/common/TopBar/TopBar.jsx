@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 import LogoReactiv from '@components/ui/LogoReactiv/LogoReactiv';
 
 const TopBar = () => {
@@ -5,7 +7,7 @@ const TopBar = () => {
     return (
         <div className='row'>
             <div className='col-12 top-bar'>
-                <LogoReactiv></LogoReactiv>
+                <NavLink to='/'><LogoReactiv></LogoReactiv></NavLink>
             </div>
         </div>
     );

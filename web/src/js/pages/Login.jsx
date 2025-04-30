@@ -1,3 +1,4 @@
+import { useNavigate, Navigate } from 'react-router-dom';
 import FormLogin from '@components/common/FormLogin/FormLogin';
 import TopBar from '@components/common/TopBar/TopBar';
 import { useLogin } from '@hooks/useAuth';
@@ -5,6 +6,18 @@ import { useLogin } from '@hooks/useAuth';
 const Login = () => {
 
     const { getToken, cargando, error } = useLogin();
+    const navigateTo = useNavigate();
+
+
+    const user = localStorage.getItem('usertoken');
+
+    if (user) {
+        //navigateTo('/');
+        return <Navigate to='/' ></Navigate>;
+    } 
+
+
+
 
     const manejarLogin = async (dataFormLogin) => {
 
@@ -12,7 +25,12 @@ const Login = () => {
         const token = await getToken(dataFormLogin);
 
         // si se ha obtenido, lo relfeja en la consola
-        if (token) console.log('login exitoso');
+        if (token) {
+            console.log('login exitoso');
+            
+            // redirige a incio
+            navigateTo('/');
+        }
     }
 
     return (

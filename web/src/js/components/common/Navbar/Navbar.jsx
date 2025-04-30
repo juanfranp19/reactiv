@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router-dom';
+
 import LogoReactiv from '@components/ui/LogoReactiv/LogoReactiv';
 
 const Navbar = () => {
@@ -8,7 +10,7 @@ const Navbar = () => {
                 <div className='container-fluid'>
 
                     <a className='navbar-brand' href='#'>
-                        <LogoReactiv></LogoReactiv>
+                        <NavLink to='/'><LogoReactiv></LogoReactiv></NavLink>
                     </a>
 
                     <div className='d-flex d-md-none'>
