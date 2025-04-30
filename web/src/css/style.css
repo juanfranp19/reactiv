@@ -93,4 +93,64 @@
 }
 .navbar .dropdown .nav-link:focus .bi-caret-down-fill {
   display: inline;
+}
+
+.formlogin-ext {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.formlogin {
+  max-width: 400px;
+}
+.formlogin .campo {
+  padding: 10px 40px;
+}
+.formlogin .campo .bi {
+  font-size: 20px;
+}
+.formlogin .campo:first-child {
+  padding-top: 40px;
+}
+.formlogin .campo input::-moz-placeholder {
+  color: rgb(167, 167, 167);
+}
+.formlogin .campo input::placeholder {
+  color: rgb(167, 167, 167);
+}
+.formlogin .campo .input-group, .formlogin .campo:last-child {
+  text-align: center;
+}
+.formlogin .campo .input-error {
+  color: rgb(200, 0, 0);
+  font-size: 15px;
+  text-align: left;
+}
+.formlogin .campo button {
+  margin: 25px 0;
+  width: 120px;
+  height: 50px;
+  font-size: 15px;
+}
+
+@media screen and (min-width: 576px) {
+  .formlogin-ext {
+    padding: 90px;
+  }
+  .formlogin {
+    background-color: aliceblue;
+    border-radius: 5px;
+  }
+  .formlogin .campo {
+    padding: 10px 40px;
+  }
+  .formlogin .campo button {
+    width: 170px;
+    font-size: 20px;
+  }
+}
+body {
+  height: 100vh;
 }/*# sourceMappingURL=style.css.map */

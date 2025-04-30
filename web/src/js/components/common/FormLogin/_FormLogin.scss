@@ -1,0 +1,66 @@
+// para que el compoenente se alinée al centro
+.formlogin-ext {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.formlogin {
+    max-width: 400px;
+
+    .campo {
+        padding: 10px 40px;
+
+        .bi {
+            font-size: 20px;
+        }
+
+        // primera clase campo
+        &:first-child {
+            padding-top: 40px;
+        }
+
+        input::placeholder {
+            color: $color-placeholder;
+        }
+
+        // para que el input y el boton se vayan al centro
+        .input-group, &:last-child {
+            text-align: center;
+        }
+
+        .input-error {
+            color: $color-input-error;
+            font-size: $size-input-error;
+            text-align: left;
+        }
+
+        button {
+            margin: 25px 0;
+            width: 120px;
+            height: 50px;
+            font-size: 15px;
+        }
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .formlogin-ext {
+        padding: 90px;
+    }
+
+    .formlogin {
+        background-color: aliceblue; // color de prueba, HAY QUE CAMBIARLO
+        border-radius: 5px;
+    
+        .campo {
+            padding: 10px 40px;
+
+            button {
+                width: 170px;
+                font-size: 20px;
+            }
+        }
+    }
+}
