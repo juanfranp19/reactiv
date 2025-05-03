@@ -17,10 +17,10 @@ export const useLogin = () => {
             const dataService = await loginService(formData);
 
             // guarda el token en el almacenamiento local
-            localStorage.setItem('usertoken', dataService.token);
+            localStorage.setItem('token', dataService.token);
 
             // devuelve el token
-            //return dataService.token;
+            return dataService.token;
 
         } catch (error) {
 

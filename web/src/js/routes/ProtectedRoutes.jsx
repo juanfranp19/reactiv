@@ -1,13 +1,15 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
+import useToken from '@hooks/useToken';
 
-const ProtectedRoutes = ({children}) => {
+const ProtectedRoutes = () => {
 
-    const user = localStorage.getItem('usertoken');
+    const { token } = useToken();
 
-    if (user) {
-        return children
+    // si se encuentra un token en el contexto, va a la ruta indicada, si no, redirige a inicio
+    if (token) {
+        return (<Outlet />);
     } else {
-        return <Navigate to='/login' />;
+        return (<Navigate to='/login' />);
     }
 }
 
