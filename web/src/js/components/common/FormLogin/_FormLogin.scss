@@ -21,19 +21,9 @@
             padding-top: 40px;
         }
 
-        input::placeholder {
-            color: $color-placeholder;
-        }
-
         // para que el input y el boton se vayan al centro
         .input-group, &:last-child {
             text-align: center;
-        }
-
-        .input-error {
-            color: $color-input-error;
-            font-size: $size-input-error;
-            text-align: left;
         }
 
         button {
