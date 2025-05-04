@@ -37,7 +37,8 @@ class SocioController extends Controller
         try {
 
             // obtiene la información de $request y la convierte a un array asociativo
-            $socio = json_decode($request->getContent(), true);
+            $socio = $request->all();
+
             $socio = Socio::create($socio);
 
             return response()->json([
