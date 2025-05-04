@@ -3,4 +3,10 @@
 body {
     // ocupa todo el alto de la pantalla
     height: 100vh;
+
+    .campo {
+        input::placeholder {
+            color: $color-placeholder;
+        }
+    }
 }

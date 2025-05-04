@@ -114,19 +114,8 @@
 .formlogin .campo:first-child {
   padding-top: 40px;
 }
-.formlogin .campo input::-moz-placeholder {
-  color: rgb(167, 167, 167);
-}
-.formlogin .campo input::placeholder {
-  color: rgb(167, 167, 167);
-}
 .formlogin .campo .input-group, .formlogin .campo:last-child {
   text-align: center;
-}
-.formlogin .campo .input-error {
-  color: rgb(200, 0, 0);
-  font-size: 15px;
-  text-align: left;
 }
 .formlogin .campo button {
   margin: 25px 0;
@@ -151,6 +140,33 @@
     font-size: 20px;
   }
 }
+.input-error {
+  color: rgb(200, 0, 0);
+  font-size: 15px;
+  text-align: left;
+}
+
+.eliminar-archivo {
+  margin-top: 10px;
+}
+.eliminar-archivo button {
+  margin-left: 10px;
+  all: unset;
+  color: red;
+  font-size: 20px;
+  padding-left: 7px;
+}
+
+.formsocio .campo {
+  padding: 20px;
+}
+
 body {
   height: 100vh;
+}
+body .campo input::-moz-placeholder {
+  color: rgb(199, 199, 199);
+}
+body .campo input::placeholder {
+  color: rgb(199, 199, 199);
 }/*# sourceMappingURL=style.css.map */
