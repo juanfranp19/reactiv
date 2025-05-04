@@ -9,6 +9,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 // bootstrap icons
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
 
+// notyf
+import 'notyf/notyf.min.css';
+
 // css
 import '@css/style.css';
 
