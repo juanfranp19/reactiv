@@ -16,10 +16,14 @@ return new class extends Migration
             $table->string('dni')->unique();
             $table->string('nombre');
             $table->string('apellidos');
+            $table->date('fecha_nac');
             $table->string('email')->unique();
             $table->integer('telefono')->unique();
-            $table->date('fecha_nac');
-            $table->unsignedBigInteger('user_id');
+            $table->string('direccion');
+            $table->string('provincia');
+            $table->string('ciudad');
+            $table->string('imagen')->unique()->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

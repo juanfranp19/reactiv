@@ -136,11 +136,13 @@ class SocioFactory extends Factory
         }
 
         /**
-         *  user_id
+         *  direccion
          */
 
-        //$users = User::whereNotIn('id', Socio::pluck('user_id'))->get();
-        //$id_userTable = $users->first()->id;
+        $nombreCalle = fake()->streetName;
+        $numeroCalle = fake()->buildingNumber;
+
+        $direccion_return = $nombreCalle . ', ' . $numeroCalle;
 
         /**
          *  RETURN del Factory
@@ -152,7 +154,7 @@ class SocioFactory extends Factory
             'email' => $email_return,
             'telefono' => $telefono_return,
             'fecha_nac' => fake()->dateTimeBetween('-60 years', '-14 years')->format('Y-m-d'),
-            //'user_id' => $id_userTable,
+            'direccion' => $direccion_return,
         ];
     }
 }

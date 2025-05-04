@@ -15,9 +15,13 @@ Table socios {
   dni string [unique]
   nombre string
   apellidos string
+  fecha_nac date
   email string [unique]
   telefono int [unique]
-  fecha_nac date
+  direccion string
+  provincia string
+  ciudad string
+  imagen string [unique, null]
   user_id int [unique, ref:- users.id]
   created_at datetime
   updated_at datetime

@@ -17,9 +17,13 @@ class Socio extends Model
         'dni',
         'nombre',
         'apellidos',
+        'fecha_nac',
         'email',
         'telefono',
-        'fecha_nac',
+        'direccion',
+        'provincia',
+        'ciudad',
+        'imagen',
         'user_id',
     ];
 
