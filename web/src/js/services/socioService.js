@@ -37,9 +37,7 @@ export const postSocio = async (data) => {
             const errorData = await response.json();
             console.error('Error del servidor:', errorData);
 
-            //alert('Error al crear el socio.');
-            notyf.error('Error al crear el socio.');
-            //notyf.error(errorData.error); para cuando haya una excapcion para cada campo
+            notyf.error(errorData.error); //mensajes del observer
 
         } else {
 
