@@ -18,20 +18,7 @@ use App\Http\Controllers\API\SocioTarifaController;
 use App\Http\Controllers\API\TaquillaController;
 use App\Http\Controllers\API\TarifaController;
 use App\Http\Controllers\API\UserController;
-use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-
-Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/logout', [AuthController::class, 'logout']);
-});
 
 Route::prefix('/v1')->group(function () {
 
@@ -136,3 +123,5 @@ Route::prefix('/v1')->group(function () {
     Route::put('/socios-tarifas/{socio_id}', [SocioTarifaController::class, 'update']);
     Route::delete('/socios-tarifas/{socio_id}', [SocioTarifaController::class, 'detach']);
 });
+
+require __DIR__.'/auth.php';
