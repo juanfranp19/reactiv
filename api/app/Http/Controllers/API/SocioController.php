@@ -73,18 +73,25 @@ class SocioController extends Controller
             'dni' => 'required',
             'nombre' => 'required',
             'apellidos' => 'required',
+            'fecha_nac' => 'required',
             'email' => 'required | email',
             'telefono' => 'required',
-            'fecha_nac' => 'required',
+            'direccion' => 'required',
+            'provincia' => 'required',
+            'ciudad' => 'required',
+            //'imagen' => 'required',
             'user_id' => 'required | exists:users,id',
         ]);
 
         $socio->dni = $request->input('dni');
         $socio->nombre = $request->input('nombre');
         $socio->apellidos = $request->input('apellidos');
+        $socio->fecha_nac = $request->input('fecha_nac');
         $socio->email = $request->input('email');
         $socio->telefono = $request->input('telefono');
-        $socio->fecha_nac = $request->input('fecha_nac');
+        $socio->direccion = $request->input('direccion');
+        $socio->provincia = $request->input('provincia');
+        $socio->ciudad = $request->input('ciudad');
         $socio->user_id = $request->input('user_id');
         $socio->save();
 
