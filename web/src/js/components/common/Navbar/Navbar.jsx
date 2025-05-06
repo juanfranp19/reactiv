@@ -1,9 +1,14 @@
 import { NavLink } from 'react-router-dom';
 
+import ButtonLogin from '@components/ui/ButtonLogin/ButtonLogin';
 import LogoReactiv from '@components/ui/LogoReactiv/LogoReactiv';
 import DropdownUser from '@components/ui/DropdownUser/DropdownUser';
 
+import useToken from '@hooks/useToken';
+
 const Navbar = () => {
+
+    const { token } = useToken();
 
     return (
         <nav className='row sticky-top'>
@@ -15,7 +20,7 @@ const Navbar = () => {
                     </NavLink>
 
                     <div className='d-flex d-md-none'>
-                        <DropdownUser />
+                        {token ? <DropdownUser /> : <ButtonLogin />}
                     </div>
 
                     <button className='navbar-toggler' type='button' data-bs-toggle='offcanvas' data-bs-target='#mynavbar' aria-controls='offcanvasNavbar' aria-label='Toggle navigation'>
