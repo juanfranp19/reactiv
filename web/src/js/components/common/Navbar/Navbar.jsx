@@ -15,9 +15,9 @@ const Navbar = () => {
             <div className='navbar navbar-expand-md bg-body-tertiary-dark navbar-dark bg-dark'>
                 <div className='container-fluid'>
 
-                    <NavLink to='/' className='navbar-brand'>
+                    <div className='navbar-brand'>
                         <LogoReactiv />
-                    </NavLink>
+                    </div>
 
                     <div className='d-flex d-md-none'>
                         {token ? <DropdownUser /> : <ButtonLogin />}
