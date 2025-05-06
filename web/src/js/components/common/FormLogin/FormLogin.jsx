@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import ErrorInput from '@components/ui/ErrorInput/ErrorInput';
 
 const FormLogin = (props) => {
 
@@ -57,8 +58,8 @@ const FormLogin = (props) => {
                                         })}
                                     />
                                 </div>
-
-                                <span className='input-error'>{errors.name?.message}</span>
+                                
+                                <ErrorInput>{errors.name?.message}</ErrorInput>
                             </div>
 
                             {/* campo de contraseña */}
@@ -80,7 +81,7 @@ const FormLogin = (props) => {
                                     />
                                 </div>
 
-                                <span className='input-error'>{errors.password?.message}</span>
+                                <ErrorInput>{errors.password?.message}</ErrorInput>
                             </div>
 
                             {/* botón */}

@@ -5,7 +5,7 @@ import Select from 'react-select';
 import ciudades_array from '@data/ciudades.json';
 import provincias_array from '@data/provincias.json';
 
-import InputError from '@components/ui/InputError/InputError';
+import ErrorInput from '@components/ui/ErrorInput/ErrorInput';
 
 const FormCrearSocio = (props) => {
 
@@ -146,7 +146,7 @@ const FormCrearSocio = (props) => {
                                 },
                             })}
                         />
-                        <InputError>{errors.dni?.message}</InputError>
+                        <ErrorInput>{errors.dni?.message}</ErrorInput>
                     </div>
 
                     {/* campo Nombre */}
@@ -163,7 +163,7 @@ const FormCrearSocio = (props) => {
                                 },
                             })}
                         />
-                        <InputError>{errors.nombre?.message}</InputError>
+                        <ErrorInput>{errors.nombre?.message}</ErrorInput>
                     </div>
 
                     {/* campo Apellidos */}
@@ -180,7 +180,7 @@ const FormCrearSocio = (props) => {
                                 },
                             })}
                         />
-                        <InputError>{errors.apellidos?.message}</InputError>
+                        <ErrorInput>{errors.apellidos?.message}</ErrorInput>
                     </div>
 
                     {/* campo imagen */}
@@ -197,7 +197,7 @@ const FormCrearSocio = (props) => {
                                 </button>
                             </div>
                         )}
-                        <InputError>{errors.imagen?.message}</InputError>
+                        <ErrorInput>{errors.imagen?.message}</ErrorInput>
                     </div>
 
                     {/* campo Fecha de nacimiento */}
@@ -214,7 +214,7 @@ const FormCrearSocio = (props) => {
                                 },
                             })}
                         />
-                        <InputError>{errors.fecha_nac?.message}</InputError>
+                        <ErrorInput>{errors.fecha_nac?.message}</ErrorInput>
                     </div>
 
                     {/* campo Email */}
@@ -235,7 +235,7 @@ const FormCrearSocio = (props) => {
                                 },
                             })}
                         />
-                        <InputError>{errors.email?.message}</InputError>
+                        <ErrorInput>{errors.email?.message}</ErrorInput>
                     </div>
 
                     {/* campo Teléfono */}
@@ -256,7 +256,7 @@ const FormCrearSocio = (props) => {
                                 },
                             })}
                         />
-                        <InputError>{errors.telefono?.message}</InputError>
+                        <ErrorInput>{errors.telefono?.message}</ErrorInput>
                     </div>
 
                     {/* campo Dirección */}
@@ -273,7 +273,7 @@ const FormCrearSocio = (props) => {
                                 },
                             })}
                         />
-                        <InputError>{errors.direccion?.message}</InputError>
+                        <ErrorInput>{errors.direccion?.message}</ErrorInput>
                     </div>
 
                     {/* campo Provincia */}
@@ -296,7 +296,7 @@ const FormCrearSocio = (props) => {
                                 },
                             })}
                         />
-                        <InputError>{errors.provincia?.message}</InputError>
+                        <ErrorInput>{errors.provincia?.message}</ErrorInput>
                     </div>
 
                     {/* campo Ciudad */}
@@ -319,7 +319,7 @@ const FormCrearSocio = (props) => {
                                 },
                             })}
                         />
-                        <InputError>{errors.ciudad?.message}</InputError>
+                        <ErrorInput>{errors.ciudad?.message}</ErrorInput>
                     </div>
 
                     <div className='col-12 campo'>
