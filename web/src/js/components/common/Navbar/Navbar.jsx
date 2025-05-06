@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 import LogoReactiv from '@components/ui/LogoReactiv/LogoReactiv';
+import DropdownUser from '@components/ui/DropdownUser/DropdownUser';
 
 const Navbar = () => {
 
@@ -9,25 +10,12 @@ const Navbar = () => {
             <div className='navbar navbar-expand-md bg-body-tertiary-dark navbar-dark bg-dark'>
                 <div className='container-fluid'>
 
-                    <a className='navbar-brand' href='#'>
-                        <NavLink to='/'><LogoReactiv></LogoReactiv></NavLink>
-                    </a>
+                    <NavLink to='/' className='navbar-brand'>
+                        <LogoReactiv />
+                    </NavLink>
 
                     <div className='d-flex d-md-none'>
-                        <ul className='navbar-nav me-auto'>
-                            <li className='nav-item dropdown'>
-                                <a className='nav-link' href='#' role='button' data-bs-toggle='dropdown'>
-                                    <i className='bi bi-person-circle'></i>
-                                    <i className='bi bi-caret-down'></i>
-                                    <i className='bi bi-caret-down-fill'></i>
-                                </a>
-                                <ul className='dropdown-fuera-offcanvas dropdown-menu dropdown-menu-end'>
-                                    <li><a className='dropdown-item' href='#'>Link</a></li>
-                                    <li><a className='dropdown-item' href='#'>Another link</a></li>
-                                    <li><a className='dropdown-item' href='#'>A third link</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <DropdownUser />
                     </div>
 
                     <button className='navbar-toggler' type='button' data-bs-toggle='offcanvas' data-bs-target='#mynavbar' aria-controls='offcanvasNavbar' aria-label='Toggle navigation'>
@@ -44,7 +32,7 @@ const Navbar = () => {
                             <button type='button' className='btn-close btn-close-white' data-bs-dismiss='offcanvas' aria-label='Close'></button>
                         </div>
 
-                        <div className='offcanvas-body navbar-collapse'> 
+                        <div className='offcanvas-body navbar-collapse'>
                             {/* navbar-collapse para que los elementos se centren verticalmente en el centro */}
 
                             <ul className='navbar-nav me-auto'>
@@ -60,21 +48,7 @@ const Navbar = () => {
                             </ul>
 
                             <div className='d-flex d-none d-md-block'>
-                                <ul className='navbar-nav me-auto'>
-                                    <li className='nav-item dropdown'>
-                                        <a className='nav-link' href='#' role='button' data-bs-toggle='dropdown'>
-                                            <i className='bi bi-person-circle'></i>
-                                            <i className='bi bi-caret-down'></i>
-                                            <i className='bi bi-caret-down-fill'></i>
-                                        </a>
-
-                                        <ul className='dropdown-menu dropdown-menu-end'>
-                                            <li><a className='dropdown-item' href='#'>Link</a></li>
-                                            <li><a className='dropdown-item' href='#'>Another link</a></li>
-                                            <li><a className='dropdown-item' href='#'>A third link</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                                <DropdownUser />
                             </div>
 
                         </div>

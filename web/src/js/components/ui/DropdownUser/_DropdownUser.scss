@@ -1,0 +1,38 @@
+.dropdown-user {
+
+    .dropdown-fuera-offcanvas {
+        position: absolute; // para que no el contenido del propdown no se quede dentro del navbar y pueda salir
+    }
+
+    .nav-link {
+
+        // icono de usuario
+        .bi-person-circle {
+            font-size: $size-user-icon-nav;
+            padding-right: 5px;
+        }
+
+        // iconos de flecha
+        .bi-caret-down, .bi-caret-down-fill {
+            font-size: $size-flecha-icon-nav;
+        }
+
+        // icono de pulsado desaparece por defecto
+        .bi-caret-down-fill {
+            display: none;
+        }
+
+        // cuando se pulsa, el icono normal desaparece, y aparece el de pulsado
+        &:focus, &:hover {
+
+            .bi-caret-down {
+                display: none;
+            }
+
+            .bi-caret-down-fill {
+                display: inline;
+            }
+        }
+    
+    }
+}

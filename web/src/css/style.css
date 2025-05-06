@@ -72,26 +72,24 @@
 .navbar .btn-close:focus, .navbar .navbar-toggler:focus {
   box-shadow: none;
 }
-.navbar .dropdown .dropdown-fuera-offcanvas {
+
+.dropdown-user .dropdown-fuera-offcanvas {
   position: absolute;
 }
-.navbar .dropdown .nav-link .bi-person-circle {
+.dropdown-user .nav-link .bi-person-circle {
   font-size: 30px;
   padding-right: 5px;
 }
-.navbar .dropdown .nav-link .bi-caret-down, .navbar .dropdown .nav-link .bi-caret-down-fill {
+.dropdown-user .nav-link .bi-caret-down, .dropdown-user .nav-link .bi-caret-down-fill {
   font-size: 20px;
 }
-.navbar .dropdown .nav-link .bi-caret-down {
-  display: inline;
-}
-.navbar .dropdown .nav-link .bi-caret-down-fill {
+.dropdown-user .nav-link .bi-caret-down-fill {
   display: none;
 }
-.navbar .dropdown .nav-link:focus .bi-caret-down {
+.dropdown-user .nav-link:focus .bi-caret-down, .dropdown-user .nav-link:hover .bi-caret-down {
   display: none;
 }
-.navbar .dropdown .nav-link:focus .bi-caret-down-fill {
+.dropdown-user .nav-link:focus .bi-caret-down-fill, .dropdown-user .nav-link:hover .bi-caret-down-fill {
   display: inline;
 }
 
@@ -140,7 +138,7 @@
     font-size: 20px;
   }
 }
-.input-error {
+.error-input {
   color: rgb(200, 0, 0);
   font-size: 15px;
   text-align: left;
@@ -152,12 +150,12 @@
 .eliminar-archivo button {
   margin-left: 10px;
   all: unset;
-  color: red;
+  color: rgb(255, 0, 0);
   font-size: 20px;
   padding-left: 7px;
 }
 
-.formsocio .campo {
+.form-crear-socio .campo {
   padding: 20px;
 }
 
@@ -165,8 +163,8 @@ body {
   height: 100vh;
 }
 body .campo input::-moz-placeholder {
-  color: rgb(199, 199, 199);
+  color: rgb(167, 167, 167);
 }
 body .campo input::placeholder {
-  color: rgb(199, 199, 199);
+  color: rgb(167, 167, 167);
 }/*# sourceMappingURL=style.css.map */

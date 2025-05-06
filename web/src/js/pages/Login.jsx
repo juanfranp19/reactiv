@@ -1,12 +1,10 @@
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import FormLogin from '@components/common/FormLogin/FormLogin';
 import TopBar from '@components/common/TopBar/TopBar';
 import { useLogin } from '@hooks/useAuth';
 import useToken from '@hooks/useToken';
 
 const Login = () => {
-
-    const navigateTo = useNavigate();
 
     const { getToken, cargando } = useLogin();
     const { token, setToken } = useToken();
@@ -27,10 +25,9 @@ const Login = () => {
             // guarda el token en el contexto
             setToken(token_fromFormLogin);
 
-            // redirije al inicio
-            navigateTo('/');
-
             console.log('login exitoso');
+
+            // al completar la solicitud, se renderiza de nuevo la página y redirige a donde apunta la condición de arriba
         }
     }
 

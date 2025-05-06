@@ -8,11 +8,13 @@
     .navbar-toggler {
         font-size: $size-boton-nav;
         
+        // icono de botón enú pulsado desaparece por defecto
         .bi-list-nested {
             color: $color-boton-hover-nav;
             display: none;
         }
 
+        // cuando está pulsado el desplegabla del navbar, desaparece el botón normal y aparece el de pulsado
         &:hover, &:focus {
 
             .bi-list {
@@ -24,54 +26,12 @@
         }
     }
 
+    // boton para cerrar desplegable del modo móvil
     .btn-close, .navbar-toggler {
         border: 0;
 
         &:focus {
             box-shadow: none;
         }
-    }
-
-    .dropdown {
-
-        .dropdown-fuera-offcanvas {
-            position: absolute; // para que no el contenido del propdown no se quede dentro del navbar y pueda salir
-        }
-
-        .nav-link {
-
-            // icono de usuario
-            .bi-person-circle {
-                font-size: $size-user-icon-nav;
-                padding-right: 5px;
-            }
-    
-            // iconos de flecha
-            .bi-caret-down, .bi-caret-down-fill {
-                font-size: $size-flecha-icon-nav;
-            }
-
-            .bi-caret-down {
-                display: inline;
-            }
-    
-            .bi-caret-down-fill {
-                display: none;
-            }
-    
-            &:focus {
-
-                .bi-caret-down {
-                    display: none;
-                }
-    
-                .bi-caret-down-fill {
-                    display: inline;
-                }
-            }
-        
-        }
-
-    }
-    
+    }    
 }
