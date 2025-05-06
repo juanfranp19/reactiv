@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { loginService } from '@services/authService';
+import { loginService, logoutService } from '@services/authService';
 
 export const useLogin = () => {
 
@@ -10,7 +10,7 @@ export const useLogin = () => {
         // está cargando
         setCargando(true);
 
-        // recoge los datos devueltor por el servicio de Login
+        // recoge los datos devueltos por el servicio de Login
         const dataService = await loginService(formData);
 
         // guarda el token en el almacenamiento local
@@ -24,4 +24,28 @@ export const useLogin = () => {
     }
 
     return ({ getToken, cargando });
+}
+
+export const useLogout = () => {
+
+    const [cargando, setCargando] = useState(false);
+
+    const logout = async () => {
+
+        // está cargando
+        setCargando(true);
+
+        // recoge los datos devueltos por el servicio de Logout
+        const dataService = await logoutService();
+
+        //elimina el token del almacenamiento local
+        localStorage.removeItem('token');
+
+        //termina de cargar
+        setCargando(false);
+
+        return dataService;
+    }
+
+    return ({ logout, cargando });
 }

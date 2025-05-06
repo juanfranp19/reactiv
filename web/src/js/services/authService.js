@@ -2,6 +2,7 @@ import { Notyf } from 'notyf';
 
 const API_URL = import.meta.env.VITE_API_URL;
 const API_URL_LOGIN = API_URL + '/api/login';
+const API_URL_LOGOUT = API_URL + '/api/logout';
 
 // se inicializa para que aparezcan los mensajes arriba en el centro de la pantalla
 const notyf = new Notyf({
@@ -41,7 +42,42 @@ export const loginService = async (formData) => {
 
     } catch (error) {
 
-        console.error('error en login:', error.message);
+        console.error('error en login: ', error.message);
+        throw error;
+    }
+}
+
+export const logoutService = async () => {
+
+    const token = localStorage.getItem('token');
+
+    try {
+
+        // envía la URL de logout
+        const response = await fetch(API_URL_LOGOUT, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        // respuesta de la API
+        const data = await response.json();
+
+        if (!response.ok) {
+
+            notyf.error('Error al cerrar sesión.');
+            console.error(data.message || 'error al cerrar sesión');
+            return 0;
+        }
+
+        notyf.success('Has cerrado sesión.');
+        console.log('sesión cerrada: ', data);
+        return data;
+
+    } catch (error) {
+
+        console.error('error en logout: ', error.message);
         throw error;
     }
 }

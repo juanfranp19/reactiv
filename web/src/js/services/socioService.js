@@ -31,7 +31,7 @@ export const postSocio = async (data) => {
             body: formData,
         });
 
-        // error que sale en pantalla si no se ha podido crear el usuario
+        // error que sale en pantalla si no se ha podido crear el socio
         if (!response.ok) {
 
             // mensaje de error del servidor
@@ -51,14 +51,14 @@ export const postSocio = async (data) => {
             //alert('Socio creado con éxito.');
             notyf.success('Socio creado con éxito.');
 
-            console.log('usuario creado: ', okData);
+            console.log('socio creado: ', okData);
             return okData;
         }
 
     } catch (error) {
 
-        notyf.error('Error al crear el usuario.');
-        console.error('error al crear usuario:', error.message);
+        notyf.error('Error al crear el socio.');
+        console.error('error al crear socio:', error.message);
         throw error;
     }
 }
