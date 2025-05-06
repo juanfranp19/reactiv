@@ -1,5 +1,15 @@
+import { Notyf } from 'notyf';
+
 const API_URL = import.meta.env.VITE_API_URL;
 const API_URL_LOGIN = API_URL + '/api/login';
+
+// se inicializa para que aparezcan los mensajes arriba en el centro de la pantalla
+const notyf = new Notyf({
+    position: {
+        x: 'center',
+        y: 'top'
+    }
+});
 
 export const loginService = async (formData) => {
 
@@ -19,9 +29,13 @@ export const loginService = async (formData) => {
 
         // error que sale en pantalla si no se ha podido iniciar sesión
         if (!response.ok) {
-            throw new Error(data.message || 'Error al iniciar sesión');
+
+            notyf.error('Acceso inválido.');
+            console.error(data.message || 'error al iniciar sesión');
+            return 0;
         }
 
+        notyf.success('Has iniciado sesión.');
         console.log('sesión iniciada: ', data);
         return data;
 

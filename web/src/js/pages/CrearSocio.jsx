@@ -4,7 +4,7 @@ import { useCrearSocio } from '@hooks/useSocio';
 
 const CrearSocio = () => {
 
-    const { crearSocio, cargando, error } = useCrearSocio();
+    const { crearSocio, cargando } = useCrearSocio();
 
     const manejarCrearSocio = async (dataFormSocio) => {
 
@@ -16,7 +16,7 @@ const CrearSocio = () => {
     }
 
     return (
-        <FormCrearSocio manejarCrearSocio={manejarCrearSocio} cargando={cargando} error={error} />
+        <FormCrearSocio manejarCrearSocio={manejarCrearSocio} cargando={cargando} />
     );
 }
 

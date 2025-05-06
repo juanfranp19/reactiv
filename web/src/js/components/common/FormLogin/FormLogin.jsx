@@ -21,8 +21,6 @@ const FormLogin = (props) => {
         formState: { errors },
     } = useForm({ defaultValues: LOGININICIAL });
 
-    console.log('error en FormLogin: '.errors);
-
     const manejarFormulario = handleSubmit((nuevoLogin) => {
 
         // devuelve la información que hay en los campos del Login, en JSON
@@ -83,14 +81,6 @@ const FormLogin = (props) => {
                                 </div>
 
                                 <span className='input-error'>{errors.password?.message}</span>
-                            </div>
-
-                            {/* error de inicio de sesión */}
-
-                            <div className='col-12 campo'>
-                                <span className='input-error'>
-                                    {props.error}
-                                </span>
                             </div>
 
                             {/* botón */}

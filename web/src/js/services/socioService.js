@@ -34,21 +34,25 @@ export const postSocio = async (data) => {
         // error que sale en pantalla si no se ha podido crear el usuario
         if (!response.ok) {
 
+            // mensaje de error del servidor
             const errorData = await response.json();
             console.error('Error del servidor:', errorData);
 
-            notyf.error(errorData.error); //mensajes del observer
+            // mensaje del observer
+            notyf.error(errorData.error); 
+
+            return 0;
 
         } else {
 
             // coge la respuesta de la API
-            const data = await response.json();
+            const okData = await response.json();
 
             //alert('Socio creado con éxito.');
             notyf.success('Socio creado con éxito.');
 
-            console.log('usuario creado: ', data);
-            return data;
+            console.log('usuario creado: ', okData);
+            return okData;
         }
 
     } catch (error) {

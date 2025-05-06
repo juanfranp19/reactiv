@@ -4,34 +4,24 @@ import { loginService } from '@services/authService';
 export const useLogin = () => {
 
     const [cargando, setCargando] = useState(false);
-    const [error, setError] = useState(null);
 
     const getToken = async (formData) => {
 
+        // está cargando
         setCargando(true);
-        setError(null);
 
-        try {
+        // recoge los datos devueltor por el servicio de Login
+        const dataService = await loginService(formData);
 
-            // recoge los datos devueltor por el servicio de Login
-            const dataService = await loginService(formData);
+        // guarda el token en el almacenamiento local
+        localStorage.setItem('token', dataService.token);
 
-            // guarda el token en el almacenamiento local
-            localStorage.setItem('token', dataService.token);
+        // termina de cargar
+        setCargando(false);
 
-            // devuelve el token
-            return dataService.token;
+        // devuelve el token
+        return dataService.token;
+    }
 
-        } catch (error) {
-
-            setError(error.message || 'Error al iniciar sesión');
-            return 0;
-
-        } finally {
-
-            setCargando(false);
-        }
-    };
-
-    return ({ getToken, cargando, error });
+    return ({ getToken, cargando });
 }

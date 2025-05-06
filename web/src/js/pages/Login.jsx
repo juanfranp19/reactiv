@@ -8,7 +8,7 @@ const Login = () => {
 
     const navigateTo = useNavigate();
 
-    const { getToken, cargando, error } = useLogin();
+    const { getToken, cargando } = useLogin();
     const { token, setToken } = useToken();
 
     // si ya hay un token registrado, redirije el inicio
@@ -38,7 +38,7 @@ const Login = () => {
         <>
             <TopBar />
 
-            <FormLogin manejarLogin={manejarLogin} cargando={cargando} error={error} />
+            <FormLogin manejarLogin={manejarLogin} cargando={cargando} />
         </>
     );
 }
