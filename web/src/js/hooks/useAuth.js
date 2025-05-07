@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { loginService, logoutService, checkAuth } from '@services/authService';
+import { loginService, logoutService, permissionService, checkAuth } from '@services/authService';
 
 export const useLogin = () => {
 
@@ -48,6 +48,28 @@ export const useLogout = () => {
     }
 
     return ({ logout, cargando });
+}
+
+export const usePermissions = () => {
+
+    //const [permissions, setPermissions] = useState({ isEntrenador: false });
+    const [cargando, setCargando] = useState(true);
+
+    const permissions = async () => {
+
+        // está cargando
+        setCargando(true);
+
+        // recoge los datos devueltos por el servicio de Logout
+        const dataService = await permissionService();
+
+        // deja de cargar
+        setCargando(true);
+
+        return dataService;
+    }
+
+    return ({ permissions, cargando });
 }
 
 export const useCheckAuth = () => {
