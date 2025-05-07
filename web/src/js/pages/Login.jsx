@@ -11,7 +11,7 @@ const Login = () => {
 
     // si ya hay un token registrado, redirije el inicio
     if (token) {
-        return (<Navigate to='/' />);
+        return (<Navigate to='/dashboard' />);
     }
 
     const manejarLogin = async (dataFormLogin) => {

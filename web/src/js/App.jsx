@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import CrearSocio from '@pages/CrearSocio';
+import Dashboard from '@pages/Dashboard';
 import Error from '@pages/Error';
 import Home from '@pages/Home';
 import Login from '@pages/Login';
@@ -25,6 +26,7 @@ const App = () => {
                     <Route element={<ProtectedRoutes />}>
 
                         <Route path='/error' element={<Error />} />
+                        <Route path='/dashboard' element={<Dashboard />} />
 
                         <Route element={<EntrenadorRoutes />}>
                             <Route path='/crear' element={<CrearSocio />} />
