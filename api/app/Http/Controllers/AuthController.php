@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -90,5 +91,12 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Has cerrado sesión',
         ], 200);
+    }
+
+    public function permissions()
+    {
+        return response()->json([
+            'isEntrenador' => Gate::allows('isEntrenador'),
+        ]);
     }
 }
