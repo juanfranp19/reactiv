@@ -51,7 +51,7 @@ const TokenProvider = ({ children }) => {
     }, [user]);
 
     return (
-        <TokenContext.Provider value={{ token, setToken, cargando }}>
+        <TokenContext.Provider value={{ token, setToken }}>
             {
                 cargando
                     ? <div>cargando</div>

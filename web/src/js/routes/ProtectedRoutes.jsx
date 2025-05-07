@@ -5,7 +5,7 @@ const ProtectedRoutes = () => {
 
     const { token } = useToken();
 
-    // si se encuentra un token en el contexto, va a la ruta indicada, si no, redirige a inicio
+    // si se encuentra un token en el contexto, va a la ruta indicada, si no, redirige a login
     if (token) {
         return (<Outlet />);
     } else {

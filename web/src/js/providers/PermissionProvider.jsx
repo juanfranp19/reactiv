@@ -6,7 +6,7 @@ import useToken from '@hooks/useToken';
 
 const PermissionProvider = ({ children }) => {
 
-    const [entrenador, setEntrenador] = useState(false);
+    const [isEntrenador, setEntrenador] = useState(false);
     const [cargando, setCargando] = useState(true);
 
     const { permissions } = usePermissions();
@@ -23,19 +23,17 @@ const PermissionProvider = ({ children }) => {
 
                     // llama al servicio para obtener los permisos
                     const getpermissions = await permissions();
-                    console.log('entrenador', getpermissions.isEntrenador);
+                    console.log('isEntrenador', getpermissions.isEntrenador);
                     // lo guarda en el contexto
                     setEntrenador(getpermissions.isEntrenador);
 
                 } catch (error) {
                     console.log(error);
-
-                } finally {
-
-                    // termina de cargar
-                    setCargando(false);
                 }
             }
+
+            // termina de cargar
+            setCargando(false);
         }
 
         obtenerPermisos();
@@ -43,7 +41,7 @@ const PermissionProvider = ({ children }) => {
     }, [token, permissions]);
 
     return (
-        <PermissionContext.Provider value={{ entrenador }}>
+        <PermissionContext.Provider value={{ isEntrenador }}>
             {
                 cargando
                     ? <div>cargando</div>

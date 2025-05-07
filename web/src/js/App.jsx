@@ -8,6 +8,7 @@ import Login from '@pages/Login';
 import PermissionProvider from '@providers/PermissionProvider';
 import TokenProvider from '@providers/TokenProvider';
 
+import EntrenadorRoutes from '@routes/EntrenadorRoutes';
 import ProtectedRoutes from '@routes/ProtectedRoutes';
 
 const App = () => {
@@ -17,15 +18,23 @@ const App = () => {
             <TokenProvider>
             <PermissionProvider>
                 <Routes>
+                    
                     <Route path='/' element={<Home />} />
                     <Route path='/login' element={<Login />} />
-                    <Route path='/crear' element={<CrearSocio />} />
                     
                     <Route element={<ProtectedRoutes />}>
+
                         <Route path='/error' element={<Error />} />
+
+                        <Route element={<EntrenadorRoutes />}>
+                            <Route path='/crear' element={<CrearSocio />} />
+                        </Route>
+
+
                     </Route>
+
                 </Routes>
-                </PermissionProvider>
+            </PermissionProvider>
             </TokenProvider>
         </div>
     );
