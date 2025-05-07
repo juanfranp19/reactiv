@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { loginService, logoutService } from '@services/authService';
+import { loginService, logoutService, checkAuth } from '@services/authService';
 
 export const useLogin = () => {
 
@@ -48,4 +48,17 @@ export const useLogout = () => {
     }
 
     return ({ logout, cargando });
+}
+
+export const useCheckAuth = () => {
+
+    const user = async () => {
+
+        // llama al aservicio y recoge los datos que recibe del servidor
+        const dataService = await checkAuth();
+
+        return dataService;
+    }
+
+    return ({ user });
 }

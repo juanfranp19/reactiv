@@ -3,6 +3,7 @@ import { Notyf } from 'notyf';
 const API_URL = import.meta.env.VITE_API_URL;
 const API_URL_LOGIN = API_URL + '/api/login';
 const API_URL_LOGOUT = API_URL + '/api/logout';
+const API_URL_USER = API_URL + '/api/user'
 
 // se inicializa para que aparezcan los mensajes arriba en el centro de la pantalla
 const notyf = new Notyf({
@@ -78,6 +79,38 @@ export const logoutService = async () => {
     } catch (error) {
 
         console.error('error en logout: ', error.message);
+        throw error;
+    }
+}
+
+export const checkAuth = async () => {
+
+    try {
+
+        const token = localStorage.getItem('token');
+
+        // envía la URL al servidor
+        const response = await fetch(API_URL_USER, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        // respuesta de la API
+        const data = await response.json();
+
+        if (!response.ok) {
+            console.error(data.message || 'token no válido');
+            return 0;
+        }
+
+        console.log('token válido', data);
+        return data;
+
+    } catch (error) {
+
+        console.error('error en userService: ', error.message);
         throw error;
     }
 }

@@ -1,24 +1,54 @@
 import { useEffect, useState } from 'react';
 import TokenContext from '@contexts/TokenContext';
+import { useCheckAuth } from '@hooks/useAuth';
 
 const TokenProvider = ({ children }) => {
 
     const [token, setToken] = useState(null);
     const [cargando, setCargando] = useState(true);
+    const { user } = useCheckAuth();
 
-    function tokenAlContexto() {
+    useEffect(() => {
 
-        // obtiene el token del almacenamiento local
-        const token = localStorage.getItem('token');
+        const verificarToken = async () => {
 
-        // guarda el token en el almacenamiento local
-        setToken(token);
+            const localToken = localStorage.getItem('token');
 
-        // ya no está cargando
-        setCargando(false);
-    }
+            if (!localToken) {
+                // termina de cargar
+                setCargando(false);
+                return 0;
+            }
 
-    useEffect(tokenAlContexto, []);
+            try {
+
+                // lama a la petición user de useCheckAuth la cual haŕa saber si el token es válido
+                const data = await user();
+
+                if (data) {
+                    // actualiza el contexto
+                    setToken(localToken);
+                } else {
+                    // elimina el token del almacenamiento local
+                    localStorage.removeItem('token');
+                    // elimina el token del contexto
+                    setToken(null);
+                }
+
+            } catch (error) {
+                localStorage.removeItem('token');
+                setToken(null);
+                console.log(error);
+
+            } finally {
+                // termina de cargar
+                setCargando(false);
+            }
+        };
+
+        verificarToken();
+        
+    }, [user]);
 
     return (
         <TokenContext.Provider value={{ token, setToken, cargando }}>
