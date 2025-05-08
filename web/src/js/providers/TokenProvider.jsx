@@ -4,8 +4,11 @@ import { useCheckAuth } from '@hooks/useAuth';
 
 const TokenProvider = ({ children }) => {
 
-    const [token, setToken] = useState(null);
+    const [token, setToken] = useState('');
+    const [username, setUsername] = useState('');
+    const [id, setId] = useState('');
     const [cargando, setCargando] = useState(true);
+
     const { user } = useCheckAuth();
 
     useEffect(() => {
@@ -28,6 +31,9 @@ const TokenProvider = ({ children }) => {
                 if (data) {
                     // actualiza el contexto
                     setToken(localToken);
+                    setUsername(data.name);
+                    setId(data.id);
+                    
                 } else {
                     // elimina el token del almacenamiento local
                     localStorage.removeItem('token');
@@ -51,7 +57,7 @@ const TokenProvider = ({ children }) => {
     }, [user]);
 
     return (
-        <TokenContext.Provider value={{ token, setToken }}>
+        <TokenContext.Provider value={{ token, setToken, username, id }}>
             {
                 cargando
                     ? <div>cargando</div>

@@ -1,3 +1,7 @@
+import DashboardEntrenador from '@components/common/DashboardEntrenador/DashboardEntrenador';
+import DashboardSocio from '@components/common/DashboardSocio/DashboardSocio';  
+import Navbar from '@components/common/Navbar/Navbar';
+
 import usePermission from '@hooks/usePermission';
 
 const Dashboard = () => {
@@ -6,11 +10,12 @@ const Dashboard = () => {
 
     return (
         <>
+            <Navbar />
             {
                 isEntrenador ? (
-                    'ENTRENADOR DASHBOARD'
+                    <DashboardEntrenador />
                 ) : (
-                    'SOCIO DASHBOARD'
+                    <DashboardSocio />
                 )
             }
         </>

@@ -9,4 +9,54 @@ body {
             color: $color-placeholder;
         }
     }
+
+    .dashboard-menu {
+        padding: 20px;
+
+        // para que estén ordenados en cuadrados
+        .datos, .item {
+            border: 1px solid black;
+            border-radius: 5px;
+
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .item {
+            text-align: center;
+
+            // estilos a partir de sm
+            @media screen and (min-width: 576px) {
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+        }
+
+        .p-left {
+            padding-left: 0px;
+
+            // estilos a partir de sm
+            @media screen and (min-width: 576px) {
+                padding-left: 10px;
+            }
+        }
+        
+        .p-right {
+            padding-right: 0px;
+
+            // estilos a partir de sm
+            @media screen and (min-width: 576px) {
+                padding-right: 10px;
+            }
+        }
+
+    }
+
+
+    
+    
+    
+    
 }

@@ -40,7 +40,7 @@ const DropdownUser = () => {
                 {/* menú desplegable */}
                 <ul className='dropdown-fuera-offcanvas dropdown-menu dropdown-menu-end'>
                     <li>
-                        <NavLink to='error' className='dropdown-item'>Mi Perfil</NavLink>
+                        <NavLink to='/dashboard' className='dropdown-item'>Dashboard</NavLink>
                     </li>
                     <li>
                         <a className='dropdown-item' href='#'>Another link</a>

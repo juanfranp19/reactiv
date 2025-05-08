@@ -167,4 +167,40 @@ body .campo input::-moz-placeholder {
 }
 body .campo input::placeholder {
   color: rgb(167, 167, 167);
+}
+body .dashboard-menu {
+  padding: 20px;
+}
+body .dashboard-menu .datos, body .dashboard-menu .item {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+body .dashboard-menu .item {
+  text-align: center;
+}
+@media screen and (min-width: 576px) {
+  body .dashboard-menu .item {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+body .dashboard-menu .p-left {
+  padding-left: 0px;
+}
+@media screen and (min-width: 576px) {
+  body .dashboard-menu .p-left {
+    padding-left: 10px;
+  }
+}
+body .dashboard-menu .p-right {
+  padding-right: 0px;
+}
+@media screen and (min-width: 576px) {
+  body .dashboard-menu .p-right {
+    padding-right: 10px;
+  }
 }/*# sourceMappingURL=style.css.map */
