@@ -1,93 +1,67 @@
+import DashboardBigCard from '@components/ui/DashboardBigCard/DashboardBigCard'; 
+import DashboardSmallCard from '@components/ui/DashboardSmallCard/DashboardSmallCard';
+
+import { useObtenerSocio } from '@hooks/useSocio';
 import useToken from '@hooks/useToken';
 
 const DashboardSocio = () => {
 
-    const { username } = useToken();
+    const { id } = useToken();
+    const { socioData } = useObtenerSocio(id);
 
     return (
         <div className='row'>
             
             <div className="col-12 col-lg-9">
+                {/* mensaje de bienvenida */}
                 <div className="row dashboard-menu">
                     <div className="col-12">
-                            Bienvenido, {username}
+                            Bienvenid@, {socioData.nombre}
                     </div>
                 </div>
             
+                {/* menú de cards del dashboard */}
                 <div className="row">
                     <div className="col-12">
                         <div className="row dashboard-menu">
 
-                            <div className="col-12 item">Rutinas</div>
-
-                            <div className="col-12 col-sm-6 ">
-                                <div className="row p-right">
-                                    <div className="col-12 item">Último acceso</div>
+                            <DashboardBigCard>
+                                <div className="col-12">
+                                    Tus Rutinas
                                 </div>
-                            </div>
+                            </DashboardBigCard>
 
-                            <div className="col-12 col-sm-6">
-                                <div className="row p-left">
-                                    <div className="col-12 item">Seguimientos</div>
-                                </div>
-                            </div>
+                            <DashboardSmallCard posicion='derecha'>Último acceso</DashboardSmallCard>
+                            <DashboardSmallCard posicion='izquierda'>Seguimientos</DashboardSmallCard>
 
-                            <div className="col-12">
-                                <div className="row">
-                                    <div className="col-12 item">
-                                        
-                                        <div className="row">
-                                            <div className="col-12">Tarifa actual: nombre_de_la_tarifa</div>
-                                            <div className="col-12">Termina en: 20 días</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <DashboardBigCard>
+                                <div className="col-6">Tarifa actual: nombre_de_la_tarifa</div>
+                                <div className="col-6">Termina en: 20 días</div>
+                            </DashboardBigCard>
 
-                            <div className="col-12 col-sm-6">
-                                <div className="row p-left">
-                                    <div className="col-12 item">Productos</div>
-                                </div>
-                            </div>
-
-                            <div className="col-12 col-sm-6">
-                                <div className="row p-left">
-                                    <div className="col-12 item">Taquilla</div>
-                                </div>
-                            </div>
+                            <DashboardSmallCard posicion='derecha'>Productos</DashboardSmallCard>
+                            <DashboardSmallCard posicion='izquierda'>Taquillas</DashboardSmallCard>
                             
                         </div>
                     </div>
                 </div>
             </div>
 
+            {/* card de los datos del usuario */}
             <div className="col-3 d-none d-lg-block">
                 <div className="row dashboard-menu">
                     <div className="col-12 datos">
                         <div className="row">
-                            <div className="col-12">DNI</div>
-                            <div className="col-12">Nombre</div>
-                            <div className="col-12">Apellidos</div>
-                            <div className="col-12">Fecha Nacimiento</div>
-                            <div className="col-12">Email</div>
-                            <div className="col-12">Direccón</div>
-                            <div className="col-12">Provincia</div>
-                            <div className="col-12">Ciudad</div>
+                            <div className="col-12">Tus datos</div>
+                            <div className="col-12">{socioData.dni}</div>
+                            <div className="col-12">{socioData.nombre} {socioData.apellidos}</div>
+                            <div className="col-12">{socioData.fecha_nac}</div>
+                            <div className="col-12">{socioData.email}</div>
+                            <div className="col-12">{socioData.direccion}, {socioData.ciudad}, {socioData.provincia}</div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            
-
-
-
-
-
-
-
-
-
 
         </div>
     );
