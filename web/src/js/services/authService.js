@@ -14,6 +14,7 @@ const notyf = new Notyf({
     }
 });
 
+// servicio para el login
 export const loginService = async (formData) => {
 
     try {
@@ -49,6 +50,7 @@ export const loginService = async (formData) => {
     }
 }
 
+// servicio para el logout
 export const logoutService = async () => {
 
     const token = localStorage.getItem('token');
@@ -84,6 +86,7 @@ export const logoutService = async () => {
     }
 }
 
+// servicio para obtener los permisos que tiene el usuario autenticado
 export const permissionService = async () => {
 
     try {
@@ -116,6 +119,7 @@ export const permissionService = async () => {
     }
 }
 
+// servicio para comprobar si el usuario sigue siendo válido
 export const checkAuth = async () => {
 
     try {

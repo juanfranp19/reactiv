@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { loginService, logoutService, permissionService, checkAuth } from '@services/authService';
 
+// hook para el login
 export const useLogin = () => {
 
     const [cargando, setCargando] = useState(false);
@@ -26,6 +27,7 @@ export const useLogin = () => {
     return ({ getToken, cargando });
 }
 
+// hook para el logout
 export const useLogout = () => {
 
     const [cargando, setCargando] = useState(false);
@@ -50,9 +52,9 @@ export const useLogout = () => {
     return ({ logout, cargando });
 }
 
+// hook para obtener los permisos que tiene el usuario autenticado
 export const usePermissions = () => {
 
-    //const [permissions, setPermissions] = useState({ isEntrenador: false });
     const [cargando, setCargando] = useState(true);
 
     const permissions = async () => {
@@ -60,7 +62,7 @@ export const usePermissions = () => {
         // está cargando
         setCargando(true);
 
-        // recoge los datos devueltos por el servicio de Logout
+        // recoge los datos devueltos por el servicio de permissions
         const dataService = await permissionService();
 
         // deja de cargar
@@ -72,11 +74,12 @@ export const usePermissions = () => {
     return ({ permissions, cargando });
 }
 
+// hook para comprobar si el usuario sigue siendo válido
 export const useCheckAuth = () => {
 
     const user = async () => {
 
-        // llama al aservicio y recoge los datos que recibe del servidor
+        // llama al servicio y recoge los datos que recibe del servidor
         const dataService = await checkAuth();
 
         return dataService;
