@@ -11,6 +11,7 @@ const notyf = new Notyf({
     }
 });
 
+// servicio para crear un socio
 export const postSocio = async (data) => {
 
     try {
@@ -59,6 +60,40 @@ export const postSocio = async (data) => {
 
         notyf.error('Error al crear el socio.');
         console.error('error al crear socio:', error.message);
+        throw error;
+    }
+}
+
+// servicio para obtener datos de un socio
+export const getSocio = async (id) => {
+
+    //const token = localStorage.getItem('token');
+
+    try {
+
+        // envía la URL para obtener un socio
+        const response = await fetch(`${API_URL_SOCIO}/${id}`, {
+            method: 'GET',
+            headers: {
+                //'Authorization': `Bearer ${token}`
+            }
+        });
+
+        // respuesta de la API
+        const data = await response.json();
+
+        if (!response.ok) {
+
+            console.error(data.message || 'error obtener los datos del socio');
+            return 0;
+        }
+
+        console.log(`datos del socio ${id}: `, data);
+        return data;
+
+    } catch (error) {
+
+        console.error('error en getSocio: ', error.message);
         throw error;
     }
 }
