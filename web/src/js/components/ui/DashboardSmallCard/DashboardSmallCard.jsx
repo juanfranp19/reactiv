@@ -1,33 +1,34 @@
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
-const DashboardSmallCard = (props) => {
+const DashboardSmallCard = ({ linkTo, posicion, children }) => {
 
-    const [posicion, setPosicion] = useState('');
+    const [posicionClass, setPosicionClass] = useState('');
 
     function asignarPosicion() {
 
-        // según las opciones el row tendrá una clase u otra
-        switch (props.posicion) {
+        // asigna la posiciónn que tendrá la card, derecha o izquierda
+        switch (posicion) {
             case 'derecha':
-                setPosicion('p-right');
+                setPosicionClass('p-right');
                 break;
             case 'izquierda':
-                setPosicion('p-left');
+                setPosicionClass('p-left');
                 break;
             default:
                 break;
         }
     }
     
-    useEffect(asignarPosicion, [props.posicion]);
+    useEffect(asignarPosicion, [posicion]);
 
     return (
         <div className='col-12 col-sm-6'>
-            <div className={`row ${posicion}`}>
-                <div className='col-12 item'>
+            <div className={`row ${posicionClass}`}>
+                <NavLink to={linkTo} className='col-12 item'>
                     {/* texto plano, nada de cols */}
-                    {props.children}
-                </div>
+                    {children}
+                </NavLink>
             </div>
         </div>
     );

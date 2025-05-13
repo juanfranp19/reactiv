@@ -16,7 +16,7 @@ const DashboardSocio = () => {
                 {/* mensaje de bienvenida */}
                 <div className="row dashboard-menu">
                     <div className="col-12">
-                            Bienvenid@, {socioData.nombre}
+                        Bienvenid@, {socioData.nombre}
                     </div>
                 </div>
             
@@ -25,22 +25,22 @@ const DashboardSocio = () => {
                     <div className="col-12">
                         <div className="row dashboard-menu">
 
-                            <DashboardBigCard>
+                            <DashboardBigCard linkTo='rutinas'>
                                 <div className="col-12">
                                     Tus Rutinas
                                 </div>
                             </DashboardBigCard>
+                            
+                            <DashboardSmallCard linkTo='accesos' posicion='derecha'>Último acceso</DashboardSmallCard>
+                            <DashboardSmallCard linkTo='seguimiento' posicion='izquierda'>Seguimientos</DashboardSmallCard>
 
-                            <DashboardSmallCard posicion='derecha'>Último acceso</DashboardSmallCard>
-                            <DashboardSmallCard posicion='izquierda'>Seguimientos</DashboardSmallCard>
-
-                            <DashboardBigCard>
+                            <DashboardBigCard linkTo='tarifas'>
                                 <div className="col-6">Tarifa actual: nombre_de_la_tarifa</div>
                                 <div className="col-6">Termina en: 20 días</div>
                             </DashboardBigCard>
 
-                            <DashboardSmallCard posicion='derecha'>Productos</DashboardSmallCard>
-                            <DashboardSmallCard posicion='izquierda'>Taquillas</DashboardSmallCard>
+                            <DashboardSmallCard linkTo='productos' posicion='derecha'>Productos</DashboardSmallCard>
+                            <DashboardSmallCard linkTo='taquilla' posicion='izquierda'>Taquillas</DashboardSmallCard>
                             
                         </div>
                     </div>
@@ -53,8 +53,8 @@ const DashboardSocio = () => {
                     <div className="col-12 datos">
                         <div className="row">
                             <div className="col-12">Tus datos</div>
-                            <div className="col-12">{socioData.dni}</div>
                             <div className="col-12">{socioData.nombre} {socioData.apellidos}</div>
+                            <div className="col-12">{socioData.dni}</div>
                             <div className="col-12">{socioData.fecha_nac}</div>
                             <div className="col-12">{socioData.email}</div>
                             <div className="col-12">{socioData.direccion}, {socioData.ciudad}, {socioData.provincia}</div>
