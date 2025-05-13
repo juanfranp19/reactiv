@@ -5,14 +5,14 @@ const EntrenadorRoutes = () => {
 
     const { isEntrenador, isSocio } = usePermission();
 
-    console.log(isEntrenador);
+    console.log(isSocio);
 
-    // si el usuario es entrenador, va a la ruta indicada
-    if (isEntrenador) {
+    // si el usuario es socio, va a la ruta indicada
+    if (isSocio) {
         return (<Outlet />);
         
-    } else if (isSocio) {
-        // si no, si es socio, redirige al dashboard
+    } else if (isEntrenador) {
+        // si no, si es entrenador, redirige al dashboard
         return (<Navigate to='/dashboard' />);
 
     } else {
