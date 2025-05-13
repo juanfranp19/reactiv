@@ -32,6 +32,12 @@ class AppServiceProvider extends ServiceProvider
             return Entrenador::where('user_id', $user->id)->exists();
         });
 
+        Gate::define('isSocio', function (User $user) {
+
+            // devuelve true si el id de $user se encuentra entre los user_id de socios
+            return Socio::where('user_id', $user->id)->exists();
+        });
+
         // observadores
 
         Socio::observe(SocioObserver::class);
