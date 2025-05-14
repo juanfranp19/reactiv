@@ -1,0 +1,73 @@
+.rutina-card {
+    padding-top: 10px;
+
+    // estilos a partir de sm
+    @media screen and (min-width: 576px) {
+        padding: 20px 50px;
+    }
+
+    .item {
+
+        .imagen {
+            height: 50px;
+        }
+
+        // color de fondo
+        .fondo {
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background: linear-gradient(135deg,
+                lighten(#acbb79, 10%), // claro
+                #acbb79, // base
+                darken(#acbb79, 10%) // oscuro 
+            );
+        }
+
+        // estilos a partir de sm
+        @media screen and (min-width: 576px) {
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 20px 20px;
+
+            .nombre {
+                font-size: 25px;
+                font-weight: bold;
+            }
+
+            .desc {
+                font-size: 17px;
+            }
+
+            &:hover {
+                background-color: #eaffa4;
+            }
+        }
+    }
+
+    .accordion-button {
+        background: linear-gradient(135deg,
+            lighten(#acbb79, 10%), // claro
+            #acbb79, // base
+            darken(#acbb79, 10%) // oscuro 
+        );
+    }
+
+    .btn-ver-rutina {
+        // para que ocupe todo el ancho del desplegable
+        width: 100%;
+
+        border-color: #acbb79;
+
+        // para que se separe de la descripción
+        margin-top: 30px;
+
+        &:hover {
+            color: white; // fondo de la pagina
+            border-color: white; //fondo de la pagina
+            background-color: #acbb79;
+        }
+    }
+}

@@ -54,9 +54,24 @@ body {
 
     }
 
+    // da estilo a los títulos de las páginas hijas de dashboard
+    .titulo-dashboard {
+        font-size: 25px;
+        text-align: center;
+        padding: 20px;
 
+        // estilos a partir de sm
+        @media screen and (min-width: 576px) {
+            font-size: 30px;
+            text-align: start;
+            padding: 30px 50px;
+        }
+
+    }
     
-    
-    
-    
+    // para quitar todos los estilo del NavLink
+    .navLink {
+        all: unset;
+        cursor: pointer;
+    }
 }
