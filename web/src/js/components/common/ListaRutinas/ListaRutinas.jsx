@@ -6,13 +6,13 @@ import useToken from '@hooks/useToken';
 const ListaRutinas = () => {
 
     const { id } = useToken();
-    const { socioData } = useObtenerSocio(id);
+    const { socioData, cargando } = useObtenerSocio(id);
 
     const obtenerListado = () => {
 
-        // si no hay rutinas, devuelve mensaje
-        if (!socioData?.rutinas?.length) return (
-            <div className="row">
+        // si no hay propiedad de rutinas en socioData, o no hay rutinas en el array, lo muestra
+        if (!socioData?.rutinas || socioData?.rutinas.length <= 0) return (
+            <div className='row'>
                 No hay rutinas
             </div>
         );
@@ -22,6 +22,8 @@ const ListaRutinas = () => {
             <RutinaCard key={rutina.id} id={rutina.id} nombre={rutina.nombre} descripcion={rutina.descripcion} />
         ));
     }
+
+    if (cargando) return <div className='row'>cargando</div>
 
     return (
         <div className='row'>
