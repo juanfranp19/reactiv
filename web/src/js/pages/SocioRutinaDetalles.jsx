@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+import ListaRutinaCalentamientos from '@components/common/ListaRutinaCalentamientos/ListaRutinaCalentamientos';
+import ListaRutinaEjercicios from '@components/common/ListaRutinaEjercicios/ListaRutinaEjercicios';
+
 import { useObtenerSocio } from '@hooks/useSocio';
 import useToken from '@hooks/useToken';
 
@@ -9,36 +12,53 @@ import slugify from '@utils/slugify';
 const SocioRutinaDetalles = () => {
 
     const navigateTo = useNavigate();
-    const { nombreRutina } = useParams();
+    const { nombreRuta } = useParams();
     const { id } = useToken();
     const { socioData, cargando } = useObtenerSocio(id);
+
     const [idRutina, setIdRutina] = useState('');
+    const [nombreRutina, setNombreRutina] = useState('');
 
     function obtenerRutinaId() {
-        
+
         if (Array.isArray(socioData?.rutinas)) {
 
             // encuentra la rutina por el nombre de la ruta
             const encontrarRutina = socioData.rutinas.find(
-                (rutina) => (slugify(rutina.nombre) === nombreRutina)
+                (rutina) => (slugify(rutina.nombre) === nombreRuta)
             );
 
             if (encontrarRutina) {
                 // añade al estado el id de la rutina encontrada
                 setIdRutina(encontrarRutina.id);
+                setNombreRutina(encontrarRutina.nombre);
             } else {
                 // si la rutina no la encuentra en el socio, redirije a la ruta anterior
                 navigateTo('/dashboard/rutinas');
             }
-        }     
+        }
     }
-    
-    useEffect(obtenerRutinaId, [nombreRutina, socioData, navigateTo]);
 
-    if (cargando) return (<div className='row'>cargando</div>);
+    useEffect(obtenerRutinaId, [nombreRuta, socioData, navigateTo]);
+
+    if (cargando) return (
+        <div className='row'>cargando</div>
+    );
 
     return (
-        <div className='row'>el id es: {idRutina}</div>
+        <>
+            <div className='row'>
+                <div className='col-12 titulo-dashboard'>
+                    Rutina
+                </div>
+                <div className='col-12 subtitulo-dashboard'>
+                    {nombreRutina}
+                </div>
+            </div>
+
+            <ListaRutinaCalentamientos rutina={idRutina} />
+            <ListaRutinaEjercicios rutina={idRutina} />
+        </>
     );
 }
 

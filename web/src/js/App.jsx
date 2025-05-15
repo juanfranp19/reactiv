@@ -54,8 +54,7 @@ const App = () => {
                         <Route element={<SocioRoutes />}>
                             {/* rutas que tienen acceso solo los socios */}
                             <Route path='/dashboard/rutinas' element={<SocioRutinas />} />
-                            <Route path='/dashboard/rutinas/:nombreRutina' element={<SocioRutinaDetalles />} />
-
+                            <Route path='/dashboard/rutinas/:nombreRuta' element={<SocioRutinaDetalles />} />
                         </Route>
                     </Route>
                 </Routes>
