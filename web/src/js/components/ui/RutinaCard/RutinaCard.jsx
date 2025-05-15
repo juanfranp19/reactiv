@@ -1,27 +1,15 @@
-import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import slugify from '@utils/slugify';
 
 const RutinaCard = ({ id, nombre, descripcion }) => {
-
-    const [rutaVerRutina, setRutaVerRutina] = useState('');
-
-    function formatearRuta() {
-        // coge el nombre de la rutina, pasa las mayúsculas a minúsculas y los espacios a guiones
-        const nombreFormateado = nombre.toLowerCase().replace(/\s+/g, '-');
-
-        // pasará al nombre de la ruta la cuál se mostrará información de esa rutina en específico
-        setRutaVerRutina(nombreFormateado);
-    }
-
-    useEffect(formatearRuta, [nombre]);
 
     return (
         <div className='col-12 col-md-6 col-xlg-4 rutina-card'>
 
             {/* aparece a partir de SM */}
             <div className='row d-none d-sm-block'>
-                {/* lleva a la ruta con el nombre de la rutina */}
-                <NavLink to={rutaVerRutina} className='navLink'>
+                {/* lleva a la ruta con el nombre de la rutina formateado para ser una ruta */}
+                <NavLink to={slugify(nombre)} className='navLink'>
                     <div className='col-12 item'>
                         <div className='row'>
 
@@ -63,7 +51,7 @@ const RutinaCard = ({ id, nombre, descripcion }) => {
                                         <div className='col-12'>
                                             <button type='button' className='btn btn-ver-rutina'>
                                                 {/* lleva a la ruta con el nombre de la rutina */}
-                                                <NavLink to={rutaVerRutina} className='navLink'>
+                                                <NavLink to={slugify(nombre)} className='navLink'>
                                                     Ver más
                                                 </NavLink>
                                             </button>
