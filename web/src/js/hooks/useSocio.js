@@ -55,7 +55,8 @@ export const useObtenerSocio = (id) => {
     }
 
     useEffect(() => {
-        obtenerSocio(id);
+        // evita que se ejecute antes de que cargue el id
+        if (id) obtenerSocio(id);
     }, [id]);
 
     return ({ socioData, cargando });
