@@ -7,7 +7,7 @@ const DropdownUser = () => {
     const navigateTo = useNavigate();
 
     const { logout, cargando } = useLogout();
-    const { setToken } = useToken();
+    const { setToken, setUsername, setId } = useToken();
 
     const manejarLogout = async () => {
 
@@ -16,8 +16,10 @@ const DropdownUser = () => {
 
         if (cierreSesion) {
 
-            // elimina el token del contexto
+            // elimina todos los datos del contexto del token que maneja datos delicados del usuario
             setToken(null);
+            setUsername(null);
+            setId(null);
 
             // redirige a la página de login
             navigateTo('/login');
