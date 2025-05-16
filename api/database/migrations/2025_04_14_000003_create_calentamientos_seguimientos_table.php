@@ -15,6 +15,8 @@ return new class extends Migration
             $table->unsignedBigInteger('seguimiento_id');
             $table->unsignedBigInteger('calentamiento_id');
 
+            $table->unique(['seguimiento_id', 'calentamiento_id'], 'UNQ_seguimientoId_calentamientoId');
+
             $table->foreign('seguimiento_id')->references('id')->on('seguimientos')->onDelete('cascade');
             $table->foreign('calentamiento_id')->references('id')->on('calentamientos')->onDelete('cascade');
         });

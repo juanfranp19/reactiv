@@ -133,15 +133,19 @@ Table ejercicios_rutinas {
   ejercicio_id int [ref:> ejercicios.id]
   num_series int
   num_repeticiones int
+
+  indexes {
+    (rutina_id, ejercicio_id) [unique, name: "UNQ_rutiaId_ejercicioId"]
+  }
 }
 
 Table ejercicios_seguimientos {
   seguimiento_id int [ref:> seguimientos.id]
   ejercicio_id int [ref:> ejercicios.id]
 
-  //indexes {
-    //(seguimiento_id, ejercicio_id) [unique, name: "UNQ_seguimientoId_ejercicioId"]
-  //}
+  indexes {
+    (seguimiento_id, ejercicio_id) [unique, name: "UNQ_seguimientoId_ejercicioId"]
+  }
 }
 
 Table calentamientos {
@@ -159,11 +163,15 @@ Table calentamientos_rutinas {
   tiempo int
 
   indexes {
-    (nombre, grupo_id) [unique, name: "UNQ_rutinaId_calentamientoId"]
+    (rutina_id, calentamineto_id) [unique, name: "UNQ_rutinaId_calentamientoId"]
   }
 }
 
 Table calentamientos_seguimientos {
   seguimiento_id int [ref:> seguimientos.id]
   calentamineto_id int [ref:> calentamientos.id]
+
+  indexes {
+    (seguimiento_id, calentamineto_id) [unique, name: "UNQ_seguimientoId_calentamientoId"]
+  }
 }

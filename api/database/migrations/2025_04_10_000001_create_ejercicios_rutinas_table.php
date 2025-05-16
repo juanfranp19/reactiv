@@ -17,6 +17,8 @@ return new class extends Migration
             $table->integer('num_series');
             $table->integer('num_repeticiones');
 
+            $table->unique(['rutina_id', 'ejercicio_id'], 'UNQ_rutiaId_ejercicioId');
+
             $table->foreign('rutina_id')->references('id')->on('rutinas')->onDelete('cascade');
             $table->foreign('ejercicio_id')->references('id')->on('ejercicios')->onDelete('cascade');
         });

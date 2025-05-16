@@ -30,8 +30,16 @@ class EjercicioRutinaSeeder extends Seeder
                 $ej_rut->ejercicio_id = $ejercicios->random()->id;
                 $ej_rut->num_series = rand(1, 6);
                 $ej_rut->num_repeticiones = rand(9, 15);
-                $ej_rut->save();
 
+                // compeuba si ya existe el ejercicio en la rutina
+                $existeEjercicioEnRutina = (
+                    EjercicioRutina::where('rutina_id', $ej_rut->rutina_id)
+                        ->where('ejercicio_id', $ej_rut->ejercicio_id)
+                        ->exists()
+                );
+
+                // si no existe, se le añade
+                if (!$existeEjercicioEnRutina) $ej_rut->save();
             }
 
         }
