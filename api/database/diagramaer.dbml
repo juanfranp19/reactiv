@@ -157,6 +157,10 @@ Table calentamientos_rutinas {
   rutina_id int [ref:> rutinas.id]
   calentamineto_id int [ref:> calentamientos.id]
   tiempo int
+
+  indexes {
+    (nombre, grupo_id) [unique, name: "UNQ_rutinaId_calentamientoId"]
+  }
 }
 
 Table calentamientos_seguimientos {

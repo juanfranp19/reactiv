@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('calentamiento_id');
             $table->integer('tiempo'); // minutos
 
+            $table->unique(['rutina_id', 'calentamiento_id'], 'UNQ_rutinaId_calentamientoId');
+
             $table->foreign('rutina_id')->references('id')->on('rutinas')->onDelete('cascade');
             $table->foreign('calentamiento_id')->references('id')->on('calentamientos')->onDelete('cascade');
         });
