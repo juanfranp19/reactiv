@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import ListaRutinaCalentamientos from '@components/common/ListaRutinaCalentamientos/ListaRutinaCalentamientos';
@@ -19,7 +19,8 @@ const SocioRutinaDetalles = () => {
     const [idRutina, setIdRutina] = useState('');
     const [nombreRutina, setNombreRutina] = useState('');
 
-    function obtenerRutinaId() {
+    // useCallback para funciones que luego se pasan a componentes hijos que memorizan datos
+    const obtenerRutinaId = useCallback(() => {
 
         if (Array.isArray(socioData?.rutinas)) {
 
@@ -37,9 +38,9 @@ const SocioRutinaDetalles = () => {
                 navigateTo('/dashboard/rutinas');
             }
         }
-    }
+    }, [socioData, nombreRuta, navigateTo]);
 
-    useEffect(obtenerRutinaId, [nombreRuta, socioData, navigateTo]);
+    useEffect(obtenerRutinaId, [obtenerRutinaId]);
 
     if (cargando) return (
         <div className='row'>cargando</div>

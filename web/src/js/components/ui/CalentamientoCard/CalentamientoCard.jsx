@@ -1,15 +1,20 @@
 import noImg from '@assets/no-img.svg';
 
+import ButtonEdit from '@components/ui/ButtonEdit/ButtonEdit';
+import ButtonDelete from '@components/ui/ButtonDelete/ButtonDelete';
+
 const CalentamientoCard = ({ nombre, tiempo }) => {
 
     return (
-        <div class='card' style={{width: 150}}>
-            <img src={noImg} class='' style={{ height: 200}} alt='...' />
-            <div class='card-body'>
-                <h5 class='card-title'>{nombre}</h5>
-                <p class='card-text'>{tiempo} minutos</p>
-                <a href='#' class='btn btn-primary'>Go</a>
-                <a href='#' class='btn btn-primary'>Go</a>
+        <div className='col-4 card calentamiento-card'>
+            <img src={noImg} className='imagen' alt='calentamiento' />
+            <div className='card-body'>
+                <h5 className='card-title'>{nombre}</h5>
+                <p className='card-text'>{tiempo} minutos</p>
+                <div className='botones'>
+                    <ButtonEdit />
+                    <ButtonDelete />
+                </div>
             </div>
         </div>
     );
