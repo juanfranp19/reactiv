@@ -214,22 +214,6 @@
   justify-content: center;
 }
 
-.calentamiento-card {
-  width: 180px;
-  margin: 10px;
-}
-.calentamiento-card img {
-  height: 150px;
-  margin-top: 22px;
-}
-.calentamiento-card .botones {
-  text-align: center;
-}
-.calentamiento-card .botones button {
-  width: 40px;
-  margin: 2px 10px;
-}
-
 body {
   height: 100vh;
 }
@@ -290,4 +274,38 @@ body .titulo-dashboard {
 body .navLink {
   all: unset;
   cursor: pointer;
+}
+
+.card {
+  width: 250px;
+  margin: 10px;
+}
+.card img {
+  height: 150px;
+  margin-top: 22px;
+}
+.card .card-subtitle {
+  font-weight: normal;
+  text-transform: uppercase;
+  padding: 10px 0;
+}
+.card p.card-text {
+  padding: 5px 0;
+}
+.card .card-info {
+  padding: 7px 0px 10px 15px;
+}
+.card .card-info li.card-text {
+  text-align: start;
+  list-style: none;
+}
+.card .card-info li.card-text span {
+  font-weight: bold;
+}
+.card .botones {
+  text-align: center;
+}
+.card .botones button {
+  width: 40px;
+  margin: 2px 10px;
 }/*# sourceMappingURL=style.css.map */

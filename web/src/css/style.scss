@@ -75,3 +75,54 @@ body {
         cursor: pointer;
     }
 }
+
+// estilos para los componentes cards
+
+.card {
+    width: 250px;
+    margin: 10px;
+
+    // imagen
+    img {
+        height: 150px;
+        margin-top: 22px;
+    }
+
+    // subtitulo
+    .card-subtitle {
+        font-weight: normal;
+        text-transform: uppercase;
+        padding: 10px 0;
+    }
+
+    // solo para etiquetas <p>
+    p.card-text {
+        padding: 5px 0;
+    }
+
+    // lista de la info, etiqueta <ul>
+    .card-info {
+
+        padding: 7px 0px 10px 15px;
+
+        // solo para etiquetas <li>
+        li.card-text {
+            text-align: start;
+            list-style: none;
+
+            span {
+                font-weight: bold;
+            }
+        }
+    }
+
+    // grupo de botones
+    .botones {
+        text-align: center;
+
+        button {
+            width: 40px;
+            margin: 2px 10px;
+        }
+    }
+}
