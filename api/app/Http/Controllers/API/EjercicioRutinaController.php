@@ -20,7 +20,8 @@ class EjercicioRutinaController extends Controller
             if (EjercicioRutina::where('rutina_id', $rutina_id)->exists()) {
 
                 // llama a la rutina con los ejercicios asociados
-                $rutina = Rutina::with('ejercicios')->findOrFail($rutina_id);
+                //también para que aparezca el nombre del grupo musculara, además de grupo_id
+                $rutina = Rutina::with('ejercicios.grupoMuscular')->findOrFail($rutina_id);
 
                 return response()->json([
                     'data' => $rutina,
