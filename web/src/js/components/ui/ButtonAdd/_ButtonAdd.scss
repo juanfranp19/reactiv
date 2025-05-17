@@ -1,0 +1,24 @@
+.btn-add {
+    width: 100%;
+    height: 50px;
+    
+    display: flex;
+    // para que el icono se vaya al centro horizontalmente
+    justify-content: center;
+    // para que el icono se vaya al centro verticalmente
+    align-items: center;
+    
+    // estilos a partir de sm
+    @media screen and (min-width: 576px) {
+        height: 100px;
+    }
+
+    i {
+        font-size: 25px;
+        
+        // estilos a partir de sm
+        @media screen and (min-width: 576px) {
+            font-size: 40px;
+        }
+    }
+}

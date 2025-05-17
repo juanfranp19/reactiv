@@ -1,3 +1,4 @@
+import CrearRutina from '@components/common/CrearRutina/CrearRutina';
 import ListaRutinas from '@components/common/ListaRutinas/ListaRutinas';
 
 const SocioRutinas = () => {
@@ -9,6 +10,8 @@ const SocioRutinas = () => {
                     Tus rutinas
                 </div>
             </div>
+
+            <CrearRutina />
 
             <ListaRutinas />
         </>

@@ -7,6 +7,7 @@ import Dashboard from '@pages/Dashboard';
 import Error from '@pages/Error';
 import Home from '@pages/Home';
 import Login from '@pages/Login';
+import SocioRutinaCrear from '@pages/SocioRutinaCrear';
 import SocioRutinaDetalles from '@pages/SocioRutinaDetalles';
 import SocioRutinas from '@pages/SocioRutinas';
 
@@ -54,6 +55,7 @@ const App = () => {
                         <Route element={<SocioRoutes />}>
                             {/* rutas que tienen acceso solo los socios */}
                             <Route path='/dashboard/rutinas' element={<SocioRutinas />} />
+                            <Route path='/dashboard/rutinas/crear' element={<SocioRutinaCrear />} />
                             <Route path='/dashboard/rutinas/:nombreRuta' element={<SocioRutinaDetalles />} />
                         </Route>
                     </Route>
