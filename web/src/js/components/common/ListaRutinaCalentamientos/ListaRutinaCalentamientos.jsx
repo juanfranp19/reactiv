@@ -14,7 +14,12 @@ const ListaRutinaCalentamientos = ({ rutina }) => {
 
         return calentamientosRutinaData.calentamientos
             .map((calentamiento) => (
-                <CalentamientoCard key={calentamiento.id} nombre={calentamiento.nombre} tiempo={calentamiento.pivot.tiempo} />
+                <CalentamientoCard
+                    key={calentamiento.id}
+                    nombre={calentamiento.nombre}
+                    imagen={calentamiento.imagen}
+                    tiempo={calentamiento.pivot.tiempo}
+                />
             ));
     }
 
