@@ -30,8 +30,19 @@ class Triggers extends Command
         /**
          * trigger para asignar fecha_fin dependiendo de cuánto dure la tarifa del socio
          */
-        // coge el archivo
-        $asignar_fecha_fin_tarifa = database_path('triggers/asignar_fecha_fin_tarifa.sql');
+        // coge el archivo dependiendo de si la conexión es en mysql (mariadb) o postgresql
+        switch (env('DB_CONNECTION')) {
+            case 'mysql':
+            case 'mariadb':
+                $asignar_fecha_fin_tarifa = database_path('triggers/mysql/asignar_fecha_fin_tarifa.sql');
+                break;
+            case 'pgsql':
+                $asignar_fecha_fin_tarifa = database_path('triggers/postgresql/asignar_fecha_fin_tarifa.sql');
+                break;
+            default:
+                $this->error('hay problemas con los triggers');
+                break;
+        }
 
         // verifica si existe
         if (!File::exists($asignar_fecha_fin_tarifa)) {
