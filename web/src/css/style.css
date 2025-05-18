@@ -1,12 +1,27 @@
-.top-bar {
-  text-align: center;
-  height: 100px;
-}
-.top-bar .logo-reactiv {
-  width: 100px;
-  padding: 10px;
-}
-
+/**
+ *
+ * Forms
+ */
+/**
+ *
+ * Login
+ */
+/**
+ *
+ * Dashboard
+ */
+/**
+ *
+ * Card
+ */
+/**
+ *
+ * Componentes comunes
+ */
+/**
+ *
+ * Componenes UI
+ */
 .carousel {
   height: calc(100vh - 100px - 100px);
   padding: 0;
@@ -20,7 +35,8 @@
 .bajar-carousel {
   text-align: center;
   height: 100px;
-  padding: 20px 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .bajar-carousel button {
   background: none;
@@ -49,6 +65,66 @@
     transform: translateY(0);
   }
 }
+.crear-rutina {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+@media screen and (min-width: 576px) {
+  .crear-rutina {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+.formlogin-ext {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 90px;
+}
+
+.formlogin {
+  max-width: 400px;
+}
+@media screen and (min-width: 576px) {
+  .formlogin {
+    background-color: rgb(255, 190, 190);
+    border-radius: 5px;
+  }
+}
+.formlogin .campo {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.formlogin .campo i {
+  font-size: 20px;
+}
+.formlogin .campo:first-child {
+  padding-top: 40px;
+}
+.formlogin .campo .input-group, .formlogin .campo:last-child {
+  text-align: center;
+}
+.formlogin .campo button {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  width: 170px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.lista-rutina-detalles {
+  text-align: center;
+  justify-content: center;
+}
+
+.lista-rutina-detalles {
+  text-align: center;
+  justify-content: center;
+}
+
 .navbar .logo-reactiv {
   width: 45px;
   padding: 0 5px;
@@ -73,6 +149,56 @@
   box-shadow: none;
 }
 
+.top-bar {
+  text-align: center;
+  height: 100px;
+}
+.top-bar .logo-reactiv {
+  width: 100px;
+  padding: 10px;
+}
+
+.btn-add {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (min-width: 576px) {
+  .btn-add {
+    height: 100px;
+  }
+}
+.btn-add i {
+  font-size: 25px;
+}
+@media screen and (min-width: 576px) {
+  .btn-add i {
+    font-size: 40px;
+  }
+}
+
+.button-crear {
+  width: 140px;
+  height: 50px;
+  font-size: 20px;
+}
+
+.button-delete-archivo {
+  all: unset;
+  color: #ff0000;
+  font-size: 20px;
+  margin-left: 10px;
+  padding-left: 7px;
+}
+
+.button-reset {
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+}
+
 .dropdown-user .dropdown-fuera-offcanvas {
   position: absolute;
 }
@@ -93,70 +219,10 @@
   display: inline;
 }
 
-.formlogin-ext {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.formlogin {
-  max-width: 400px;
-}
-.formlogin .campo {
-  padding: 10px 40px;
-}
-.formlogin .campo .bi {
-  font-size: 20px;
-}
-.formlogin .campo:first-child {
-  padding-top: 40px;
-}
-.formlogin .campo .input-group, .formlogin .campo:last-child {
-  text-align: center;
-}
-.formlogin .campo button {
-  margin: 25px 0;
-  width: 120px;
-  height: 50px;
-  font-size: 15px;
-}
-
-@media screen and (min-width: 576px) {
-  .formlogin-ext {
-    padding: 90px;
-  }
-  .formlogin {
-    background-color: aliceblue;
-    border-radius: 5px;
-  }
-  .formlogin .campo {
-    padding: 10px 40px;
-  }
-  .formlogin .campo button {
-    width: 170px;
-    font-size: 20px;
-  }
-}
 .error-input {
-  color: rgb(200, 0, 0);
+  color: #c80000;
   font-size: 15px;
   text-align: left;
-}
-
-.eliminar-archivo {
-  margin-top: 10px;
-}
-.eliminar-archivo button {
-  margin-left: 10px;
-  all: unset;
-  color: rgb(255, 0, 0);
-  font-size: 20px;
-  padding-left: 7px;
-}
-
-.form-crear-socio .campo {
-  padding: 20px;
 }
 
 .rutina-card {
@@ -204,54 +270,45 @@
   margin-top: 30px;
 }
 .rutina-card .btn-ver-rutina:hover {
-  color: white;
-  border-color: white;
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
   background-color: #acbb79;
 }
 
-.lista-calentamientos {
-  text-align: center;
-  justify-content: center;
-}
-
-.btn-add {
-  width: 100%;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-@media screen and (min-width: 576px) {
-  .btn-add {
-    height: 100px;
-  }
-}
-.btn-add i {
-  font-size: 25px;
-}
-@media screen and (min-width: 576px) {
-  .btn-add i {
-    font-size: 40px;
-  }
-}
-
-.crear-rutina {
-  padding: 0 15px;
-}
-@media screen and (min-width: 576px) {
-  .crear-rutina {
-    padding: 0 40px;
-  }
-}
-
 body {
+  background-color: rgb(255, 255, 255);
   height: 100vh;
+}
+body .campo {
+  padding: 20px;
+}
+body .campo label {
+  color: green;
+  font-weight: bold;
 }
 body .campo input::-moz-placeholder {
   color: rgb(167, 167, 167);
 }
 body .campo input::placeholder {
   color: rgb(167, 167, 167);
+}
+body .campo input:focus {
+  border-color: #ff6600;
+  box-shadow: 0 0 0 0.2rem rgba(255, 102, 0, 0.2509803922);
+}
+body .botones {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+@media screen and (min-width: 576px) {
+  body .botones {
+    text-align: start;
+  }
+}
+body .botones button {
+  margin-right: 40px;
+  margin-left: 40px;
 }
 body .dashboard-menu {
   padding: 20px;
@@ -323,7 +380,7 @@ body .navLink {
   padding: 5px 0;
 }
 .card .card-info {
-  padding: 7px 0px 10px 15px;
+  padding: 7px 0 10px 15px;
 }
 .card .card-info li.card-text {
   text-align: start;

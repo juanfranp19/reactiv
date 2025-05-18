@@ -3,22 +3,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding-top: $formlogin-padding-top;
 }
 
 .formlogin {
-    max-width: 400px;
+    max-width: $formlogin-max-width;
+
+    // estilos a partir de sm
+    @media screen and (min-width: $sm) {
+
+        background-color: $formlogin-fondo-color;
+        border-radius: $formlogin-radio-borde;
+    }
 
     .campo {
-        padding: 10px 40px;
+        // paddings
+        padding-top: $formlogin-campo-padding-top;
+        padding-bottom: $formlogin-campo-padding-bottom;
+        padding-right: $formlogin-campo-padding-right;
+        padding-left: $formlogin-campo-padding-left;
 
-        .bi {
-            font-size: 20px;
+        // iconos
+        i {
+            font-size: $formlogin-icon-size;
         }
 
         // primera clase campo
         &:first-child {
-            padding-top: 40px;
+            padding-top: $formlogin-1campo-padding-top;
         }
 
         // para que el input y el boton se vayan al centro
@@ -27,30 +39,12 @@
         }
 
         button {
-            margin: 25px 0;
-            width: 120px;
-            height: 50px;
-            font-size: 15px;
-        }
-    }
-}
+            margin-top: $formlogin-button-margin-top;
+            margin-bottom: $formlogin-button-margin-bottom;
 
-@media screen and (min-width: 576px) {
-    .formlogin-ext {
-        padding: 90px;
-    }
-
-    .formlogin {
-        background-color: aliceblue; // color de prueba, HAY QUE CAMBIARLO
-        border-radius: 5px;
-    
-        .campo {
-            padding: 10px 40px;
-
-            button {
-                width: 170px;
-                font-size: 20px;
-            }
+            width: $formlogin-button-width;
+            height: $form-button-height;
+            font-size: $form-button-font-size;
         }
     }
 }

@@ -1,5 +1,4 @@
-import FormCrearSocio from '@components/common/FormCrearSocio/FormCrearSocio';
-
+import FormCrearSocio from '@components/ui/FormCrearSocio/FormCrearSocio';
 import { useCrearSocio } from '@hooks/useSocio';
 
 const CrearSocio = () => {
@@ -16,7 +15,11 @@ const CrearSocio = () => {
     }
 
     return (
-        <FormCrearSocio manejarCrearSocio={manejarCrearSocio} cargando={cargando} />
+        <main>
+            <div className='row'>
+                <FormCrearSocio manejarCrearSocio={manejarCrearSocio} cargando={cargando} />
+            </div>
+        </main>
     );
 }
 

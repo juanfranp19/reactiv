@@ -1,73 +1,73 @@
 .rutina-card {
-    padding-top: 10px;
+    padding-top: $rutina-card-padding-top;
 
     // estilos a partir de sm
-    @media screen and (min-width: 576px) {
-        padding: 20px 50px;
+    @media screen and (min-width: $sm) {
+        padding: $rutina-card-padding-sm;
     }
 
     .item {
 
         .imagen {
-            height: 50px;
+            height: $rutina-card-item-imagen-height;
         }
 
         // color de fondo
         .fondo {
             background-size: cover;
             background-position: center;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
+            width: $rutina-card-item-fondo-width;
+            height: $rutina-card-item-fondo-height;
+            border-radius: $rutina-card-item-fondo-border;
             background: linear-gradient(135deg,
-                lighten(#acbb79, 10%), // claro
-                #acbb79, // base
-                darken(#acbb79, 10%) // oscuro 
+                lighten($rutina-card-item-fondo-color, 10%), // claro
+                $rutina-card-item-fondo-color, // base
+                darken($rutina-card-item-fondo-color, 10%) // oscuro 
             );
         }
 
         // estilos a partir de sm
-        @media screen and (min-width: 576px) {
-            border: 1px solid black;
-            border-radius: 5px;
-            padding: 20px 20px;
+        @media screen and (min-width: $sm) {
+            border: $rutina-card-item-border-sm;
+            border-radius: $rutina-card-item-border-radius-sm;
+            padding: $rutina-card-item-padding-sm;
 
             .nombre {
-                font-size: 25px;
-                font-weight: bold;
+                font-size: $rutina-card-item-nombre-font-size-sm;
+                font-weight: $rutina-card-item-nombre-font-weight-sm;
             }
 
             .desc {
-                font-size: 17px;
+                font-size: $rutina-card-item-desc-font-size-sm;
             }
 
             &:hover {
-                background-color: #eaffa4;
+                background-color: $rutina-card-item-hover-bg-color-sm;
             }
         }
     }
 
     .accordion-button {
         background: linear-gradient(135deg,
-            lighten(#acbb79, 10%), // claro
-            #acbb79, // base
-            darken(#acbb79, 10%) // oscuro 
+            lighten($rutina-card-item-fondo-color, 10%), // claro
+            $rutina-card-item-fondo-color, // base
+            darken($rutina-card-item-fondo-color, 10%) // oscuro 
         );
     }
 
     .btn-ver-rutina {
         // para que ocupe todo el ancho del desplegable
-        width: 100%;
+        width: $rutina-card-btn-ver-rutina-width;
 
-        border-color: #acbb79;
+        border-color: $rutina-card-item-fondo-color;
 
         // para que se separe de la descripción
-        margin-top: 30px;
+        margin-top: $rutina-card-btn-ver-rutina-margin-top;
 
         &:hover {
-            color: white; // fondo de la pagina
-            border-color: white; //fondo de la pagina
-            background-color: #acbb79;
+            color: $body-bg-color; // fondo de la pagina
+            border-color: $body-bg-color; //fondo de la pagina
+            background-color: $rutina-card-item-fondo-color;
         }
     }
 }

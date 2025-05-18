@@ -28,7 +28,7 @@ const ListaRutinaCalentamientos = ({ rutina }) => {
     return (
         <div className='row'>
             <div className='col-12'>
-                <div className='row lista-calentamientos'>
+                <div className='row lista-rutina-detalles'>
                     {obtenerEjercicioCards()}
                 </div>
             </div>

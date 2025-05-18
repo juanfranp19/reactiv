@@ -47,7 +47,7 @@ const SocioRutinaDetalles = () => {
     );
 
     return (
-        <>
+        <main>
             <div className='row'>
                 <div className='col-12 titulo-dashboard'>
                     Rutina
@@ -59,7 +59,7 @@ const SocioRutinaDetalles = () => {
 
             <ListaRutinaCalentamientos rutina={idRutina} />
             <ListaRutinaEjercicios rutina={idRutina} />
-        </>
+        </main>
     );
 }
 

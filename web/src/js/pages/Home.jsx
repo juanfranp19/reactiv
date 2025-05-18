@@ -12,7 +12,7 @@ const Home = () => {
 
             <Navbar></Navbar>
 
-            <div className='row'>
+            <main className='row'>
                 <p>texto de prueba</p>
                 <p>texto de prueba</p>
                 <p>texto de prueba</p>
@@ -55,7 +55,7 @@ const Home = () => {
                 <p>texto de prueba</p>
                 <p>texto de prueba</p>
                 <p>texto de prueba</p>
-            </div>
+            </main>
         </>
     );
 }

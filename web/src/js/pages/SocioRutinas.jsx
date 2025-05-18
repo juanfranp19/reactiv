@@ -4,7 +4,7 @@ import ListaRutinas from '@components/common/ListaRutinas/ListaRutinas';
 const SocioRutinas = () => {
 
     return (
-        <>
+        <main>
             <div className='row'>
                 <div className='col-12 titulo-dashboard'>
                     Tus rutinas
@@ -14,7 +14,7 @@ const SocioRutinas = () => {
             <CrearRutina />
 
             <ListaRutinas />
-        </>
+        </main>
     );
 }
 

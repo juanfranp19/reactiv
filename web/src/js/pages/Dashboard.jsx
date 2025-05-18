@@ -1,6 +1,5 @@
 import DashboardEntrenador from '@components/common/DashboardEntrenador/DashboardEntrenador';
 import DashboardSocio from '@components/common/DashboardSocio/DashboardSocio';
-
 import usePermission from '@hooks/usePermission';
 
 const Dashboard = () => {
@@ -8,7 +7,7 @@ const Dashboard = () => {
     const { isEntrenador } = usePermission();
 
     return (
-        <>
+        <main>
             {
                 isEntrenador ? (
                     <DashboardEntrenador />
@@ -16,7 +15,7 @@ const Dashboard = () => {
                     <DashboardSocio />
                 )
             }
-        </>
+        </main>
     );
 }
 

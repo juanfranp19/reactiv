@@ -1,54 +1,89 @@
 @import './imports';
 
 body {
+    background-color: $body-bg-color;
+    
     // ocupa todo el alto de la pantalla
-    height: 100vh;
+    height: $body-height;
 
+    // estilos de forms
     .campo {
+
+        padding: $form-campo-padding;
+
+        label {
+            color: $label-color;
+            font-weight: $label-weigth;
+        }
+
         input::placeholder {
             color: $color-placeholder;
         }
+
+        input:focus {
+            // cambia el color del borde cuando se hace click en el input
+            border-color: $form-input-border-color;
+            box-shadow: 0 0 0 0.2rem $form-input-shadow-color;
+        }
     }
 
+    .botones {
+        text-align: center;
+
+        margin-top: $form-button-margin-top;
+        margin-bottom: $form-button-margin-bottom;
+
+        @media screen and (min-width: $sm) {
+            text-align: start;
+        }
+
+        button {
+            margin-right: $form-button-margin-right;
+            margin-left: $form-button-margin-left;
+        }
+    }        
+
+    
+
     .dashboard-menu {
-        padding: 20px;
+        padding: $dashb-menu-padding;
 
         // para que estén ordenados en cuadrados
         .datos, .item {
-            border: 1px solid black;
-            border-radius: 5px;
+            border: $dashb-item-border;
+            border-radius: $dashb-item-border-radius;
 
-            margin-top: 10px;
-            margin-bottom: 10px;
-            padding-top: 20px;
-            padding-bottom: 20px;
+            margin-top: $dashb-item-margin-top;
+            margin-bottom: $dashb-item-margin-bottom;
+            padding-top: $dashb-item-padding-top;
+            padding-bottom: $dashb-item-padding-bottom;
         }
 
         .item {
-            text-align: center;
+            text-align: $dashb-item-align;
 
             // estilos a partir de sm
-            @media screen and (min-width: 576px) {
-                padding-top: 50px;
-                padding-bottom: 50px;
+            @media screen and (min-width: $sm) {
+                padding-top: $dashb-item-padding-top-sm;
+                padding-bottom: $dashb-item-padding-top-sm;
             }
         }
 
         .p-left {
-            padding-left: 0px;
+            padding-left: $dashb-item-padding-left;
 
             // estilos a partir de sm
-            @media screen and (min-width: 576px) {
-                padding-left: 10px;
+            @media screen and (min-width: $sm) {
+                padding-left: $dashb-item-padding-left-sm;
             }
         }
         
         .p-right {
-            padding-right: 0px;
+            padding-right: $dashb-item-padding-right;
 
             // estilos a partir de sm
-            @media screen and (min-width: 576px) {
-                padding-right: 10px;
+            @media screen and (min-width: $sm) {
+                padding-right: $dashb-item-padding-right-sm;
             }
         }
 
@@ -56,17 +91,16 @@ body {
 
     // da estilo a los títulos de las páginas hijas de dashboard
     .titulo-dashboard {
-        font-size: 25px;
-        text-align: center;
-        padding: 20px;
+        font-size: $dashb-titulo-font-size;
+        text-align: $dashb-titulo-align;
+        padding: $dashb-titulo-padding;
 
         // estilos a partir de sm
-        @media screen and (min-width: 576px) {
-            font-size: 30px;
-            text-align: start;
-            padding: 30px 50px;
+        @media screen and (min-width: $sm) {
+            font-size: $dashb-titulo-font-size-sm;
+            text-align: $dashb-titulo-align-sm;
+            padding: $dashb-titulo-padding-sm;
         }
-
     }
     
     // para quitar todos los estilo del NavLink
@@ -79,50 +113,50 @@ body {
 // estilos para los componentes cards
 
 .card {
-    width: 250px;
-    margin: 10px;
+    width: $card-width;
+    margin: $card-margin;
 
     // imagen
     img {
-        height: 150px;
-        margin-top: 22px;
+        height: $card-img-height;
+        margin-top: $card-img-margin-top;
     }
 
     // subtitulo
     .card-subtitle {
-        font-weight: normal;
-        text-transform: uppercase;
-        padding: 10px 0;
+        font-weight: $card-subtitle-weigth;
+        text-transform: $card-subtitle-text-transform;
+        padding: $card-subtitle-padding;
     }
 
     // solo para etiquetas <p>
     p.card-text {
-        padding: 5px 0;
+        padding: $card-p-card-text-padding;
     }
 
     // lista de la info, etiqueta <ul>
     .card-info {
 
-        padding: 7px 0px 10px 15px;
+        padding: $card-info-padding;
 
         // solo para etiquetas <li>
         li.card-text {
-            text-align: start;
-            list-style: none;
+            text-align: $card-info-card-text-align;
+            list-style: $card-info-card-text-list-style;
 
             span {
-                font-weight: bold;
+                font-weight: $card-info-card-text-span-weight;
             }
         }
     }
 
     // grupo de botones
     .botones {
-        text-align: center;
+        text-align: $card-botones-align;
 
         button {
-            width: 40px;
-            margin: 2px 10px;
+            width: $card-button-width;
+            margin: $card-button-margin;
         }
     }
 }

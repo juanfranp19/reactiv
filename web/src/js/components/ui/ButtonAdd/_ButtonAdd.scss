@@ -1,24 +1,24 @@
 .btn-add {
-    width: 100%;
-    height: 50px;
+    width: $bnt-add-width;
+    height: $bnt-add-height;
     
-    display: flex;
+    display: $bnt-add-display;
     // para que el icono se vaya al centro horizontalmente
-    justify-content: center;
+    justify-content: $bnt-add-justify-content;
     // para que el icono se vaya al centro verticalmente
-    align-items: center;
+    align-items: $bnt-add-align-items;
     
     // estilos a partir de sm
-    @media screen and (min-width: 576px) {
-        height: 100px;
+    @media screen and (min-width: $sm) {
+        height: $bnt-add-height-sm;
     }
 
     i {
-        font-size: 25px;
+        font-size: $bnt-add-icon-font-size;
         
         // estilos a partir de sm
-        @media screen and (min-width: 576px) {
-            font-size: 40px;
+        @media screen and (min-width: $sm) {
+            font-size: $bnt-add-icon-font-size-sm;
         }
     }
 }

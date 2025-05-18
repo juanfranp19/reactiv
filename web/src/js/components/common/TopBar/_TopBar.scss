@@ -3,7 +3,7 @@
     height: $altura-topbar-car;
 
     .logo-reactiv {
-        width: 100px;
-        padding: 10px;
+        width: $topbar-logo-width;
+        padding: $topbar-logo-padding;
     }
 }

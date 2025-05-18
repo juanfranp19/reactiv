@@ -1,27 +1,195 @@
-// carousel
+$body-height: 100vh;
+$body-bg-color: rgb(255, 255, 255);
 
+// media queries
+$sm: 576px;
+$md: 768px;
+
+/**
+ *
+ * Forms
+ */
+// buttons
+$form-button-font-size: 20px;
+$form-button-width: 140px;
+$form-button-height: 50px;
+
+$form-button-margin-top: 40px;
+$form-button-margin-bottom: 100px;
+$form-button-margin-right: 40px;
+$form-button-margin-left: 40px;
+
+$form-campo-padding: 20px;
+$color-placeholder: rgb(167, 167, 167);
+
+// label
+$label-color: green;
+$label-weigth: bold;
+
+// input
+$form-input-border-color: #ff6600;
+$form-input-shadow-color: #ff660040;
+
+$color-input-error: #c80000;
+$size-input-error: 15px;
+
+// archivos
+$color-icono-eliminar: #ff0000;
+
+/**
+ *
+ * Login
+ */
+$formlogin-padding-top: 90px;
+$formlogin-max-width: 400px;
+$formlogin-fondo-color: rgb(255, 190, 190);
+$formlogin-radio-borde: 5px;
+
+$formlogin-campo-padding-top: $form-campo-padding - 10;
+$formlogin-campo-padding-bottom: $form-campo-padding - 10;
+$formlogin-campo-padding-right: $form-campo-padding;
+$formlogin-campo-padding-left: $form-campo-padding;
+
+$formlogin-1campo-padding-top: 40px; // el padding-top del primer campo
+
+$formlogin-icon-size: 20px;
+
+$formlogin-button-width: $form-button-width + 30;
+$formlogin-button-margin-top: 25px;
+$formlogin-button-margin-bottom: 25px;
+
+/**
+ *
+ * Dashboard
+ */
+$dashb-titulo-font-size: 25px;
+$dashb-titulo-font-size-sm: 30px;
+$dashb-titulo-align: center;
+$dashb-titulo-align-sm: start;
+$dashb-titulo-padding: 20px;
+$dashb-titulo-padding-sm: 30px 50px;
+
+$dashb-menu-padding: 20px;
+
+$dashb-item-align: center;
+
+$dashb-item-border: 1px solid black;
+$dashb-item-border-radius: 5px;
+
+$dashb-item-margin-top: 10px;
+$dashb-item-margin-bottom: 10px;
+
+$dashb-item-padding-top: 20px;
+$dashb-item-padding-bottom: 20px;
+$dashb-item-padding-left: 0px;
+$dashb-item-padding-right: 0px;
+$dashb-item-padding-top-sm: 50px;
+$dashb-item-padding-bottom-sm: 50px;
+$dashb-item-padding-left-sm: 10px;
+$dashb-item-padding-right-sm: 10px;
+
+/**
+ *
+ * Card
+ */
+$card-width: 250px;
+$card-margin: 10px;
+
+$card-img-height: 150px;
+$card-img-margin-top: 22px;
+
+$card-subtitle-weigth: normal;
+$card-subtitle-text-transform: uppercase;
+$card-subtitle-padding: 10px 0;
+
+$card-p-card-text-padding: 5px 0;
+
+$card-info-padding: 7px 0 10px 15px;
+$card-info-card-text-align: start;
+$card-info-card-text-list-style: none;
+$card-info-card-text-span-weight: bold;
+
+$card-botones-align: center;
+$card-button-width: 40px;
+$card-button-margin: 2px 10px;
+
+/**
+ *
+ * Componentes comunes
+ */
+// topbar
+$altura-topbar-car: 100px;
+$topbar-logo-width: 100px;
+$topbar-logo-padding: 10px;
+
+// carousel
+$padding-car: 0;
 $altura-car: 100vh;
-$altura-topbar-car: 100px; // TopBar
+
+$align-bajar-car: center;
 $altura-bajar-car: 100px;
+$padding-top-bajar-car: 20px;
+$padding-bottom-bajar-car: 20px;
 
 $flecha-size-car: 36px;
 $flecha-hover-size-car: 50px;
 
 // navbar
-
 $color-boton-hover-nav: var(--bs-navbar-hover-color);
 
 $width-logoreactiv-nav: 45px;
+$padding-logoreactiv-nav: 0 5px;
 
 $size-boton-nav: 30px;
 $size-user-icon-nav: 30px;
 $size-flecha-icon-nav: 20px;
 
-// forms
+$btn-close-navbar-border: 0;
 
-$color-placeholder: rgb(167, 167, 167);
+// crear rutina
+$crear-rutina-padding-right: 15px;
+$crear-rutina-padding-left: 15px;
+$crear-rutina-padding-right-sm: 40px;
+$crear-rutina-padding-left-sm: 40px;
 
-$color-input-error: rgb(200, 0, 0);
-$size-input-error: 15px;
+// lista rutina calentamientos
+$lista-rutina-detalles-align: center;
+$lista-rutina-detalles-justify-content: center;
 
-$color-icono-eliminar: rgb(255, 0, 0);
+/**
+ *
+ * Componenes UI
+ */
+// button add
+$bnt-add-width: 100%;
+$bnt-add-height: 50px;
+$bnt-add-height-sm: 100px;
+$bnt-add-display: flex;
+$bnt-add-justify-content: center;
+$bnt-add-align-items: center;
+
+$bnt-add-icon-font-size: 25px;
+$bnt-add-icon-font-size-sm: 40px;
+
+// rutina card
+$rutina-card-padding-top: 10px;
+$rutina-card-padding-sm: 20px 50px;
+
+$rutina-card-item-border-sm: 1px solid black;
+$rutina-card-item-border-radius-sm: 5px;
+$rutina-card-item-padding-sm: 20px 20px;
+
+$rutina-card-item-nombre-font-size-sm: 25px;
+$rutina-card-item-nombre-font-weight-sm: bold;
+$rutina-card-item-desc-font-size-sm: 17px;
+$rutina-card-item-hover-bg-color-sm: #eaffa4;
+
+$rutina-card-item-imagen-height: 50px;
+
+$rutina-card-item-fondo-width: 100%;
+$rutina-card-item-fondo-height: 100%;
+$rutina-card-item-fondo-border: 10px;
+$rutina-card-item-fondo-color: #acbb79;
+
+$rutina-card-btn-ver-rutina-width: 100%;
+$rutina-card-btn-ver-rutina-margin-top: 30px;

@@ -3,7 +3,7 @@ $altura-total-carousel: calc(#{$altura-car} - #{$altura-topbar-car} - #{$altura-
 
 .carousel {
     height: $altura-total-carousel;
-    padding: 0;
+    padding: $padding-car;
 
     .carousel-item img {
         height: $altura-total-carousel;
@@ -11,10 +11,13 @@ $altura-total-carousel: calc(#{$altura-car} - #{$altura-topbar-car} - #{$altura-
     }
 }
 
+// botón para bajar el carousel
 .bajar-carousel {
-    text-align: center;
+    text-align: $align-bajar-car;
     height: $altura-bajar-car;
-    padding: 20px 0;
+
+    padding-top: $padding-top-bajar-car;
+    padding-bottom: $padding-bottom-bajar-car;
 
     button {
         background: none;

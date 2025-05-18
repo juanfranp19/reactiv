@@ -1,9 +1,11 @@
 // estilos para que el botón se ajuste a los componentes de la página SocioRutinas
 .crear-rutina {
-    padding: 0 15px;
+    padding-right: $crear-rutina-padding-right;
+    padding-left: $crear-rutina-padding-left;
 
     // estilos a partir de sm
     @media screen and (min-width: 576px) {
-        padding: 0 40px;
+        padding-right: $crear-rutina-padding-right-sm;
+        padding-left: $crear-rutina-padding-left-sm;
     }
 }

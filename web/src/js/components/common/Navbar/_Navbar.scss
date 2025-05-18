@@ -2,7 +2,7 @@
 
     .logo-reactiv {
         width: $width-logoreactiv-nav;
-        padding: 0 5px;
+        padding: $padding-logoreactiv-nav;
     }
 
     .navbar-toggler {
@@ -28,7 +28,7 @@
 
     // boton para cerrar desplegable del modo móvil
     .btn-close, .navbar-toggler {
-        border: 0;
+        border: $btn-close-navbar-border;
 
         &:focus {
             box-shadow: none;
