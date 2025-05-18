@@ -25,19 +25,21 @@ class CalentamientoSeguimientoSeeder extends Seeder
 
             for ($i = 1; $i <= $numCalentamientos; $i++) {
 
-                $cal_seg = new CalentamientoSeguimiento();
-                $cal_seg->seguimiento_id = $seguimiento->id;
-                $cal_seg->calentamiento_id = $calentamientos->random()->id;
+                // coge un calentamiento de la tabla calentamientos
+                $calentamiento = $calentamientos->random();
 
-                // compeuba si ya existe el calentamiento en el seguimiento
+                // comprueba si ya existe el calentamiento en el seguimiento
                 $existeCalentamientoEnSeguimiento = (
-                    CalentamientoSeguimiento::where('seguimiento_id', $cal_seg->seguimiento_id)
-                        ->where('calentamiento_id', $cal_seg->calentamiento_id)
+                    CalentamientoSeguimiento::where('seguimiento_id', $seguimiento->id)
+                        ->where('calentamiento_id', $calentamiento->id)
                         ->exists()
                 );
 
-                // si no existe, se le añade
-                if (!$existeCalentamientoEnSeguimiento) $cal_seg->save();
+                // si no existe, se lo añade
+                if (!$existeCalentamientoEnSeguimiento) {
+
+                    $seguimiento->calentamientos()->attach($calentamiento->id);
+                }
             }
 
         }

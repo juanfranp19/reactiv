@@ -25,20 +25,22 @@ class CalentamientoRutinaSeeder extends Seeder
 
             for ($i = 1; $i <= $numCalentamientos; $i++) {
 
-                $cal_rut = new CalentamientoRutina();
-                $cal_rut->rutina_id = $rutina->id;
-                $cal_rut->calentamiento_id = $calentamientos->random()->id;
-                $cal_rut->tiempo = rand(15, 120);
+                $calentamiento = $calentamientos->random();
 
-                // compeuba si ya existe el calentamiento en la rutina
+                // comprueba si ya existe el calentamiento en la rutina
                 $existeCalentamientoEnRutina = (
-                    CalentamientoRutina::where('rutina_id', $cal_rut->rutina_id)
-                        ->where('calentamiento_id', $cal_rut->calentamiento_id)
+                    CalentamientoRutina::where('rutina_id', $rutina->id)
+                        ->where('calentamiento_id', $calentamiento->id)
                         ->exists()
                 );
 
-                // si no existe, se le añade
-                if (!$existeCalentamientoEnRutina) $cal_rut->save();
+                // si no existe, se lo añade
+                if (!$existeCalentamientoEnRutina) {
+
+                    $rutina->calentamientos()->attach($calentamiento->id, [
+                        'tiempo' => rand(15, 120),
+                    ]);
+                }
             }
 
         }

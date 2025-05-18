@@ -22,15 +22,16 @@ class ProductoSocioSeeder extends Seeder
         foreach ($socios as $socio) {
             if (rand(1, 2) == 1) {
 
+                // genera una fecha de compra
                 $fecha_compra = ProductoSocio::factory()->make()->fecha_compra;
 
-                $pro_soc = new ProductoSocio();
-                $pro_soc->socio_id = $socio->id;
-                $pro_soc->producto_id = $productos->random()->id;
-                $pro_soc->fecha_compra = $fecha_compra;
-                $pro_soc->cantidad = rand(1, 10);
-                $pro_soc->save();
+                // coge un producto random de la tabla productos
+                $producto = $productos->random();
 
+                $socio->productos()->attach($producto->id, [
+                    'fecha_compra' => $fecha_compra,
+                    'cantidad' => rand(1, 10),
+                ]);
             }
         }
     }

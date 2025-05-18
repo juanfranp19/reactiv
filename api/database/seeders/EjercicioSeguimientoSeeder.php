@@ -25,19 +25,21 @@ class EjercicioSeguimientoSeeder extends Seeder
 
             for ($i = 1; $i <= $numEjercicios; $i++) {
 
-                $ej_seg = new EjercicioSeguimiento();
-                $ej_seg->seguimiento_id = $seguimiento->id;
-                $ej_seg->ejercicio_id = $ejercicios->random()->id;
+                // coge un ejercicio de la tabla ejercicios
+                $ejercicio = $ejercicios->random();
 
-                // compeuba si ya existe el ejercicio en el seguimiento
+                // comprueba si ya existe el ejercicio en el seguimiento
                 $existeEjercicioEnSeguimiento = (
-                    EjercicioSeguimiento::where('seguimiento_id', $ej_seg->seguimiento_id)
-                        ->where('ejercicio_id', $ej_seg->ejercicio_id)
+                    EjercicioSeguimiento::where('seguimiento_id', $seguimiento->id)
+                        ->where('ejercicio_id', $ejercicio->id)
                         ->exists()
                 );
 
-                // si no existe, se le añade
-                if (!$existeEjercicioEnSeguimiento) $ej_seg->save();
+                // si no existe, se lo añade
+                if (!$existeEjercicioEnSeguimiento) {
+
+                    $seguimiento->ejercicios()->attach($ejercicio->id);
+                }
             }
 
         }

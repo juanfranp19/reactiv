@@ -18,8 +18,13 @@ class SocioTarifaSeeder extends Seeder
         $socios = Socio::all();
 
         foreach ($socios as $socio) {
-            SocioTarifa::factory()->create([
-                'socio_id' => $socio->id,
+
+            // coge todos los datos del factory
+            $factoryData = SocioTarifa::factory()->make()->toArray();
+
+            $socio->tarifas()->attach($factoryData['tarifa_id'], [
+                'fecha_inicio' => $factoryData['fecha_inicio'],
+                'fecha_fin' => $factoryData['fecha_fin'],
             ]);
         }
     }
