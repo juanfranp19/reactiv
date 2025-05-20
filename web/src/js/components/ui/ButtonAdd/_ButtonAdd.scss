@@ -1,13 +1,15 @@
 .btn-add {
     width: $bnt-add-width;
     height: $bnt-add-height;
-    
+
     display: $bnt-add-display;
     // para que el icono se vaya al centro horizontalmente
     justify-content: $bnt-add-justify-content;
     // para que el icono se vaya al centro verticalmente
     align-items: $bnt-add-align-items;
-    
+
+    margin-top: $bnt-add-margin-top;
+
     // estilos a partir de sm
     @media screen and (min-width: $sm) {
         height: $bnt-add-height-sm;
@@ -15,10 +17,37 @@
 
     i {
         font-size: $bnt-add-icon-font-size;
-        
+
         // estilos a partir de sm
         @media screen and (min-width: $sm) {
             font-size: $bnt-add-icon-font-size-sm;
         }
+    }
+
+    .titulo {
+        // aparece siempre en móvil y a partir de sm, aparece solo en hover
+        display: $bnt-add-titulo-display;
+
+        @media screen and (min-width: $sm) {
+            display: $bnt-add-titulo-display-sm;
+        }
+    }
+
+    &:hover {
+        .titulo {
+            display: $bnt-add-hover-titulo-display;
+        }
+    }
+}
+
+// clase para poner a la clase padre de ButtonAdd para paddings
+.button-add-componente-padre {
+    padding-right: $crear-rutina-padding-right;
+    padding-left: $crear-rutina-padding-left;
+
+    // estilos a partir de sm
+    @media screen and (min-width: 576px) {
+        padding-right: $crear-rutina-padding-right-sm;
+        padding-left: $crear-rutina-padding-left-sm;
     }
 }

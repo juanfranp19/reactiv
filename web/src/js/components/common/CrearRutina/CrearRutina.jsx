@@ -5,7 +5,7 @@ const CrearRutina = () => {
 
     return (
         <div className='row'>
-            <div className='col-12 crear-rutina'>
+            <div className='col-12 crear-rutina button-add-componente-padre'>
                 <NavLink to='crear'>
                     <ButtonAdd />
                 </NavLink>

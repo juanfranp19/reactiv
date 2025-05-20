@@ -71,6 +71,13 @@ $dashb-titulo-align-sm: start;
 $dashb-titulo-padding: 20px;
 $dashb-titulo-padding-sm: 30px 50px;
 
+$dashb-subtitulo-font-size: $dashb-titulo-font-size - 8;
+$dashb-subtitulo-font-size-sm: $dashb-titulo-font-size-sm - 8;
+$dashb-subtitulo-align: center;
+$dashb-subtitulo-align-sm: start;
+$dashb-subtitulo-padding: 30px;
+$dashb-subtitulo-padding-sm: 30px 70px;
+
 $dashb-menu-padding: 20px;
 
 $dashb-item-align: center;
@@ -173,6 +180,11 @@ $bnt-add-height-sm: 100px;
 $bnt-add-display: flex;
 $bnt-add-justify-content: center;
 $bnt-add-align-items: center;
+$bnt-add-margin-top: 20px;
+
+$bnt-add-titulo-display: block;
+$bnt-add-titulo-display-sm: none;
+$bnt-add-hover-titulo-display: block;
 
 $bnt-add-icon-font-size: 25px;
 $bnt-add-icon-font-size-sm: 40px;

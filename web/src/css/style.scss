@@ -113,6 +113,20 @@ form {
     }
 }
 
+.subtitulo-dashboard {
+
+    font-size: $dashb-subtitulo-font-size;
+    text-align: $dashb-subtitulo-align;
+    padding: $dashb-subtitulo-padding;
+
+    @media screen and (min-width: $sm) {
+        
+        font-size: $dashb-subtitulo-font-size-sm;
+        text-align: $dashb-subtitulo-align-sm;
+        padding: $dashb-subtitulo-padding-sm;
+    }
+}
+
 // para quitar todos los estilo del NavLink
 .navLink {
     all: unset;

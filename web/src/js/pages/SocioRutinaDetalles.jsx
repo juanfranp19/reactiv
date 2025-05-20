@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+import AddCalentamientosEjercicios from '@components/common/AddCalentamientosEjercicios/AddCalentamientosEjercicios';
 import ListaRutinaCalentamientos from '@components/common/ListaRutinaCalentamientos/ListaRutinaCalentamientos';
 import ListaRutinaEjercicios from '@components/common/ListaRutinaEjercicios/ListaRutinaEjercicios';
 
@@ -54,6 +55,8 @@ const SocioRutinaDetalles = () => {
                     {nombreRutina}
                 </div>
             </div>
+
+            <AddCalentamientosEjercicios />
 
             <ListaRutinaCalentamientos rutina={idRutina} />
             <ListaRutinaEjercicios rutina={idRutina} />
