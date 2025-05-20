@@ -13,37 +13,40 @@ const PermissionProvider = ({ children }) => {
 
     const { permissions } = usePermissions();
     const { token } = useToken();
-     
+
 
     useEffect(() => {
 
-        const obtenerPermisos = async () => {
+        if (permissions) {
 
-            if (token) {
+            const obtenerPermisos = async () => {
 
-                try {
+                if (token) {
 
-                    // llama al servicio para obtener los permisos
-                    const getpermissions = await permissions();
+                    try {
 
-                    // muestra los valores por consola
-                    console.log('isEntrenador', getpermissions.isEntrenador);
-                    console.log('isSocio', getpermissions.isSocio);
+                        // llama al servicio para obtener los permisos
+                        const getpermissions = await permissions();
 
-                    // lo guarda en el contexto
-                    setEntrenador(getpermissions.isEntrenador);
-                    setIsSocio(getpermissions.isSocio);
+                        // muestra los valores por consola
+                        console.log('isEntrenador', getpermissions.isEntrenador);
+                        console.log('isSocio', getpermissions.isSocio);
 
-                } catch (error) {
-                    console.log(error);
+                        // lo guarda en el contexto
+                        setEntrenador(getpermissions.isEntrenador);
+                        setIsSocio(getpermissions.isSocio);
+
+                    } catch (error) {
+                        console.log(error);
+                    }
                 }
+
+                // termina de cargar
+                setCargando(false);
             }
-
-            // termina de cargar
-            setCargando(false);
+            
+            obtenerPermisos();
         }
-
-        obtenerPermisos();
 
     }, [token, permissions]);
 

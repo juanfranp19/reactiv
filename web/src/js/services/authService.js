@@ -61,8 +61,8 @@ export const logoutService = async () => {
         const response = await fetch(API_URL_LOGOUT, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`
-            }
+                Authorization: `Bearer ${token}`,
+            },
         });
 
         // respuesta de la API
@@ -97,8 +97,8 @@ export const permissionService = async () => {
         const response = await fetch(API_URL_PERMISSIONS, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`
-            }
+                Authorization: `Bearer ${token}`,
+            },
         });
 
         // respuesta de la API
@@ -130,8 +130,8 @@ export const checkAuth = async () => {
         const response = await fetch(API_URL_USER, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`
-            }
+                Authorization: `Bearer ${token}`,
+            },
         });
 
         // respuesta de la API

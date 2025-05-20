@@ -16,6 +16,7 @@ export const postSocio = async (data) => {
 
     try {
 
+        const token = localStorage.getItem('token');
         const formData = new FormData();
 
         // agrega todos los campos del objeto data al objeto formData
@@ -26,9 +27,10 @@ export const postSocio = async (data) => {
         // envía a la URL de socio los datos del socio por método POST
         const response = await fetch(API_URL_SOCIO, {
             method: 'POST',
-            /* headers: {
-                'Content-Type': 'application/json', // AÑADIR BEARER
-            }, */
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
             body: formData,
         });
 
@@ -67,7 +69,7 @@ export const postSocio = async (data) => {
 // servicio para obtener datos de un socio
 export const getSocio = async (id) => {
 
-    //const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
     try {
 
@@ -75,8 +77,8 @@ export const getSocio = async (id) => {
         const response = await fetch(`${API_URL_SOCIO}/${id}`, {
             method: 'GET',
             headers: {
-                //'Authorization': `Bearer ${token}`
-            }
+                Authorization: `Bearer ${token}`,
+            },
         });
 
         // respuesta de la API

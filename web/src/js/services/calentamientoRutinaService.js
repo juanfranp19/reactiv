@@ -4,7 +4,7 @@ const API_URL_CALENTAMIENTOS_RUTINAS = API_URL + '/api/v1/calentamientos-rutinas
 // servicio para obtener los calentamientos de una rutina
 export const getCalentamientosRutina = async (id) => {
 
-    //const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
     try {
 
@@ -12,8 +12,8 @@ export const getCalentamientosRutina = async (id) => {
         const response = await fetch(`${API_URL_CALENTAMIENTOS_RUTINAS}/${id}`, {
             method: 'GET',
             headers: {
-                //'Authorization': `Bearer ${token}`
-            }
+                Authorization: `Bearer ${token}`,
+            },
         });
 
         // respuesta de la API
