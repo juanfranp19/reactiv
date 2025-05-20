@@ -225,6 +225,17 @@
   text-align: left;
 }
 
+@media screen and (min-width: 576px) {
+  .from-crear-rutina {
+    padding: 20px 100px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .from-crear-rutina {
+    padding: 20px 180px 0 50px;
+  }
+}
+
 .rutina-card {
   padding-top: 10px;
 }
@@ -279,41 +290,47 @@ body {
   background-color: rgb(255, 255, 255);
   height: 100vh;
 }
-body .campo {
+
+form .campo {
   padding: 20px;
 }
-body .campo label {
+form .campo label {
   color: green;
   font-weight: bold;
 }
-body .campo input::-moz-placeholder {
+form .campo input, form .campo textarea {
+  max-width: 550px;
+}
+form .campo input::-moz-placeholder, form .campo textarea::-moz-placeholder {
   color: rgb(167, 167, 167);
 }
-body .campo input::placeholder {
+form .campo input::placeholder, form .campo textarea::placeholder {
   color: rgb(167, 167, 167);
 }
-body .campo input:focus {
+form .campo input:focus, form .campo textarea:focus {
   border-color: #ff6600;
   box-shadow: 0 0 0 0.2rem rgba(255, 102, 0, 0.2509803922);
 }
-body .botones {
+form .botones {
   text-align: center;
   margin-top: 40px;
   margin-bottom: 100px;
 }
 @media screen and (min-width: 576px) {
-  body .botones {
+  form .botones {
     text-align: start;
   }
 }
-body .botones button {
+form .botones button {
+  margin-bottom: 50px;
   margin-right: 40px;
   margin-left: 40px;
 }
-body .dashboard-menu {
+
+.dashboard-menu {
   padding: 20px;
 }
-body .dashboard-menu .datos, body .dashboard-menu .item {
+.dashboard-menu .datos, .dashboard-menu .item {
   border: 1px solid black;
   border-radius: 5px;
   margin-top: 10px;
@@ -321,44 +338,46 @@ body .dashboard-menu .datos, body .dashboard-menu .item {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-body .dashboard-menu .item {
+.dashboard-menu .item {
   text-align: center;
 }
 @media screen and (min-width: 576px) {
-  body .dashboard-menu .item {
+  .dashboard-menu .item {
     padding-top: 50px;
     padding-bottom: 50px;
   }
 }
-body .dashboard-menu .p-left {
+.dashboard-menu .p-left {
   padding-left: 0px;
 }
 @media screen and (min-width: 576px) {
-  body .dashboard-menu .p-left {
+  .dashboard-menu .p-left {
     padding-left: 10px;
   }
 }
-body .dashboard-menu .p-right {
+.dashboard-menu .p-right {
   padding-right: 0px;
 }
 @media screen and (min-width: 576px) {
-  body .dashboard-menu .p-right {
+  .dashboard-menu .p-right {
     padding-right: 10px;
   }
 }
-body .titulo-dashboard {
+
+.titulo-dashboard {
   font-size: 25px;
   text-align: center;
   padding: 20px;
 }
 @media screen and (min-width: 576px) {
-  body .titulo-dashboard {
+  .titulo-dashboard {
     font-size: 30px;
     text-align: start;
     padding: 30px 50px;
   }
 }
-body .navLink {
+
+.navLink {
   all: unset;
   cursor: pointer;
 }

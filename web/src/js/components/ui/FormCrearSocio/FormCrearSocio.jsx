@@ -130,7 +130,7 @@ const FormCrearSocio = (props) => {
         // devuelve la información que hay en los campos del Login, en JSON
         console.log(nuevoSocio);
 
-        // manda los datos a la función de SOCIO.jsx
+        // manda los datos a la función de la página CrearSocio.jsx
         props.manejarCrearSocio(nuevoSocio);
     });
 

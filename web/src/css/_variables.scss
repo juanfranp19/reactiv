@@ -29,6 +29,7 @@ $label-weigth: bold;
 // input
 $form-input-border-color: #ff6600;
 $form-input-shadow-color: #ff660040;
+$form-input-max-width: 550px;
 
 $color-input-error: #c80000;
 $size-input-error: 15px;
@@ -193,3 +194,7 @@ $rutina-card-item-fondo-color: #acbb79;
 
 $rutina-card-btn-ver-rutina-width: 100%;
 $rutina-card-btn-ver-rutina-margin-top: 30px;
+
+// form crear rutina
+$form-crear-rutina-padding-sm: 20px 100px;
+$form-crear-rutina-padding-md: 20px 180px 0 50px;

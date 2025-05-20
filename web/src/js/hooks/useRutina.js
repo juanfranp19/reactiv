@@ -1,5 +1,28 @@
 import { useEffect, useState } from 'react';
-import { getRutina } from '@services/rutinaService';
+import { postRutina, getRutina } from '@services/rutinaService';
+
+// hook para crear una rutina
+export const useCrearRutina = () => {
+
+    const [cargando, setCargando] = useState('');
+
+    const crearRutina = async (formData) => {
+
+        // está cargando
+        setCargando(true);
+
+        // recoge los datos devueltos por el servicio
+        const serviceResponse = await postRutina(formData);
+
+        // termina de cargar
+        setCargando(false);
+
+        // devuelve los datos recividos del servicio
+        return serviceResponse;
+    }
+
+    return ({ crearRutina, cargando });
+}
 
 // hook para obtener datos de una rutina
 export const useObtenerRutina = (id) => {
