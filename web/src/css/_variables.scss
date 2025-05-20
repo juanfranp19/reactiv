@@ -4,6 +4,7 @@ $body-bg-color: rgb(255, 255, 255);
 // media queries
 $sm: 576px;
 $md: 768px;
+$lg: 992px;
 
 /**
  *
@@ -153,9 +154,13 @@ $crear-rutina-padding-left: 15px;
 $crear-rutina-padding-right-sm: 40px;
 $crear-rutina-padding-left-sm: 40px;
 
-// lista rutina calentamientos
+// lista rutina calentamientos / ejercicios
 $lista-rutina-detalles-align: center;
 $lista-rutina-detalles-justify-content: center;
+
+$desplegable-rutina-detalles-margin: 40px 60px;
+$desplegable-rutina-detalles-text-align: center;
+$desplegable-rutina-detalles-text-align-sm: start;
 
 /**
  *
@@ -171,6 +176,9 @@ $bnt-add-align-items: center;
 
 $bnt-add-icon-font-size: 25px;
 $bnt-add-icon-font-size-sm: 40px;
+
+// checkbox desplegable
+$checkbox-despl-font-size: 20px;
 
 // rutina card
 $rutina-card-padding-top: 10px;

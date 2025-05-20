@@ -1,9 +1,12 @@
+import { useState } from 'react';
+import CheckboxDesplegable from '@components/ui/CheckboxDesplegable/CheckboxDesplegable';
 import EjercicioCard from '@components/ui/EjercicioCard/EjercicioCard';
 import { useObtenerEjerciciosRutina } from '@hooks/useEjercicioRutina';
 
 const ListaRutinaCalentamientos = ({ rutina }) => {
 
     const { ejerciciosRutinaData } = useObtenerEjerciciosRutina(rutina);
+    const [checked, setChecked] = useState(false);
 
     console.log('ejercicios', ejerciciosRutinaData?.ejercicios);
 
@@ -12,10 +15,10 @@ const ListaRutinaCalentamientos = ({ rutina }) => {
         // no devuelve nada si aún no ha cargado
         if (!ejerciciosRutinaData?.ejercicios) return null;
 
-        return ejerciciosRutinaData.ejercicios
+        if (checked) return ejerciciosRutinaData.ejercicios
             .map((ejercicio) => (
-                <EjercicioCard 
-                    key={ejercicio.id} 
+                <EjercicioCard
+                    key={ejercicio.id}
                     nombre={ejercicio.nombre}
                     imagen={ejercicio.imagen}
                     num_series={ejercicio.pivot.num_series}
@@ -25,16 +28,26 @@ const ListaRutinaCalentamientos = ({ rutina }) => {
             ));
     }
 
+    function isChecked() {
+        setChecked(!checked);
+    }
+
     return (
         <div className='row'>
             <div className='col-12'>
-                <div className='row lista-rutina-detalles'>
+
+                <div className='row desplegable-rutina-ejercicios'>
+                    <div className='col-12 checkbox-font'>
+                        Ejercicios <CheckboxDesplegable isChecked={isChecked} />
+                    </div>
+                </div>
+
+                <div className='row lista-rutina-ejercicios'>
                     {obtenerEjercicioCards()}
                 </div>
             </div>
         </div>
     );
-
 }
 
 export default ListaRutinaCalentamientos;

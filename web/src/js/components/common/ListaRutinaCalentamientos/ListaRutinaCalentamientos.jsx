@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import CalentamientoCard from '@components/ui/CalentamientoCard/CalentamientoCard';
+import CheckboxDesplegable from '@components/ui/CheckboxDesplegable/CheckboxDesplegable';
 import { useObtenerCalentamientosRutina } from '@hooks/useCalentamientoRutina';
 
 const ListaRutinaCalentamientos = ({ rutina }) => {
 
     const { calentamientosRutinaData } = useObtenerCalentamientosRutina(rutina);
+    const [checked, setChecked] = useState(false);
 
     console.log('calentamientos', calentamientosRutinaData?.calentamientos);
 
@@ -12,7 +15,7 @@ const ListaRutinaCalentamientos = ({ rutina }) => {
         // no devuelve nada si aún no ha cargado
         if (!calentamientosRutinaData?.calentamientos) return null;
 
-        return calentamientosRutinaData.calentamientos
+        if (checked) return calentamientosRutinaData.calentamientos
             .map((calentamiento) => (
                 <CalentamientoCard
                     key={calentamiento.id}
@@ -23,16 +26,26 @@ const ListaRutinaCalentamientos = ({ rutina }) => {
             ));
     }
 
+    function isChecked() {
+        setChecked(!checked);
+    }
+
     return (
         <div className='row'>
             <div className='col-12'>
-                <div className='row lista-rutina-detalles'>
+
+                <div className='row desplegable-rutina-calentamientos'>
+                    <div className='col-12 checkbox-font'>
+                        Calentamientos <CheckboxDesplegable isChecked={isChecked} />
+                    </div>
+                </div>
+
+                <div className='row lista-rutina-calentamientos'>
                     {obtenerCalentamientoCards()}
                 </div>
             </div>
         </div>
     );
-
 }
 
 export default ListaRutinaCalentamientos;

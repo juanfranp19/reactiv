@@ -115,14 +115,34 @@
   font-size: 20px;
 }
 
-.lista-rutina-detalles {
+.lista-rutina-calentamientos {
   text-align: center;
   justify-content: center;
 }
 
-.lista-rutina-detalles {
+.desplegable-rutina-calentamientos {
+  margin: 40px 60px;
+  text-align: center;
+}
+@media screen and (min-width: 576px) {
+  .desplegable-rutina-calentamientos {
+    text-align: start;
+  }
+}
+
+.lista-rutina-ejercicios {
   text-align: center;
   justify-content: center;
+}
+
+.desplegable-rutina-ejercicios {
+  margin: 40px 60px;
+  text-align: center;
+}
+@media screen and (min-width: 576px) {
+  .desplegable-rutina-ejercicios {
+    text-align: start;
+  }
 }
 
 .navbar .logo-reactiv {
@@ -199,6 +219,66 @@
   font-size: 20px;
 }
 
+.checkbox-font {
+  font-size: 20px;
+}
+
+/*------ Settings ------*/
+.container-checkboxdespl {
+  --size: 15px;
+  padding: 15px 25px 15px 15px;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  fill: red;
+}
+.container-checkboxdespl .chevron-right-checkboxdespl {
+  position: absolute;
+  animation: keyframes-return 0.5s;
+}
+.container-checkboxdespl .chevron-down-checkboxdespl {
+  position: absolute;
+  display: none;
+  animation: keyframes-fill 0.5s;
+}
+.container-checkboxdespl input {
+  /* ------ Hide the default checkbox ------ */
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  /* ------ On check event ------ */
+}
+.container-checkboxdespl input:checked ~ .chevron-right-checkboxdespl {
+  display: none;
+}
+.container-checkboxdespl input:checked ~ .chevron-down-checkboxdespl {
+  display: block;
+}
+
+/* ------ Animation ------ */
+@keyframes keyframes-fill {
+  0% {
+    transform: rotate(-90deg) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: rotate(0deg) scale(1.2);
+  }
+}
+@keyframes keyframes-return {
+  0% {
+    transform: rotate(90deg) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: rotate(0deg) scale(1.2);
+  }
+}
 .dropdown-user .dropdown-fuera-offcanvas {
   position: absolute;
 }

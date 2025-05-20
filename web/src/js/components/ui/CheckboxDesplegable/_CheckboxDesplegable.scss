@@ -1,0 +1,68 @@
+.checkbox-font {
+    font-size: $checkbox-despl-font-size;
+}
+
+/*------ Settings ------*/
+.container-checkboxdespl {
+    --size: 15px;
+    padding: 15px 25px 15px 15px;
+    position: relative;
+    cursor: pointer;
+    font-size: var(--size);
+    user-select: none;
+    fill: red;
+
+    .chevron-right-checkboxdespl {
+        position: absolute;
+        animation: keyframes-return .5s;
+    }
+
+    .chevron-down-checkboxdespl {
+        position: absolute;
+        display: none;
+        animation: keyframes-fill .5s;
+    }
+
+    input {
+        /* ------ Hide the default checkbox ------ */
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        /* ------ On check event ------ */
+        &:checked {
+            &~.chevron-right-checkboxdespl {
+                display: none;
+            }
+
+            &~.chevron-down-checkboxdespl {
+                display: block;
+            }
+        }
+    }
+}
+
+/* ------ Animation ------ */
+@keyframes keyframes-fill {
+    0% {
+        transform: rotate(-90deg) scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: rotate(0deg) scale(1.2);
+    }
+}
+
+@keyframes keyframes-return {
+    0% {
+        transform: rotate(90deg) scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: rotate(0deg) scale(1.2);
+    }
+}

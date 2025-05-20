@@ -1,4 +1,15 @@
-.lista-rutina-detalles {
+.lista-rutina-calentamientos {
     text-align: $lista-rutina-detalles-align;
     justify-content: $lista-rutina-detalles-justify-content;
+}
+
+.desplegable-rutina-calentamientos {
+
+    margin: $desplegable-rutina-detalles-margin;
+
+    text-align: $desplegable-rutina-detalles-text-align;
+
+    @media screen and (min-width: $sm) {
+        text-align: $desplegable-rutina-detalles-text-align-sm;
+    }
 }
