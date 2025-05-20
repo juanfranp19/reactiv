@@ -25,7 +25,7 @@ const DashboardSocio = () => {
                     <div className='col-12'>
                         <div className='row dashboard-menu'>
 
-                            <DashboardBigCard linkTo='rutinas'>
+                            <DashboardBigCard linkTo='tus-rutinas'>
                                 <div className='col-12'>
                                     Tus Rutinas
                                 </div>

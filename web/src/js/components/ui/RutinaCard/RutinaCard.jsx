@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import slugify from '@utils/slugify';
 
 const RutinaCard = ({ id, nombre, descripcion }) => {
 
@@ -9,7 +8,7 @@ const RutinaCard = ({ id, nombre, descripcion }) => {
             {/* aparece a partir de SM */}
             <div className='row d-none d-sm-block'>
                 {/* lleva a la ruta con el nombre de la rutina formateado para ser una ruta */}
-                <NavLink to={slugify(nombre)} className='navLink'>
+                <NavLink to={`${id}`} className='navLink'>
                     <div className='col-12 item'>
                         <div className='row'>
 
@@ -51,7 +50,7 @@ const RutinaCard = ({ id, nombre, descripcion }) => {
                                         <div className='col-12'>
                                             <button type='button' className='btn btn-ver-rutina'>
                                                 {/* lleva a la ruta con el nombre de la rutina */}
-                                                <NavLink to={slugify(nombre)} className='navLink'>
+                                                <NavLink to={`${id}`} className='navLink'>
                                                     Ver más
                                                 </NavLink>
                                             </button>

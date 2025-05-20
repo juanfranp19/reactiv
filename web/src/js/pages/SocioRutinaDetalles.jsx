@@ -7,12 +7,10 @@ import ListaRutinaEjercicios from '@components/common/ListaRutinaEjercicios/List
 import { useObtenerSocio } from '@hooks/useSocio';
 import useToken from '@hooks/useToken';
 
-import slugify from '@utils/slugify';
-
 const SocioRutinaDetalles = () => {
 
     const navigateTo = useNavigate();
-    const { nombreRuta } = useParams();
+    const { rutaIdRutina } = useParams();
     const { id } = useToken();
     const { socioData, cargando } = useObtenerSocio(id);
 
@@ -26,7 +24,7 @@ const SocioRutinaDetalles = () => {
 
             // encuentra la rutina por el nombre de la ruta
             const encontrarRutina = socioData.rutinas.find(
-                (rutina) => (slugify(rutina.nombre) === nombreRuta)
+                (rutina) => (rutina.id === +rutaIdRutina)
             );
 
             if (encontrarRutina) {
@@ -38,7 +36,7 @@ const SocioRutinaDetalles = () => {
                 navigateTo('/dashboard/rutinas');
             }
         }
-    }, [socioData, nombreRuta, navigateTo]);
+    }, [socioData, rutaIdRutina, navigateTo]);
 
     useEffect(obtenerRutinaId, [obtenerRutinaId]);
 

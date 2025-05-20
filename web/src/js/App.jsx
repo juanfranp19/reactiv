@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 import NavBar from '@components/common/Navbar/Navbar';
 
@@ -54,11 +54,13 @@ const App = () => {
                         </Route>
                         <Route element={<SocioRoutes />}>
                             {/* rutas que tienen acceso solo los socios */}
-                            <Route path='/dashboard/rutinas' element={<SocioRutinas />} />
-                            <Route path='/dashboard/rutinas/crear' element={<SocioRutinaCrear />} />
-                            <Route path='/dashboard/rutinas/:nombreRuta' element={<SocioRutinaDetalles />} />
+                            <Route path='/dashboard/tus-rutinas' element={<SocioRutinas />} />
+                            <Route path='/dashboard/tus-rutinas/crear' element={<SocioRutinaCrear />} />
+                            <Route path='/dashboard/tus-rutinas/:rutaIdRutina' element={<SocioRutinaDetalles />} />
                         </Route>
                     </Route>
+
+                    <Route path='/*' element={<Navigate to='/' />} />
                 </Routes>
                     
             </PermissionProvider>
