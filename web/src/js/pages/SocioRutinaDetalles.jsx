@@ -15,7 +15,7 @@ const SocioRutinaDetalles = () => {
     const { id } = useToken();
     const { socioData, cargando } = useObtenerSocio(id);
 
-    const [idRutina, setIdRutina] = useState('');
+    const [idRutina, setIdRutina] = useState(null);
     const [nombreRutina, setNombreRutina] = useState('');
 
     // useCallback para funciones que luego se pasan a componentes hijos que memorizan datos
@@ -41,7 +41,7 @@ const SocioRutinaDetalles = () => {
 
     useEffect(obtenerRutinaId, [obtenerRutinaId]);
 
-    if (cargando) return (
+    if (cargando || !idRutina) return (
         <div className='row'>cargando</div>
     );
 

@@ -127,7 +127,7 @@ const FormCrearSocio = (props) => {
 
     const manejarFormulario = handleSubmit((nuevoSocio) => {
 
-        // devuelve la información que hay en los campos del Login, en JSON
+        // devuelve la información que hay en los campos
         console.log(nuevoSocio);
 
         // manda los datos a la función de la página CrearSocio.jsx

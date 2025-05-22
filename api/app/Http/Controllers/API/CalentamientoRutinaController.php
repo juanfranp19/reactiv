@@ -41,19 +41,35 @@ class CalentamientoRutinaController extends Controller
      */
     public function attach(Request $request, $rutina_id)
     {
-        $rutina = Rutina::findOrFail($rutina_id);
+        try {
 
-        $request->validate([
-            'calentamiento_id' => 'required|exists:calentamientos,id',
-            'tiempo' => 'required',
-        ]);
+            $rutina = Rutina::findOrFail($rutina_id);
 
-        // asocia el calentamiento asociado con el valor extra de la tabla, el tiempo
-        $rutina->calentamientos()->attach($request->calentamiento_id, [
-            'tiempo' => $request->tiempo,
-        ]);
+            $request->validate([
+                'calentamiento_id' => 'required|exists:calentamientos,id',
+                'tiempo' => 'required',
+            ]);
 
-        return response()->json(['message' => 'attached'], 201);
+            // comprobar que no se añade un calentamiento repetido en la misma rutina (no se puede en el observer porque es un attach)
+            $existeCalentamientoRutina = (CalentamientoRutina::where('rutina_id', $rutina_id)
+                ->where('calentamiento_id', $request->calentamiento_id)
+                ->exists()
+            );
+
+            // si ya la tiene, lanza mensaje
+            if ($existeCalentamientoRutina) return response()->json(['error' => 'Tu rutina ya tiene este calentamiento.'], 409);
+
+            // asocia el calentamiento asociado con el valor extra de la tabla, el tiempo
+            $rutina->calentamientos()->attach($request->calentamiento_id, [
+                'tiempo' => $request->tiempo,
+            ]);
+
+            // devuelve el mensaje que aparece en la notificación
+            return response()->json(['message' => 'Calentamiento añadido con éxito.'], 201);
+
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     /**

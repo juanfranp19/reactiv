@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+
 class StorageController extends Controller
 {
     /**
      * Muestra los archivos privados
      */
-    public function showPrivate($tabla, $archivo)
+    public function localStorage($tabla, $columna, $archivo)
     {
         // forma el enlace con la tabla y el archivo
-        $path = storage_path('app/private/' . $tabla . '/' . $archivo);
+        $path = Storage::disk('local')->path("private/{$tabla}/{$columna}/{$archivo}");
+
+        Log::info('storage_path: ' . $path);
 
         if (!file_exists($path)) {
             abort(404, 'Archivo no encontrado');
@@ -23,10 +28,12 @@ class StorageController extends Controller
     /**
      * Muestra los archivos públicos
      */
-    public function showPublic($tabla, $archivo)
+    /* public function showPublic($tabla, $columna, $archivo)
     {
         // forma el enlace con la tabla y el archivo
         $path = storage_path('app/public/' . $tabla . '/' . $archivo);
+
+        Log::info('storage_path: ' . $path);
 
         if (!file_exists($path)) {
             abort(404, 'Archivo no encontrado');
@@ -34,5 +41,5 @@ class StorageController extends Controller
 
         // lo muestra
         return response()->file($path);
-    }
+    } */
 }

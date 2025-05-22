@@ -7,6 +7,7 @@ import Dashboard from '@pages/Dashboard';
 import Error from '@pages/Error';
 import Home from '@pages/Home';
 import Login from '@pages/Login';
+import SocioRutinaAddCalentamiento from '@pages/SocioRutinaAddCalentamiento';
 import SocioRutinaCrear from '@pages/SocioRutinaCrear';
 import SocioRutinaDetalles from '@pages/SocioRutinaDetalles';
 import SocioRutinas from '@pages/SocioRutinas';
@@ -57,6 +58,7 @@ const App = () => {
                             <Route path='/dashboard/tus-rutinas' element={<SocioRutinas />} />
                             <Route path='/dashboard/tus-rutinas/crear' element={<SocioRutinaCrear />} />
                             <Route path='/dashboard/tus-rutinas/:rutaIdRutina' element={<SocioRutinaDetalles />} />
+                            <Route path='/dashboard/tus-rutinas/:rutaIdRutina/add-calentamiento' element={<SocioRutinaAddCalentamiento />} />
                         </Route>
                     </Route>
 

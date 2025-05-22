@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { getCalentamientosRutina } from '@services/calentamientoRutinaService';
+import { getCalentamientosRutina, postCalentamientoRutina } from '@services/calentamientoRutinaService';
 
 // hook para obtener los calentamientos de una rutina
 export const useObtenerCalentamientosRutina = (id) => {
 
-    const [calentamientosRutinaData, setCalentamientosRutinaData] = useState([]); 
-    const [cargando, setCargando] = useState('');
+    const [calentamientosRutinaData, setCalentamientosRutinaData] = useState([]);
+    const [cargando, setCargando] = useState(false);
 
     const obtenerCalentamientosRutina = async (id) => {
 
@@ -16,7 +16,7 @@ export const useObtenerCalentamientosRutina = (id) => {
 
             // obtiene los calentamientos de la rutina haciendo petición al servicio
             const serviceResponse = await getCalentamientosRutina(id);
-            
+
             // se guardan los calentamientos de la rutina
             setCalentamientosRutinaData(serviceResponse.data);
             console.log(serviceResponse.data);
@@ -37,4 +37,27 @@ export const useObtenerCalentamientosRutina = (id) => {
     }, [id]);
 
     return ({ calentamientosRutinaData, cargando });
+}
+
+// hook para crear una rutina
+export const useAttachCalentamientoRutina = () => {
+
+    const [cargando, setCargando] = useState(false);
+
+    const attachCalentamientoRutina = async (formData, rutina_id) => {
+
+        // está cargando
+        setCargando(true);
+
+        // recoge los datos devueltos por el servicio
+        const serviceResponse = await postCalentamientoRutina(formData, rutina_id);
+
+        // termina de cargar
+        setCargando(false);
+
+        // devuelve los datos recividos del servicio
+        return serviceResponse;
+    }
+
+    return ({ attachCalentamientoRutina, cargando });
 }

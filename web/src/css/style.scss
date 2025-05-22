@@ -30,7 +30,18 @@ form {
             // cambia el color del borde cuando se hace click en el input
             border-color: $form-input-border-color;
             box-shadow: 0 0 0 0.2rem $form-input-shadow-color;
-        } 
+        }
+
+        // clase de react-select
+        .css-t3ipsp-control {
+            border-color: $form-input-border-color !important;
+            box-shadow: 0 0 0 0.2rem $form-input-shadow-color !important;
+        }
+
+        .img-select {
+            width: 100px;
+            object-fit: contain;
+        }
     }
 
     .botones {

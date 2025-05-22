@@ -2,6 +2,16 @@
     font-size: $checkbox-despl-font-size;
 }
 
+// color del checkbox
+.container-checkboxdespl {
+    fill: $checkbox-despl-color;
+}
+
+/*
+ *
+ * Código por defecto
+ */
+
 /*------ Settings ------*/
 .container-checkboxdespl {
     --size: 15px;
@@ -10,16 +20,16 @@
     cursor: pointer;
     font-size: var(--size);
     user-select: none;
-    fill: red;
 
     .chevron-right-checkboxdespl {
         position: absolute;
+        display: none;
         animation: keyframes-return .5s;
     }
 
     .chevron-down-checkboxdespl {
         position: absolute;
-        display: none;
+
         animation: keyframes-fill .5s;
     }
 
@@ -34,11 +44,11 @@
         /* ------ On check event ------ */
         &:checked {
             &~.chevron-right-checkboxdespl {
-                display: none;
+                display: block;
             }
 
             &~.chevron-down-checkboxdespl {
-                display: block;
+                display: none;
             }
         }
     }

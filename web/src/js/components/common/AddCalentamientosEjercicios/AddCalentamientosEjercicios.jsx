@@ -1,14 +1,21 @@
+import { NavLink } from 'react-router-dom';
 import ButtonAdd from '@components/ui/ButtonAdd/ButtonAdd';
 
 const AñadirCalentamientosEjercicios = () => {
 
     return (
         <div className='row'>
+            
             <div className='col-12 col-sm-6 button-add-componente-padre'>
-                <ButtonAdd titulo='Añadir Calentamiento' />
+                <NavLink to='add-calentamiento'>
+                    <ButtonAdd titulo='Añadir Calentamiento' />
+                </NavLink> 
             </div>
+
             <div className='col-12 col-sm-6 button-add-componente-padre'>
-                <ButtonAdd titulo='Añadir Ejercicio' />
+                <NavLink to='add-calentamiento'>
+                    <ButtonAdd titulo='Añadir Ejercicio' />
+                </NavLink>
             </div>
         </div>
     );

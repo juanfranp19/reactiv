@@ -4,7 +4,7 @@ use App\Http\Controllers\StorageController;
 use Illuminate\Support\Facades\Route;
 
 // archivos privados
-Route::get('/storage/private/{tabla}/{archivo}', [StorageController::class, 'showPrivate']);
+Route::get('/storage/local/{tabla}/{columna}/{archivo}', [StorageController::class, 'localStorage']);
 
 // archivos públicos
-Route::get('/storage/public/{tabla}/{archivo}', [StorageController::class, 'showPublic']);
+//Route::get('/storage/public/{tabla}/{columna}/{archivo}', [StorageController::class, 'showPublic']);
