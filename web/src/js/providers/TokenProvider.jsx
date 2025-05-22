@@ -35,15 +35,11 @@ const TokenProvider = ({ children }) => {
                     setId(data.id);
                     
                 } else {
-                    // elimina el token del almacenamiento local
-                    localStorage.removeItem('token');
-                    // elimina el token del contexto
-                    setToken(null);
+                    // llama funcion que elimina todo los datos del contexto
+                    handleLogout();
                 }
 
             } catch (error) {
-                localStorage.removeItem('token');
-                setToken(null);
                 console.log(error);
 
             } finally {
@@ -52,19 +48,24 @@ const TokenProvider = ({ children }) => {
             }
         };
 
+        const handleLogout = () => {
+            localStorage.removeItem('token');
+            setToken(null);
+            setUsername(null);
+            setId(null);
+        };
+
         verificarToken();
-        
+
     }, [user]);
+
+    if (cargando) return (<div>Cargando...</div>);
 
     return (
         <TokenContext.Provider value={{ token, setToken, username, setUsername, id, setId }}>
-            {
-                cargando
-                    ? <div>cargando</div>
-                    : children
-            }
+            {children}
         </TokenContext.Provider>
     );
-}
+};
 
 export default TokenProvider;

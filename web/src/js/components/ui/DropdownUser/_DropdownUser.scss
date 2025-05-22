@@ -8,13 +8,13 @@
 
         // icono de usuario
         .bi-person-circle {
-            font-size: $size-user-icon-nav;
+            font-size: $navbar-size-user-icon;
             padding-right: 5px;
         }
 
         // iconos de flecha
         .bi-caret-down, .bi-caret-down-fill {
-            font-size: $size-flecha-icon-nav;
+            font-size: $navbar-size-flecha-icon;
         }
 
         // icono de pulsado desaparece por defecto

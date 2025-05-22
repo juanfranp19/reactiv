@@ -31,7 +31,7 @@ const Navbar = () => {
                         <i className='bi bi-list-nested'></i>
                     </button>
 
-                    <div className='offcanvas offcanvas-end text-bg-dark' tabIndex='-1' id='mynavbar' aria-labelledby='offcanvasNavbarLabel'>
+                    <div className='offcanvas offcanvas-start text-bg-dark' tabIndex='-1' id='mynavbar' aria-labelledby='offcanvasNavbarLabel'>
 
                         {/* icono de Reactiv y botón de cerrar desplegable */}
                         <div className='offcanvas-header'>

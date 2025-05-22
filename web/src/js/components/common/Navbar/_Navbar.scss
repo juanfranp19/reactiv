@@ -1,16 +1,16 @@
 .navbar {
 
     .logo-reactiv {
-        width: $width-logoreactiv-nav;
-        padding: $padding-logoreactiv-nav;
+        width: $navbar-width-logoreactiv;
+        padding: $navbar-padding-logoreactiv;
     }
 
     .navbar-toggler {
-        font-size: $size-boton-nav;
+        font-size: $navbar-size-boton;
         
         // icono de botón enú pulsado desaparece por defecto
         .bi-list-nested {
-            color: $color-boton-hover-nav;
+            color: $navbar-color-boton-hover;
             display: none;
         }
 
@@ -28,10 +28,25 @@
 
     // boton para cerrar desplegable del modo móvil
     .btn-close, .navbar-toggler {
-        border: $btn-close-navbar-border;
+        border: $navbar-offcanvas-btn-close-border;
 
         &:focus {
             box-shadow: none;
         }
-    }    
+    }
+    
+    // desplegable del navbar
+    .offcanvas {
+        
+        // estilos hasta md, a partir de md se dejan de aplicar
+        @media screen and (max-width: $md) {
+            width: $navbar-offcanvas-width-sm;
+
+            // estilos hasta sm, a partir de sm se dejan de aplicar
+            @media screen and (max-width: $sm) {
+                width: $navbar-offcanvas-width;
+                max-width: $navbar-offcanvas-max-width;
+            }
+        }
+    }
 }

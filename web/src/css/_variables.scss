@@ -144,16 +144,19 @@ $flecha-size-car: 36px;
 $flecha-hover-size-car: 50px;
 
 // navbar
-$color-boton-hover-nav: var(--bs-navbar-hover-color);
+$navbar-color-boton-hover: var(--bs-navbar-hover-color);
 
-$width-logoreactiv-nav: 45px;
-$padding-logoreactiv-nav: 0 5px;
+$navbar-width-logoreactiv: 45px;
+$navbar-padding-logoreactiv: 0 5px;
 
-$size-boton-nav: 30px;
-$size-user-icon-nav: 30px;
-$size-flecha-icon-nav: 20px;
+$navbar-size-boton: 30px;
+$navbar-size-user-icon: 30px;
+$navbar-size-flecha-icon: 20px;
 
-$btn-close-navbar-border: 0;
+$navbar-offcanvas-btn-close-border: 0;
+$navbar-offcanvas-width: 200px;
+$navbar-offcanvas-max-width: 70%;
+$navbar-offcanvas-width-sm: 50%;
 
 // crear rutina
 $crear-rutina-padding-right: 15px;
