@@ -13,9 +13,9 @@ class SocioObserver
     public function creating(Socio $socio): void
     {
         // aborta si los valores ya están registrados de otros usuarios
-        if (Socio::where('dni', $socio->dni)->exists())             abort(400, 'Ya existe un socio con ese dni.');
-        if (Socio::where('email', $socio->email)->exists())         abort(400, 'Ya existe un socio con ese email.');
-        if (Socio::where('telefono', $socio->telefono)->exists())   abort(400, 'Ya existe un socio con ese teléfono.');
+        if (Socio::where('dni', $socio->dni)->exists())             abort(409, 'Ya existe un socio con ese dni.');
+        if (Socio::where('email', $socio->email)->exists())         abort(409, 'Ya existe un socio con ese email.');
+        if (Socio::where('telefono', $socio->telefono)->exists())   abort(409, 'Ya existe un socio con ese teléfono.');
 
         if (! App::runningInConsole()) {
 
@@ -49,13 +49,13 @@ class SocioObserver
     {
         // aborta si los valores actualizados ya están registrados de otros usuarios, sin contar con el propio valor del socio
         if (Socio::where('dni', $socio->dni)->where('id', '!=', $socio->id)->exists()) {
-            abort(400, 'Ya existe un socio con ese dni.');
+            abort(409, 'Ya existe un socio con ese dni.');
         }
         if (Socio::where('email', $socio->email)->where('id', '!=', $socio->id)->exists()) {
-            abort(400, 'Ya existe un socio con ese email.');
+            abort(409, 'Ya existe un socio con ese email.');
         }
         if (Socio::where('telefono', $socio->telefono)->where('id', '!=', $socio->id)->exists()) {
-            abort(400, 'Ya existe un socio con ese teléfono.');
+            abort(409, 'Ya existe un socio con ese teléfono.');
         }
     }
 }

@@ -23,7 +23,7 @@ class RutinaObserver
             if (Rutina::where('nombre', $rutina->nombre)
                 ->where('socio_id', $user->socio['id'])
                 ->exists()
-            ) abort(400, 'Ya tienes una rutina con ese nombre');
+            ) abort(409, 'Ya tienes una rutina con ese nombre');
 
             Log::info('user: ' . $user);
 

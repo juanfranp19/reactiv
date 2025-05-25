@@ -52,13 +52,24 @@ class EjercicioRutinaController extends Controller
                 'num_repeticiones' => 'required',
             ]);
 
+            // comprobar que no se añade un ejercicio repetido en la misma rutina (no se puede en el observer porque es un attach)
+            $existeEjercicioRutina = (EjercicioRutina::where('rutina_id', $rutina_id)
+                ->where('ejercicio_id', $request->ejercicio_id)
+                ->exists()
+            );
+
+            // si ya la tiene, lanza mensaje
+            if ($existeEjercicioRutina) return response()->json(['error' => 'Tu rutina ya tiene este ejercicio.'], 409);
+
+
             // asocia el ejercicio asociado con los valores pivot de la tabla
             $rutina->ejercicios()->attach($request->ejercicio_id, [
                 'num_series' => $request->num_series,
                 'num_repeticiones' => $request->num_repeticiones,
             ]);
 
-            return response()->json(['message' => 'attached'], 201);
+            // devuelve el mensaje que aparece en la notificación
+            return response()->json(['message' => 'Ejercicio añadido con éxito.'], 201);
 
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
