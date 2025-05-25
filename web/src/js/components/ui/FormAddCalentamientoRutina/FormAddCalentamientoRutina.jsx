@@ -83,7 +83,7 @@ const FormAddCalentamientoRutina = (props) => {
     }
 
     return (
-        <form className='col-12' id='id-from-add-calentamiento-rutina' onSubmit={manejarFormulario}>
+        <form className='col-12' id='id-form-add-calentamiento-rutina' onSubmit={manejarFormulario}>
             <div className='row'>
 
                 {/* campo calentamiento_id */}
@@ -97,6 +97,7 @@ const FormAddCalentamientoRutina = (props) => {
                         render={({ field }) => (
                             <Select
                                 {...field}
+                                classNamePrefix='react-select'
                                 className='form-control form-control-lg'
                                 id={CALENTAMIENTORUTINA.CALENTAMIENTO_ID}
                                 options={obtenerCalentamientos()}
@@ -148,9 +149,13 @@ const FormAddCalentamientoRutina = (props) => {
                                     value: true,
                                     message: 'Es obligatorio indicar el tiempo del calentamiento',
                                 },
+                                min: {
+                                    value: 1,
+                                    message: 'El tiempo no puede ser negativo ni cero',
+                                },
                             })}
                         />
-                        <span class='input-group-text' id='input-group-tiempo'>minutos</span>
+                        <span className='input-group-text' id='input-group-tiempo'>minutos</span>
                     </div>
                     <ErrorInput>{errors.tiempo?.message}</ErrorInput>
                 </div>

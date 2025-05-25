@@ -5,6 +5,7 @@ $body-bg-color: rgb(255, 255, 255);
 $sm: 576px;
 $md: 768px;
 $lg: 992px;
+$xl: 1200px;
 
 /**
  *
@@ -34,6 +35,18 @@ $form-input-max-width: 550px;
 
 $color-input-error: #c80000;
 $size-input-error: 15px;
+
+// select
+$form-select-menu-max-height: 60vh;
+$form-select-menu-width-sm: 500px;
+$form-select-menu-width-md: 750px;
+$form-select-menu-width-xl: 1000px;
+
+$form-select-menu-list-max-height: $form-select-menu-max-height;
+$form-select-menu-list-gap: 10px;
+$form-select-menu-list-display: grid;
+$form-select-menu-list-grid-template-columns-md: 1fr 1fr;
+$form-select-menu-list-grid-template-columns-xl: 1fr 1fr 1fr;
 
 // archivos
 $color-icono-eliminar: #ff0000;
@@ -103,9 +116,12 @@ $dashb-item-padding-right-sm: 10px;
  */
 $card-width: 250px;
 $card-margin: 10px;
+$card-align-items: center;
 
-$card-img-height: 150px;
 $card-img-margin-top: 22px;
+$card-img-width: 100px;
+$card-img-width-sm: 150px;
+$card-img-width-md: 200px;
 
 $card-subtitle-weigth: normal;
 $card-subtitle-text-transform: uppercase;

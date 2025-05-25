@@ -39,7 +39,7 @@ export const useObtenerCalentamientosRutina = (id) => {
     return ({ calentamientosRutinaData, cargando });
 }
 
-// hook para crear una rutina
+// hook para añadir un calentamiento a una rutina
 export const useAttachCalentamientoRutina = () => {
 
     const [cargando, setCargando] = useState(false);

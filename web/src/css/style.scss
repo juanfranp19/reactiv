@@ -42,6 +42,47 @@ form {
             width: 100px;
             object-fit: contain;
         }
+
+
+        // estilos para el desplegable de react-select
+
+        // menú del select
+        .react-select__menu {
+            
+            max-height: $form-select-menu-max-height;
+
+            @media screen and (min-width: $sm) {
+                width: $form-select-menu-width-sm !important;
+            }
+            @media screen and (min-width: $md) {
+                width: $form-select-menu-width-md !important;
+            }
+            @media screen and (min-width: $xl) {
+                width: $form-select-menu-width-xl !important;
+            }
+        }
+
+        // options del menú del select
+        .react-select__menu-list {
+
+            max-height: $form-select-menu-list-max-height !important;
+
+            // espacio entre cada option del select
+            gap: $form-select-menu-list-gap;
+
+            // para que se puedan posicions uno al lado de otro
+            display: $form-select-menu-list-display;
+
+            @media screen and (min-width: $md) {
+                // para que se ordenen de 2 en 2
+                grid-template-columns: $form-select-menu-list-grid-template-columns-md;
+            }
+            @media screen and (min-width: $xl) {
+                // para que se ordenen de 3 en 3
+                grid-template-columns: $form-select-menu-list-grid-template-columns-xl;
+            }
+        }
+
     }
 
     .botones {
@@ -149,10 +190,21 @@ form {
     width: $card-width;
     margin: $card-margin;
 
+    // para centrar la iamgen al centro
+    align-items: $card-align-items;
+
     // imagen
     img {
-        height: $card-img-height;
         margin-top: $card-img-margin-top;
+        width: $card-img-width;
+
+        @media screen and (min-width: $sm) {
+            width: $card-img-width-sm;
+        }
+
+        @media screen and (min-width: $md) {
+            width: $card-img-width-md;
+        }
     }
 
     // subtitulo

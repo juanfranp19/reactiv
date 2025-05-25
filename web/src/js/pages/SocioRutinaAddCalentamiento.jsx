@@ -8,17 +8,17 @@ const SocioRutinaAddCalentamiento = () => {
     const { rutaIdRutina } = useParams();
     const { attachCalentamientoRutina, cargando } = useAttachCalentamientoRutina();
 
-    console.log(rutaIdRutina);
+    //console.log(rutaIdRutina);
 
     const manejarAddCalentamiento = async (nuevoCalentamiento) => {
 
         // coge la respuesta de la API
-        const respuestaCrearMovimiento = await attachCalentamientoRutina(nuevoCalentamiento, rutaIdRutina);
+        const respuestaAddCalentamiento = await attachCalentamientoRutina(nuevoCalentamiento, rutaIdRutina);
 
         // si respuesta de la API, la muestra por la consola
-        if (respuestaCrearMovimiento) {
-            
-            console.log(respuestaCrearMovimiento);
+        if (respuestaAddCalentamiento) {
+
+            console.log(respuestaAddCalentamiento);
 
             // redirije a la ruta donde está los detalles de la rutina a la que le acaba de añadir el calentamiento
             navigateTo(`/dashboard/tus-rutinas/${rutaIdRutina}`);

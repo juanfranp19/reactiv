@@ -13,10 +13,11 @@ const AñadirCalentamientosEjercicios = () => {
             </div>
 
             <div className='col-12 col-sm-6 button-add-componente-padre'>
-                <NavLink to='add-calentamiento'>
+                <NavLink to='add-ejercicio'>
                     <ButtonAdd titulo='Añadir Ejercicio' />
                 </NavLink>
             </div>
+            
         </div>
     );
 }
