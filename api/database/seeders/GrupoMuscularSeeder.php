@@ -24,35 +24,37 @@ class GrupoMuscularSeeder extends Seeder
 
     private static $gruposMusculares_array = [
         [
-            'nombre' => 'pectoral',
+            'nombre' => 'Pectoral',
         ],
         [
-            'nombre' => 'dorsal',
+            'nombre' => 'Dorsal',
         ],
         [
-            'nombre' => 'hombros',
+            'nombre' => 'Hombro',
         ],
         [
-            'nombre' => 'bíceps',
+            'nombre' => 'Bíceps',
         ],
         [
-            'nombre' => 'trapecio',
-        ],
-
-        [
-            'nombre' => 'tríceps',
+            'nombre' => 'Trapecio',
         ],
         [
-            'nombre' => 'piernas',
+            'nombre' => 'Tríceps',
         ],
         [
-            'nombre' => 'gemelos',
+            'nombre' => 'Piernas',
         ],
         [
-            'nombre' => 'abdominales',
+            'nombre' => 'Gemelos',
         ],
         [
-            'nombre' => 'lumbares',
+            'nombre' => 'Abdominales',
+        ],
+        [
+            'nombre' => 'Lumbares',
+        ],
+        [
+            'nombre' => 'Oblicuos',
         ],
     ];
 }
