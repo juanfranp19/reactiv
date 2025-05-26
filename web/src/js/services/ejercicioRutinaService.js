@@ -70,7 +70,7 @@ export const postEjercicioRutina = async (data, rutina_id) => {
             console.error('Error del servidor:', errorData);
 
             // mensaje del controlador
-            notyf.error(errorData.error); 
+            notyf.error(errorData.error);
 
             return null;
 
@@ -90,6 +90,103 @@ export const postEjercicioRutina = async (data, rutina_id) => {
 
         notyf.error('Error al añadir el ejercicio.');
         console.error('error al añadir ejercicio:', error.message);
+        throw error;
+    }
+}
+
+// servicio para actualizar un ejercicio a una rutina
+export const putEjercicioRutina = async (data, rutina_id) => {
+
+    try {
+
+        const token = localStorage.getItem('token');
+
+        // envía a la URL los datos por método PUT
+        const response = await fetch(`${API_URL_EJERCICIOS_RUTINAS}/${rutina_id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(data),
+        });
+
+        // error que sale en pantalla si no se ha podido actualizar el ejercicio
+        if (!response.ok) {
+
+            // mensaje de error del servidor
+            const errorData = await response.json();
+            console.error('Error del servidor:', errorData);
+
+            // mensaje del controlador
+            notyf.error(errorData.error);
+
+            return null;
+
+        } else {
+
+            // coge la respuesta de la API
+            const okData = await response.json();
+
+            // mensaje del controlador
+            notyf.success(okData);
+
+            console.log('ejercicio añadido: ', okData);
+            return okData;
+        }
+
+    } catch (error) {
+
+        notyf.error('Error al añadir el ejercicio.');
+        console.error('error al añadir ejercicio:', error.message);
+        throw error;
+    }
+}
+
+// servicio para eliminar un ejercicio a una rutina
+export const deleteEjercicioRutina = async (data, rutina_id) => {
+
+    try {
+
+        const token = localStorage.getItem('token');
+
+        // envía a la URL los datos por método DELETE
+        const response = await fetch(`${API_URL_EJERCICIOS_RUTINAS}/${rutina_id}?ejercicio_id=${data}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        // error que sale en pantalla si no se ha podido eliminar el ejercicio
+        if (!response.ok) {
+
+            // mensaje de error del servidor
+            const errorData = await response.json();
+            console.error('Error del servidor:', errorData);
+
+            // mensaje del controlador
+            notyf.error(errorData.error);
+
+            return null;
+
+        } else {
+
+            // coge la respuesta de la API
+            const okData = await response.json();
+
+            // mensaje del controlador
+            notyf.success(okData);
+
+            console.log('ejercicio eliminado: ', okData);
+            return okData;
+        }
+
+    } catch (error) {
+
+        notyf.error('Error al eliminar el ejercicio.');
+        console.error('error al eliminar ejercicio:', error.message);
         throw error;
     }
 }

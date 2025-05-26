@@ -98,11 +98,12 @@ class EjercicioRutinaController extends Controller
                 'num_repeticiones' => $request->num_repeticiones,
             ]);
 
-            return response('', 204);
+            // devuelve el mensaje que aparece en la notificación
+            return response()->json(['message' => 'Ejercicio actualizado con éxito.'], 200);
 
         } else {
 
-            return response()->json(['message' => 'ejercicio no encontrado'], 404);
+            return response()->json(['message' => 'Ejercicio no encontrado.'], 404);
         }
     }
 
@@ -123,11 +124,12 @@ class EjercicioRutinaController extends Controller
             // elimina el ejercicio de la rutina
             $rutina->ejercicios()->detach($request->ejercicio_id);
 
-            return response('', 204);
+            // devuelve el mensaje que aparece en la notificación
+            return response()->json(['message' => 'Ejercicio eliminado con éxito.'], 200);
 
         } else {
 
-            return response()->json(['message' => 'ejercicio no encontrado'], 404);
+            return response()->json(['message' => 'Ejercicio no encontrado.'], 404);
         }
     }
 }

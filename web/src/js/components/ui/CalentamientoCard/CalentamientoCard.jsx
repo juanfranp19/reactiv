@@ -71,13 +71,13 @@ const CalentamientoCard = (props) => {
             }
             <div className='card-body'>
                 <h5 className='card-title'>{props.nombre}</h5>
-
                 {
                     editMode
                         ? (
                             // formulario de los datos de la card
                             <form>
                                 <div className='campo'>
+                                    <label htmlFor={CALENTAMIENTORUTINA.TIEMPO} className='col-form-label col-form-label-lg'>Tiempo</label>
                                     <input type='number' id={CALENTAMIENTORUTINA.TIEMPO} className='form-control form-control-lg'
 
                                         {...register(CALENTAMIENTORUTINA.TIEMPO, {
@@ -100,7 +100,6 @@ const CalentamientoCard = (props) => {
                             <p className='card-text'>{props.tiempo} minutos</p>
                         )
                 }
-
                 <div className='botones'>
                     {
                         editMode
