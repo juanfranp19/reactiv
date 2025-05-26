@@ -4,13 +4,14 @@ import { useParams } from 'react-router-dom';
 import CalentamientoCard from '@components/ui/CalentamientoCard/CalentamientoCard';
 import CheckboxDesplegable from '@components/ui/CheckboxDesplegable/CheckboxDesplegable';
 
-import { useObtenerCalentamientosRutina, useActualizarCalentamientoRutina } from '@hooks/useCalentamientoRutina';
+import { useObtenerCalentamientosRutina, useActualizarCalentamientoRutina, useDetachCalentamientoRutina } from '@hooks/useCalentamientoRutina';
 
 const ListaRutinaCalentamientos = ({ rutina }) => {
 
     const { rutaIdRutina } = useParams();
     const { calentamientosRutinaData, cargando: cargandoCalentamientosRutina, recargar } = useObtenerCalentamientosRutina(rutina);
     const { updateCalentamientoRutina, cargando: cargandoUpdateCalentamientosRutina } = useActualizarCalentamientoRutina();
+    const { detachCalentamientoRutina, cargando: cargandoDetachCalentamientosRutina } = useDetachCalentamientoRutina();
 
     const [checked, setChecked] = useState(true);
 
@@ -23,6 +24,21 @@ const ListaRutinaCalentamientos = ({ rutina }) => {
         // si hay respuesta
         if (respuestaUpdateCalentamiento) {
             console.log('calentamiento actualizado', respuestaUpdateCalentamiento);
+
+            // recarga los datos de los calentamientos
+            recargar();
+        }
+    }
+
+    // función para eliminar el calentamiento
+    const manejarDetachCalentamiento = async (calentamientoEliminado) => {
+
+        // coge la respuesta de la API
+        const respuestaDetachCalentamiento = await detachCalentamientoRutina(calentamientoEliminado, rutaIdRutina);
+
+        // si hay respuesta
+        if (respuestaDetachCalentamiento) {
+            console.log('calentamiento actualizado', respuestaDetachCalentamiento);
 
             // recarga los datos de los calentamientos
             recargar();
@@ -53,7 +69,9 @@ const ListaRutinaCalentamientos = ({ rutina }) => {
                         imagen={calentamiento.imagen}
                         tiempo={calentamiento.pivot?.tiempo}
                         manejarUpdateCalentamiento={manejarUpdateCalentamiento}
-                        cargando={cargandoUpdateCalentamientosRutina}
+                        manejarDetachCalentamiento={manejarDetachCalentamiento}
+                        cargandoUpdate={cargandoUpdateCalentamientosRutina}
+                        cargandoDetach={cargandoDetachCalentamientosRutina}
                     />
                 ))
         );

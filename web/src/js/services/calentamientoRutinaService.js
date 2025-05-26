@@ -70,7 +70,7 @@ export const postCalentamientoRutina = async (data, rutina_id) => {
             console.error('Error del servidor:', errorData);
 
             // mensaje del controlador
-            notyf.error(errorData.error); 
+            notyf.error(errorData.error);
 
             return null;
 
@@ -119,7 +119,7 @@ export const putCalentamientoRutina = async (data, rutina_id) => {
             console.error('Error del servidor:', errorData);
 
             // mensaje del controlador
-            notyf.error(errorData.error); 
+            notyf.error(errorData.error);
 
             return null;
 
@@ -139,6 +139,54 @@ export const putCalentamientoRutina = async (data, rutina_id) => {
 
         notyf.error('Error al añadir el calentamiento.');
         console.error('error al añadir calentamiento:', error.message);
+        throw error;
+    }
+}
+
+// servicio para eliminar un calentamiento a una rutina
+export const deleteCalentamientoRutina = async (data, rutina_id) => {
+
+    try {
+
+        const token = localStorage.getItem('token');
+
+        // envía a la URL los datos por método DELETE
+        const response = await fetch(`${API_URL_CALENTAMIENTOS_RUTINAS}/${rutina_id}?calentamiento_id=${data}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        // error que sale en pantalla si no se ha podido eliminar el calentamiento
+        if (!response.ok) {
+
+            // mensaje de error del servidor
+            const errorData = await response.json();
+            console.error('Error del servidor:', errorData);
+
+            // mensaje del controlador
+            notyf.error(errorData.error);
+
+            return null;
+
+        } else {
+
+            // coge la respuesta de la API
+            const okData = await response.json();
+
+            // mensaje del controlador
+            notyf.success(okData);
+
+            console.log('calentamiento eliminado: ', okData);
+            return okData;
+        }
+
+    } catch (error) {
+
+        notyf.error('Error al eliminar el calentamiento.');
+        console.error('error al eliminar calentamiento:', error.message);
         throw error;
     }
 }

@@ -92,11 +92,11 @@ class CalentamientoRutinaController extends Controller
                 'tiempo' => $request->tiempo,
             ]);
 
-            return response()->json(['message' => 'Calentamiento actualizaco con éxito.'], 200);
+            return response()->json(['message' => 'Calentamiento actualizado con éxito.'], 200);
 
         } else {
 
-            return response()->json(['message' => 'calentamiento no encontrado'], 404);
+            return response()->json(['message' => 'Calentamiento no encontrado.'], 404);
         }
     }
 
@@ -115,11 +115,11 @@ class CalentamientoRutinaController extends Controller
         if ($rutina->calentamientos()->where('calentamiento_id', $request->calentamiento_id)->exists()) {
 
             $rutina->calentamientos()->detach($request->calentamiento_id);
-            return response('', 204);
+            return response()->json(['message' => 'Calentamiento eliminado con éxito.'], 200);
 
         } else {
 
-            return response()->json(['message' => 'calentamiento no encontrado'], 404);
+            return response()->json(['message' => 'Calentamiento no encontrado.'], 404);
         }
     }
 }

@@ -129,7 +129,7 @@ const FormAddCalentamientoRutina = (props) => {
                         {...register(CALENTAMIENTORUTINA.CALENTAMIENTO_ID, {
                             required: {
                                 value: true,
-                                message: 'Es obligatorio seleccionar una provincia',
+                                message: 'Es obligatorio seleccionar un calentamiento',
                             },
                         })}
                     />

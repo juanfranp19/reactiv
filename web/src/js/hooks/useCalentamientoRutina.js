@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { getCalentamientosRutina, postCalentamientoRutina, putCalentamientoRutina } from '@services/calentamientoRutinaService';
+import { getCalentamientosRutina, postCalentamientoRutina, putCalentamientoRutina, deleteCalentamientoRutina } from '@services/calentamientoRutinaService';
 
 // hook para obtener los calentamientos de una rutina
 export const useObtenerCalentamientosRutina = (id) => {
@@ -8,7 +8,7 @@ export const useObtenerCalentamientosRutina = (id) => {
     const [cargando, setCargando] = useState(false);
 
     const obtenerCalentamientosRutina = useCallback(async () => {
-        
+
         // inicializa la carga
         setCargando(true);
 
@@ -83,4 +83,27 @@ export const useActualizarCalentamientoRutina = () => {
     }
 
     return ({ updateCalentamientoRutina, cargando });
+}
+
+// hook para eliminar un calentamiento a una rutina
+export const useDetachCalentamientoRutina = () => {
+
+    const [cargando, setCargando] = useState(false);
+
+    const detachCalentamientoRutina = async (formData, rutina_id) => {
+
+        // está cargando
+        setCargando(true);
+
+        // recoge los datos devueltos por el servicio
+        const serviceResponse = await deleteCalentamientoRutina(formData, rutina_id);
+
+        // termina de cargar
+        setCargando(false);
+
+        // devuelve los datos recividos del servicio
+        return serviceResponse;
+    }
+
+    return ({ detachCalentamientoRutina, cargando });
 }

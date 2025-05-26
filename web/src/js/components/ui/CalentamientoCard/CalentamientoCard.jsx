@@ -53,6 +53,14 @@ const CalentamientoCard = (props) => {
         setEditMode(false);
     });
 
+    const eliminarCalentamiento = async () => {
+
+        console.log(props.id);
+
+        //manda los datos a la función de la página ListaRutinaCalentamientos.jsx
+        await props.manejarDetachCalentamiento(props.id);
+    }
+
     return (
         <div className='col-4 card'>
             {
@@ -98,13 +106,13 @@ const CalentamientoCard = (props) => {
                         editMode
                             ? (
                                 <>
-                                    <ButtonSave onClick={guardarCalentamiento} cargando={props.cargando} />
+                                    <ButtonSave onClick={guardarCalentamiento} cargando={props.cargandoUpdate} />
                                     <ButtonCancel onClick={quitarModoEditar} />
                                 </>
                             ) : (
                                 <>
                                     <ButtonEdit onClick={cambiarModoEditar} />
-                                    <ButtonDelete />
+                                    <ButtonDelete onClick={eliminarCalentamiento} cargando={props.cargandoDetach} />
                                 </>
                             )
                     }
