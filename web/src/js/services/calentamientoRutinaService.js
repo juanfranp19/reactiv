@@ -93,3 +93,52 @@ export const postCalentamientoRutina = async (data, rutina_id) => {
         throw error;
     }
 }
+
+// servicio para actualizar un calentamiento a una rutina
+export const putCalentamientoRutina = async (data, rutina_id) => {
+
+    try {
+
+        const token = localStorage.getItem('token');
+
+        // envía a la URL los datos por método PUT
+        const response = await fetch(`${API_URL_CALENTAMIENTOS_RUTINAS}/${rutina_id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(data),
+        });
+
+        // error que sale en pantalla si no se ha podido actualizar el calentamiento
+        if (!response.ok) {
+
+            // mensaje de error del servidor
+            const errorData = await response.json();
+            console.error('Error del servidor:', errorData);
+
+            // mensaje del controlador
+            notyf.error(errorData.error); 
+
+            return null;
+
+        } else {
+
+            // coge la respuesta de la API
+            const okData = await response.json();
+
+            // mensaje del controlador
+            notyf.success(okData);
+
+            console.log('calentamiento añadido: ', okData);
+            return okData;
+        }
+
+    } catch (error) {
+
+        notyf.error('Error al añadir el calentamiento.');
+        console.error('error al añadir calentamiento:', error.message);
+        throw error;
+    }
+}

@@ -14,11 +14,14 @@ const SocioRutinaCrear = () => {
 
         // si ha obtenido respuesta 201, lo muestra por consola
         if (respuestaCrearRutina) {
-            
-            console.log('rutina creada');
 
-            // redirije a la página donde están todas las rutinas del socio
-            navigateTo('/dashboard/tus-rutinas');
+            console.log('rutina creada', respuestaCrearRutina);
+
+            // obtiene el id de la rutina que se acaba de crear
+            const idNuevaRutinaCreada = respuestaCrearRutina.data.id;
+
+            // redirije a la página de la nueva rutina
+            navigateTo(`/dashboard/tus-rutinas/${idNuevaRutinaCreada}`);
         }
     }
 

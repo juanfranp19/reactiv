@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { getCalentamientosRutina, postCalentamientoRutina } from '@services/calentamientoRutinaService';
+import { useCallback, useEffect, useState } from 'react';
+import { getCalentamientosRutina, postCalentamientoRutina, putCalentamientoRutina } from '@services/calentamientoRutinaService';
 
 // hook para obtener los calentamientos de una rutina
 export const useObtenerCalentamientosRutina = (id) => {
@@ -7,8 +7,8 @@ export const useObtenerCalentamientosRutina = (id) => {
     const [calentamientosRutinaData, setCalentamientosRutinaData] = useState([]);
     const [cargando, setCargando] = useState(false);
 
-    const obtenerCalentamientosRutina = async (id) => {
-
+    const obtenerCalentamientosRutina = useCallback(async () => {
+        
         // inicializa la carga
         setCargando(true);
 
@@ -29,14 +29,14 @@ export const useObtenerCalentamientosRutina = (id) => {
             //termina de cargar
             setCargando(false);
         }
-    }
+    }, [id]);
 
     useEffect(() => {
         // evita que se ejecute antes de que cargue el id
         if (id) obtenerCalentamientosRutina(id);
-    }, [id]);
+    }, [id, obtenerCalentamientosRutina]); // reinicia los datos al ejecutar recargar
 
-    return ({ calentamientosRutinaData, cargando });
+    return ({ calentamientosRutinaData, cargando, recargar: obtenerCalentamientosRutina });
 }
 
 // hook para añadir un calentamiento a una rutina
@@ -60,4 +60,27 @@ export const useAttachCalentamientoRutina = () => {
     }
 
     return ({ attachCalentamientoRutina, cargando });
+}
+
+// hook para actualizar un calentamiento a una rutina
+export const useActualizarCalentamientoRutina = () => {
+
+    const [cargando, setCargando] = useState(false);
+
+    const updateCalentamientoRutina = async (formData, rutina_id) => {
+
+        // está cargando
+        setCargando(true);
+
+        // recoge los datos devueltos por el servicio
+        const serviceResponse = await putCalentamientoRutina(formData, rutina_id);
+
+        // termina de cargar
+        setCargando(false);
+
+        // devuelve los datos recividos del servicio
+        return serviceResponse;
+    }
+
+    return ({ updateCalentamientoRutina, cargando });
 }

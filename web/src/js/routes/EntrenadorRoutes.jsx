@@ -10,14 +10,10 @@ const EntrenadorRoutes = () => {
     // si el usuario es entrenador, va a la ruta indicada
     if (isEntrenador) {
         return (<Outlet />);
-        
+
     } else if (isSocio) {
         // si no, si es socio, redirige al dashboard
         return (<Navigate to='/dashboard' />);
-
-    } else {
-        // si no está autenticado, al inicio
-        return (<Navigate to='/' />);
     }
 }
 

@@ -1,24 +1,42 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import CalentamientoCard from '@components/ui/CalentamientoCard/CalentamientoCard';
 import CheckboxDesplegable from '@components/ui/CheckboxDesplegable/CheckboxDesplegable';
-import { useObtenerCalentamientosRutina } from '@hooks/useCalentamientoRutina';
+
+import { useObtenerCalentamientosRutina, useActualizarCalentamientoRutina } from '@hooks/useCalentamientoRutina';
 
 const ListaRutinaCalentamientos = ({ rutina }) => {
 
-    const { calentamientosRutinaData, cargando } = useObtenerCalentamientosRutina(rutina);
+    const { rutaIdRutina } = useParams();
+    const { calentamientosRutinaData, cargando: cargandoCalentamientosRutina, recargar } = useObtenerCalentamientosRutina(rutina);
+    const { updateCalentamientoRutina, cargando: cargandoUpdateCalentamientosRutina } = useActualizarCalentamientoRutina();
+
     const [checked, setChecked] = useState(true);
 
-    console.log('calentamientos', calentamientosRutinaData);
+    // función para actualizar el calentamiento
+    const manejarUpdateCalentamiento = async (calentamientoActualizado) => {
 
+        // coge la respuesta de la API
+        const respuestaUpdateCalentamiento = await updateCalentamientoRutina(calentamientoActualizado, rutaIdRutina);
+
+        // si hay respuesta
+        if (respuestaUpdateCalentamiento) {
+            console.log('calentamiento actualizado', respuestaUpdateCalentamiento);
+
+            // recarga los datos de los calentamientos
+            recargar();
+        }
+    }
+
+    // función para obtener todos los calentamientos
     function obtenerCalentamientoCards() {
 
         // mete a los calentamientos en esta constante
         const listaCalentamientos = calentamientosRutinaData?.calentamientos ?? calentamientosRutinaData ?? [];
-        
-        //console.log('lista de calentamientos:', listaCalentamientos);
 
-        if (cargando) return 'Cargando...';
-        
+        if (cargandoCalentamientosRutina) return 'Cargando...';
+
         // si no tiene calentamientos, undefined o 0 en array
         if (!Array.isArray(listaCalentamientos) || listaCalentamientos?.length <= 0) {
             return 'No hay calentamientos';
@@ -30,9 +48,12 @@ const ListaRutinaCalentamientos = ({ rutina }) => {
                 ?.map((calentamiento) => (
                     <CalentamientoCard
                         key={calentamiento.id}
+                        id={calentamiento.id}
                         nombre={calentamiento.nombre}
                         imagen={calentamiento.imagen}
                         tiempo={calentamiento.pivot?.tiempo}
+                        manejarUpdateCalentamiento={manejarUpdateCalentamiento}
+                        cargando={cargandoUpdateCalentamientosRutina}
                     />
                 ))
         );
