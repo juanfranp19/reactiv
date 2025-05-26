@@ -92,7 +92,7 @@ class CalentamientoRutinaController extends Controller
                 'tiempo' => $request->tiempo,
             ]);
 
-            return response('', 204);
+            return response()->json(['message' => 'Calentamiento actualizaco con éxito.'], 200);
 
         } else {
 
