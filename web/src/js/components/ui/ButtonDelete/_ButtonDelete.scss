@@ -1,0 +1,9 @@
+.toast-delete {
+    h5 {
+        // etiqueta span del toast del button delete
+        span {
+            color: $toast-delete-span-color;
+            text-transform: $toast-delete-span-text-transform;
+        }
+    }
+}

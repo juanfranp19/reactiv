@@ -1,7 +1,7 @@
 const ButtonCancel = ({ onClick }) => {
 
     return (
-        <button className='btn btn-danger' onClick={onClick}>
+        <button className='btn btn-secondary' onClick={onClick}>
             <i class='bi bi-x-lg' />
         </button>
     );
