@@ -1,4 +1,4 @@
-import DashboardBigCard from '@components/ui/DashboardBigCard/DashboardBigCard'; 
+import DashboardBigCard from '@components/ui/DashboardBigCard/DashboardBigCard';
 import DashboardSmallCard from '@components/ui/DashboardSmallCard/DashboardSmallCard';
 
 import { useObtenerSocio } from '@hooks/useSocio';
@@ -11,15 +11,15 @@ const DashboardSocio = () => {
 
     return (
         <div className='row'>
-            
+
             <div className='col-12 col-lg-9'>
                 {/* mensaje de bienvenida */}
                 <div className='row'>
-                    <div className='col-12 titulo-dashboard'>
-                        Bienvenid@, {cargando ? 'cargando' : socioData.nombre}
+                    <div className='col-12 subtitulo-dashboard'>
+                        <i className='bi bi-file-earmark-person' /> Bienvenid@, {cargando ? 'cargando' : socioData.nombre}
                     </div>
                 </div>
-            
+
                 {/* menú de cards del dashboard */}
                 <div className='row'>
                     <div className='col-12'>
@@ -30,7 +30,7 @@ const DashboardSocio = () => {
                                     Tus Rutinas
                                 </div>
                             </DashboardBigCard>
-                            
+
                             <DashboardSmallCard linkTo='accesos' posicion='derecha'>Último acceso</DashboardSmallCard>
                             <DashboardSmallCard linkTo='seguimiento' posicion='izquierda'>Seguimientos</DashboardSmallCard>
 
@@ -41,7 +41,7 @@ const DashboardSocio = () => {
 
                             <DashboardSmallCard linkTo='productos' posicion='derecha'>Productos</DashboardSmallCard>
                             <DashboardSmallCard linkTo='taquilla' posicion='izquierda'>Taquillas</DashboardSmallCard>
-                            
+
                         </div>
                     </div>
                 </div>

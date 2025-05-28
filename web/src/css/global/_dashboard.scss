@@ -1,0 +1,74 @@
+// estilos para dashboard
+.dashboard-menu {
+    padding: $dashb-menu-padding;
+
+    // para que estén ordenados en cuadrados
+    .datos, .item {
+        border: $dashb-item-border;
+        border-radius: $dashb-item-border-radius;
+
+        margin-top: $dashb-item-margin-top;
+        margin-bottom: $dashb-item-margin-bottom;
+        padding-top: $dashb-item-padding-top;
+        padding-bottom: $dashb-item-padding-bottom;
+    }
+
+    .item {
+        text-align: $dashb-item-align;
+
+        // estilos a partir de sm
+        @media screen and (min-width: $sm) {
+            padding-top: $dashb-item-padding-top-sm;
+            padding-bottom: $dashb-item-padding-top-sm;
+        }
+    }
+
+    .p-left {
+        padding-left: $dashb-item-padding-left;
+
+        // estilos a partir de sm
+        @media screen and (min-width: $sm) {
+            padding-left: $dashb-item-padding-left-sm;
+        }
+    }
+    
+    .p-right {
+        padding-right: $dashb-item-padding-right;
+
+        // estilos a partir de sm
+        @media screen and (min-width: $sm) {
+            padding-right: $dashb-item-padding-right-sm;
+        }
+    }
+
+}
+
+// da estilo a los títulos de las páginas hijas de dashboard
+.titulo-dashboard {
+    font-size: $dashb-titulo-font-size;
+    text-align: $dashb-titulo-align;
+    padding: $dashb-titulo-padding;
+
+    background-color: rgb(202, 202, 202);
+
+    // estilos a partir de sm
+    @media screen and (min-width: $sm) {
+        font-size: $dashb-titulo-font-size-sm;
+        text-align: $dashb-titulo-align-sm;
+        padding: $dashb-titulo-padding-sm;
+    }
+}
+
+.subtitulo-dashboard {
+
+    font-size: $dashb-subtitulo-font-size;
+    text-align: $dashb-subtitulo-align;
+    padding: $dashb-subtitulo-padding;
+
+    // estilos a partir de sm
+    @media screen and (min-width: $sm) {
+        font-size: $dashb-subtitulo-font-size-sm;
+        text-align: $dashb-subtitulo-align-sm;
+        padding: $dashb-subtitulo-padding-sm;
+    }
+}

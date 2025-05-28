@@ -1,5 +1,7 @@
+// variables
 @import './variables';
 
+// archivos scss de componentes common react
 @import '../js/components/common/Carousel/Carousel';
 @import '../js/components/common/FormLogin/FormLogin';
 @import '../js/components/common/ListaRutinaCalentamientos/ListaRutinaCalentamientos';
@@ -7,6 +9,8 @@
 @import '../js/components/common/Navbar/Navbar';
 @import '../js/components/common/TopBar/TopBar';
 
+// archivos scss de componentes ui react
+@import '../js/components/ui/Breadcrumb/Breadcrumb';
 @import '../js/components/ui/ButtonAdd/ButtonAdd';
 @import '../js/components/ui/ButtonCrear/ButtonCrear';
 @import '../js/components/ui/ButtonDelete/ButtonDelete';
@@ -17,3 +21,8 @@
 @import '../js/components/ui/ErrorInput/ErrorInput';
 @import '../js/components/ui/FormCrearRutina/FormCrearRutina';
 @import '../js/components/ui/RutinaCard/RutinaCard';
+
+// archivos scss globales
+@import '../css/global/card';
+@import '../css/global/dashboard';
+@import '../css/global/form';

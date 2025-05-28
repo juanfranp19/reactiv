@@ -1,4 +1,4 @@
-import { Toast } from 'bootstrap';
+import Toast from 'bootstrap/js/dist/toast';
 import { useEffect, useRef, useState } from 'react';
 
 const ButtonDelete = ({ onClick, cargando }) => {

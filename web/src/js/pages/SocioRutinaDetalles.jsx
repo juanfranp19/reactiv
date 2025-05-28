@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import AddCalentamientosEjercicios from '@components/common/AddCalentamientosEjercicios/AddCalentamientosEjercicios';
+import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
 import ListaRutinaCalentamientos from '@components/common/ListaRutinaCalentamientos/ListaRutinaCalentamientos';
 import ListaRutinaEjercicios from '@components/common/ListaRutinaEjercicios/ListaRutinaEjercicios';
 
@@ -47,10 +48,11 @@ const SocioRutinaDetalles = () => {
 
     return (
         <main>
+            <DashboardCabecera propLastBC={nombreRutina}>
+                Rutina
+            </DashboardCabecera>
+
             <div className='row'>
-                <div className='col-12 titulo-dashboard'>
-                    Rutina
-                </div>
                 <div className='col-12 subtitulo-dashboard'>
                     {nombreRutina}
                 </div>

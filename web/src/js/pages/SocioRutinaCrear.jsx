@@ -1,5 +1,8 @@
 import { useNavigate } from 'react-router-dom';
+
+import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
 import FormCrearRutina from '@components/ui/FormCrearRutina/FormCrearRutina';
+
 import { useCrearRutina } from '@hooks/useRutina';
 
 const SocioRutinaCrear = () => {
@@ -27,6 +30,10 @@ const SocioRutinaCrear = () => {
 
     return (
         <main>
+            <DashboardCabecera>
+                Crear una rutina
+            </DashboardCabecera>
+
             <div className='row'>
                 <FormCrearRutina manejarCrearRutina={manejarCrearRutina} cargando={cargando} />
             </div>

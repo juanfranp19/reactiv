@@ -1,20 +1,21 @@
+import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
 import DashboardEntrenador from '@components/common/DashboardEntrenador/DashboardEntrenador';
 import DashboardSocio from '@components/common/DashboardSocio/DashboardSocio';
+
 import usePermission from '@hooks/usePermission';
 
 const Dashboard = () => {
 
-    const { isEntrenador } = usePermission();
+    const { isEntrenador, isSocio } = usePermission();
 
     return (
         <main>
-            {
-                isEntrenador ? (
-                    <DashboardEntrenador />
-                ) : (
-                    <DashboardSocio />
-                )
-            }
+            <DashboardCabecera>
+                <i className='bi bi-hexagon' /> Dashboard
+            </DashboardCabecera>
+
+            {isEntrenador && <DashboardEntrenador />}
+            {isSocio && <DashboardSocio />}
         </main>
     );
 }

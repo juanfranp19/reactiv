@@ -1,0 +1,106 @@
+// estilos de forms
+form {
+
+    .campo {
+        padding: $form-campo-padding;
+
+        label {
+            color: $label-color;
+            font-weight: $label-weigth;
+        }
+
+        input, textarea {
+            max-width: $form-input-max-width;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: $color-placeholder;
+        }
+
+        input:focus, textarea:focus {
+            // cambia el color del borde cuando se hace click en el input
+            border-color: $form-input-border-color;
+            box-shadow: 0 0 0 0.2rem $form-input-shadow-color;
+        }
+
+        // clase de react-select
+        .css-t3ipsp-control {
+            border-color: $form-input-border-color !important;
+            box-shadow: 0 0 0 0.2rem $form-input-shadow-color !important;
+        }
+
+        .img-select {
+            width: 100px;
+            object-fit: contain;
+        }
+
+
+        // estilos para el desplegable de react-select
+
+        // menú del select
+        .react-select__menu {
+            
+            max-height: $form-select-menu-max-height;
+
+            // estilos a partir de sm
+            @media screen and (min-width: $sm) {
+                width: $form-select-menu-width-sm !important;
+            }
+
+            // estilos a partir de md
+            @media screen and (min-width: $md) {
+                width: $form-select-menu-width-md !important;
+            }
+            
+            // estilos a partir de xl
+            @media screen and (min-width: $xl) {
+                width: $form-select-menu-width-xl !important;
+            }
+        }
+
+        // options del menú del select
+        .react-select__menu-list {
+
+            max-height: $form-select-menu-list-max-height !important;
+
+            // espacio entre cada option del select
+            gap: $form-select-menu-list-gap;
+
+            // para que se puedan posicions uno al lado de otro
+            display: $form-select-menu-list-display;
+
+            // estilos a partir de md
+            @media screen and (min-width: $md) {
+                // para que se ordenen de 2 en 2
+                grid-template-columns: $form-select-menu-list-grid-template-columns-md;
+            }
+
+            // estilos a partir de xl
+            @media screen and (min-width: $xl) {
+                // para que se ordenen de 3 en 3
+                grid-template-columns: $form-select-menu-list-grid-template-columns-xl;
+            }
+        }
+
+    }
+
+    .botones {
+        text-align: center;
+
+        margin-top: $form-button-margin-top;
+        margin-bottom: $form-button-margin-bottom;
+
+        // estilos a partir de sm
+        @media screen and (min-width: $sm) {
+            text-align: start;
+        }
+
+        button {
+            // para que cuando los botones se situen uno encima del otro, tengan espacio
+            margin-bottom: $form-button-margin-bottom / 2;
+
+            margin-right: $form-button-margin-right;
+            margin-left: $form-button-margin-left;
+        }
+    }   
+}

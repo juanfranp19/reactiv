@@ -1,5 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
+
+import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
 import FormAddCalentamientoRutina from '@components/ui/FormAddCalentamientoRutina/FormAddCalentamientoRutina';
+
 import { useAttachCalentamientoRutina } from '@hooks/useCalentamientoRutina';
 
 const SocioRutinaAddCalentamiento = () => {
@@ -26,9 +29,15 @@ const SocioRutinaAddCalentamiento = () => {
     }
 
     return (
-        <>
-            <FormAddCalentamientoRutina manejarAddCalentamiento={manejarAddCalentamiento} cargando={cargando} />
-        </>
+        <main>
+            <DashboardCabecera>
+                Añadir un calentamiento
+            </DashboardCabecera>
+
+            <div className='row'>
+                <FormAddCalentamientoRutina manejarAddCalentamiento={manejarAddCalentamiento} cargando={cargando} />
+            </div>
+        </main>
     );
 }
 

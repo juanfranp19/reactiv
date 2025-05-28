@@ -1,0 +1,62 @@
+// estilos para los componentes cards
+.card {
+    width: $card-width;
+    margin: $card-margin;
+
+    // para centrar la iamgen al centro
+    align-items: $card-align-items;
+
+    // imagen
+    img {
+        margin-top: $card-img-margin-top;
+        width: $card-img-width;
+
+        // estilos a partir de sm
+        @media screen and (min-width: $sm) {
+            width: $card-img-width-sm;
+        }
+
+        // estilos a partir de md
+        @media screen and (min-width: $md) {
+            width: $card-img-width-md;
+        }
+    }
+
+    // subtitulo
+    .card-subtitle {
+        font-weight: $card-subtitle-weigth;
+        text-transform: $card-subtitle-text-transform;
+        padding: $card-subtitle-padding;
+    }
+
+    // solo para etiquetas <p>
+    p.card-text {
+        padding: $card-p-card-text-padding;
+    }
+
+    // lista de la info, etiqueta <ul>
+    .card-info {
+
+        padding: $card-info-padding;
+
+        // solo para etiquetas <li>
+        li.card-text {
+            text-align: $card-info-card-text-align;
+            list-style: $card-info-card-text-list-style;
+
+            span {
+                font-weight: $card-info-card-text-span-weight;
+            }
+        }
+    }
+
+    // grupo de botones
+    .botones {
+        text-align: $card-botones-align;
+
+        button {
+            width: $card-button-width;
+            margin: $card-button-margin;
+        }
+    }
+}

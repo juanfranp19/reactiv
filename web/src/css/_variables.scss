@@ -82,10 +82,13 @@ $dashb-titulo-font-size-sm: 30px;
 $dashb-titulo-align: center;
 $dashb-titulo-align-sm: start;
 $dashb-titulo-padding: 20px;
-$dashb-titulo-padding-sm: 30px 50px;
 
-$dashb-subtitulo-font-size: $dashb-titulo-font-size - 8;
-$dashb-subtitulo-font-size-sm: $dashb-titulo-font-size-sm - 8;
+$dashb-titulo-padding-top-bottom-sm: 30px;
+$dashb-titulo-padding-left-right-sm: 50px;
+$dashb-titulo-padding-sm: $dashb-titulo-padding-top-bottom-sm $dashb-titulo-padding-left-right-sm;
+
+$dashb-subtitulo-font-size: $dashb-titulo-font-size - 5;
+$dashb-subtitulo-font-size-sm: $dashb-titulo-font-size-sm - 3;
 $dashb-subtitulo-align: center;
 $dashb-subtitulo-align-sm: start;
 $dashb-subtitulo-padding: 30px;
@@ -192,6 +195,18 @@ $desplegable-rutina-detalles-text-align-sm: start;
  *
  * Componenes UI
  */
+// breadcrumb
+$breadcrumb-padding-left: $dashb-titulo-padding; // igual que el titulo de dashboard
+$breadcrumb-padding-left-sm: $dashb-titulo-padding-left-right-sm; // igual que el titulo de dashboard
+
+$breadcrumb-divider-color: rgb(0, 0, 0);
+$breadcrumb-divider-width: 16;
+$breadcrumb-divider-height: 12;
+
+$breadcrumb-divider: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='#{$breadcrumb-divider-width}' height='#{$breadcrumb-divider-height}' fill='#{$breadcrumb-divider-color}' class='bi bi-shuffle' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.6 9.6 0 0 0 7.556 8a9.6 9.6 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.6 10.6 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.6 9.6 0 0 0 6.444 8a9.6 9.6 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5'/><path d='M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192'/></svg>");
+$breadcrumb-divider2: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='#{$breadcrumb-divider-width}' height='#{$breadcrumb-divider-height}' fill='#{$breadcrumb-divider-color}' class='bi bi-heart-arrow' viewBox='0 0 16 16'><path d='M6.707 9h4.364c-.536 1.573 2.028 3.806 4.929-.5-2.9-4.306-5.465-2.073-4.929-.5H6.707L4.854 6.146a.5.5 0 1 0-.708.708L5.293 8h-.586L2.854 6.146a.5.5 0 1 0-.708.708L3.293 8h-.586L.854 6.146a.5.5 0 1 0-.708.708L1.793 8.5.146 10.146a.5.5 0 0 0 .708.708L2.707 9h.586l-1.147 1.146a.5.5 0 0 0 .708.708L4.707 9h.586l-1.147 1.146a.5.5 0 0 0 .708.708z'/></svg>");
+$breadcrumb-divider3: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='#{$breadcrumb-divider-width}' height='#{$breadcrumb-divider-height}' fill='#{$breadcrumb-divider-color}' class='bi bi-arrow-left-right' viewBox='0 0 16 16'><path fill-rule='evenodd' d='M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5m14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5'/></svg>");
+
 // button add
 $bnt-add-width: 100%;
 $bnt-add-height: 50px;

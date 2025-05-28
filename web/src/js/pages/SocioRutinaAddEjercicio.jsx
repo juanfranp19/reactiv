@@ -1,6 +1,9 @@
-import FormAddEjercicioRutina from '@components/ui/FormAddEjercicioRutina/FormAddEjercicioRutina';
-import { useAttachEjercicioRutina } from '@hooks/useEjercicioRutina';
 import { useNavigate, useParams } from 'react-router-dom';
+
+import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
+import FormAddEjercicioRutina from '@components/ui/FormAddEjercicioRutina/FormAddEjercicioRutina';
+
+import { useAttachEjercicioRutina } from '@hooks/useEjercicioRutina';
 
 const SocioRutinaAddEjercicio = () => {
 
@@ -24,9 +27,15 @@ const SocioRutinaAddEjercicio = () => {
     }
 
     return (
-        <>
-            <FormAddEjercicioRutina manejarAddEjercicio={manejarAddEjercicio} cargando={cargando} />
-        </>
+        <main>
+            <DashboardCabecera>
+                Añadir un ejercicio
+            </DashboardCabecera>
+
+            <div className='row'>
+                <FormAddEjercicioRutina manejarAddEjercicio={manejarAddEjercicio} cargando={cargando} />
+            </div>
+        </main>
     );
 }
 
