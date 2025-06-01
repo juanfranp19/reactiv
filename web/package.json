@@ -10,6 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@schedule-x/events-service": "^2.31.1",
+    "@schedule-x/react": "^2.31.1",
+    "@schedule-x/theme-default": "^2.31.1",
     "bootstrap": "^5.3.5",
     "bootstrap-icons": "^1.11.3",
     "notyf": "^3.10.0",
