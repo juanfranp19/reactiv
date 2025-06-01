@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('socio_id');
             $table->unsignedBigInteger('rutina_id')->nullable();
-            $table->text('observaciones');
+            $table->text('observaciones')->nullable();
             $table->date('fecha');
 
             $table->unique(['socio_id', 'fecha'], 'UNQ_socioId_fecha');

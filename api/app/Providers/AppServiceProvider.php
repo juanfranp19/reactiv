@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Models\Entrenador;
 use App\Models\Rutina;
+use App\Models\Seguimiento;
 use App\Models\Socio;
 use App\Models\User;
 use App\Observers\RutinaObserver;
+use App\Observers\SeguimientoObserver;
 use App\Observers\SocioObserver;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
@@ -43,6 +45,7 @@ class AppServiceProvider extends ServiceProvider
         // observadores
 
         Rutina::observe(RutinaObserver::class);
+        Seguimiento::observe(SeguimientoObserver::class);
         Socio::observe(SocioObserver::class);
     }
 }
