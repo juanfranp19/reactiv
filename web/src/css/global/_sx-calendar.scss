@@ -1,0 +1,28 @@
+.sx-calendar {
+    padding-top: $sx-calendar-padding-top;
+    display: $sx-calendar-display;
+    justify-content: $sx-calendar-justify-content;
+
+    // estilos a partir de md
+    @media screen and (min-width: $md) {
+        padding: $sx-calendar-padding-md;
+    }
+}
+
+// clase sacada de la documentación de schedule-x
+.sx-react-calendar-wrapper {
+    width: $sx-calendar-wrapper-width;
+    height: $sx-calendar-wrapper-height;
+
+    // estilos a partir de sm
+    @media screen and (min-width: $sm) {
+        max-width: $sx-calendar-wrapper-max-width-sm;
+        max-height: $sx-calendar-wrapper-max-height-sm;
+    }
+
+    // estilos a partir de md
+    @media screen and (min-width: $md) {
+        width: $sx-calendar-wrapper-width-md;
+        height: $sx-calendar-wrapper-height-md;
+    }
+}

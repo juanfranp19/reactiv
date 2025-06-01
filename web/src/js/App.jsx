@@ -12,6 +12,7 @@ import SocioRutinaAddEjercicio from '@pages/SocioRutinaAddEjercicio';
 import SocioRutinaCrear from '@pages/SocioRutinaCrear';
 import SocioRutinaDetalles from '@pages/SocioRutinaDetalles';
 import SocioRutinas from '@pages/SocioRutinas';
+import SocioSeguimiento from '@pages/SocioSeguimiento';
 
 import PermissionProvider from '@providers/PermissionProvider';
 import TokenProvider from '@providers/TokenProvider';
@@ -61,6 +62,7 @@ const App = () => {
                             <Route path='/dashboard/tus-rutinas/:rutaIdRutina' element={<SocioRutinaDetalles />} />
                             <Route path='/dashboard/tus-rutinas/:rutaIdRutina/add-calentamiento' element={<SocioRutinaAddCalentamiento />} />
                             <Route path='/dashboard/tus-rutinas/:rutaIdRutina/add-ejercicio' element={<SocioRutinaAddEjercicio />} />
+                            <Route path='/dashboard/seguimiento' element={<SocioSeguimiento />} />
                         </Route>
                     </Route>
 

@@ -599,6 +599,34 @@ form .botones button {
   margin-left: 40px;
 }
 
+.sx-calendar {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .sx-calendar {
+    padding: 50px;
+  }
+}
+
+.sx-react-calendar-wrapper {
+  width: 100vw;
+  height: 55vh;
+}
+@media screen and (min-width: 576px) {
+  .sx-react-calendar-wrapper {
+    max-width: 90vw;
+    max-height: 80vh;
+  }
+}
+@media screen and (min-width: 768px) {
+  .sx-react-calendar-wrapper {
+    width: 1200px;
+    height: 800px;
+  }
+}
+
 body {
   background-color: rgb(255, 255, 255);
   height: 100vh;

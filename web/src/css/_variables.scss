@@ -145,6 +145,23 @@ $card-button-margin: 2px 10px;
  *
  * Componentes comunes
  */
+// calendar
+$sx-calendar-padding-top: 50px;
+$sx-calendar-display: flex;
+$sx-calendar-justify-content: center;
+
+$sx-calendar-padding-md: 50px;
+
+$sx-calendar-wrapper-width: 100vw;
+$sx-calendar-wrapper-height: 55vh;
+
+$sx-calendar-wrapper-max-width-sm: 90vw;
+$sx-calendar-wrapper-max-height-sm: 80vh;
+
+$sx-calendar-wrapper-width-md: 1200px;
+$sx-calendar-wrapper-height-md: 800px;
+
+
 // topbar
 $altura-topbar-car: 100px;
 $topbar-logo-width: 100px;

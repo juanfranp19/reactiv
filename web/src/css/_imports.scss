@@ -23,6 +23,7 @@
 @import '../js/components/ui/RutinaCard/RutinaCard';
 
 // archivos scss globales
-@import '../css/global/card';
-@import '../css/global/dashboard';
-@import '../css/global/form';
+@import './global/card';
+@import './global/dashboard';
+@import './global/form';
+@import './global/sx-calendar';
