@@ -40,7 +40,7 @@ const FormCrearRutina = (props) => {
     }
 
     return (
-        <form className='col-12 from-crear-rutina' id='idformcrearrutina' onSubmit={manejarFormulario}>
+        <form className='col-12' id='idformcrearrutina' onSubmit={manejarFormulario}>
         
             <div className='row'>
 

@@ -88,7 +88,7 @@ const FormAddCalentamientoRutina = (props) => {
 
                 {/* campo calentamiento_id */}
 
-                <div className='col-12 col-sm-6 col-lg-4 campo'>
+                <div className='col-12 col-md-6 col-xl-4 campo'>
 
                     <label htmlFor={CALENTAMIENTORUTINA.CALENTAMIENTO_ID} className='col-form-label col-form-label-lg'>Calentamiento</label>
                     <Controller
@@ -138,7 +138,7 @@ const FormAddCalentamientoRutina = (props) => {
 
                 {/* campo tiempo */}
 
-                <div className='col-12 col-sm-6 col-lg-4 campo'>
+                <div className='col-12 col-md-6 col-xl-4 campo'>
 
                     <label htmlFor={CALENTAMIENTORUTINA.TIEMPO} className='col-form-label col-form-label-lg'>Tiempo</label>
                     <div className='input-group'>

@@ -11,6 +11,9 @@ $xl: 1200px;
  *
  * Forms
  */
+$form-padding-sm: 20px 100px;
+$form-padding-md: 20px 180px 0 50px;
+
 // buttons
 $form-button-font-size: 20px;
 $form-button-width: 140px;
@@ -270,7 +273,3 @@ $rutina-card-item-fondo-color: #acbb79;
 
 $rutina-card-btn-ver-rutina-width: 100%;
 $rutina-card-btn-ver-rutina-margin-top: 30px;
-
-// form crear rutina
-$form-crear-rutina-padding-sm: 20px 100px;
-$form-crear-rutina-padding-md: 20px 180px 0 50px;

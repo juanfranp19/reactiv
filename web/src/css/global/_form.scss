@@ -1,6 +1,19 @@
 // estilos de forms
 form {
 
+    // aplica a todas las etiquetas form menos a la clase .formlogin
+    &:not(.formlogin) {
+        // estilos a partir de sm
+        @media screen and (min-width: $sm) {
+            padding: $form-padding-sm !important;
+        }
+
+        // estilos a partir de md
+        @media screen and (min-width: $md) {
+            padding: $form-padding-md !important;
+        }
+    }
+
     .campo {
         padding: $form-campo-padding;
 
@@ -32,6 +45,10 @@ form {
         .img-select {
             width: 100px;
             object-fit: contain;
+        }
+
+        .sub-select {
+            font-size: smaller;
         }
 
 

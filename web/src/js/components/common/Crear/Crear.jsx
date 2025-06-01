@@ -1,17 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import ButtonAdd from '@components/ui/ButtonAdd/ButtonAdd';
 
-const CrearRutina = () => {
+const Crear = ({ children }) => {
 
     return (
         <div className='row'>
-            <div className='col-12 crear-rutina button-add-componente-padre'>
+            <div className='col-12 button-add-componente-padre'> {/* clase de ButtonAdd */}
                 <NavLink to='crear'>
-                    <ButtonAdd />
+                    <ButtonAdd titulo={children} />
                 </NavLink>
             </div>
         </div>
     );
 }
 
-export default CrearRutina;
+export default Crear;

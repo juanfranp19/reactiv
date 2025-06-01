@@ -143,7 +143,7 @@ const FormCrearSocio = (props) => {
 
     return (
         <form className='col-12' id='idformsocio' onSubmit={manejarFormulario}>
-            <div className='row form-crear-socio'>
+            <div className='row'>
 
                 {/* campo DNI */}
 

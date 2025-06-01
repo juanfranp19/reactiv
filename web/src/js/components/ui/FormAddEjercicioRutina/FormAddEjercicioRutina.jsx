@@ -154,7 +154,7 @@ const FormAddEjercicioRutina = (props) => {
 
                 {/* campo ejercicio_id */}
 
-                <div className='col-12 col-sm-6 campo'>
+                <div className='col-12 col-md-6 campo'>
 
                     <label htmlFor={EJERCICIORUTINA.EJERCICIO_ID} className='col-form-label col-form-label-lg'>Ejercicio</label>
                     <Controller
@@ -204,7 +204,7 @@ const FormAddEjercicioRutina = (props) => {
 
                 {/* campo num_series */}
 
-                <div className='col-12 col-sm-6 col-lg-4 campo'>
+                <div className='col-12 col-md-6 col-lg-4 campo'>
                     <div className="row">
 
                         {/* campo num_series */}
