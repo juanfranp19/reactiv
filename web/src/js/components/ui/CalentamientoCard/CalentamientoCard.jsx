@@ -75,7 +75,7 @@ const CalentamientoCard = (props) => {
                     editMode
                         ? (
                             // formulario de los datos de la card
-                            <form>
+                            <form className='card'>
                                 <div className='campo'>
                                     <label htmlFor={CALENTAMIENTORUTINA.TIEMPO} className='col-form-label col-form-label-lg'>Tiempo</label>
                                     <input type='number' id={CALENTAMIENTORUTINA.TIEMPO} className='form-control form-control-lg'

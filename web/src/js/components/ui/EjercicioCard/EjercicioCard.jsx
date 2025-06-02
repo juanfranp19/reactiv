@@ -77,7 +77,7 @@ const EjercicioCard = (props) => {
                     editMode
                         ? (
                             // formulario de los datos de la card
-                            <form>
+                            <form className='card'>
 
                                 {/* campo num_series */}
 
