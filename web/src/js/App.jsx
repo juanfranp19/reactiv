@@ -14,6 +14,7 @@ import SocioRutinaDetalles from '@pages/SocioRutinaDetalles';
 import SocioRutinas from '@pages/SocioRutinas';
 import SocioSeguimiento from '@pages/SocioSeguimiento';
 import SocioSeguimientoCrear from '@pages/SocioSeguimientoCrear';
+import SocioSeguimientoDetalles from '@pages/SocioSeguimientoDetalles';
 
 import PermissionProvider from '@providers/PermissionProvider';
 import TokenProvider from '@providers/TokenProvider';
@@ -60,11 +61,14 @@ const App = () => {
                             {/* rutas que tienen acceso solo los socios */}
                             <Route path='/dashboard/tus-rutinas' element={<SocioRutinas />} />
                             <Route path='/dashboard/tus-rutinas/crear' element={<SocioRutinaCrear />} />
-                            <Route path='/dashboard/tus-rutinas/:rutaIdRutina' element={<SocioRutinaDetalles />} />
-                            <Route path='/dashboard/tus-rutinas/:rutaIdRutina/add-calentamiento' element={<SocioRutinaAddCalentamiento />} />
-                            <Route path='/dashboard/tus-rutinas/:rutaIdRutina/add-ejercicio' element={<SocioRutinaAddEjercicio />} />
+                            <Route path='/dashboard/tus-rutinas/rutina/:rutaIdRutina' element={<SocioRutinaDetalles />} />
+                            <Route path='/dashboard/tus-rutinas/rutina/:rutaIdRutina/add-calentamiento' element={<SocioRutinaAddCalentamiento />} />
+                            <Route path='/dashboard/tus-rutinas/rutina/:rutaIdRutina/add-ejercicio' element={<SocioRutinaAddEjercicio />} />
+                            
                             <Route path='/dashboard/seguimiento' element={<SocioSeguimiento />} />
                             <Route path='/dashboard/seguimiento/crear' element={<SocioSeguimientoCrear />} />
+                            <Route path='/dashboard/seguimiento/:rutaIdSeguimiento' element={<SocioSeguimientoDetalles />} />
+                            <Route path='/dashboard/seguimiento/:rutaIdSeguimiento/rutina/:rutaIdRutina' element={<SocioRutinaDetalles />} />
                         </Route>
                     </Route>
 

@@ -15,6 +15,9 @@ const Breadcrumb = ({ propLastBC }) => {
         'add-ejercicio': 'Añadir ejercicio',
     }
 
+    // breadcrumbs sin link
+    const noLinkArray = ['rutina'];
+
     return (
         <nav className='breadcrumb-nav' aria-label='breadcrumb'>
             <ol className='col-12 breadcrumb'>
@@ -33,6 +36,8 @@ const Breadcrumb = ({ propLastBC }) => {
 
                         // obtenemos el último segmento del pathname
                         const lastBC = index === pathname.length - 1;
+
+                        const noLink = noLinkArray.includes(segment);
 
                         // construimos el enlace de dirección de cada breadcrumb
                         const hrefBC = `/${pathname.slice(0, index + 1).join('/')}`;
@@ -55,8 +60,8 @@ const Breadcrumb = ({ propLastBC }) => {
                         return (
                             <li key={segment} className={`breadcrumb-item ${lastBC ? 'active' : ''}`}>
                                 {
-                                    // si es el último breadcrumb, lo retorna sin Link ni enlace
-                                    lastBC
+                                    // si es el último breadcrumb o está marcado como que no tiene ningún link, lo retorna sin Link ni enlace
+                                    lastBC || noLink
                                         ? breadcrumb
                                         : <Link to={hrefBC}>{breadcrumb}</Link>
                                 }

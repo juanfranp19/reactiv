@@ -8,7 +8,7 @@ const RutinaCard = ({ id, nombre, descripcion }) => {
             {/* aparece a partir de SM */}
             <div className='row d-none d-sm-block'>
                 {/* lleva a la ruta con el nombre de la rutina formateado para ser una ruta */}
-                <NavLink to={`${id}`} className='navLink'>
+                <NavLink to={`/dashboard/tus-rutinas/rutina/${id}`} className='navLink'>
                     <div className='col-12 item'>
                         <div className='row'>
 
@@ -41,7 +41,7 @@ const RutinaCard = ({ id, nombre, descripcion }) => {
                         {/* todo lo que aparece en el desplegable del accordion */}
                         <div id={'collapseOne' + id} className='accordion-collapse collapse'>
                             <div className='accordion-body'>
-                                
+
                                 {/* descripción de la rutina */}
                                 <div className='container'>
                                     <div className='row'>
@@ -50,7 +50,7 @@ const RutinaCard = ({ id, nombre, descripcion }) => {
                                         <div className='col-12'>
                                             <button type='button' className='btn btn-ver-rutina'>
                                                 {/* lleva a la ruta con el nombre de la rutina */}
-                                                <NavLink to={`${id}`} className='navLink'>
+                                                <NavLink to={`/dashboard/tus-rutinas/rutina/${id}`} className='navLink'>
                                                     Ver más
                                                 </NavLink>
                                             </button>

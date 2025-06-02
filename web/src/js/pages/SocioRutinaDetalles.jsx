@@ -19,7 +19,8 @@ const SocioRutinaDetalles = () => {
     const [idRutina, setIdRutina] = useState(null);
     const [nombreRutina, setNombreRutina] = useState('');
 
-    // useCallback para funciones que luego se pasan a componentes hijos que memorizan datos
+    // useCallback para funciones que luego se pasan a componentes hijos que memorizan datos,
+    // por ejemplo: idRutina, que se obtiene aquí dentro y luego pasa a un componente hijo
     const obtenerRutinaId = useCallback(() => {
 
         if (Array.isArray(socioData?.rutinas)) {

@@ -57,6 +57,12 @@
         text-align: $dashb-titulo-align-sm;
         padding: $dashb-titulo-padding-sm;
     }
+
+    // clase para resaltar algo en el título
+    .destacado {
+        color: $dashb-titulo-destacado-color;
+        font-weight: $dashb-titulo-destacado-font-weight;
+    }
 }
 
 .subtitulo-dashboard {

@@ -496,6 +496,10 @@
     padding: 30px 50px;
   }
 }
+.titulo-dashboard .destacado {
+  color: red;
+  font-weight: bold;
+}
 
 .subtitulo-dashboard {
   font-size: 20px;
@@ -511,12 +515,12 @@
 }
 
 @media screen and (min-width: 576px) {
-  form:not(.formlogin) {
+  form:not(.formlogin, .card) {
     padding: 20px 100px !important;
   }
 }
 @media screen and (min-width: 768px) {
-  form:not(.formlogin) {
+  form:not(.formlogin, .card) {
     padding: 20px 180px 0 50px !important;
   }
 }

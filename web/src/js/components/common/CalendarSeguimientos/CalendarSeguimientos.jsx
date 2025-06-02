@@ -18,7 +18,7 @@ const CalendarSeguimientos = () => {
         console.log('event', event);
 
         // lleva a la página para ver detalles del seguimiento
-        //navigateTo('/${event.id}');
+        navigateTo(`${event.id}`);
     }
 
     //console.log(socioData?.seguimientos);
