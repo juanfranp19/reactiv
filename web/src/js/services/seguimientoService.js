@@ -58,3 +58,37 @@ export const postSeguimiento = async (data) => {
         throw error;
     }
 }
+
+// servicio para obtener datos de un seguimiento
+export const getSeguimiento = async (id) => {
+
+    const token = localStorage.getItem('token');
+
+    try {
+
+        // envía la URL para obtener un seguimiento
+        const response = await fetch(`${API_URL_SEGUIMIENTOS}/${id}`, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        // respuesta de la API
+        const data = await response.json();
+
+        if (!response.ok) {
+
+            console.error(data.message || 'error obtener los datos del seguimiento');
+            return 0;
+        }
+
+        console.log(`datos del seguimiento ${id}: `, data);
+        return data;
+
+    } catch (error) {
+
+        console.error('error en getSeguimiento: ', error.message);
+        throw error;
+    }
+}
