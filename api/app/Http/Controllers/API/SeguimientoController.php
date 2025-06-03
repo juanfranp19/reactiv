@@ -69,19 +69,19 @@ class SeguimientoController extends Controller
         $seguimiento = Seguimiento::findOrFail($id);
 
         $request->validate([
-            'socio_id' => 'required',
+            //'socio_id' => 'required',
             //'rutina_id' => 'required',
-            'observaciones' => 'required',
+            //'observaciones' => 'required',
             'fecha' => 'required',
         ]);
 
-        $seguimiento->socio_id = $request->input('socio_id');
+        //$seguimiento->socio_id = $request->input('socio_id');
         $seguimiento->rutina_id = $request->input('rutina_id');
         $seguimiento->observaciones = $request->input('observaciones');
         $seguimiento->fecha = $request->input('fecha');
         $seguimiento->save();
 
-        return response('', 204);
+        return response()->json(['message' => 'Seguimiento actualizado con éxito.'], 200);
     }
 
     /**
@@ -92,6 +92,6 @@ class SeguimientoController extends Controller
         $seguimiento = Seguimiento::findOrFail($id);
 
         $seguimiento->delete();
-        return response('', 204);
+        return response()->json(['message' => 'Seguimiento eliminado con éxito.'], 200);
     }
 }

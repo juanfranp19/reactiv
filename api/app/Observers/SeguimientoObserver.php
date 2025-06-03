@@ -19,16 +19,29 @@ class SeguimientoObserver
             // usuario autenticado
             $user = Auth::user();
 
+            Log::info('user: ' . $user);
+
+            // asigna el socio que está autenticado
+            $seguimiento->socio_id = $user->socio['id'];
+        }
+    }
+
+    /**
+     * Evento que se ejecuta antes de crear un seguimiento
+     */
+    public function creating(Seguimiento $seguimiento): void
+    {
+        if (!App::runningInConsole()) {
+
+            // usuario autenticado
+            $user = Auth::user();
+
             // aborta si ya hay un seguimiento con ese socio_id y fecha
             if (Seguimiento::where('fecha', $seguimiento->fecha)
                 ->where('socio_id', $user->socio['id'])
                 ->exists()
             ) abort(409, 'Ya tienes un seguimiento de ese día.');
 
-            Log::info('user: ' . $user);
-
-            // asigna el socio que está autenticado
-            $seguimiento->socio_id = $user->socio['id'];
         }
     }
 }
