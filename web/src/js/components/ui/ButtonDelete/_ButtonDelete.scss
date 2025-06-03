@@ -6,4 +6,12 @@
             text-transform: $toast-delete-span-text-transform;
         }
     }
+
+    .toast-body {
+        text-align: $toast-delete-body-text-aling;
+
+        button {
+            margin: $toast-delete-body-button-margin; // separamiento entre los botones
+        }
+    }
 }

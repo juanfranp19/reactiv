@@ -1,7 +1,7 @@
 import Toast from 'bootstrap/js/dist/toast';
 import { useEffect, useRef, useState } from 'react';
 
-const ButtonDelete = ({ onClick, cargando }) => {
+const ButtonDelete = ({ cargando, children, onClick }) => {
 
     // referencia del Toast
     const liveToast = useRef(null);
@@ -25,7 +25,7 @@ const ButtonDelete = ({ onClick, cargando }) => {
                     cargando
                         ? <i className='bi bi-arrow-clockwise' />
                         : <i className='bi bi-trash' />
-                }
+                } {children}
             </button>
             
             {/* Toast que aparece tras pulsar el botón */}

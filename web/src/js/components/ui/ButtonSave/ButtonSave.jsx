@@ -1,4 +1,4 @@
-const ButtonSave = ({ onClick, cargando }) => {
+const ButtonSave = ({ cargando, children, onClick }) => {
 
     return (
         <button className='btn btn-success' onClick={onClick}>
@@ -6,7 +6,7 @@ const ButtonSave = ({ onClick, cargando }) => {
                 cargando
                     ? <i className='bi bi-arrow-clockwise' />
                     : <i className='bi bi-floppy' />
-            }
+            } {children}
         </button>
     );
 }
