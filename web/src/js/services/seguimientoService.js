@@ -36,7 +36,7 @@ export const postSeguimiento = async (data) => {
             console.error('Error del servidor:', errorData);
 
             // mensaje del observer
-            notyf.error(errorData.error); 
+            notyf.error(errorData.error);
 
             return 0;
 
@@ -89,6 +89,102 @@ export const getSeguimiento = async (id) => {
     } catch (error) {
 
         console.error('error en getSeguimiento: ', error.message);
+        throw error;
+    }
+}
+
+// servicio para actualizar un seguimiento
+export const putSeguimiento = async (data, id) => {
+
+    try {
+
+        const token = localStorage.getItem('token');
+
+        // envía a la URL los datos por método PUT
+        const response = await fetch(`${API_URL_SEGUIMIENTOS}/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(data),
+        });
+
+        // error que sale en pantalla si no se ha podido actualizar el seguimiento
+        if (!response.ok) {
+
+            // mensaje de error del servidor
+            const errorData = await response.json();
+            console.error('Error del servidor:', errorData);
+
+            // mensaje del observer
+            notyf.error(errorData.error);
+
+            return null;
+
+        } else {
+
+            // coge la respuesta de la API
+            const okData = await response.json();
+
+            notyf.success(okData);
+
+            console.log('seguimiento añadido: ', okData);
+            return okData;
+        }
+
+    } catch (error) {
+
+        notyf.error('Error al actualizar el seguimiento.');
+        console.error('error al actualizar seguimiento:', error.message);
+        throw error;
+    }
+}
+
+// servicio para eliminar un seguimiento
+export const deleteSeguimiento = async (id) => {
+
+    try {
+
+        const token = localStorage.getItem('token');
+
+        // envía a la URL los datos por método DELETE
+        const response = await fetch(`${API_URL_SEGUIMIENTOS}/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        // error que sale en pantalla si no se ha podido eliminar el seguimiento
+        if (!response.ok) {
+
+            // mensaje de error del servidor
+            const errorData = await response.json();
+            console.error('Error del servidor:', errorData);
+
+            // mensaje del controlador
+            notyf.error(errorData.error);
+
+            return null;
+
+        } else {
+
+            // coge la respuesta de la API
+            const okData = await response.json();
+
+            // mensaje del controlador
+            notyf.success(okData);
+
+            console.log('seguimiento eliminado: ', okData);
+            return okData;
+        }
+
+    } catch (error) {
+
+        notyf.error('Error al eliminar el seguimiento.');
+        console.error('error al eliminar seguimiento:', error.message);
         throw error;
     }
 }
