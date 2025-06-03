@@ -75,6 +75,9 @@ const ListaRutinaEjercicios = ({ rutina }) => {
                         manejarDetachEjercicio={manejarDetachEjercicio}
                         cargandoUpdate={cargandoUpdateEjerciciosRutina}
                         cargandoDetach={cargandoDetachEjerciciosRutina}
+                        showDetails={true}
+                        canEdit={true}
+                        canDelete={true}
                     />
                 ))
         );
@@ -90,14 +93,14 @@ const ListaRutinaEjercicios = ({ rutina }) => {
             <div className='col-12'>
 
                 {/* checkbox con nombre */}
-                <div className='row desplegable-rutina-ejercicios'>
+                <div className='row desplegable-rut-seg-ejercicios'>
                     <div className='col-12 checkbox-font'>
                         Ejercicios <CheckboxDesplegable isChecked={isChecked} />
                     </div>
                 </div>
 
                 {/* lista de ejercicios */}
-                <div className='row lista-rutina-ejercicios'>
+                <div className='row lista-rut-seg-ejercicios'>
                     {obtenerEjercicioCards()}
                 </div>
 

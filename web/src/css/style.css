@@ -105,32 +105,32 @@
   font-size: 20px;
 }
 
-.lista-rutina-calentamientos {
+.lista-rut-seg-calentamientos {
   text-align: center;
   justify-content: center;
 }
 
-.desplegable-rutina-calentamientos {
+.desplegable-rut-seg-calentamientos {
   margin: 40px 60px;
   text-align: center;
 }
 @media screen and (min-width: 576px) {
-  .desplegable-rutina-calentamientos {
+  .desplegable-rut-seg-calentamientos {
     text-align: start;
   }
 }
 
-.lista-rutina-ejercicios {
+.lista-rut-seg-ejercicios {
   text-align: center;
   justify-content: center;
 }
 
-.desplegable-rutina-ejercicios {
+.desplegable-rut-seg-ejercicios {
   margin: 40px 60px;
   text-align: center;
 }
 @media screen and (min-width: 576px) {
-  .desplegable-rutina-ejercicios {
+  .desplegable-rut-seg-ejercicios {
     text-align: start;
   }
 }

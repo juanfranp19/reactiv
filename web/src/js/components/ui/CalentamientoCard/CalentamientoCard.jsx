@@ -97,7 +97,7 @@ const CalentamientoCard = (props) => {
                             </form>
                         ) : (
                             // datos de la card
-                            <p className='card-text'>{props.tiempo} minutos</p>
+                            props.showDetails && <p className='card-text'>{props.tiempo} minutos</p>
                         )
                 }
                 <div className='botones'>
@@ -110,8 +110,8 @@ const CalentamientoCard = (props) => {
                                 </>
                             ) : (
                                 <>
-                                    <ButtonEdit onClick={cambiarModoEditar} />
-                                    <ButtonDelete onClick={eliminarCalentamiento} cargando={props.cargandoDetach} />
+                                    {props.canEdit && <ButtonEdit onClick={cambiarModoEditar} />} 
+                                    {props.canDelete && <ButtonDelete onClick={eliminarCalentamiento} cargando={props.cargandoDetach} />}
                                 </>
                             )
                     }

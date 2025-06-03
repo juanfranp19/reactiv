@@ -1,15 +1,15 @@
-.lista-rutina-ejercicios {
-    text-align: $lista-rutina-detalles-align;
-    justify-content: $lista-rutina-detalles-justify-content;
+.lista-rut-seg-ejercicios {
+    text-align: $lista-rut-seg-detalles-align;
+    justify-content: $lista-rut-seg-detalles-justify-content;
 }
 
-.desplegable-rutina-ejercicios {
+.desplegable-rut-seg-ejercicios {
 
-    margin: $desplegable-rutina-detalles-margin;
+    margin: $desplegable-rut-seg-detalles-margin;
 
-    text-align: $desplegable-rutina-detalles-text-align;
+    text-align: $desplegable-rut-seg-detalles-text-align;
 
     @media screen and (min-width: $sm) {
-        text-align: $desplegable-rutina-detalles-text-align-sm;
+        text-align: $desplegable-rut-seg-detalles-text-align-sm;
     }
 }

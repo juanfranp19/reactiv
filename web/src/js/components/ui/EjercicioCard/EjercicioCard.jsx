@@ -121,6 +121,7 @@ const EjercicioCard = (props) => {
                                 {/* JSON.stringify(watch()) */}
                             </form>
                         ) : (
+                            props.showDetails && 
                             <ul className='card-info'>
                                 <li className='card-text'><span>Series:</span> {props.num_series}</li>
                                 <li className='card-text'><span>Repeticiones:</span> {props.num_repeticiones}</li>
@@ -139,8 +140,8 @@ const EjercicioCard = (props) => {
                             ) : (
                                 // botones en modo no editar
                                 <>
-                                    <ButtonEdit onClick={cambiarModoEditar} />
-                                    <ButtonDelete onClick={eliminarEjercicio} cargando={props.cargandoDetach} />
+                                    {props.canEdit && <ButtonEdit onClick={cambiarModoEditar} />}
+                                    {props.canDelete && <ButtonDelete onClick={eliminarEjercicio} cargando={props.cargandoDetach} />}
                                 </>
                             )
                     }

@@ -72,6 +72,9 @@ const ListaRutinaCalentamientos = ({ rutina }) => {
                         manejarDetachCalentamiento={manejarDetachCalentamiento}
                         cargandoUpdate={cargandoUpdateCalentamientosRutina}
                         cargandoDetach={cargandoDetachCalentamientosRutina}
+                        showDetails={true}
+                        canEdit={true}
+                        canDelete={true}
                     />
                 ))
         );
@@ -87,14 +90,14 @@ const ListaRutinaCalentamientos = ({ rutina }) => {
             <div className='col-12'>
 
                 {/* checkbox con nombre */}
-                <div className='row desplegable-rutina-calentamientos'>
+                <div className='row desplegable-rut-seg-calentamientos'>
                     <div className='col-12 checkbox-font'>
                         Calentamientos <CheckboxDesplegable isChecked={isChecked} />
                     </div>
                 </div>
 
                 {/* lista de calentamientos */}
-                <div className='row lista-rutina-calentamientos'>
+                <div className='row lista-rut-seg-calentamientos'>
                     {obtenerCalentamientoCards()}
                 </div>
 
