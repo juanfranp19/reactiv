@@ -167,6 +167,16 @@ $sx-calendar-wrapper-max-height-sm: 80vh;
 $sx-calendar-wrapper-width-md: 1200px;
 $sx-calendar-wrapper-height-md: 800px;
 
+// datos seguimiento
+$datos-seg-text-align: center;
+$datos-seg-padding-top: 10px;
+$datos-seg-padding-left: 20px;
+
+$datos-seg-text-align-sm: start;
+$datos-seg-padding-left-sm: 50px;
+
+$datos-seg-button-padding: 15px;
+$datos-seg-button-margin: 0 10px;
 
 // topbar
 $altura-topbar-car: 100px;
@@ -249,6 +259,9 @@ $bnt-add-icon-font-size-sm: 40px;
 // button delete
 $toast-delete-span-color: red;
 $toast-delete-span-text-transform: uppercase;
+
+$toast-delete-body-text-aling: $card-botones-align; // mismos estilos que los botones del componente card
+$toast-delete-body-button-margin: $card-button-margin;
 
 // checkbox desplegable
 $checkbox-despl-font-size: 20px;

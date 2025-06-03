@@ -1,0 +1,18 @@
+// clase para posicionar el botón de editar
+.datos-seguimientos-edit {
+    text-align: $datos-seg-text-align;
+    padding-top: $datos-seg-padding-top;
+    padding-left: $datos-seg-padding-left;
+    
+    // estilos a partir de sm
+    @media screen and (min-width: $sm) {
+        text-align: $datos-seg-text-align-sm;
+        padding-left: $datos-seg-padding-left-sm;
+    }
+
+    // estilos para los botones relacionados con el modo editar
+    button {
+        padding: $datos-seg-button-padding; // hace que sean más grandes
+        margin: $datos-seg-button-margin; // separamiento entre ellos
+    }
+}

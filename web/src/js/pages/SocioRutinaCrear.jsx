@@ -24,7 +24,7 @@ const SocioRutinaCrear = () => {
             const idNuevaRutinaCreada = respuestaCrearRutina.data.id;
 
             // redirije a la página de la nueva rutina
-            navigateTo(`/dashboard/tus-rutinas/${idNuevaRutinaCreada}`);
+            navigateTo(`/dashboard/tus-rutinas/rutina/${idNuevaRutinaCreada}`);
         }
     }
 
