@@ -41,22 +41,32 @@ class CalentamientoSeguimientoController extends Controller
      */
     public function attach(Request $request, $seguimiento_id)
     {
-        $seguimiento = Seguimiento::findOrFail($seguimiento_id);
-
-        $request->validate([
-            'calentamiento_id' => 'required|exists:calentamientos,id',
-        ]);
-
         try {
+
+            $seguimiento = Seguimiento::findOrFail($seguimiento_id);
+
+            $request->validate([
+                'calentamiento_id' => 'required|exists:calentamientos,id',
+            ]);
+
+            // comprobar que no se añade un calentamiento repetido en el mismo seguimiento (no se puede en el observer porque es un attach)
+            $existeCalentamientoSeguimiento = (CalentamientoSeguimiento::where('seguimiento_id', $seguimiento_id)
+                ->where('calentamiento_id', $request->calentamiento_id)
+                ->exists()
+            );
+
+            // si ya la tiene, lanza mensaje
+            if ($existeCalentamientoSeguimiento) return response()->json(['error' => 'Tu seguimiento ya tiene este calentamiento.'], 409);
 
             // asocia el calentamiento asociado
             $seguimiento->calentamientos()->attach($request->calentamiento_id);
 
+            // devuelve el mensaje que aparece en la notificación
+            return response()->json(['message' => 'Calentamiento añadido con éxito.'], 201);
+
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
-
-        return response()->json(['message' => 'attached'], 201);
     }
 
     /**
@@ -74,11 +84,11 @@ class CalentamientoSeguimientoController extends Controller
         if ($seguimiento->calentamientos()->where('calentamiento_id', $request->calentamiento_id)->exists()) {
 
             $seguimiento->calentamientos()->detach($request->calentamiento_id);
-            return response('', 204);
+            return response()->json(['message' => 'Calentamiento eliminado con éxito.'], 200);
 
         } else {
 
-            return response()->json(['message' => 'calentamiento no encontrado'], 404);
+            return response()->json(['message' => 'Calentamiento no encontrado.'], 404);
         }
     }
 }

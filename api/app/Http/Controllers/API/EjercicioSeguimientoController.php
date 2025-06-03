@@ -20,7 +20,8 @@ class EjercicioSeguimientoController extends Controller
             if (EjercicioSeguimiento::where('seguimiento_id', $seguimiento_id)->exists()) {
 
                 // llama al seguimiento específico con los ejercicios que están asociados
-                $seguimiento = Seguimiento::with('ejercicios')->findOrFail($seguimiento_id);
+                //también para que aparezca el nombre del grupo musculara, además de grupo_id
+                $seguimiento = Seguimiento::with('ejercicios.grupoMuscular')->findOrFail($seguimiento_id);
 
                 return response()->json([
                     'data' => $seguimiento,
@@ -41,22 +42,32 @@ class EjercicioSeguimientoController extends Controller
      */
     public function attach(Request $request, $seguimiento_id)
     {
-        $seguimiento = Seguimiento::findOrFail($seguimiento_id);
-
-        $request->validate([
-            'ejercicio_id' => 'required|exists:ejercicios,id',
-        ]);
-
         try {
+
+            $seguimiento = Seguimiento::findOrFail($seguimiento_id);
+
+            $request->validate([
+                'ejercicio_id' => 'required|exists:ejercicios,id',
+            ]);
+
+            // comprobar que no se añade un ejercicio repetido en el mismo seguimiento (no se puede en el observer porque es un attach)
+            $existeEjercicioSeguimiento = (EjercicioSeguimiento::where('seguimiento_id', $seguimiento_id)
+                ->where('ejercicio_id', $request->ejercicio_id)
+                ->exists()
+            );
+
+            // si ya la tiene, lanza mensaje
+            if ($existeEjercicioSeguimiento) return response()->json(['error' => 'Tu seguimiento ya tiene este ejercicio.'], 409);
 
             // asocia el ejercicio asociado
             $seguimiento->ejercicios()->attach($request->ejercicio_id);
 
+            // devuelve el mensaje que aparece en la notificación
+            return response()->json(['message' => 'Ejercicio añadido con éxito.'], 201);
+
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
-
-        return response()->json(['message' => 'attached'], 201);
     }
 
     /**
@@ -75,11 +86,13 @@ class EjercicioSeguimientoController extends Controller
 
             // lo elimina
             $seguimiento->ejercicios()->detach($request->ejercicio_id);
-            return response('', 204);
+
+            // devuelve el mensaje que aparece en la notificación
+            return response()->json(['message' => 'Ejercicio eliminado con éxito.'], 200);
 
         } else {
 
-            return response()->json(['message' => 'ejercicio no encontrado'], 404);
+            return response()->json(['message' => 'Ejercicio no encontrado.'], 404);
         }
     }
 }
