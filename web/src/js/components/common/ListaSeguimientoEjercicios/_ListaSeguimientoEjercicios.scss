@@ -1,0 +1,15 @@
+.lista-rut-seg-ejercicios {
+    text-align: $lista-rut-seg-detalles-align;
+    justify-content: $lista-rut-seg-detalles-justify-content;
+}
+
+.desplegable-rut-seg-ejercicios {
+
+    margin: $desplegable-rut-seg-detalles-margin;
+
+    text-align: $desplegable-rut-seg-detalles-text-align;
+
+    @media screen and (min-width: $sm) {
+        text-align: $desplegable-rut-seg-detalles-text-align-sm;
+    }
+}

@@ -135,6 +135,36 @@
   }
 }
 
+.lista-rut-seg-ejercicios {
+  text-align: center;
+  justify-content: center;
+}
+
+.desplegable-rut-seg-ejercicios {
+  margin: 40px 60px;
+  text-align: center;
+}
+@media screen and (min-width: 576px) {
+  .desplegable-rut-seg-ejercicios {
+    text-align: start;
+  }
+}
+
+.lista-rut-seg-ejercicios {
+  text-align: center;
+  justify-content: center;
+}
+
+.desplegable-rut-seg-ejercicios {
+  margin: 40px 60px;
+  text-align: center;
+}
+@media screen and (min-width: 576px) {
+  .desplegable-rut-seg-ejercicios {
+    text-align: start;
+  }
+}
+
 .navbar .logo-reactiv {
   width: 45px;
   padding: 0 5px;
