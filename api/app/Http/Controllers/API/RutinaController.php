@@ -71,7 +71,7 @@ class RutinaController extends Controller
         $request->validate([
             'nombre' => 'required',
             //'descripcion' => 'required',
-            'socio_id' => 'required | exists:socios,id',
+            //'socio_id' => 'required | exists:socios,id',
         ]);
 
         $rutina->nombre = $request->input('nombre');
@@ -79,7 +79,7 @@ class RutinaController extends Controller
         $rutina->socio_id = $request->input('socio_id');
         $rutina->save();
 
-        return response('', 204);
+        return response()->json(['message' => 'Rutina actualizada con éxito.'], 200);
     }
 
     /**
@@ -90,6 +90,6 @@ class RutinaController extends Controller
         $rutina = Rutina::findOrFail($id);
 
         $rutina->delete();
-        return response('', 204);
+        return response()->json(['message' => 'Rutina eliminada con éxito.'], 200);
     }
 }

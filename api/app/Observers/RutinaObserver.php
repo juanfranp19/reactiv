@@ -19,16 +19,28 @@ class RutinaObserver
             // usuario autenticado
             $user = Auth::user();
 
+            Log::info('user: ' . $user);
+
+            // asigna el socio que está autenticado
+            $rutina->socio_id = $user->socio['id'];
+        }
+    }
+
+    /**
+     * Evento que se ejecuta antes de crear una rutina
+     */
+    public function creating(Rutina $rutina): void
+    {
+        if (!App::runningInConsole()) {
+
+            // usuario autenticado
+            $user = Auth::user();
+
             // aborta si los valores ya están registrados de otros usuarios
             if (Rutina::where('nombre', $rutina->nombre)
                 ->where('socio_id', $user->socio['id'])
                 ->exists()
             ) abort(409, 'Ya tienes una rutina con ese nombre');
-
-            Log::info('user: ' . $user);
-
-            // asigna el socio que está autenticado
-            $rutina->socio_id = $user->socio['id'];
         }
     }
 }
