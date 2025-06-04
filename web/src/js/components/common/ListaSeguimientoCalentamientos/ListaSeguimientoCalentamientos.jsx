@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import CalentamientoCard from '@components/ui/CalentamientoCard/CalentamientoCard';
 import CheckboxDesplegable from '@components/ui/CheckboxDesplegable/CheckboxDesplegable';
+import DropdownFormAddCalentamientoSeguimiento from '@components/ui/DropdownFormAddCalentamientoSeguimiento/DropdownFormAddCalentamientoSeguimiento';
 
 import { useObtenerCalentamientosSeguimiento, useDetachCalentamientoSeguimiento } from '@hooks/useCalentamientoSeguimiento';
 
@@ -77,6 +78,10 @@ const ListaSeguimientoCalentamientos = ({ seguimiento }) => {
                 <div className='row desplegable-rut-seg-calentamientos'>
                     <div className='col-12 checkbox-font'>
                         Calentamientos <CheckboxDesplegable isChecked={isChecked} />
+                    </div>
+
+                    <div className='col-12 dropdown-form-add-calentamiento-ejercicio-seguimiento'>
+                        <DropdownFormAddCalentamientoSeguimiento recargar={recargar} />
                     </div>
                 </div>
 

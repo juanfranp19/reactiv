@@ -104,16 +104,15 @@ const DropdownFormAddEjercicioSeguimiento = (props) => {
         reset,
     } = useForm({ defaulValues: EJERCICIORUTINA_INICIAL });
 
-    const manejarFormulario = handleSubmit((nuevoEjercicio) => {
+    const manejarFormulario = handleSubmit(async (nuevoEjercicio) => {
 
         // devuelve la información que hay en los campos
         console.log(nuevoEjercicio);
 
         //manda los datos junto con el id del seguimiento al servicio
-        const respuestaAttachEjercicio = attachEjercicioSeguimiento(nuevoEjercicio, rutaIdSeguimiento);
+        const respuestaAttachEjercicio = await attachEjercicioSeguimiento(nuevoEjercicio, rutaIdSeguimiento);
 
         if (respuestaAttachEjercicio) {
-            resetData();
             props.recargar();
         }
     });
