@@ -55,7 +55,8 @@ form {
         // estilos para el desplegable de react-select
 
         // menú del select
-        .react-select__menu {
+        // no aplica cuando la clase padre es .dropdown-menu
+        :not(.dropdown-menu) .react-select__menu {
             
             max-height: $form-select-menu-max-height;
 
@@ -76,7 +77,8 @@ form {
         }
 
         // options del menú del select
-        .react-select__menu-list {
+        // no aplica cuando la clase padre es .dropdown-menu
+        :not(.dropdown-menu) .react-select__menu-list {
 
             max-height: $form-select-menu-list-max-height !important;
 
@@ -119,5 +121,5 @@ form {
             margin-right: $form-button-margin-right;
             margin-left: $form-button-margin-left;
         }
-    }   
+    }
 }

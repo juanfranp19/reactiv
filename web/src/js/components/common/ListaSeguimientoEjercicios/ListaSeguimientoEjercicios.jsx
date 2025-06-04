@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import CheckboxDesplegable from '@components/ui/CheckboxDesplegable/CheckboxDesplegable';
+import DropdownFormAddEjercicioSeguimiento from '@components/ui/DropdownFormAddEjercicioSeguimiento/DropdownFormAddEjercicioSeguimiento';
 import EjercicioCard from '@components/ui/EjercicioCard/EjercicioCard';
 
 import { useObtenerEjerciciosSeguimiento, useDetachEjercicioSeguimiento } from '@hooks/useEjercicioSeguimiento';
@@ -68,6 +69,11 @@ const ListaSeguimientoEjercicios = ({ seguimiento }) => {
         setChecked(!checked);
     }
 
+    // para que se pueda recargar desde dropdown, ya que enviándole por prop la función regargar, no la llama
+    function recargarDesdeDropdown() {
+        recargar();
+    }
+
     return (
         <div className='row'>
             <div className='col-12'>
@@ -76,6 +82,11 @@ const ListaSeguimientoEjercicios = ({ seguimiento }) => {
                 <div className='row desplegable-rut-seg-ejercicios'>
                     <div className='col-12 checkbox-font'>
                         Ejercicios <CheckboxDesplegable isChecked={isChecked} />
+                    </div>
+
+                    {/* dropdown con el form para añadir ejercicio */}
+                    <div className='col-12 dropdown-form-add-calentamiento-ejercicio-seguimiento'>
+                        <DropdownFormAddEjercicioSeguimiento recargar={recargarDesdeDropdown} />
                     </div>
                 </div>
 

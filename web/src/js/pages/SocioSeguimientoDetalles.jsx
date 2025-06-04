@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
 import DatosSeguimiento from '@components/common/DatosSeguimiento/DatosSeguimiento';
 import ListaSeguimientoCalentamientos from '@components/common/ListaSeguimientoCalentamientos/ListaSeguimientoCalentamientos';
-import ListaRutinaEjercicios from '@components/common/ListaSeguimientoEjercicios/ListaSeguimientoEjercicios';
+import ListaSeguimientoEjercicios from '@components/common/ListaSeguimientoEjercicios/ListaSeguimientoEjercicios';
 
 import { useObtenerSocio } from '@hooks/useSocio';
 import useToken from '@hooks/useToken';
@@ -72,7 +72,7 @@ const SocioSeguimientoDetalles = () => {
 
             {/* componentes donde se trabajan datos de las tablas de calentamientos_seguimientos y ejercicios_seguimientos */}
             <ListaSeguimientoCalentamientos seguimiento={idSeguimiento} />
-            <ListaRutinaEjercicios seguimiento={idSeguimiento} />
+            <ListaSeguimientoEjercicios seguimiento={idSeguimiento} />
         </main>
     );
 }

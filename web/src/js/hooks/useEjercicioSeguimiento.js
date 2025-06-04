@@ -44,13 +44,13 @@ export const useAttachEjercicioSeguimiento = () => {
 
     const [cargando, setCargando] = useState(false);
 
-    const attachEjercicioSeguimiento = async (formData, rutina_id) => {
+    const attachEjercicioSeguimiento = async (formData, seguimiento_id) => {
 
         // está cargando
         setCargando(true);
 
         // recoge los datos devueltos por el servicio
-        const serviceResponse = await postEjercicioSeguimiento(formData, rutina_id);
+        const serviceResponse = await postEjercicioSeguimiento(formData, seguimiento_id);
 
         // termina de cargar
         setCargando(false);
@@ -67,13 +67,13 @@ export const useDetachEjercicioSeguimiento = () => {
 
     const [cargando, setCargando] = useState(false);
 
-    const detachEjercicioSeguimiento = async (formData, rutina_id) => {
+    const detachEjercicioSeguimiento = async (formData, seguimiento_id) => {
 
         // está cargando
         setCargando(true);
 
         // recoge los datos devueltos por el servicio
-        const serviceResponse = await deleteEjercicioSeguimiento(formData, rutina_id);
+        const serviceResponse = await deleteEjercicioSeguimiento(formData, seguimiento_id);
 
         // termina de cargar
         setCargando(false);
