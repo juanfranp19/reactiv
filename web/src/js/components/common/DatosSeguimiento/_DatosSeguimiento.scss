@@ -1,17 +1,17 @@
 // clase para posicionar el botón de editar
-.datos-seguimientos-edit {
-    text-align: $datos-seg-text-align;
-    padding-top: $datos-seg-padding-top;
-    padding-left: $datos-seg-padding-left;
+.datos-calentamientos-seguimientos-edit {
+    text-align: $datos-cal-seg-text-align;
+    padding-top: $datos-cal-seg-padding-top;
+    padding-left: $datos-cal-seg-padding-left;
     
     // estilos a partir de sm
     @media screen and (min-width: $sm) {
-        text-align: $datos-seg-text-align-sm;
-        padding-left: $datos-seg-padding-left-sm;
+        text-align: $datos-cal-seg-text-align-sm;
+        padding-left: $datos-cal-seg-padding-left-sm;
     }
 
     // estilos para los botones relacionados con el modo editar
     button {
-        margin: $datos-seg-button-margin; // separamiento entre ellos
+        margin: $datos-cal-seg-button-margin; // separamiento entre ellos
     }
 }

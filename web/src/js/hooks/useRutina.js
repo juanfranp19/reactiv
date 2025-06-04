@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { postRutina, getRutina } from '@services/rutinaService';
+import { postRutina, getRutina, putRutina, deleteRutina } from '@services/rutinaService';
 
 // hook para crear una rutina
 export const useCrearRutina = () => {
@@ -60,4 +60,50 @@ export const useObtenerRutina = (id) => {
     }, [id]);
 
     return ({ rutinaData, cargando });
+}
+
+// hook para actualizar una rutina
+export const useActualizarRutina = () => {
+
+    const [cargando, setCargando] = useState(false);
+
+    const updateRutina = async (formData, id) => {
+
+        // está cargando
+        setCargando(true);
+
+        // recoge los datos devueltos por el servicio
+        const serviceResponse = await putRutina(formData, id);
+
+        // termina de cargar
+        setCargando(false);
+
+        // devuelve los datos recibidos del servicio
+        return serviceResponse;
+    }
+
+    return ({ updateRutina, cargando });
+}
+
+// hook para eliminar una rutina
+export const useEliminarRutina = () => {
+
+    const [cargando, setCargando] = useState(false);
+
+    const destroyRutina = async (id) => {
+
+        // está cargando
+        setCargando(true);
+
+        // recoge los datos devueltos por el servicio
+        const serviceResponse = await deleteRutina(id);
+
+        // termina de cargar
+        setCargando(false);
+
+        // devuelve los datos recividos del servicio
+        return serviceResponse;
+    }
+
+    return ({ destroyRutina, cargando });
 }

@@ -72,7 +72,7 @@ const App = () => {
                         </Route>
                     </Route>
 
-                    <Route path='/*' element={<Navigate to='/' />} />
+                    <Route path='/*' element={<Navigate to='/dashboard' />} />
                 </Routes>
                     
             </PermissionProvider>

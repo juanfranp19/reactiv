@@ -146,7 +146,7 @@ const DatosSeguimiento = (props) => {
         <div className='row'>
 
             {/* botones editar y cancelar */}
-            <div className='col-12 datos-seguimientos-edit'>
+            <div className='col-12 datos-calentamientos-seguimientos-edit'>
                 {
                     editMode
                         ? (

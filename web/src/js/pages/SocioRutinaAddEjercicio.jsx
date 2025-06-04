@@ -22,7 +22,7 @@ const SocioRutinaAddEjercicio = () => {
             console.log(respuestaAddEjercicioRutina);
 
             // redirije a la ruta donde está los detalles de la rutina a la que le acaba de añadir el calentamiento
-            navigateTo(`/dashboard/tus-rutinas/${rutaIdRutina}`);
+            navigateTo(-1);
         }
     }
 

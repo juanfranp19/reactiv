@@ -66,18 +66,18 @@
     transform: translateY(0);
   }
 }
-.datos-seguimientos-edit {
+.datos-calentamientos-seguimientos-edit {
   text-align: center;
   padding-top: 10px;
   padding-left: 20px;
 }
 @media screen and (min-width: 576px) {
-  .datos-seguimientos-edit {
+  .datos-calentamientos-seguimientos-edit {
     text-align: start;
     padding-left: 50px;
   }
 }
-.datos-seguimientos-edit button {
+.datos-calentamientos-seguimientos-edit button {
   margin: 0 10px;
 }
 
