@@ -43,4 +43,11 @@ class Seguimiento extends Model
     {
         return $this->belongsTo(Socio::class);
     }
+
+    // relaciones One To One
+
+    public function acceso(): BelongsTo
+    {
+        return $this->belongsTo(Acceso::class);
+    }
 }
