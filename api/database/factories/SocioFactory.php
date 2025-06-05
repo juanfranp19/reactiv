@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Socio;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
@@ -145,6 +146,15 @@ class SocioFactory extends Factory
         $direccion_return = $nombreCalle . ', ' . $numeroCalle;
 
         /**
+         * cod_acceso
+         */
+        do  {
+            // asigna un código de acceso hasta que no se repita con otro
+            $cod_acceso = Str::random(15);
+
+        } while (Socio::where('cod_acceso', $cod_acceso)->exists());
+
+        /**
          *  RETURN del Factory
          */
         return [
@@ -155,6 +165,7 @@ class SocioFactory extends Factory
             'telefono' => $telefono_return,
             'fecha_nac' => fake()->dateTimeBetween('-60 years', '-14 years')->format('Y-m-d'),
             'direccion' => $direccion_return,
+            'cod_acceso' => $cod_acceso,
         ];
     }
 }

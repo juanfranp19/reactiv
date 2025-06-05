@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('provincia');
             $table->string('ciudad');
             $table->string('imagen')->unique()->nullable();
+            $table->string('cod_acceso')->unique();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
 
