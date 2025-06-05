@@ -12,3 +12,7 @@ body {
     all: unset;
     cursor: pointer;
 }
+
+.reloj {
+    @include font-reloj;
+}

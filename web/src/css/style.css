@@ -1,4 +1,9 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+/**
+ *
+ * Fonts
+ */
 /**
  *
  * Forms
@@ -700,4 +705,10 @@ body {
 .navLink {
   all: unset;
   cursor: pointer;
+}
+
+.reloj {
+  font-family: "Quantico", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }/*# sourceMappingURL=style.css.map */

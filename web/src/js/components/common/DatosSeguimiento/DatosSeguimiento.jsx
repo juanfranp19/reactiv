@@ -175,6 +175,27 @@ const DatosSeguimiento = (props) => {
                 }
             </div>
 
+            <div className="col-6 subtitulo-dashboard">
+
+                {/* se extraen las horas de entrada y salida con substring desde el elemento 11 al 16 */}
+
+                <div className="row">
+                    <div className="col-6">
+
+                        <h4>Hora de acceso</h4>
+                        <p className='reloj'>{seguimientoData?.acceso?.hora_entrada.substring(11, 16)}</p>
+
+                    </div>
+                    <div className="col-6">
+
+                        <h4 className=''>Hora de salida</h4>
+                        <p className='reloj'>{seguimientoData?.acceso?.hora_salida.substring(11, 16)}</p>
+
+                    </div>
+                </div>
+
+            </div>
+
             {/* observaciones del seguimiento */}
             <div className='col-12 subtitulo-dashboard'>
                 {
@@ -191,8 +212,11 @@ const DatosSeguimiento = (props) => {
                                 </div>
                             </form>
                         ) : (
-                            // modo no editar
-                            seguimientoData?.observaciones
+                            <>
+                                {/* modo no editar */}
+                                <h3>Observaciones</h3>
+                                {seguimientoData?.observaciones}
+                            </>
                         )
                 }
             </div>
