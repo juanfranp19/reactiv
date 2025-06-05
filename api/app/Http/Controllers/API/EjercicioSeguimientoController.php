@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\EjercicioSeguimiento;
 use App\Models\Seguimiento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class EjercicioSeguimientoController extends Controller
 {
@@ -15,6 +16,8 @@ class EjercicioSeguimientoController extends Controller
     public function index($seguimiento_id)
     {
         try {
+
+            Gate::authorize('view', [EjercicioSeguimiento::class, $seguimiento_id]);
 
             // si el seguimiento no está en la tabla ejercicios_seguimientos, devuelve error
             if (EjercicioSeguimiento::where('seguimiento_id', $seguimiento_id)->exists()) {
@@ -44,8 +47,12 @@ class EjercicioSeguimientoController extends Controller
     {
         try {
 
+            Gate::authorize('create', EjercicioSeguimiento::class);
+
+            // encuentra el seguimiento
             $seguimiento = Seguimiento::findOrFail($seguimiento_id);
 
+            // valida campos
             $request->validate([
                 'ejercicio_id' => 'required|exists:ejercicios,id',
             ]);
@@ -63,7 +70,7 @@ class EjercicioSeguimientoController extends Controller
             $seguimiento->ejercicios()->attach($request->ejercicio_id);
 
             // devuelve el mensaje que aparece en la notificación
-            return response()->json(['message' => 'Ejercicio añadido con éxito.'], 201);
+            return response()->json(['message' => 'Ejercicio añadido.'], 201);
 
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
@@ -75,8 +82,12 @@ class EjercicioSeguimientoController extends Controller
      */
     public function detach(Request $request, $seguimiento_id)
     {
+        Gate::authorize('delete', [EjercicioSeguimiento::class, $seguimiento_id]);
+
+        // encuentra el seguimiento
         $seguimiento = Seguimiento::findOrFail($seguimiento_id);
 
+        // valida campos
         $request->validate([
             'ejercicio_id' => 'required|exists:ejercicios,id',
         ]);
@@ -88,7 +99,7 @@ class EjercicioSeguimientoController extends Controller
             $seguimiento->ejercicios()->detach($request->ejercicio_id);
 
             // devuelve el mensaje que aparece en la notificación
-            return response()->json(['message' => 'Ejercicio eliminado con éxito.'], 200);
+            return response()->json(['message' => 'Ejercicio eliminado.'], 200);
 
         } else {
 

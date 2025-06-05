@@ -7,7 +7,7 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-Artisan::command('refresh-database', function () {
+Artisan::command('load-database', function () {
 
     // php artisan migrate:fresh
 

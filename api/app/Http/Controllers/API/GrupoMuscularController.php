@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\GrupoMuscularResource;
 use App\Models\GrupoMuscular;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class GrupoMuscularController extends Controller
 {
@@ -16,6 +17,9 @@ class GrupoMuscularController extends Controller
     {
         try {
 
+            Gate::authorize('viewAny', GrupoMuscular::class);
+
+            // devuelve el recurso, ordenado por id
             $grupos_musculares = GrupoMuscularResource::collection(
                 GrupoMuscular::orderBy('nombre')->get(),
             );
@@ -36,11 +40,16 @@ class GrupoMuscularController extends Controller
     {
         try {
 
+            Gate::authorize('create', GrupoMuscular::class);
+
             // obtiene la información de $request y la convierte a un array asociativo
             $grupo_muscular = json_decode($request->getContent(), true);
+
+            // crea el grupo muscular
             $grupo_muscular = GrupoMuscular::create($grupo_muscular);
 
             return response()->json([
+                'message' => 'Grupo muscular creado.',
                 'data' => new GrupoMuscularResource($grupo_muscular),
             ], 201);
 
@@ -54,6 +63,9 @@ class GrupoMuscularController extends Controller
      */
     public function show($id)
     {
+        Gate::authorize('view', GrupoMuscular::class);
+
+        // encuentra el grupo muscular
         $grupo_muscular = GrupoMuscular::findOrFail($id);
 
         return response()->json([
@@ -66,16 +78,21 @@ class GrupoMuscularController extends Controller
      */
     public function update(Request $request, $id)
     {
+        Gate::authorize('update', GrupoMuscular::class);
+
+        // encuentra el grupo muscular
         $grupo_muscular = GrupoMuscular::findOrFail($id);
 
+        // valida los campos
         $request->validate([
             'nombre' => 'required',
         ]);
 
+        // los actualiza
         $grupo_muscular->nombre = $request->input('nombre');
         $grupo_muscular->save();
 
-        return response('', 204);
+        return response()->json(['message' => 'Grupo muscular actualizado.'], 200);
     }
 
     /**
@@ -83,9 +100,14 @@ class GrupoMuscularController extends Controller
      */
     public function destroy($id)
     {
+        Gate::authorize('delete', GrupoMuscular::class);
+
+        // encuentra el grupo muscular
         $grupo_muscular = GrupoMuscular::findOrFail($id);
 
+        // lo elimina
         $grupo_muscular->delete();
-        return response('', 204);
+
+        return response()->json(['message' => 'Grupo muscular eliminado.'], 200);
     }
 }

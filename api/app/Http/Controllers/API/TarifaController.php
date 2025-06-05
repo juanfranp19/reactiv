@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\TarifaResource;
 use App\Models\Tarifa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TarifaController extends Controller
 {
@@ -16,6 +17,7 @@ class TarifaController extends Controller
     {
         try {
 
+            // devuelve el recurso ordenado por id
             $tarifas = TarifaResource::collection(
                 Tarifa::orderBy('id')->get(),
             );
@@ -36,8 +38,12 @@ class TarifaController extends Controller
     {
         try {
 
+            Gate::authorize('create', Tarifa::class);
+
             // obtiene la información de $request y la convierte a un array asociativo
             $tarifa = json_decode($request->getContent(), true);
+
+            // crea la tarifa
             $tarifa = Tarifa::create($tarifa);
 
             return response()->json([
@@ -54,9 +60,11 @@ class TarifaController extends Controller
      */
     public function show($id)
     {
+        // encuentra la tarifa
         $tarifa = Tarifa::findOrFail($id);
 
         return response()->json([
+            'message' => 'Tarifa creada.',
             'data' => new TarifaResource($tarifa),
         ], 200);
     }
@@ -66,8 +74,12 @@ class TarifaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        Gate::authorize('update', Tarifa::class);
+
+        // encuentra la tarifa
         $tarifa = Tarifa::findOrFail($id);
 
+        // valida los campos
         $request->validate([
             'nombre' => 'required',
             'descripcion' => 'required',
@@ -75,13 +87,14 @@ class TarifaController extends Controller
             'precio' => 'required',
         ]);
 
+        // los actualiza
         $tarifa->nombre = $request->input('nombre');
         $tarifa->descripcion = $request->input('descripcion');
         $tarifa->duracion = $request->input('duracion');
         $tarifa->precio = $request->input('precio');
         $tarifa->save();
 
-        return response('', 204);
+        return response()->json(['message' => 'Tarifa actualizada.'], 200);
     }
 
     /**
@@ -89,9 +102,14 @@ class TarifaController extends Controller
      */
     public function destroy($id)
     {
+        Gate::authorize('delete', Tarifa::class);
+
+        // encuentra la tarifa
         $tarifa = Tarifa::findOrFail($id);
 
+        // la elimina
         $tarifa->delete();
-        return response('', 204);
+
+        return response()->json(['message' => 'Tarifa eliminada.'], 200);
     }
 }

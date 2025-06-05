@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\AccesoResource;
 use App\Models\Acceso;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class AccesoController extends Controller
 {
@@ -16,6 +17,9 @@ class AccesoController extends Controller
     {
         try {
 
+            Gate::authorize('viewAny', Acceso::class);
+
+            // devuelve el recurso, ordenado por id
             $accesos = AccesoResource::collection(
                 Acceso::orderBy('id')->get(),
             );
@@ -38,9 +42,12 @@ class AccesoController extends Controller
 
             // obtiene la información de $request y la convierte a un array asooociativo
             $acceso = json_decode($request->getContent(), true);
+
+            // crea el acceso
             $acceso = Acceso::create($acceso);
 
             return response()->json([
+                'message' => 'Acceso creado.',
                 'data' => new AccesoResource($acceso),
             ], 201);
 
@@ -54,7 +61,10 @@ class AccesoController extends Controller
      */
     public function show($id)
     {
+        // encuentra el acceso
         $acceso = Acceso::findOrFail($id);
+
+        Gate::authorize('view', [Acceso::class, $acceso]);
 
         return response()->json([
             'data' => new AccesoResource($acceso),
@@ -66,19 +76,22 @@ class AccesoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // encuentra el acceso
         $acceso = Acceso::findOrFail($id);
 
+        // valida
         $request->validate([
             'hora_entrada' => 'required',
             'socio_id' => 'required',
         ]);
 
+        // actualiza valores
         $acceso->hora_entrada = $request->input('hora_entrada');
         $acceso->hora_salida = $request->input('hora_salida');
         $acceso->socio_id = $request->input('socio_id');
         $acceso->save();
 
-        return response('', 204);
+        return response()->json(['message' => 'Acceso actualizado.'], 200);
     }
 
     /**
@@ -86,9 +99,14 @@ class AccesoController extends Controller
      */
     public function destroy($id)
     {
+        // encuentra el acceso
         $acceso = Acceso::findOrFail($id);
 
+        Gate::authorize('delete', [Acceso::class, $acceso]);
+
+        // lo elimina
         $acceso->delete();
-        return response('', 204);
+
+        return response()->json(['message' => 'Acceso eliminado.'], 200);
     }
 }

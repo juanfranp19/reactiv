@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\EjercicioRutina;
 use App\Models\Rutina;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class EjercicioRutinaController extends Controller
 {
@@ -15,6 +16,8 @@ class EjercicioRutinaController extends Controller
     public function index($rutina_id)
     {
         try {
+
+            Gate::authorize('view', [EjercicioRutina::class, $rutina_id]);
 
             // si la rutina no está en la tabla ejercicios_rutinas, devuelve error
             if (EjercicioRutina::where('rutina_id', $rutina_id)->exists()) {
@@ -44,8 +47,12 @@ class EjercicioRutinaController extends Controller
     {
         try {
 
+            Gate::authorize('create', EjercicioRutina::class);
+
+            // encuentra la rutina
             $rutina = Rutina::findOrFail($rutina_id);
 
+            // valida campos
             $request->validate([
                 'ejercicio_id' => 'required|exists:ejercicios,id',
                 'num_series' => 'required',
@@ -69,7 +76,7 @@ class EjercicioRutinaController extends Controller
             ]);
 
             // devuelve el mensaje que aparece en la notificación
-            return response()->json(['message' => 'Ejercicio añadido con éxito.'], 201);
+            return response()->json(['message' => 'Ejercicio añadido.'], 201);
 
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
@@ -81,8 +88,12 @@ class EjercicioRutinaController extends Controller
      */
     public function update(Request $request, $rutina_id)
     {
+        Gate::authorize('update', [EjercicioRutina::class, $rutina_id]);
+
+        // encuentra la rutina e incluye sus ejercicios
         $rutina = Rutina::with('ejercicios')->findOrFail($rutina_id);
 
+        // valida campos
         $request->validate([
             'ejercicio_id' => 'required|exists:ejercicios,id',
             'num_series' => 'required',
@@ -99,7 +110,7 @@ class EjercicioRutinaController extends Controller
             ]);
 
             // devuelve el mensaje que aparece en la notificación
-            return response()->json(['message' => 'Ejercicio actualizado con éxito.'], 200);
+            return response()->json(['message' => 'Ejercicio actualizado.'], 200);
 
         } else {
 
@@ -112,8 +123,12 @@ class EjercicioRutinaController extends Controller
      */
     public function detach(Request $request, $rutina_id)
     {
+        Gate::authorize('delete', [EjercicioRutina::class, $rutina_id]);
+
+        // encuentra la rutina
         $rutina = Rutina::findOrFail($rutina_id);
 
+        // valida campos
         $request->validate([
             'ejercicio_id' => 'required|exists:ejercicios,id',
         ]);
@@ -125,7 +140,7 @@ class EjercicioRutinaController extends Controller
             $rutina->ejercicios()->detach($request->ejercicio_id);
 
             // devuelve el mensaje que aparece en la notificación
-            return response()->json(['message' => 'Ejercicio eliminado con éxito.'], 200);
+            return response()->json(['message' => 'Ejercicio eliminado.'], 200);
 
         } else {
 

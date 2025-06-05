@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -16,6 +17,9 @@ class UserController extends Controller
     {
         try {
 
+            Gate::authorize('viewAny', User::class);
+
+            // devuelve el recurso ordenado por id
             $users = UserResource::collection(
                 User::orderBy('id')->get(),
             );
@@ -42,7 +46,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        // encuentra el ususario
         $user = User::findOrFail($id);
+
+        Gate::authorize('view', [User::class, $user]);
 
         return response()->json([
             'data' => new UserResource($user),
@@ -54,18 +61,23 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // encuentra el usuario
         $user = User::findOrFail($id);
 
+        Gate::authorize('update', [User::class, $user]);
+
+        // valida los campos
         $request->validate([
             'name' => 'required',
             'password' => 'required',
         ]);
 
+        // los actualiza
         $user->name = $request->input('name');
         $user->password = $request->input('password');
         $user->save();
 
-        return response('', 204);
+        return response()->json(['message' => 'Usuario actualizado.'], 200);
     }
 
     /**
@@ -73,11 +85,16 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        Gate::authorize('delete', User::class);
+
         // también elimina al socio que pertenece el usuario
 
+        // encuentra el usuario
         $user = User::findOrFail($id);
 
+        // lo elimina
         $user->delete();
-        return response('', 204);
+
+        return response()->json(['message' => 'Usuario eliminado.'], 200);
     }
 }

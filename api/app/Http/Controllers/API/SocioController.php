@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\SocioResource;
 use App\Models\Socio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class SocioController extends Controller
 {
@@ -16,6 +17,9 @@ class SocioController extends Controller
     {
         try {
 
+            Gate::authorize('viewAny', Socio::class);
+
+            // devuelve el recurso ordenado por id
             $socios = SocioResource::collection(
                 Socio::orderBy('id')->get(),
             );
@@ -36,12 +40,16 @@ class SocioController extends Controller
     {
         try {
 
+            Gate::authorize('create', Socio::class);
+
             // obtiene la información de $request y la convierte a un array asociativo
             $socio = $request->all();
 
+            // crea el socio
             $socio = Socio::create($socio);
 
             return response()->json([
+                'message' => 'Socio creado.',
                 'data' => new SocioResource($socio),
             ], 201);
 
@@ -55,7 +63,10 @@ class SocioController extends Controller
      */
     public function show($id)
     {
+        // encuentra el socio
         $socio = Socio::findOrFail($id);
+
+        Gate::authorize('view', [Socio::class, $socio]);
 
         return response()->json([
             'data' => new SocioResource($socio),
@@ -67,8 +78,12 @@ class SocioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        Gate::authorize('update', Socio::class);
+
+        // encuentra el socio
         $socio = Socio::findOrFail($id);
 
+        // valida los campos
         $request->validate([
             'dni' => 'required',
             'nombre' => 'required',
@@ -83,6 +98,7 @@ class SocioController extends Controller
             'user_id' => 'required | exists:users,id',
         ]);
 
+        // los actualiza
         $socio->dni = $request->input('dni');
         $socio->nombre = $request->input('nombre');
         $socio->apellidos = $request->input('apellidos');
@@ -95,7 +111,7 @@ class SocioController extends Controller
         $socio->user_id = $request->input('user_id');
         $socio->save();
 
-        return response('', 204);
+        return response()->json(['message' => 'Socio actualizado.'], 200);
     }
 
     /**
@@ -103,9 +119,14 @@ class SocioController extends Controller
      */
     public function destroy($id)
     {
+        Gate::authorize('delete', Socio::class);
+
+        // encuentra el socio
         $socio = Socio::findOrFail($id);
 
+        // lo elimina
         $socio->delete();
-        return response('', 204);
+
+        return response()->json(['message' => 'Socio eliminado.'], 200);
     }
 }

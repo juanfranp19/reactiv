@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\RutinaResource;
 use App\Models\Rutina;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class RutinaController extends Controller
 {
@@ -16,6 +17,9 @@ class RutinaController extends Controller
     {
         try {
 
+            Gate::authorize('viewAny', Rutina::class);
+
+            // devuelve recurso ordenado por id
             $rutinas = RutinaResource::collection(
                 Rutina::orderBy('id')->get(),
             );
@@ -36,8 +40,12 @@ class RutinaController extends Controller
     {
         try {
 
+            Gate::authorize('create', Rutina::class);
+
             // obtiene la información de $request y la convierte a un array asociativo
             $rutina = json_decode($request->getContent(), true);
+
+            // crea la rutina
             $rutina = Rutina::create($rutina);
 
             return response()->json([
@@ -54,9 +62,13 @@ class RutinaController extends Controller
      */
     public function show($id)
     {
+        // encuentra la rutina
         $rutina = Rutina::findOrFail($id);
 
+        Gate::authorize('view', [Rutina::class, $rutina]);
+
         return response()->json([
+            'message' => 'Rutina creada.',
             'data' => new RutinaResource($rutina),
         ], 200);
     }
@@ -66,20 +78,25 @@ class RutinaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // encuentra la rutina
         $rutina = Rutina::findOrFail($id);
 
+        Gate::authorize('update', [Rutina::class, $rutina]);
+
+        // valida campos
         $request->validate([
             'nombre' => 'required',
             //'descripcion' => 'required',
             //'socio_id' => 'required | exists:socios,id',
         ]);
 
+        // los actualiza
         $rutina->nombre = $request->input('nombre');
         $rutina->descripcion = $request->input('descripcion');
         $rutina->socio_id = $request->input('socio_id');
         $rutina->save();
 
-        return response()->json(['message' => 'Rutina actualizada con éxito.'], 200);
+        return response()->json(['message' => 'Rutina actualizada.'], 200);
     }
 
     /**
@@ -87,9 +104,14 @@ class RutinaController extends Controller
      */
     public function destroy($id)
     {
+        // encuentra la rutina
         $rutina = Rutina::findOrFail($id);
 
+        Gate::authorize('delete', [Rutina::class, $rutina]);
+
+        // la elimina
         $rutina->delete();
-        return response()->json(['message' => 'Rutina eliminada con éxito.'], 200);
+
+        return response()->json(['message' => 'Rutina eliminada.'], 200);
     }
 }

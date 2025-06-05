@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CalentamientoSeguimiento;
 use App\Models\Seguimiento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CalentamientoSeguimientoController extends Controller
 {
@@ -15,6 +16,8 @@ class CalentamientoSeguimientoController extends Controller
     public function index($seguimiento_id)
     {
         try {
+
+            Gate::authorize('view', [CalentamientoSeguimiento::class, $seguimiento_id]);
 
             // si el seguimiento no está en la tabla calentamientos_seguimientos, devuelve error
             if (CalentamientoSeguimiento::where('seguimiento_id', $seguimiento_id)->exists()) {
@@ -43,8 +46,12 @@ class CalentamientoSeguimientoController extends Controller
     {
         try {
 
+            Gate::authorize('create', CalentamientoSeguimiento::class);
+
+            // encuentra el seguimiento
             $seguimiento = Seguimiento::findOrFail($seguimiento_id);
 
+            // valida campos
             $request->validate([
                 'calentamiento_id' => 'required|exists:calentamientos,id',
             ]);
@@ -62,7 +69,7 @@ class CalentamientoSeguimientoController extends Controller
             $seguimiento->calentamientos()->attach($request->calentamiento_id);
 
             // devuelve el mensaje que aparece en la notificación
-            return response()->json(['message' => 'Calentamiento añadido con éxito.'], 201);
+            return response()->json(['message' => 'Calentamiento añadido.'], 201);
 
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
@@ -74,8 +81,12 @@ class CalentamientoSeguimientoController extends Controller
      */
     public function detach(Request $request, $seguimiento_id)
     {
+        Gate::authorize('delete', [CalentamientoSeguimiento::class, $seguimiento_id]);
+
+        // encuentra el seguimiento
         $seguimiento = Seguimiento::findOrFail($seguimiento_id);
 
+        // valida campos
         $request->validate([
             'calentamiento_id' => 'required|exists:calentamientos,id',
         ]);
@@ -84,7 +95,7 @@ class CalentamientoSeguimientoController extends Controller
         if ($seguimiento->calentamientos()->where('calentamiento_id', $request->calentamiento_id)->exists()) {
 
             $seguimiento->calentamientos()->detach($request->calentamiento_id);
-            return response()->json(['message' => 'Calentamiento eliminado con éxito.'], 200);
+            return response()->json(['message' => 'Calentamiento eliminado.'], 200);
 
         } else {
 

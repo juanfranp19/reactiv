@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\CalentamientoRutina;
 use App\Models\Rutina;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CalentamientoRutinaController extends Controller
 {
@@ -15,6 +16,8 @@ class CalentamientoRutinaController extends Controller
     public function index($rutina_id)
     {
         try {
+
+            Gate::authorize('view', [CalentamientoRutina::class, $rutina_id]);
 
             // si la rutina no está en la tabla calentamientos_rutinas, devuelve error
             if (CalentamientoRutina::where('rutina_id', $rutina_id)->exists()) {
@@ -43,8 +46,12 @@ class CalentamientoRutinaController extends Controller
     {
         try {
 
+            Gate::authorize('create', CalentamientoRutina::class);
+
+            // encuentra la rutina
             $rutina = Rutina::findOrFail($rutina_id);
 
+            // valida campos
             $request->validate([
                 'calentamiento_id' => 'required|exists:calentamientos,id',
                 'tiempo' => 'required',
@@ -65,7 +72,7 @@ class CalentamientoRutinaController extends Controller
             ]);
 
             // devuelve el mensaje que aparece en la notificación
-            return response()->json(['message' => 'Calentamiento añadido con éxito.'], 201);
+            return response()->json(['message' => 'Calentamiento añadido.'], 201);
 
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
@@ -77,8 +84,12 @@ class CalentamientoRutinaController extends Controller
      */
     public function update(Request $request, $rutina_id)
     {
+        Gate::authorize('update', [CalentamientoRutina::class, $rutina_id]);
+
+        // encuentra la rutina e incluye sus calentamientos
         $rutina = Rutina::with('calentamientos')->findOrFail($rutina_id);
 
+        // valida campos
         $request->validate([
             'calentamiento_id' => 'required|exists:calentamientos,id',
             'tiempo' => 'required',
@@ -92,7 +103,7 @@ class CalentamientoRutinaController extends Controller
                 'tiempo' => $request->tiempo,
             ]);
 
-            return response()->json(['message' => 'Calentamiento actualizado con éxito.'], 200);
+            return response()->json(['message' => 'Calentamiento actualizado.'], 200);
 
         } else {
 
@@ -105,8 +116,12 @@ class CalentamientoRutinaController extends Controller
      */
     public function detach(Request $request, $rutina_id)
     {
+        Gate::authorize('delete', [CalentamientoRutina::class, $rutina_id]);
+
+        // encuentra la rutina
         $rutina = Rutina::findOrFail($rutina_id);
 
+        // valida campos
         $request->validate([
             'calentamiento_id' => 'required|exists:calentamientos,id',
         ]);
@@ -115,7 +130,7 @@ class CalentamientoRutinaController extends Controller
         if ($rutina->calentamientos()->where('calentamiento_id', $request->calentamiento_id)->exists()) {
 
             $rutina->calentamientos()->detach($request->calentamiento_id);
-            return response()->json(['message' => 'Calentamiento eliminado con éxito.'], 200);
+            return response()->json(['message' => 'Calentamiento eliminado.'], 200);
 
         } else {
 

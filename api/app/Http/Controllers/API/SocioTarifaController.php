@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Socio;
 use App\Models\SocioTarifa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class SocioTarifaController extends Controller
 {
@@ -15,6 +16,8 @@ class SocioTarifaController extends Controller
     public function index($socio_id)
     {
         try {
+
+            Gate::authorize('view', [SocioTarifa::class, $socio_id]);
 
             // si el socio no está en la tabla socios_tarifas, devuelve error
             if (SocioTarifa::where('socio_id', $socio_id)->exists()) {
@@ -43,8 +46,12 @@ class SocioTarifaController extends Controller
     {
         try {
 
+            Gate::authorize('create', SocioTarifa::class);
+
+            // encuentra el socio
             $socio = Socio::findOrFail($socio_id);
 
+            // valida los campos
             $request->validate([
                 'tarifa_id' => 'required|exists:tarifas,id',
                 'fecha_inicio' => 'required',
@@ -57,7 +64,7 @@ class SocioTarifaController extends Controller
                 //'fecha_fin' => $request->fecha_fin,
             ]);
 
-            return response()->json(['message' => 'attached'], 201);
+            return response()->json(['message' => 'Tarifa añadida.'], 201);
 
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
@@ -69,8 +76,12 @@ class SocioTarifaController extends Controller
      */
     public function update(Request $request, $socio_id)
     {
+        Gate::authorize('update', SocioTarifa::class);
+
+        // encuentra el socio junto incluyendo sus tarifas
         $socio = Socio::with('tarifas')->findOrFail($socio_id);
 
+        // valida los campos
         $request->validate([
             'tarifa_id' => 'required|exists:tarifas,id',
             'fecha_inicio' => 'required',
@@ -86,7 +97,7 @@ class SocioTarifaController extends Controller
                 'fecha_fin' => $request->fecha_fin,
             ]);
 
-            return response('', 204);
+            return response()->json(['message' => 'Tarifa actualizada.'], 200);
 
         } else {
 
@@ -99,8 +110,12 @@ class SocioTarifaController extends Controller
      */
     public function detach(Request $request, $socio_id)
     {
+        Gate::authorize('delete', SocioTarifa::class);
+
+        // encuentra el socio
         $socio = Socio::findOrFail($socio_id);
 
+        // valida los campos
         $request->validate([
             'tarifa_id' => 'required|exists:tarifas,id',
         ]);
@@ -111,7 +126,7 @@ class SocioTarifaController extends Controller
             // elimina la tarifa del socio
             $socio->tarifas()->detach($request->tarifa_id);
 
-            return response('', 204);
+            return response()->json(['message' => 'Tarifa eliminada.'], 200);
 
         } else {
 

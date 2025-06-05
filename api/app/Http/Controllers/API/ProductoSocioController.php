@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ProductoSocio;
 use App\Models\Socio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ProductoSocioController extends Controller
 {
@@ -15,6 +16,8 @@ class ProductoSocioController extends Controller
     public function index($socio_id)
     {
         try {
+
+            Gate::authorize('view', [ProductoSocio::class, $socio_id]);
 
             // si el socio no está en la tabla productos_socios, devuelve error
             if (ProductoSocio::where('socio_id', $socio_id)->exists()) {
@@ -41,8 +44,12 @@ class ProductoSocioController extends Controller
      */
     public function attach(Request $request, $socio_id)
     {
+        Gate::authorize('create', ProductoSocio::class);
+
+        // encuentra el socio
         $socio = Socio::findOrFail($socio_id);
 
+        // valida campos
         $request->validate([
             'producto_id' => 'required|exists:productos,id',
             'fecha_compra' => 'required',
@@ -55,7 +62,7 @@ class ProductoSocioController extends Controller
             'cantidad' => $request->cantidad,
         ]);
 
-        return response()->json(['message' => 'attached'], 201);
+        return response()->json(['message' => 'Producto añadido.'], 201);
     }
 
     /**
@@ -63,8 +70,12 @@ class ProductoSocioController extends Controller
      */
     public function update(Request $request, $socio_id)
     {
+        Gate::authorize('update', [ProductoSocio::class, $socio_id]);
+
+        // encuentra al socio e incluye sus productos
         $socio = Socio::with('productos')->findOrFail($socio_id);
 
+        // valida campos
         $request->validate([
             'producto_id' => 'required|exists:productos,id',
             'fecha_compra' => 'required',
@@ -80,7 +91,7 @@ class ProductoSocioController extends Controller
                 'cantidad' => $request->cantidad,
             ]);
 
-            return response('', 204);
+            return response()->json(['message' => 'Producto actualizado.'], 200);
 
         } else {
 
@@ -93,8 +104,12 @@ class ProductoSocioController extends Controller
      */
     public function detach(Request $request, $socio_id)
     {
+        Gate::authorize('delete', [ProductoSocio::class, $socio_id]);
+
+        // encuentra el socio
         $socio = Socio::findOrFail($socio_id);
 
+        // valida campos
         $request->validate([
             'producto_id' => 'required|exists:productos,id',
         ]);
@@ -105,7 +120,7 @@ class ProductoSocioController extends Controller
             // elimina el producto del socio
             $socio->productos()->detach($request->producto_id);
 
-            return response('', 204);
+            return response()->json(['message' => 'Producto eliminado.'], 200);
 
         } else {
 

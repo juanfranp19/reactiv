@@ -14,6 +14,9 @@ class AuthController extends Controller
     {
         try {
 
+            Gate::authorize('create', User::class);
+
+            // valida campos
             $data = $request->validate([
                 'name' => ['required', 'string'],
                 'password' => ['required', 'min:6'],
@@ -25,11 +28,15 @@ class AuthController extends Controller
 
         try {
 
+            // crea el usuario
             $user = User::create($data);
 
+            // crea el token
             $token = $user->createToken('auth_token')->plainTextToken;
 
+            // respuesta
             return response()->json([
+                'message' => 'Usuario registrado.',
                 'user' => $user,
                 'token' => $token,
             ], 201);
