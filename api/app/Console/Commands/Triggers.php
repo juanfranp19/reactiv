@@ -28,8 +28,11 @@ class Triggers extends Command
     public function handle()
     {
         /**
+         *
          * trigger para asignar fecha_fin dependiendo de cuánto dure la tarifa del socio
+         *
          */
+
         // coge el archivo dependiendo de si la conexión es en mysql (mariadb) o postgresql
         switch (env('DB_CONNECTION')) {
             case 'mysql':
@@ -56,7 +59,42 @@ class Triggers extends Command
         // lo ejecuta en la base de datos
         DB::unprepared($trigger_asignar_fecha_fin_tarifa);
 
-        $this->info('trigger *asignar_fecha_fin*, creado correctamente');
+        $this->info('trigger *asignar_fecha_fin_tarifa*, creado correctamente');
+
+
+        /**
+         *
+         * trigger para asignar acceso_id a la tabla seguimientos cuando se crea un seguimiento
+         *
+         */
+
+        // coge el archivo dependiendo de si la conexión es en mysql (mariadb) o postgresql
+        switch (env('DB_CONNECTION')) {
+            case 'mysql':
+            case 'mariadb':
+                $asignar_acceso_id = database_path('triggers/mysql/asignar_acceso_id.sql');
+                break;
+            case 'pgsql':
+                $asignar_acceso_id = database_path('triggers/postgresql/asignar_acceso_id.sql');
+                break;
+            default:
+                $this->error('hay problemas con los triggers');
+                break;
+        }
+
+        // verifica si existe
+        if (!File::exists($asignar_acceso_id)) {
+            $this->error('no existe asignar_acceso_id.sql');
+            return 0;
+        }
+
+        // obtiene el código del trigger
+        $trigger_asignar_acceso_id = File::get($asignar_acceso_id);
+
+        // lo ejecuta en la base de datos
+        DB::unprepared($trigger_asignar_acceso_id);
+
+        $this->info('trigger *asignar_acceso_id*, creado correctamente');
 
         //$this->info('');
         // $this->info('*****************************************');

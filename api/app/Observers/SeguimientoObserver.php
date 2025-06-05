@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Models\Acceso;
 use App\Models\Seguimiento;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -18,11 +19,12 @@ class SeguimientoObserver
 
             // usuario autenticado
             $user = Auth::user();
+            $userId = $user->socio['id'];
 
             Log::info('user: ' . $user);
 
             // asigna el socio que está autenticado
-            $seguimiento->socio_id = $user->socio['id'];
+            $seguimiento->socio_id = $userId;
         }
     }
 
@@ -35,13 +37,35 @@ class SeguimientoObserver
 
             // usuario autenticado
             $user = Auth::user();
+            $userId = $user->socio['id'];
 
-            // aborta si ya hay un seguimiento con ese socio_id y fecha
-            if (Seguimiento::where('fecha', $seguimiento->fecha)
-                ->where('socio_id', $user->socio['id'])
-                ->exists()
-            ) abort(409, 'Ya tienes un seguimiento de ese día.');
+            /**
+             * aborta si ya hay un seguimiento con ese socio_id y fecha
+             */
 
+            $seguimientoExistente = (
+                Seguimiento::where('socio_id', $userId)
+                    ->where('fecha', $seguimiento->fecha)
+                    ->exists()
+            );
+
+            Log::info($seguimientoExistente);
+
+            if ($seguimientoExistente) abort(409, 'Ya tienes un seguimiento de ese día.');
+
+            /**
+             * aborta si se intenta crear un seguimiento un día que no ha accedido al gimnasio
+             */
+
+            $existeAccesoConMismaFecha = (
+                Acceso::where('socio_id', $userId)
+                    ->whereDate('hora_entrada', $seguimiento->fecha)
+                    ->exists()
+            );
+
+            Log::info($existeAccesoConMismaFecha);
+
+            if (!$existeAccesoConMismaFecha) abort(409, 'No puedes hacer un seguimiento de un día que no has accedido');
         }
     }
 }
