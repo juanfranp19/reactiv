@@ -55,7 +55,7 @@ export const useAttachCalentamientoSeguimiento = () => {
         // termina de cargar
         setCargando(false);
 
-        // devuelve los datos recividos del servicio
+        // devuelve los datos recibidos del servicio
         return serviceResponse;
     }
 
@@ -78,7 +78,7 @@ export const useDetachCalentamientoSeguimiento = () => {
         // termina de cargar
         setCargando(false);
 
-        // devuelve los datos recividos del servicio
+        // devuelve los datos recibidos del servicio
         return serviceResponse;
     }
 

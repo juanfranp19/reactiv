@@ -45,7 +45,7 @@ export const postSeguimiento = async (data) => {
             // coge la respuesta de la API
             const okData = await response.json();
 
-            notyf.success('Seguimiento creado con éxito.');
+            notyf.success('Seguimiento creado.');
 
             console.log('seguimiento creado: ', okData);
             return okData;

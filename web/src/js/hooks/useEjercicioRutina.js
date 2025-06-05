@@ -56,7 +56,7 @@ export const useAttachEjercicioRutina = () => {
         // termina de cargar
         setCargando(false);
 
-        // devuelve los datos recividos del servicio
+        // devuelve los datos recibidos del servicio
         return serviceResponse;
     }
 
@@ -79,7 +79,7 @@ export const useActualizarEjercicioRutina = () => {
         // termina de cargar
         setCargando(false);
 
-        // devuelve los datos recividos del servicio
+        // devuelve los datos recibidos del servicio
         return serviceResponse;
     }
 
@@ -102,7 +102,7 @@ export const useDetachEjercicioRutina = () => {
         // termina de cargar
         setCargando(false);
 
-        // devuelve los datos recividos del servicio
+        // devuelve los datos recibidos del servicio
         return serviceResponse;
     }
 

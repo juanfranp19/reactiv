@@ -24,7 +24,7 @@ const FormCrearRutina = (props) => {
         //watch,
         formState: { errors },
         reset
-    } = useForm({ defaulValues: RUTINAINICIAL });
+    } = useForm({ defaultValues: RUTINAINICIAL });
 
     const manejarFormulario = handleSubmit((nuevaRutina) => {
 

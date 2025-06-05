@@ -118,12 +118,12 @@ const FormCrearSocio = (props) => {
         control,
         register,
         handleSubmit,
-        //watch,
+        watch,
         formState: { errors },
         setValue,
         trigger,
         reset
-    } = useForm({ defaulValues: SOCIOINICIAL });
+    } = useForm({ defaultValues: SOCIOINICIAL });
 
     const manejarFormulario = handleSubmit((nuevoSocio) => {
 
@@ -371,7 +371,7 @@ const FormCrearSocio = (props) => {
                 </div>
 
             </div>
-            {/* JSON.stringify(watch()) */}
+            { JSON.stringify(watch()) }
         </form>
     );
 }

@@ -45,7 +45,7 @@ export const postRutina = async (data) => {
             // coge la respuesta de la API
             const okData = await response.json();
 
-            notyf.success('Rutina creada con éxito.');
+            notyf.success('Rutina creada.');
 
             console.log('rutina creada: ', okData);
             return okData;

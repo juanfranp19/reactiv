@@ -28,7 +28,6 @@ export const postSocio = async (data) => {
         const response = await fetch(API_URL_SOCIO, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             },
             body: formData,
@@ -51,8 +50,8 @@ export const postSocio = async (data) => {
             // coge la respuesta de la API
             const okData = await response.json();
 
-            //alert('Socio creado con éxito.');
-            notyf.success('Socio creado con éxito.');
+            //alert('Socio creado.');
+            notyf.success('Socio creado.');
 
             console.log('socio creado: ', okData);
             return okData;

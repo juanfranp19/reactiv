@@ -17,7 +17,7 @@ export const useCrearSocio = () => {
         // termina de cargar
         setCargando(false);
 
-        // devuelve los datos recividos del servicio
+        // devuelve los datos recibidos del servicio
         return serviceResponse;
     }
 

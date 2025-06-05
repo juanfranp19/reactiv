@@ -17,7 +17,7 @@ export const useCrearSeguimiento = () => {
         // termina de cargar
         setCargando(false);
 
-        // devuelve los datos recividos del servicio
+        // devuelve los datos recibidos del servicio
         return serviceResponse;
     }
 
@@ -101,7 +101,7 @@ export const useEliminarSeguimiento = () => {
         // termina de cargar
         setCargando(false);
 
-        // devuelve los datos recividos del servicio
+        // devuelve los datos recibidos del servicio
         return serviceResponse;
     }
 

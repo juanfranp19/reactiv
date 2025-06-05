@@ -67,7 +67,7 @@ const FormAddCalentamientoRutina = (props) => {
         setValue,
         trigger,
         reset,
-    } = useForm({ defaulValues: CALENTAMIENTORUTINA_INICIAL });
+    } = useForm({ defaultValues: CALENTAMIENTORUTINA_INICIAL });
 
     const manejarFormulario = handleSubmit((nuevoCalentamiento) => {
 

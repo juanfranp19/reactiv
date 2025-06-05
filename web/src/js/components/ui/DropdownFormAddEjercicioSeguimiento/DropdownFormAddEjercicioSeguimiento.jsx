@@ -102,7 +102,7 @@ const DropdownFormAddEjercicioSeguimiento = (props) => {
         setValue,
         trigger,
         reset,
-    } = useForm({ defaulValues: EJERCICIORUTINA_INICIAL });
+    } = useForm({ defaultValues: EJERCICIORUTINA_INICIAL });
 
     const manejarFormulario = handleSubmit(async (nuevoEjercicio) => {
 

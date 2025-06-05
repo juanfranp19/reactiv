@@ -16,7 +16,7 @@ const Login = () => {
 
     const manejarLogin = async (dataFormLogin) => {
 
-        // le envia los datos recividos del FormLogin para poder obtener el token
+        // le envia los datos recibidos del FormLogin para poder obtener el token
         const token_fromFormLogin = await getToken(dataFormLogin);
 
         // si se ha obtenido, lo relfeja en la consola
