@@ -18,7 +18,21 @@ class EntrenadorSeeder extends Seeder
 
         // de esta forma con el for porque sinó da error de clave única con los user_id
         for ($i = 0; $i < $numEntrenadores; $i++) {
-            Entrenador::factory()->create();
+
+            // el primer entrenador es admin
+            if ($i === 0) {
+
+                Entrenador::factory()->create([
+                    'nombre' => 'admin',
+                    'apellidos' => 'admin',
+                    'email' => 'admin@reactiv.fit',
+                    'telefono' => 999999999,
+                    'admin' => 1,
+                ]);
+
+            } else {
+                Entrenador::factory()->create();
+            }
         }
     }
 }

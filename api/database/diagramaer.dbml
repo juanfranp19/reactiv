@@ -33,6 +33,7 @@ Table entrenadores {
   apellidos string
   email string [unique]
   telefono int [unique]
+  admin boolean
   user_id int [unique, ref:- users.id]
   created_at datetime
   updated_at datetime
