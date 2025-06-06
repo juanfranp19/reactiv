@@ -1,0 +1,132 @@
+<script setup>
+import { ref } from 'vue';
+
+import ButtonAccederSalir from '@components/ButtonAccederSalir.vue';
+
+import usePostAcceso from '@hooks/usePostAcceso';
+import usePutAcceso from '@hooks/usePutAcceso';
+
+defineProps({
+    tipo: String,
+});
+
+const { crearAcceso, cargando: cargandoCrearAcceso } = usePostAcceso();
+const { actualizarAcceso, cargando: cargandoActualizarAcceso } = usePutAcceso();
+
+const cod_acceso = ref('');
+
+function obtenerFechaHoraActual() {
+
+    const ahora = new Date();
+
+    // fecha y hora actual por partes
+    const dia = ahora.getDate();
+    const mes = ahora.getMonth() + 1;
+    const anio = ahora.getFullYear();
+    const hora = ahora.getHours();
+    const minutos = ahora.getMinutes();
+    const segundos = ahora.getSeconds();
+
+    // formato YYYY-MM-DD HH:MM:SS
+    const fechaHoraActual = `${anio}-${mes}-${dia} ${hora}:${minutos}:${segundos}`;
+
+    console.log(ahora);
+    console.log(fechaHoraActual);
+
+    return fechaHoraActual;
+}
+
+// función que crea el acceso
+async function acceder() {
+
+    //console.log(ACCESO.ID);
+
+    // pasa a objeto JSON la fecha y hora actual desde la función 
+    // y el cod_acceso definido en el input
+    const datos = JSON.stringify({
+        hora_entrada: obtenerFechaHoraActual(),
+        cod_acceso: cod_acceso.value
+    });
+
+    // función crear acceso del hook
+    const respuesta = await crearAcceso(datos);
+
+    console.log(datos);
+
+    // vacía el input si se ha creado el acceso
+    if (respuesta) {
+
+        cod_acceso.value = '';
+    }
+}
+
+// función que actualiza el acceso
+async function salir() {
+    
+    // pasa a objeto JSON la fecha y hora actual desde la función 
+    // y el cod_acceso definido en el input
+    const datos = JSON.stringify({
+        hora_salida: obtenerFechaHoraActual(),
+        cod_acceso: cod_acceso.value
+    });
+
+    // función actualizar acceso del hook
+    const respuesta = await actualizarAcceso(datos);
+
+    console.log(datos);
+
+    // vacía el input si se ha actualizado el acceso
+    if (respuesta) {
+        cod_acceso.value = '';
+        
+    }
+}
+</script>
+
+<template>
+    <form class="col-12 form-acceso">
+        <div class="row">
+
+            <!-- input -->
+            <div class="col-12 campo">
+                <input 
+                    id="cod_acceso"
+                    class="col-12 form-control form-control-lg"
+                    v-model="cod_acceso"
+                    type="text"
+                    placeholder="Código de acceso">
+            </div>
+
+            <!-- botón -->
+            <div class="col-12 boton">
+                <ButtonAccederSalir
+                    v-if="tipo === 'acceso'" 
+                    titulo="Acceder"
+                    type="button"
+                    @click="acceder"
+                />
+
+                <ButtonAccederSalir 
+                    v-if="tipo === 'salida'"
+                    titulo="Salir"
+                    type="button"
+                    @click="salir"
+                />
+            </div>
+
+        </div>
+    </form>
+</template>
+
+<style scoped>
+.form-acceso .campo {
+    padding: 20px 20px 50px 20px;
+}
+
+.form-acceso .boton {
+
+    /* para que se vaya al centro */
+    display: flex;
+    justify-content: center;
+}
+</style>
