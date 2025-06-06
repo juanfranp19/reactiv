@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 import ButtonAccederSalir from '@components/ButtonAccederSalir.vue';
 
@@ -9,6 +10,8 @@ import usePutAcceso from '@hooks/usePutAcceso';
 defineProps({
     tipo: String,
 });
+
+const router = useRouter();
 
 const { crearAcceso, cargando: cargandoCrearAcceso } = usePostAcceso();
 const { actualizarAcceso, cargando: cargandoActualizarAcceso } = usePutAcceso();
@@ -53,10 +56,12 @@ async function acceder() {
 
     console.log(datos);
 
-    // vacía el input si se ha creado el acceso
     if (respuesta) {
 
+        // vacía el input si se ha creado el acceso
         cod_acceso.value = '';
+        // redirige a la ruta con el mensaje
+        router.push('/has-accedido');
     }
 }
 
@@ -75,10 +80,12 @@ async function salir() {
 
     console.log(datos);
 
-    // vacía el input si se ha actualizado el acceso
     if (respuesta) {
+
+        // vacía el input si se ha actualizado el acceso
         cod_acceso.value = '';
-        
+        // redirige a la ruta con el mensaje
+        router.push('/has-salido');
     }
 }
 </script>
