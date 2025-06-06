@@ -183,13 +183,13 @@ const DatosSeguimiento = (props) => {
                     <div className="col-6">
 
                         <h4>Hora de acceso</h4>
-                        <p className='reloj'>{seguimientoData?.acceso?.hora_entrada.substring(11, 16)}</p>
+                        <p className='reloj'>{seguimientoData?.acceso?.hora_entrada.substring(11, 16) ?? 'Aún no has accedido'}</p>
 
                     </div>
                     <div className="col-6">
 
                         <h4 className=''>Hora de salida</h4>
-                        <p className='reloj'>{seguimientoData?.acceso?.hora_salida.substring(11, 16)}</p>
+                        <p className='reloj'>{seguimientoData?.acceso?.hora_salida?.substring(11, 16) ?? 'Aún no has salido'}</p>
 
                     </div>
                 </div>

@@ -128,7 +128,7 @@ const FormCrearSeguimiento = (props) => {
                                 className='form-control form-control-lg'
                                 id={SEGUIMIENTO.RUTINA_ID}
                                 options={obtenerRutinas()}
-                                placeholder='Selecciona una rutina'
+                                placeholder='Opcional'
                                 onChange={manejarRutinaSelectValue}
                                 value={obtenerRutinas().find(e => e.value === field.value) || null /* busca el valor actual del formulario */}
                                 formatOptionLabel={(option) => (
