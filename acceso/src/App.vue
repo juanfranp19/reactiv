@@ -1,8 +1,13 @@
 <script setup>
+import TopBar from '@components/TopBar.vue';
 </script>
 
 <template>
-</template>
+    <div class="container-fluid ">
 
-<style scoped>
-</style>
+        <TopBar />
+
+        <RouterView />
+
+    </div>
+</template>
