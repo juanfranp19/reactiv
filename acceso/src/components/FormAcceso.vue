@@ -42,8 +42,6 @@ function obtenerFechaHoraActual() {
 // función que crea el acceso
 async function acceder() {
 
-    //console.log(ACCESO.ID);
-
     // pasa a objeto JSON la fecha y hora actual desde la función 
     // y el cod_acceso definido en el input
     const datos = JSON.stringify({
@@ -111,13 +109,20 @@ async function salir() {
                     titulo="Acceder"
                     type="button"
                     @click="acceder"
+                    :disabled="!cod_acceso.trim()"
                 />
+
+                <!--
+                    :disabled="!cod_acceso.trim()"
+                    deshabilita el botón si el input está vacío
+                -->
 
                 <ButtonAccederSalir 
                     v-if="tipo === 'salida'"
                     titulo="Salir"
                     type="button"
                     @click="salir"
+                    :disabled="!cod_acceso.trim()"
                 />
             </div>
 

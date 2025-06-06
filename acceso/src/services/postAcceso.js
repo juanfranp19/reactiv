@@ -1,5 +1,8 @@
 const API_URL_ACCESOS = import.meta.env.VITE_API_URL_ACCESOS;
 
+import useNotyf from '@hooks/useNotyf.js';
+const { notifySuccess, notifyError } = useNotyf();
+
 const postAcceso = async (data) => {
 
     try {
@@ -15,14 +18,14 @@ const postAcceso = async (data) => {
 
             const errorData = await response.json();
             console.error('Error del servidor:', errorData);
-
+            notifyError(errorData);
             return 0;
 
         } else {
 
             // coge la respuesta de la API
             const data = await response.json();
-
+            notifySuccess('Has accedido');
             console.log('acceso creado: ', data);
             return data;
         }

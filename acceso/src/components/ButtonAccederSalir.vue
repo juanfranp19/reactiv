@@ -43,6 +43,13 @@ defineProps({
 </template>
 
 <style scoped>
+
+.animated-button:disabled {
+    cursor: default;
+    transition: none;
+    transform: none;
+}
+
 /* https://uiverse.io/ryota1231/fast-mouse-17 */
 .animated-button {
     position: relative;
