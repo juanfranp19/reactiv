@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
+
 :root {
     --verde: #52B788;
     --verdeOscuro: #40916C;
@@ -8,7 +12,35 @@
     --oscuro: #1a1a1a;
 }
 
+body {
+    /* estilos imagen fondo */
+    background-image: url('/src/assets/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+
+    /* estilos fuente */
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
 
 a {
     text-decoration: none;
+}
+
+/* fuentes */
+
+.audiowide-regular {
+    font-family: "Audiowide", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.michroma-regular {
+    font-family: "Michroma", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
