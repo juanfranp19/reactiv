@@ -21,12 +21,14 @@ use App\Http\Controllers\API\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('/v1')->group(function () {
+
+    Route::post('/accesos', [AccesoController::class, 'store']);
+    Route::put('/accesos', [AccesoController::class, 'update']);
+
     Route::middleware(['auth:sanctum'])->group(function () {
 
         Route::get('/accesos', [AccesoController::class, 'index']);
-        Route::post('/accesos', [AccesoController::class, 'store']);
         Route::get('/accesos/{id}', [AccesoController::class, 'show']);
-        Route::put('/accesos/{id}', [AccesoController::class, 'update']);
         Route::delete('/accesos/{id}', [AccesoController::class, 'destroy']);
 
         Route::get('/calentamientos', [CalentamientoController::class, 'index']);
