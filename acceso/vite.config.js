@@ -13,7 +13,9 @@ export default defineConfig({
         alias: {
             '@components': path.resolve(__dirname, 'src/components'),
             '@hooks': path.resolve(__dirname, 'src/hooks'),
+            '@router': path.resolve(__dirname, 'src/router'),
             '@services': path.resolve(__dirname, 'src/services'),
+            '@views': path.resolve(__dirname, 'src/views'),
         },
     },
 });
