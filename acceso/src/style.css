@@ -1,0 +1,14 @@
+:root {
+    --verde: #52B788;
+    --verdeOscuro: #40916C;
+
+    --azul: #0353A4;
+    --rojo: #660708;
+
+    --oscuro: #1a1a1a;
+}
+
+
+a {
+    text-decoration: none;
+}
