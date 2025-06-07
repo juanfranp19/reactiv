@@ -7,9 +7,50 @@
     @media screen and (min-width: $md) {
         padding: $sx-calendar-padding-md;
     }
+
+    //
+    // clase para el custom component de schedule-x, event modal
+    //
+    .event-modal {
+        background-color: $sx-calendar-event-modal-bg-color;
+        color: $sx-calendar-event-modal-color;
+
+        font-size: $sx-calendar-event-modal-font-size;
+
+        border: $sx-calendar-event-modal-border;
+        border-radius: $sx-calendar-event-modal-border-radius;
+
+        padding: $sx-calendar-event-modal-padding;
+
+        // ancho máximo todo el ancho de la pantalla, 
+        // solo afecha a <sm porque para los demás anchos
+        // ya usa el ancho que tiene por defecto
+        max-width: $sx-calendar-event-modal-max-width;
+
+        // estilos a partir de sm
+        @media screen and (min-width: $sm) {
+
+            font-size: $sx-calendar-event-modal-font-size-sm;
+        }
+
+        .destacado {
+            font-weight: $sx-calendar-event-modal-destacado-font-weight;
+        }
+
+        .detalles {
+            text-align: $sx-calendar-event-modal-detalles-text-align;
+            padding-top: $sx-calendar-event-modal-detalles-padding-top;
+
+            button {
+                font-size: $sx-calendar-event-modal-detalles-button-font-size;
+            }
+        }
+    }
 }
 
+//
 // clase sacada de la documentación de schedule-x
+//
 .sx-react-calendar-wrapper {
     width: $sx-calendar-wrapper-width;
     height: $sx-calendar-wrapper-height;

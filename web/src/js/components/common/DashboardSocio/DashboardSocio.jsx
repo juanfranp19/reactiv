@@ -31,7 +31,7 @@ const DashboardSocio = () => {
                                 </div>
                             </DashboardBigCard>
 
-                            <DashboardSmallCard linkTo='accesos' posicion='derecha'>Último acceso</DashboardSmallCard>
+                            <DashboardSmallCard linkTo='tus-accesos' posicion='derecha'>Accesos</DashboardSmallCard>
                             <DashboardSmallCard linkTo='seguimiento' posicion='izquierda'>Seguimiento</DashboardSmallCard>
 
                             <DashboardBigCard linkTo='tarifas'>

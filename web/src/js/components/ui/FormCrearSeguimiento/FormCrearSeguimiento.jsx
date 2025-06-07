@@ -55,7 +55,7 @@ const FormCrearSeguimiento = (props) => {
 
     // Seguimiento en su estado inicial
     const SEGUIMIENTOINICIAL = {
-        fecha: getTodayDate(),
+        fecha: props.fechaAcceso ?? getTodayDate(),
         observaciones: null,
         rutina_id: null,
     }

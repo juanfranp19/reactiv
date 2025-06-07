@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
 import FormCrearSeguimiento from '@components/ui/FormCrearSeguimiento/FormCrearSeguimiento';
@@ -7,8 +7,12 @@ import { useCrearSeguimiento } from '@hooks/useSeguimiento';
 
 const SocioSeguimientoCrear = () => {
 
+    const location = useLocation();
     const navigateTo = useNavigate();
     const { crearSeguimiento, cargando } = useCrearSeguimiento();
+
+    // fecha que recibe desde CarlendarAcceso, se usa en el formulario
+    const { fechaAcceso } = location.state ?? '';
 
     const manejarCrearSeguimiento = async (nuevoSeguimiento) => {
 
@@ -35,7 +39,11 @@ const SocioSeguimientoCrear = () => {
             </DashboardCabecera>
 
             <div className='row'>
-                <FormCrearSeguimiento manejarCrearSeguimiento={manejarCrearSeguimiento} cargando={cargando} />
+                <FormCrearSeguimiento
+                    manejarCrearSeguimiento={manejarCrearSeguimiento}
+                    cargando={cargando}
+                    fechaAcceso={fechaAcceso}
+                />
             </div>
         </main>
     );
