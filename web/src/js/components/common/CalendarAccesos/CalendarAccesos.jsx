@@ -5,6 +5,8 @@ import { useCalendarApp, ScheduleXCalendar } from '@schedule-x/react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import ButtonDark from '@components/ui/ButtonDark/ButtonDark';
+
 import { useObtenerSocio } from '@hooks/useSocio';
 import useToken from '@hooks/useToken';
 
@@ -73,12 +75,9 @@ const CalendarAccesos = () => {
                         // si hay un seguimiento con la misma fecha que el calendarEvent
                         socioData.seguimientos.find(seg => seg.fecha === calendarEvent.start.slice(0, 10))
                             ? (
-
                                 // si tiene acceso asignado
                                 <div className='col-12 detalles'>
-                                    <button
-                                        type='button'
-                                        className='btn btn-outline-dark'
+                                    <ButtonDark
                                         onClick={() => irSeguimiento(
                                             socioData
                                                 .seguimientos
@@ -88,18 +87,16 @@ const CalendarAccesos = () => {
                                         )}
                                     >
                                         <i className='bi bi-search' /> Pulsa para ver detalles del seguimiento
-                                    </button>
+                                    </ButtonDark>
                                 </div>
                             ) : (
                                 // si NO tiene acceso asignado
                                 <div className='col-12 detalles'>
-                                    <button
-                                        type='button'
-                                        className='btn btn-outline-dark'
+                                    <ButtonDark
                                         onClick={() => irCrearSeguimiento(calendarEvent.start.slice(0, 10))}
                                     >
                                         <i className='bi bi-calendar-plus' /> Crear un seguimiento de este día
-                                    </button>
+                                    </ButtonDark>
                                 </div>
                             )
                     }

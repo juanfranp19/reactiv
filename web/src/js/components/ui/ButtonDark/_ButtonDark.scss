@@ -1,0 +1,26 @@
+//
+// estilos para el botón dentro de main
+//
+.main {
+    text-align: $btn-dark-main-text-align;
+
+    // estilos a partir de sm
+    @media screen and (min-width: $sm) {
+
+        text-align: $btn-dark-main-text-align-sm;
+    }
+
+    .btn-outline-dark {
+        color: $btn-dark-main-color;
+        font-weight: $btn-dark-main-font-weight;
+
+        // posicionamiento
+        margin-top: $btn-dark-main-margin-top;
+        margin-left: $btn-dark-main-margin-left;
+
+        // estilos a partir de sm
+        @media screen and (min-width: $sm) {
+            margin-left: $btn-dark-main-margin-left-sm;
+        }
+    }
+}
