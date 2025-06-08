@@ -1,5 +1,5 @@
 import { createViewMonthGrid } from '@schedule-x/calendar';
-import { createEventModalPlugin } from '@schedule-x/event-modal'
+import { createEventModalPlugin } from '@schedule-x/event-modal';
 import { useCalendarApp, ScheduleXCalendar } from '@schedule-x/react';
 
 import { useEffect } from 'react';
@@ -60,7 +60,7 @@ const CalendarAccesos = () => {
         }
     }, [calendar, socioData?.accesos]);
 
-    // customComponents de Schedule-Xs
+    // customComponents de Schedule-X
     const customComponents = {
 
         // ventana con detalles

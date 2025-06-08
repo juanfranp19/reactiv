@@ -86,6 +86,49 @@
   margin: 0 10px;
 }
 
+.datos-tarifa-actual {
+  background-color: #e0e0e0;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 50px 0px;
+  padding: 25px;
+}
+@media screen and (min-width: 576px) {
+  .datos-tarifa-actual {
+    margin: 50px;
+  }
+}
+.datos-tarifa-actual .titulo {
+  color: green;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.datos-tarifa-actual .campo {
+  padding: 0px;
+}
+.datos-tarifa-actual .campo .contenido {
+  background-color: #cee8ff;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 5px 0px;
+}
+@media screen and (min-width: 576px) {
+  .datos-tarifa-actual .campo .contenido {
+    margin: 5px;
+  }
+}
+.datos-tarifa-actual .campo .contenido .titulo {
+  font-size: 17px;
+  font-weight: bold;
+  padding: 5px;
+}
+.datos-tarifa-actual .campo .contenido .detalle {
+  padding: 10px;
+}
+
 .formlogin-ext {
   display: flex;
   justify-content: center;
@@ -730,6 +773,11 @@ form .botones button {
 .sx-calendar-seguimientos {
   --sx-color-primary-container: #f3ff4b;
   --sx-color-primary: #a3a852;
+}
+
+.sx-calendar-tarifas {
+  --sx-color-primary-container: #4bff87;
+  --sx-color-primary: #59a852;
 }
 
 .sx-calendar {

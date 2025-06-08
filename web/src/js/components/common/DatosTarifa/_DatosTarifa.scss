@@ -1,0 +1,62 @@
+.datos-tarifa-actual {
+    background-color: $datos-tarifa-bg-color;
+    text-align: $datos-tarifa-text-align;
+
+    // borde
+    border: $datos-tarifa-border;
+    border-radius: $datos-tarifa-border-radius;
+
+    // margin arriba y abajo
+    margin: $datos-tarifa-margin;
+    padding: $datos-tarifa-padding;
+
+    // estilos a partir de sm
+    @media screen and (min-width: $sm) {
+        // margin a todos los lados
+        margin: $datos-tarifa-margin-sm;
+    }
+
+    // titulo de la tarifa
+    .titulo {
+        color: $datos-tarifa-titulo-color;
+        font-size: $datos-tarifa-titulo-font-size;
+        font-weight: $datos-tarifa-titulo-font-weight;
+        text-align: $datos-tarifa-titulo-text-align;
+        padding-bottom: $datos-tarifa-titulo-padding-bottom;
+    }
+
+    // campo de cada info de la tarifa
+    .campo {
+        padding: $datos-tarifa-campo-padding;
+
+        // contenido del campo
+        .contenido {
+            background-color: $datos-tarifa-campo-contenido-background-color;
+
+            // borde
+            border: $datos-tarifa-campo-contenido-border;
+            border-radius: $datos-tarifa-campo-contenido-border-radius;
+
+            // margin arriba y abajo
+            margin: $datos-tarifa-campo-contenido-margin;
+
+            // estilos a partir de sm
+            @media screen and (min-width: $sm) {
+                // margin a todos los lados
+                margin: $datos-tarifa-campo-contenido-margin-sm;
+            }
+
+            // titulo del campo
+            .titulo {
+                font-size: $datos-tarifa-campo-contenido-titulo-font-size;
+                font-weight: $datos-tarifa-campo-contenido-titulo-font-weight;
+                padding: $datos-tarifa-campo-contenido-titulo-padding;
+            }
+
+            // info sacada del prop tarifa
+            .detalle {
+                padding: $datos-tarifa-campo-contenido-detalle-padding;
+            }
+        }
+    }
+}

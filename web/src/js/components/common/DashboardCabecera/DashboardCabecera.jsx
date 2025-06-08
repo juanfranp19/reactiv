@@ -1,6 +1,6 @@
 import Breadcrumb from '@components/ui/Breadcrumb/Breadcrumb';
 
-const DashboardCabecera = ({ children, propLastBC }) => {
+const DashboardCabecera = ({ breadcrumb, children, propLastBC }) => {
 
     return (
         <section className='row'>
@@ -9,7 +9,13 @@ const DashboardCabecera = ({ children, propLastBC }) => {
                 {children}
             </div>
 
-            <Breadcrumb propLastBC={propLastBC} />
+            {
+                // si se señala el prop breadcrumb como false, no aparecerá
+
+                breadcrumb !== 'false' && (
+                    <Breadcrumb propLastBC={propLastBC} />
+                )
+            }
 
         </section>
     );
