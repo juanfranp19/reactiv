@@ -54,7 +54,7 @@ const CalendarSeguimientos = () => {
 
     return (
         <div className='row'>
-            <div className='col-12 sx-calendar'>
+            <div className='col-12 sx-calendar sx-calendar-seguimientos'>
                 {
                     cargando || !socioData?.seguimientos
                         ? 'Cargando calendario...'
