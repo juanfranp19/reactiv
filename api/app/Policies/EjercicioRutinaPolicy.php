@@ -16,9 +16,9 @@ class EjercicioRutinaPolicy
     public function view(User $user, $rutina_id): bool
     {
         // saca el id del socio
-        $socio_id = Socio::where('user_id', $user['id'])->exists();
+        $socio_id = Socio::where('user_id', $user['id'])->first()->id;
 
-        Log::info($socio_id);
+        Log::info('socio_id: ' . $socio_id);
 
         // busca en la bbdd el socio de esa rutina
         // si lo encuntra, entonces es que la rutina le pertenece al socio
@@ -28,7 +28,7 @@ class EjercicioRutinaPolicy
                 ->exists()
         );
 
-        Log::info($rutinaDelSocio);
+        Log::info('es la rutina del socio?: ' . $rutinaDelSocio);
 
         // entrenadores y propietarios
         return Gate::allows('isEntrenador', $user) || $rutinaDelSocio;
@@ -48,9 +48,9 @@ class EjercicioRutinaPolicy
     public function update(User $user, $rutina_id): bool
     {
         // saca el id del socio
-        $socio_id = Socio::where('user_id', $user['id'])->exists();
+        $socio_id = Socio::where('user_id', $user['id'])->first()->id;
 
-        Log::info($socio_id);
+        Log::info('socio_id: ' . $socio_id);
 
         // busca en la bbdd el socio de esa rutina
         // si lo encuntra, entonces es que la rutina le pertenece al socio
@@ -60,7 +60,7 @@ class EjercicioRutinaPolicy
                 ->exists()
         );
 
-        Log::info($rutinaDelSocio);
+        Log::info('es la rutina del socio?: ' . $rutinaDelSocio);
 
         // entrenadores y propietarios
         return Gate::allows('isEntrenador', $user) || $rutinaDelSocio;
@@ -72,9 +72,9 @@ class EjercicioRutinaPolicy
     public function delete(User $user, $rutina_id): bool
     {
         // saca el id del socio
-        $socio_id = Socio::where('user_id', $user['id'])->exists();
+        $socio_id = Socio::where('user_id', $user['id'])->first()->id;
 
-        Log::info($socio_id);
+        Log::info('socio_id: ' . $socio_id);
 
         // busca en la bbdd el socio de esa rutina
         // si lo encuntra, entonces es que la rutina le pertenece al socio
@@ -84,7 +84,7 @@ class EjercicioRutinaPolicy
                 ->exists()
         );
 
-        Log::info($rutinaDelSocio);
+        Log::info('es la rutina del socio?: ' . $rutinaDelSocio);
 
         // entrenadores y propietarios
         return Gate::allows('isEntrenador', $user) || $rutinaDelSocio;

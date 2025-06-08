@@ -16,9 +16,9 @@ class EjercicioSeguimientoPolicy
     public function view(User $user, $seguimiento_id): bool
     {
         // saca el id del socio
-        $socio_id = Socio::where('user_id', $user['id'])->exists();
+        $socio_id = Socio::where('user_id', $user['id'])->first()->id;
 
-        Log::info($socio_id);
+        Log::info('socio_id: ' . $socio_id);
 
         // busca en la bbdd el socio de ese seguimiento
         // si lo encuntra, entonces es que el seguimiento le pertenece al socio
@@ -28,7 +28,7 @@ class EjercicioSeguimientoPolicy
                 ->exists()
         );
 
-        Log::info($seguimientoDelSocio);
+        Log::info('es el seguimiento del socio?: ' . $seguimientoDelSocio);
 
         // entrenadores y propietarios
         return Gate::allows('isEntrenador', $user) || $seguimientoDelSocio;
@@ -48,9 +48,9 @@ class EjercicioSeguimientoPolicy
     public function delete(User $user, $seguimiento_id): bool
     {
         // saca el id del socio
-        $socio_id = Socio::where('user_id', $user['id'])->exists();
+        $socio_id = Socio::where('user_id', $user['id'])->first()->id;
 
-        Log::info($socio_id);
+        Log::info('socio_id: ' . $socio_id);
 
         // busca en la bbdd el socio de ese seguimiento
         // si lo encuntra, entonces es que el seguimiento le pertenece al socio
@@ -60,7 +60,7 @@ class EjercicioSeguimientoPolicy
                 ->exists()
         );
 
-        Log::info($seguimientoDelSocio);
+        Log::info('es el seguimiento del socio?: ' . $seguimientoDelSocio);
 
         // entrenadores y propietarios
         return Gate::allows('isEntrenador', $user) || $seguimientoDelSocio;
