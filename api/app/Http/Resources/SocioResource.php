@@ -20,10 +20,14 @@ class SocioResource extends JsonResource
         $user_array = $this->user;
         $seguimientos_array = $this->seguimientos;
         $rutinas_array = $this->rutinas;
+        $productos_array = $this->productos;
+        $tarifas_array = $this->tarifas;
 
         unset($socio_array['user_id']);
 
         return array_merge($socio_array, [
+            'productos' => $productos_array,
+            'tarifas' => $tarifas_array,
             'accesos' => $accesos_array,
             'taquilla' => $taquilla_array,
             'user' => $user_array,

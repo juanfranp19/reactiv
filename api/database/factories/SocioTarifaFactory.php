@@ -24,18 +24,22 @@ class SocioTarifaFactory extends Factory
          */
         $tarifas = Tarifa::all();
 
+        // id de una tarifa random
         $tarifa_id = $tarifas->random()->id;
 
         /**
          *  fecha_inicio
          */
+        // obtiene una fecha entre los días marcados
         $fecha_inicio = fake()->dateTimeBetween('-20 days, -1 days')->format('Y-m-d');
 
         /**
          *  fecha_fin
          */
+        // obtiene la duración de la tarifa random obtenida
         $duracion = Tarifa::where('id', $tarifa_id)->first()->duracion;
 
+        // pasa la fecha de inicio a Carbon para poder añadirle los días de la duración
         $fechaInicioCarbon = Carbon::parse($fecha_inicio);
         $fecha_fin = $fechaInicioCarbon->addDays($duracion);
 

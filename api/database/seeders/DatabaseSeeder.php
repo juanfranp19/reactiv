@@ -30,6 +30,9 @@ class DatabaseSeeder extends Seeder
         $this->call(RutinaSeeder::class);
         $this->command->info('registros de tabla *rutinas* cargados correctamentes');
 
+        $this->call(AccesoSeeder::class);
+        $this->command->info('registros de tabla *accesos* cargados correctamentes');
+
         $this->call(SeguimientoSeeder::class);
         $this->command->info('registros de tabla *seguimientos* cargados correctamentes');
 
@@ -53,9 +56,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(SocioTarifaSeeder::class);
         $this->command->info('registros de tabla *socios_tarifas* cargados correctamentes');
-
-        $this->call(AccesoSeeder::class);
-        $this->command->info('registros de tabla *accesos* cargados correctamentes');
 
         $this->call(CalentamientoSeeder::class);
         $this->command->info('registros de tabla *calentamientos* cargados correctamentes');

@@ -22,6 +22,16 @@ class SocioTarifaSeeder extends Seeder
             // coge todos los datos del factory
             $factoryData = SocioTarifa::factory()->make()->toArray();
 
+            $socio->tarifas()->attach(2, [
+                'fecha_inicio' => '2025-01-13',
+                'fecha_fin' => '2025-04-13',
+            ]);
+
+            $socio->tarifas()->attach(1, [
+                'fecha_inicio' => '2025-04-28',
+                'fecha_fin' => '2025-05-28',
+            ]);
+
             $socio->tarifas()->attach($factoryData['tarifa_id'], [
                 'fecha_inicio' => $factoryData['fecha_inicio'],
                 'fecha_fin' => $factoryData['fecha_fin'],
