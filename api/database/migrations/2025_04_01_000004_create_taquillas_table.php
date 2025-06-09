@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('socio_id')->nullable()->unique();
             $table->date('fecha_fianza')->nullable();
+            $table->integer('fianza')->nullable();
 
             $table->foreign('socio_id')->references('id')->on('socios')->onDelete('cascade');
         });

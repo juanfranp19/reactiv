@@ -111,6 +111,7 @@ Table taquillas {
   id int [pk]
   socio_id int [null, unique, ref:-socios.id]
   fecha_fianza datetime [null]
+  fianza int [null]
 }
 
 Table productos_socios {
