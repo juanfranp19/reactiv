@@ -18,7 +18,7 @@ const postAcceso = async (data) => {
 
             const errorData = await response.json();
             console.error('Error del servidor:', errorData);
-            notifyError(errorData);
+            notifyError(errorData.error);
             return 0;
 
         } else {

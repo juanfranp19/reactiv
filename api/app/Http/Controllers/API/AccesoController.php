@@ -50,7 +50,7 @@ class AccesoController extends Controller
             $socio = Socio::where('cod_acceso', $cod_acceso)->first();
 
             if (!$socio) {
-                return response()->json(['message' => 'Código de acceso inválido.'], 409);
+                return response()->json(['error' => 'Código de acceso inválido.'], 409);
             }
 
             // crea el acceso
@@ -96,7 +96,7 @@ class AccesoController extends Controller
         $socio = Socio::where('cod_acceso', $cod_acceso)->first();
 
         if (!$socio) {
-            return response()->json(['message' => 'Código de acceso inválido.'], 409);
+            return response()->json(['error' => 'Código de acceso inválido.'], 409);
         }
 
         // encuentra el acceso sin salir de ese socio
@@ -107,7 +107,7 @@ class AccesoController extends Controller
         );
 
         if (!$acceso) {
-            return response()->json(['message' => 'Imposible salir sin haber entrado.'], 409);
+            return response()->json(['error' => 'Imposible salir sin haber entrado.'], 409);
         }
 
         // actualiza valores
