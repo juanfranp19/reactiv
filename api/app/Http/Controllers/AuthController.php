@@ -103,6 +103,7 @@ class AuthController extends Controller
     public function permissions()
     {
         return response()->json([
+            'isAdmin' => Gate::allows('isAdmin'),
             'isEntrenador' => Gate::allows('isEntrenador'),
             'isSocio' => Gate::allows('isSocio'),
         ]);
