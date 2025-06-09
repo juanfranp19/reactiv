@@ -13,7 +13,7 @@ class StorageController extends Controller
     public function localStorage($tabla, $columna, $archivo)
     {
         // forma el enlace con la tabla y el archivo
-        $path = Storage::disk('local')->path("private/{$tabla}/{$columna}/{$archivo}");
+        $path = Storage::disk('local')->path("{$tabla}/{$columna}/{$archivo}");
 
         Log::info('storage_path: ' . $path);
 

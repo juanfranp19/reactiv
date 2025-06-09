@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->integer('telefono')->unique();
             $table->boolean('admin')->default(0);
+            $table->string('imagen')->unique()->nullable();
             $table->unsignedBigInteger('user_id')->unique();
             $table->timestamps();
 

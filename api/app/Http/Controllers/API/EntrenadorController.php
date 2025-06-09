@@ -49,6 +49,7 @@ class EntrenadorController extends Controller
             $entrenador = Entrenador::create($entrenador);
 
             return response()->json([
+                'message' => 'Entrenador creado.',
                 'data' => new EntrenadorResource($entrenador),
             ], 201);
 
@@ -68,7 +69,6 @@ class EntrenadorController extends Controller
         $entrenador = Entrenador::findOrFail($id);
 
         return response()->json([
-            'message' => 'Entrenador creado.',
             'data' => new EntrenadorResource($entrenador),
         ], 200);
     }
