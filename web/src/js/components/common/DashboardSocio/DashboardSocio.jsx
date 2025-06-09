@@ -75,18 +75,23 @@ const DashboardSocio = () => {
 
                             <DashboardBigCard linkTo='tu-tarifa'>
                                 {
-                                    obtenerTarifaActual() ? (
-                                        <>
-                                            <div className='col-6'>Tarifa actual: {obtenerTarifaActual()?.nombre}</div>
-                                            <div className='col-6'>Termina en: <span className="reloj">{carcularTiempoRestanteTarifa()}</span></div>
-                                        </>
+                                    cargando ? (
+                                        <div className="col-12">Cargando</div>
                                     ) : (
-                                        <div className="col-12">No tienes tarifa actualmente</div>
+                                        // comprueba si tiene tarifa en curso
+                                        obtenerTarifaActual() ? (
+                                            <>
+                                                <div className='col-6'>Tarifa actual: {obtenerTarifaActual()?.nombre}</div>
+                                                <div className='col-6'>Termina en: <span className="reloj">{carcularTiempoRestanteTarifa()}</span></div>
+                                            </>
+                                        ) : (
+                                            <div className="col-12">No tienes tarifa actualmente</div>
+                                        )
                                     )
                                 }
                             </DashboardBigCard>
 
-                            <DashboardSmallCard linkTo='productos' posicion='derecha'>Productos</DashboardSmallCard>
+                            <DashboardSmallCard linkTo='tus-productos' posicion='derecha'>Productos</DashboardSmallCard>
                             <DashboardSmallCard linkTo='taquilla' posicion='izquierda'>Taquillas</DashboardSmallCard>
 
                         </div>

@@ -54,10 +54,18 @@ form {
 
         // estilos para el desplegable de react-select
 
+        //
         // menú del select
-        // no aplica cuando la clase padre es .dropdown-menu
-        :not(.dropdown-menu) .react-select__menu {
-            
+        //
+
+        // aplica para todos los select que contengan: classNamePrefix='react-select'
+        .react-select__menu {
+            // para que está por encima de todo
+            z-index: $form-select-menu-z-index;
+        }
+
+        // no aplica cuando la clase padre es .dropdown-menu, .select-lista-socio-productos
+        :not(.dropdown-menu, .select-lista-socio-productos) .react-select__menu {
             max-height: $form-select-menu-max-height;
 
             // estilos a partir de sm

@@ -50,6 +50,7 @@ $color-input-error: #c80000;
 $size-input-error: 15px;
 
 // select
+$form-select-menu-z-index: 999;
 $form-select-menu-max-height: 60vh;
 $form-select-menu-width-sm: 500px;
 $form-select-menu-width-md: 750px;
@@ -282,6 +283,9 @@ $desplegable-rut-seg-detalles-text-align-sm: start;
 
 $dropdown-form-add-calentamiento-ejercicio-seguimiento-padding: 20px;
 
+// lista socio productos
+$lista-socio-productos-justify-content: center;
+
 /**
  *
  * Componenes UI
@@ -357,3 +361,22 @@ $rutina-card-item-fondo-color: #acbb79;
 
 $rutina-card-btn-ver-rutina-width: 100%;
 $rutina-card-btn-ver-rutina-margin-top: 30px;
+
+// producto card
+$producto-card-width: 200px;
+$producto-card-margin: 10px;
+
+$producto-card-width-sm: 250px;
+$producto-card-width-lg: 300px;
+
+$producto-card-image-container-text-align: center;
+
+$producto-card-image-container-img-width: 75px;
+$producto-card-image-container-img-width-sm: 100px;
+$producto-card-image-container-img-width-md: 150px;
+
+$producto-card-title-font-size: 17px;
+$producto-card-title-font-size-sm: 22px;
+
+$producto-card-size-font-size: 15px;
+$producto-card-size-font-size-sm: 20px;

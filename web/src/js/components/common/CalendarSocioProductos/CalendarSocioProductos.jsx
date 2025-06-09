@@ -4,9 +4,7 @@ import { useCalendarApp, ScheduleXCalendar } from '@schedule-x/react';
 
 import { useEffect } from 'react';
 
-const CalendarSocioTarifas = ({ cargando, socioTarifas }) => {
-
-    console.log(socioTarifas);
+const CalendarSocioProductos = ({ cargando, socioProductos }) => {
 
     // inicializa el hook del calendar
     const calendar = useCalendarApp({
@@ -19,30 +17,30 @@ const CalendarSocioTarifas = ({ cargando, socioTarifas }) => {
         plugins: [createEventModalPlugin()],
     });
 
-    // llena el calendario de datos
     useEffect(() => {
 
         // evita que se llenen los datos antes de que se haya inicializado el calendar
         if (!calendar || !calendar.events) return;
 
-        if (socioTarifas) {
+        if (socioProductos) {
 
             // valores de events del calendar
             const events = (
-                socioTarifas
-                    ?.map(tarifa => ({
-                        id: tarifa.id,
-                        start: tarifa.pivot.fecha_inicio,
-                        end: tarifa.pivot.fecha_fin,
-                        title: tarifa.nombre,
-                        description: tarifa.descripcion,
+                socioProductos
+                    ?.map(producto => ({
+                        id: producto.id,
+                        start: producto.pivot.fecha_compra,
+                        end: producto.pivot.fecha_compra,
+                        title: producto.nombre,
+                        description: producto.descripcion,
                     }))
             );
 
             // se actualizan los eventos del calendar
             calendar.events.set(events);
         }
-    }, [calendar, socioTarifas]);
+
+    }, [calendar, socioProductos]);
 
     // customComponents de Schedule-X
     const customComponents = {
@@ -53,16 +51,13 @@ const CalendarSocioTarifas = ({ cargando, socioTarifas }) => {
             return (
                 <div className='row event-modal'>
                     <div className='col-12'>
-                        <span className='destacado'>Tarifa: </span>{calendarEvent.title}
+                        <span className='destacado'>Producto: </span>{calendarEvent.title}
                     </div>
                     <div className='col-12'>
                         <span className='destacado'>Descripción: </span>{calendarEvent.description}
                     </div>
                     <div className='col-12'>
-                        <span className='destacado'>Inicio: </span><span className='reloj'>{calendarEvent.start}</span>
-                    </div>
-                    <div className='col-12'>
-                        <span className='destacado'>Fin: </span><span className='reloj'>{calendarEvent.end}</span>
+                        <span className='destacado'>Fehca de compra: </span><span className='reloj'>{calendarEvent.start}</span>
                     </div>
                 </div>
             );
@@ -71,7 +66,7 @@ const CalendarSocioTarifas = ({ cargando, socioTarifas }) => {
 
     return (
         <div className='row'>
-            <div className='col-12 sx-calendar sx-calendar-socio-tarifas'>
+            <div className='col-12 sx-calendar sx-calendar-socio-productos'>
                 {
                     cargando
                         ? 'Cargando calendario...'
@@ -89,4 +84,4 @@ const CalendarSocioTarifas = ({ cargando, socioTarifas }) => {
     );
 }
 
-export default CalendarSocioTarifas;
+export default CalendarSocioProductos;
