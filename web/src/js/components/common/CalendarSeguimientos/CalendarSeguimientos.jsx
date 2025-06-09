@@ -1,16 +1,12 @@
 import { createViewMonthGrid } from '@schedule-x/calendar';
 import { useCalendarApp, ScheduleXCalendar } from '@schedule-x/react';
+
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useObtenerSocio } from '@hooks/useSocio';
-import useToken from '@hooks/useToken';
-
-const CalendarSeguimientos = () => {
+const CalendarSeguimientos = ({ socioData, cargando }) => {
 
     const navigateTo = useNavigate();
-    const { id } = useToken();
-    const { socioData, cargando } = useObtenerSocio(id);
 
     //console.log(socioData);
 

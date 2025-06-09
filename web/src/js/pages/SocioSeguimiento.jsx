@@ -6,9 +6,15 @@ import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCab
 
 import ButtonDark from '@components/ui/ButtonDark/ButtonDark';
 
+import { useObtenerSocio } from '@hooks/useSocio';
+import useToken from '@hooks/useToken';
+
 const SocioSeguimiento = () => {
 
     const navigateTo = useNavigate();
+
+    const { socioId } = useToken();
+    const { socioData, cargando } = useObtenerSocio(socioId);
 
     function irAccesos() {
         // navega a la páginas los accesos del socio
@@ -27,14 +33,14 @@ const SocioSeguimiento = () => {
 
             <div className='row'>
                 <div className='col-12 main'>
-                    
+
                     <ButtonDark onClick={irAccesos}>
                         <i className='bi bi-folder2-open' /> Ir a tus accesos
                     </ButtonDark>
                 </div>
             </div>
 
-            <CalendarSeguimientos />
+            <CalendarSeguimientos socioData={socioData} cargando={cargando} />
         </main>
     );
 }

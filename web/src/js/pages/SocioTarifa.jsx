@@ -11,8 +11,8 @@ import getTodayDate from '@utils/getTodayDate';
 
 const SocioTarifa = () => {
 
-    const { id } = useToken();
-    const { socioData, cargando: cargandoSocioData } = useObtenerSocio(id);
+    const { socioId } = useToken();
+    const { socioData, cargando: cargandoSocioData } = useObtenerSocio(socioId);
 
     const [tarifas, setTarifas] = useState([]);
 

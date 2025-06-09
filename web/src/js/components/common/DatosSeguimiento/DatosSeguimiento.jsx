@@ -10,15 +10,10 @@ import ButtonSave from '@components/ui/ButtonSave/ButtonSave';
 import RutinaCard from '@components/ui/RutinaCard/RutinaCard';
 
 import { useObtenerSeguimiento, useActualizarSeguimiento, useEliminarSeguimiento } from '@hooks/useSeguimiento';
-import { useObtenerSocio } from '@hooks/useSocio';
-import useToken from '@hooks/useToken';
 
 const DatosSeguimiento = (props) => {
 
     const navigateTo = useNavigate();
-    const { id } = useToken();
-
-    const { socioData, cargando: cargandoSocioData } = useObtenerSocio(id);
 
     const { seguimientoData, cargando: cargandoSeguimientoData, refresh: refreshSeguimientoData } = useObtenerSeguimiento(props.idSeguimiento);
     const { updateSeguimiento, cargando: cargandoUpdateSeguimiento } = useActualizarSeguimiento();
@@ -53,14 +48,14 @@ const DatosSeguimiento = (props) => {
     function obtenerRutinas() {
 
         // mientras se cargan los datos del socio
-        if (cargandoSocioData || socioData.rutinas === undefined) return [{
+        if (props.cargandoSocioData || props.socioData.rutinas === undefined) return [{
             value: '',
             label: 'Cargando...',
             isDisabled: true,
         }];
 
         // obtiene los datos del socio del hook
-        return socioData?.rutinas
+        return props.socioData?.rutinas
             .map(rutina => ({
                 value: rutina.id,
                 label: rutina.nombre,

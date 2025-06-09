@@ -1,12 +1,6 @@
 import RutinaCard from '@components/ui/RutinaCard/RutinaCard';
 
-import { useObtenerSocio } from '@hooks/useSocio';
-import useToken from '@hooks/useToken';
-
-const ListaRutinas = () => {
-
-    const { id } = useToken();
-    const { socioData, cargando } = useObtenerSocio(id);
+const ListaRutinas = ({ socioData, cargando }) => {
 
     const obtenerListado = () => {
 

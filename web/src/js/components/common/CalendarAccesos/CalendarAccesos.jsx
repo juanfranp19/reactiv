@@ -7,15 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 import ButtonDark from '@components/ui/ButtonDark/ButtonDark';
 
-import { useObtenerSocio } from '@hooks/useSocio';
-import useToken from '@hooks/useToken';
-
-const CalendarAccesos = () => {
+const CalendarAccesos = ({ socioData, cargando }) => {
 
     const navigateTo = useNavigate();
-
-    const { id } = useToken();
-    const { socioData, cargando } = useObtenerSocio(id);
 
     // dirige a los detalles del seguimiento
     function irSeguimiento(seguimiento_id) {

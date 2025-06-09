@@ -8,8 +8,8 @@ import useToken from '@hooks/useToken';
 
 const SocioTaquilla = () => {
 
-    const { id } = useToken();
-    const { socioData, cargando: cargandoSocioData } = useObtenerSocio(id);
+    const { socioId } = useToken();
+    const { socioData, cargando: cargandoSocioData } = useObtenerSocio(socioId);
 
     const [taquilla, setTaquilla] = useState(null);
 

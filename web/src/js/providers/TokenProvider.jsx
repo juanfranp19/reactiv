@@ -6,7 +6,10 @@ const TokenProvider = ({ children }) => {
 
     const [token, setToken] = useState('');
     const [username, setUsername] = useState('');
-    const [id, setId] = useState('');
+
+    const [socioId, setSocioId] = useState('');
+    const [entrenadorId, setEntrenadorId] = useState('');
+
     const [cargando, setCargando] = useState(true);
 
     const { user } = useCheckAuth();
@@ -32,8 +35,10 @@ const TokenProvider = ({ children }) => {
                     // actualiza el contexto
                     setToken(localToken);
                     setUsername(data.name);
-                    setId(data.id);
-                    
+
+                    setEntrenadorId(data?.entrenador?.id);
+                    setSocioId(data.socio.id);
+
                 } else {
                     // llama funcion que elimina todo los datos del contexto
                     handleLogout();
@@ -52,17 +57,18 @@ const TokenProvider = ({ children }) => {
             localStorage.removeItem('token');
             setToken(null);
             setUsername(null);
-            setId(null);
+            setEntrenadorId(null);
+            setSocioId(null);
         };
 
         verificarToken();
 
-    }, [user]);
+    }, [user, entrenadorId, socioId]);
 
     if (cargando) return (<div>Cargando...</div>);
 
     return (
-        <TokenContext.Provider value={{ token, setToken, username, setUsername, id, setId }}>
+        <TokenContext.Provider value={{ token, setToken, username, setUsername, socioId, setSocioId, entrenadorId, setEntrenadorId }}>
             {children}
         </TokenContext.Provider>
     );

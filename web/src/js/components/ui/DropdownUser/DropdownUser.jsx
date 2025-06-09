@@ -16,10 +16,10 @@ const DropdownUser = () => {
     const { logout, cargando: cargandoLogout } = useLogout();
 
     const { isEntrenador, isSocio } = usePermission();
-    const { id, setToken, setUsername, setId } = useToken();
+    const { setToken, setUsername, socioId, setSocioId, entrenadorId, setEntrenadorId } = useToken();
 
-    const { entrenadorData, cargando: cargandoEntrenadorData } = useObtenerEntrenador(id);
-    const { socioData, cargando: cargandoSocioData } = useObtenerSocio(id);
+    const { entrenadorData, cargando: cargandoEntrenadorData } = useObtenerEntrenador(isEntrenador ? entrenadorId : null);
+    const { socioData, cargando: cargandoSocioData } = useObtenerSocio(isSocio ? socioId : null);
 
     const manejarLogout = async () => {
 
@@ -31,7 +31,8 @@ const DropdownUser = () => {
             // elimina todos los datos del contexto del token que maneja datos delicados del usuario
             setToken(null);
             setUsername(null);
-            setId(null);
+            setSocioId(null);
+            setEntrenadorId(null);
 
             // redirige a la página de login
             navigateTo('/login');

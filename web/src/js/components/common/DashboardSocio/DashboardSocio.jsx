@@ -8,8 +8,8 @@ import getTodayDate from '@utils/getTodayDate';
 
 const DashboardSocio = () => {
 
-    const { id } = useToken();
-    const { socioData, cargando } = useObtenerSocio(id);
+    const { socioId } = useToken();
+    const { socioData, cargando } = useObtenerSocio(socioId);
 
     function carcularTiempoRestanteTarifa() {
         // obtener la fecha de hoy y la fecha fin de la tarifa

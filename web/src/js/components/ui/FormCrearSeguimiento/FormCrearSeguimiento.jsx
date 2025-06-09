@@ -5,15 +5,9 @@ import ButtonCrear from '@components/ui/ButtonCrear/ButtonCrear';
 import ButtonReset from '@components/ui/ButtonReset/ButtonReset';
 import ErrorInput from '@components/ui/ErrorInput/ErrorInput';
 
-import { useObtenerSocio } from '@hooks/useSocio';
-import useToken from '@hooks/useToken';
-
 import getTodayDate from '@utils/getTodayDate';
 
 const FormCrearSeguimiento = (props) => {
-
-    const { id } = useToken();
-    const { socioData, cargando: cargandoSocioData } = useObtenerSocio(id);
 
     /**
      * 
@@ -31,14 +25,14 @@ const FormCrearSeguimiento = (props) => {
     function obtenerRutinas() {
 
         // mientras se cargan los datos del socio
-        if (cargandoSocioData || socioData.rutinas === undefined) return [{
+        if (props.cargandoSocioData || props.socioData.rutinas === undefined) return [{
             value: '',
             label: 'Cargando...',
             isDisabled: true,
         }];
 
         // obtiene los datos del socio del hook
-        return socioData?.rutinas
+        return props.socioData?.rutinas
             .map(rutina => ({
                 value: rutina.id,
                 label: rutina.nombre,

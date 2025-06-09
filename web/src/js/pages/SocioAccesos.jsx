@@ -1,7 +1,13 @@
 import CalendarAccesos from '@components/common/CalendarAccesos/CalendarAccesos';
 import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
 
+import { useObtenerSocio } from '@hooks/useSocio';
+import useToken from '@hooks/useToken';
+
 const SocioAccesos = () => {
+
+    const { socioId } = useToken();
+    const { socioData, cargando } = useObtenerSocio(socioId);
 
     return (
         <main>
@@ -9,7 +15,7 @@ const SocioAccesos = () => {
                 Tus accesos
             </DashboardCabecera>
 
-            <CalendarAccesos />
+            <CalendarAccesos socioData={socioData} cargando={cargando} />
         </main>
     );
 }

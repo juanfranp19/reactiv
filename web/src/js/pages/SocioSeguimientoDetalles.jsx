@@ -16,8 +16,9 @@ const SocioSeguimientoDetalles = () => {
 
     const navigateTo = useNavigate();
     const { rutaIdSeguimiento } = useParams();
-    const { id } = useToken();
-    const { socioData, cargando } = useObtenerSocio(id);
+
+    const { socioId } = useToken();
+    const { socioData, cargando: cargandoSocioData } = useObtenerSocio(socioId);
 
     const [idSeguimiento, setIdSeguimiento] = useState(null);
     const [fechaSeguimiento, setFechaSeguimiento] = useState(null);
@@ -45,7 +46,7 @@ const SocioSeguimientoDetalles = () => {
 
     useEffect(obtenerSeguimientoId, [obtenerSeguimientoId]);
 
-    if (cargando || !idSeguimiento) return (
+    if (cargandoSocioData || !idSeguimiento) return (
         <div className='row'>cargando</div>
     );
 
@@ -68,7 +69,12 @@ const SocioSeguimientoDetalles = () => {
             </div>
 
             {/* componente donde se trabajan datos de la tabla de seguimientos */}
-            <DatosSeguimiento setFechaSeguimiento={setFechaSeguimiento} idSeguimiento={idSeguimiento} />
+            <DatosSeguimiento
+                setFechaSeguimiento={setFechaSeguimiento}
+                idSeguimiento={idSeguimiento}
+                socioData={socioData}
+                cargandoSocioData={cargandoSocioData}
+            />
 
             {/* componentes donde se trabajan datos de las tablas de calentamientos_seguimientos y ejercicios_seguimientos */}
             <ListaSeguimientoCalentamientos seguimiento={idSeguimiento} />

@@ -9,8 +9,8 @@ import useToken from '@hooks/useToken';
 
 const SocioProductos = () => {
 
-    const { id } = useToken();
-    const { socioData, cargando: cargandoSocioData } = useObtenerSocio(id);
+    const { socioId } = useToken();
+    const { socioData, cargando: cargandoSocioData } = useObtenerSocio(socioId);
 
     const [productos, setProductos] = useState([]);
 

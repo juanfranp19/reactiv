@@ -2,7 +2,13 @@ import Crear from '@components/common/Crear/Crear';
 import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
 import ListaRutinas from '@components/common/ListaRutinas/ListaRutinas';
 
+import { useObtenerSocio } from '@hooks/useSocio';
+import useToken from '@hooks/useToken';
+
 const SocioRutinas = () => {
+
+    const { socioId } = useToken();
+    const { socioData, cargando } = useObtenerSocio(socioId);
 
     return (
         <main>
@@ -14,7 +20,7 @@ const SocioRutinas = () => {
                 Crear rutina
             </Crear>
 
-            <ListaRutinas />
+            <ListaRutinas socioData={socioData} cargando={cargando} />
         </main>
     );
 }

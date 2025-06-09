@@ -4,11 +4,17 @@ import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCab
 import FormCrearSeguimiento from '@components/ui/FormCrearSeguimiento/FormCrearSeguimiento';
 
 import { useCrearSeguimiento } from '@hooks/useSeguimiento';
+import { useObtenerSocio } from '@hooks/useSocio';
+import useToken from '@hooks/useToken';
 
 const SocioSeguimientoCrear = () => {
 
     const location = useLocation();
     const navigateTo = useNavigate();
+
+    const { socioId } = useToken();
+    const { socioData, cargando: cargandoSocioData } = useObtenerSocio(socioId);
+
     const { crearSeguimiento, cargando } = useCrearSeguimiento();
 
     // fecha que recibe desde CarlendarAcceso, se usa en el formulario
@@ -43,6 +49,8 @@ const SocioSeguimientoCrear = () => {
                     manejarCrearSeguimiento={manejarCrearSeguimiento}
                     cargando={cargando}
                     fechaAcceso={fechaAcceso}
+                    socioData={socioData}
+                    cargandoSocioData={cargandoSocioData}
                 />
             </div>
         </main>

@@ -21,9 +21,9 @@ const SocioRutinaDetalles = () => {
 
     const navigateTo = useNavigate();
     const { rutaIdRutina } = useParams();
-    const { id } = useToken();
+    const { socioId } = useToken();
 
-    const { socioData, cargando: cargandoSocioData, refresh: refreshSocioData } = useObtenerSocio(id);
+    const { socioData, cargando: cargandoSocioData, refresh: refreshSocioData } = useObtenerSocio(socioId);
     const { updateRutina, cargando: cargandoUpdateRutina } = useActualizarRutina();
     const { destroyRutina, cargando: cargandoDestroyRutina } = useEliminarRutina();
 
