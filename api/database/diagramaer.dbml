@@ -69,6 +69,7 @@ Table productos {
   nombre string [unique]
   descripcion text
   precio decimal
+  imagen string [unique, null]
   created_at datetime
   updated_at datetime
 }

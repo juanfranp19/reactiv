@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nombre')->unique();
             $table->text('descripcion');
             $table->decimal('precio', 5, 2); //999.99
+            $table->string('imagen')->unique()->nullable();
             $table->timestamps();
         });
     }

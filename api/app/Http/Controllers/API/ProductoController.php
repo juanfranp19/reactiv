@@ -19,7 +19,7 @@ class ProductoController extends Controller
 
             // devuelve recurso ordenado por id
             $productos = ProductoResource::collection(
-                Producto::orderBy('id')->get(),
+                Producto::orderBy('nombre')->get(),
             );
 
             return response()->json([
