@@ -12,15 +12,21 @@ $xl: 1200px;
  * Fonts
  */
 @mixin font-reloj {
-    font-family: "Quantico", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Quantico", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 @mixin host-grotesk {
   font-family: "Host Grotesk", sans-serif;
   font-optical-sizing: auto;
   font-weight: normal;
+  font-style: normal;
+}
+
+@mixin julius-sans-one-regular {
+  font-family: "Julius Sans One", sans-serif;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -201,6 +207,9 @@ $sx-calendar-wrapper-max-height-sm: 80vh;
 $sx-calendar-wrapper-width-md: 1200px;
 $sx-calendar-wrapper-height-md: 800px;
 
+// datos codigo acceso
+$datos-codigo-acceso-text-align: center;
+
 // datos calentamiento/seguimiento
 $datos-cal-seg-text-align: center;
 $datos-cal-seg-padding-top: 10px;
@@ -311,6 +320,10 @@ $lista-socio-productos-justify-content: center;
  *
  * Componenes UI
  */
+// access card
+$flip-card-access-card-height: 250px;
+$flip-card-access-card-padding: 0 50px;
+
 // breadcrumb
 $breadcrumb-padding-left: $dashb-titulo-padding; // igual que el titulo de dashboard
 $breadcrumb-padding-left-sm: $dashb-titulo-padding-left-right-sm; // igual que el titulo de dashboard

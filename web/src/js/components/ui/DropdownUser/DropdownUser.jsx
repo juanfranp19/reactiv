@@ -85,7 +85,7 @@ const DropdownUser = () => {
                         <NavLink to='/dashboard' className='dropdown-item'>Dashboard</NavLink>
                     </li>
                     <li>
-                        <a className='dropdown-item' href='#'>Another link</a>
+                        <NavLink to='/dashboard/codigo-acceso' className='dropdown-item'>Código de acceso</NavLink>
                     </li>
                     <li>
                         <button className='dropdown-item' onClick={manejarLogout}>
