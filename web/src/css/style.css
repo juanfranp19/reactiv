@@ -478,7 +478,11 @@
 .dropdown-user .dropdown-fuera-offcanvas {
   position: absolute;
 }
-.dropdown-user .nav-link .bi-person-circle {
+.dropdown-user .nav-link .user-icon {
+  width: 45px;
+  border-radius: 50%;
+}
+.dropdown-user .nav-link .bi {
   font-size: 30px;
   padding-right: 5px;
 }

@@ -6,8 +6,14 @@
 
     .nav-link {
 
+        // imagen del usuario
+        .user-icon {
+            width: $navbar-width-user-icon;
+            border-radius: $navbar-border-radius-user-icon;
+        }
+
         // icono de usuario
-        .bi-person-circle {
+        .bi {
             font-size: $navbar-size-user-icon;
             padding-right: 5px;
         }
