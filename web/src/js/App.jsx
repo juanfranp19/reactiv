@@ -17,6 +17,7 @@ import SocioRutinas from '@pages/SocioRutinas';
 import SocioSeguimiento from '@pages/SocioSeguimiento';
 import SocioSeguimientoCrear from '@pages/SocioSeguimientoCrear';
 import SocioSeguimientoDetalles from '@pages/SocioSeguimientoDetalles';
+import SocioTaquilla from '@pages/SocioTaquilla';
 import SocioTarifa from '@pages/SocioTarifa';
 
 import PermissionProvider from '@providers/PermissionProvider';
@@ -77,6 +78,8 @@ const App = () => {
                             <Route path='/dashboard/seguimiento/crear' element={<SocioSeguimientoCrear />} />
                             <Route path='/dashboard/seguimiento/:rutaIdSeguimiento' element={<SocioSeguimientoDetalles />} />
                             <Route path='/dashboard/seguimiento/:rutaIdSeguimiento/rutina/:rutaIdRutina' element={<SocioRutinaDetalles />} />
+
+                            <Route path='/dashboard/tu-taquilla' element={<SocioTaquilla />} />
 
                             <Route path='/dashboard/tu-tarifa' element={<SocioTarifa />} />
                         </Route>

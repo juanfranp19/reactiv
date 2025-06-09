@@ -16,3 +16,7 @@ body {
 .reloj {
     @include font-reloj;
 }
+
+.fecha {
+    @include host-grotesk;
+}

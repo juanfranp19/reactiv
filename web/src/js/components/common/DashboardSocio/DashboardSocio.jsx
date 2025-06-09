@@ -92,7 +92,23 @@ const DashboardSocio = () => {
                             </DashboardBigCard>
 
                             <DashboardSmallCard linkTo='tus-productos' posicion='derecha'>Productos</DashboardSmallCard>
-                            <DashboardSmallCard linkTo='taquilla' posicion='izquierda'>Taquillas</DashboardSmallCard>
+
+                            <DashboardSmallCard linkTo='tu-taquilla' posicion='izquierda'>
+                                {
+                                    cargando ? (
+                                        'Cargando...'
+                                    ) : (
+                                        // comprueba si tiene taquilla asignada
+                                        socioData.taquilla ? (
+
+                                            // muestra el número de taquilla
+                                            <>Taquilla <span className="reloj">{socioData.taquilla.id}</span></>
+                                        ) : (
+                                            'No tienes taquilla'
+                                        )
+                                    )
+                                }
+                            </DashboardSmallCard>
 
                         </div>
                     </div>

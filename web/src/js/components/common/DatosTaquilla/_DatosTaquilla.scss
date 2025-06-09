@@ -1,0 +1,21 @@
+.datos-taquilla {
+    font-size: $datos-taquilla-font-size;
+
+    padding-top: $datos-taquilla-padding-top;
+    padding-left: $datos-taquilla-padding-left;
+
+    // estilos a partir de sm
+    @media screen and (min-width: $sm) {
+        padding-left: $datos-taquilla-padding-left-sm;
+    }
+
+    // span para destacar
+    .destacado {
+        color: $datos-taquilla-destacado-color;
+        font-weight: $datos-taquilla-destacado-font-weight;
+    }
+
+    .fecha-fianza, .socio {
+        padding-bottom: $datos-taquilla-fecha-fianza-socio-padding-bottom;
+    }
+}

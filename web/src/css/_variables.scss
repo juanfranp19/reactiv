@@ -17,6 +17,13 @@ $xl: 1200px;
     font-style: normal;
 }
 
+@mixin host-grotesk {
+  font-family: "Host Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
+
 /**
  *
  * Forms
@@ -203,6 +210,18 @@ $datos-cal-seg-text-align-sm: start;
 $datos-cal-seg-padding-left-sm: 50px;
 
 $datos-cal-seg-button-margin: 0 10px;
+
+// datos taquilla
+$datos-taquilla-font-size: 20px;
+$datos-taquilla-padding-top: 20px;
+$datos-taquilla-padding-left: 0px;
+
+$datos-taquilla-padding-left-sm: 30px;
+
+$datos-taquilla-destacado-color: blue;
+$datos-taquilla-destacado-font-weight: bold;
+
+$datos-taquilla-fecha-fianza-socio-padding-bottom: 30px;
 
 // datos tarifas
 $datos-tarifa-bg-color: #e0e0e0;

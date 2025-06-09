@@ -1,5 +1,6 @@
 // fuentes
 @import url('https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
 
 // variables
 @import './variables';
@@ -7,6 +8,7 @@
 // archivos scss de componentes common react
 @import '../js/components/common/Carousel/Carousel';
 @import '../js/components/common/DatosSeguimiento/DatosSeguimiento';
+@import '../js/components/common/DatosTaquilla/DatosTaquilla';
 @import '../js/components/common/DatosTarifa/DatosTarifa';
 @import '../js/components/common/FormLogin/FormLogin';
 @import '../js/components/common/ListaRutinaCalentamientos/ListaRutinaCalentamientos';
