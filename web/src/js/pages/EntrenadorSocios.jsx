@@ -1,3 +1,4 @@
+import Crear from '@components/common/Crear/Crear';
 import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
 import ListaSocios from '@components/common/ListaSocios/ListaSocios';
 
@@ -8,6 +9,8 @@ const EntrenadorSocios = () => {
             <DashboardCabecera>
                 Socios registrados
             </DashboardCabecera>
+
+            <Crear>Registrar nuevo socio</Crear>
 
             <ListaSocios />
         </main>

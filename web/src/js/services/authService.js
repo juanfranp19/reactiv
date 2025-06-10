@@ -1,6 +1,7 @@
 import { Notyf } from 'notyf';
 
 const API_URL = import.meta.env.VITE_API_URL;
+const API_URL_REGISTER = API_URL + '/api/register';
 const API_URL_LOGIN = API_URL + '/api/login';
 const API_URL_LOGOUT = API_URL + '/api/logout';
 const API_URL_PERMISSIONS = API_URL + '/api/permissions';
@@ -13,6 +14,55 @@ const notyf = new Notyf({
         y: 'top'
     }
 });
+
+// servicio para registrar un usuario
+export const registerService = async (data) => {
+
+    try {
+
+        const token = localStorage.getItem('token');
+
+        // envía a la URL de user los datos del user por método POST
+        const response = await fetch(API_URL_REGISTER, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(data),
+        });
+
+        // error que sale en pantalla si no se ha podido registrar el user
+        if (!response.ok) {
+
+            // mensaje de error del servidor
+            const errorData = await response.json();
+            console.error('Error del servidor:', errorData);
+
+            // mensaje del observer
+            notyf.error(errorData.error);
+
+            return 0;
+
+        } else {
+
+            // coge la respuesta de la API
+            const okData = await response.json();
+
+            //alert('Usuario registrado.');
+            notyf.success('Usuario registrado.');
+
+            console.log('user registrado: ', okData);
+            return okData;
+        }
+
+    } catch (error) {
+
+        notyf.error('Error al registrar el user.');
+        console.error('error al registrar user:', error.message);
+        throw error;
+    }
+}
 
 // servicio para el login
 export const loginService = async (formData) => {

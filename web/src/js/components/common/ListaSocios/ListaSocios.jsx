@@ -102,7 +102,7 @@ const ListaSocios = () => {
                                         <td>{socio.nombre} {socio.apellidos}</td>
                                         <td className='d-none d-lg-table-cell'>{socio.email}</td>
                                         <td className='d-none d-sm-table-cell'>{socio.telefono}</td>
-                                        <td className='d-none d-sm-table-cell'>{socio.user.name}</td>
+                                        <td className='d-none d-sm-table-cell'>{socio.user?.name}</td>
                                         <td>
                                             {/* botón para ver detalles */}
 

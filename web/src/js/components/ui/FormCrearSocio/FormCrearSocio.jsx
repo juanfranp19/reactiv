@@ -10,7 +10,7 @@ import ButtonDeleteArchivo from '@components/ui/ButtonDeleteArchivo/ButtonDelete
 import ButtonReset from '@components/ui/ButtonReset/ButtonReset';
 import ErrorInput from '@components/ui/ErrorInput/ErrorInput';
 
-const FormCrearSocio = (props) => {
+const FormCrearSocio = ({ manejarCrearSocio, cargandoCrearSocio }) => {
 
     const [provinciaSeleccionada, setProvinciaSeleccionada] = useState('');
     const [file, setFile] = useState('');
@@ -118,7 +118,7 @@ const FormCrearSocio = (props) => {
         control,
         register,
         handleSubmit,
-        watch,
+        //watch,
         formState: { errors },
         setValue,
         trigger,
@@ -131,7 +131,7 @@ const FormCrearSocio = (props) => {
         console.log(nuevoSocio);
 
         // manda los datos a la función de la página CrearSocio.jsx
-        props.manejarCrearSocio(nuevoSocio);
+        manejarCrearSocio(nuevoSocio);
     });
 
     // función que reseta todos los datos del formulario
@@ -145,9 +145,15 @@ const FormCrearSocio = (props) => {
         <form className='col-12' id='idformsocio' onSubmit={manejarFormulario}>
             <div className='row'>
 
+                {/* titulo */}
+
+                <div className='col-12 titulo'>
+                    Datos personales del socio
+                </div>
+
                 {/* campo DNI */}
 
-                <div className='col-12 col-sm-6 col-lg-4 campo'>
+                <div className='col-12 col-sm-6 col-lg-4 col-xxl-6 campo'>
 
                     <label htmlFor={SOCIO.DNI} className='col-form-label col-form-label-lg'>DNI</label>
                     <input type='text' className='form-control form-control-lg' id={SOCIO.DNI} placeholder='00000000A'
@@ -168,7 +174,7 @@ const FormCrearSocio = (props) => {
 
                 {/* campo Nombre */}
 
-                <div className='col-12 col-sm-6 col-lg-4 campo'>
+                <div className='col-12 col-sm-6 col-lg-4 col-xxl-6 campo'>
 
                     <label htmlFor={SOCIO.NOMBRE} className='col-form-label col-form-label-lg'>Nombre</label>
                     <input type='text' className='form-control form-control-lg' id={SOCIO.NOMBRE}
@@ -185,7 +191,7 @@ const FormCrearSocio = (props) => {
 
                 {/* campo Apellidos */}
 
-                <div className='col-12 col-sm-6 col-lg-4 campo'>
+                <div className='col-12 col-sm-6 col-lg-4 col-xxl-6 campo'>
 
                     <label htmlFor={SOCIO.APELLIDOS} className='col-form-label col-form-label-lg'>Apellidos</label>
                     <input type='text' className='form-control form-control-lg' id={SOCIO.APELLIDOS}
@@ -200,25 +206,9 @@ const FormCrearSocio = (props) => {
                     <ErrorInput>{errors.apellidos?.message}</ErrorInput>
                 </div>
 
-                {/* campo imagen */}
-
-                <div className='col-12 col-sm-6 col-lg-4 campo'>
-
-                    <label htmlFor={SOCIO.IMAGEN} className='col-form-label col-form-label-lg'>Imagen</label>
-                    <input type='file' className='form-control form-control-lg' id={SOCIO.IMAGEN} onChange={manejarImagen} />
-                    {file && (
-                        <div className='eliminar-archivo'>
-                            <span>{file}</span>
-
-                            <ButtonDeleteArchivo onClick={eliminarImagen} />
-                        </div>
-                    )}
-                    <ErrorInput>{errors.imagen?.message}</ErrorInput>
-                </div>
-
                 {/* campo Fecha de nacimiento */}
 
-                <div className='col-12 col-sm-6 col-lg-4 campo'>
+                <div className='col-12 col-sm-6 col-lg-4 col-xxl-6 campo'>
 
                     <label htmlFor={SOCIO.FECHA_NAC} className='col-form-label col-form-label-lg'>Fecha de nacimiento</label>
                     <input type='date' className='flatpickr-calendar form-control form-control-lg' id={SOCIO.FECHA_NAC}
@@ -233,9 +223,25 @@ const FormCrearSocio = (props) => {
                     <ErrorInput>{errors.fecha_nac?.message}</ErrorInput>
                 </div>
 
+                {/* campo imagen */}
+
+                <div className='col-12 col-sm-6 col-lg-4 col-xxl-12 campo'>
+
+                    <label htmlFor={SOCIO.IMAGEN} className='col-form-label col-form-label-lg'>Imagen</label>
+                    <input type='file' className='form-control form-control-lg' id={SOCIO.IMAGEN} onChange={manejarImagen} />
+                    {file && (
+                        <div className='eliminar-archivo'>
+                            <span>{file}</span>
+
+                            <ButtonDeleteArchivo onClick={eliminarImagen} />
+                        </div>
+                    )}
+                    <ErrorInput>{errors.imagen?.message}</ErrorInput>
+                </div>
+
                 {/* campo Email */}
 
-                <div className='col-12 col-sm-6 col-lg-4 campo'>
+                <div className='col-12 col-sm-6 col-lg-4 col-xxl-12 campo'>
 
                     <label htmlFor={SOCIO.EMAIL} className='col-form-label col-form-label-lg'>Email</label>
                     <input type='email' className='form-control form-control-lg' id={SOCIO.EMAIL} placeholder='ejemplo@ejemplo.com'
@@ -256,7 +262,7 @@ const FormCrearSocio = (props) => {
 
                 {/* campo Teléfono */}
 
-                <div className='col-12 col-sm-6 col-lg-4 campo'>
+                <div className='col-12 col-sm-6 col-lg-4 col-xxl-6 campo'>
 
                     <label htmlFor={SOCIO.TELEFONO} className='col-form-label col-form-label-lg'>Número de teléfono</label>
                     <input type='tel' className='form-control form-control-lg' id={SOCIO.TELEFONO} placeholder='999999999'
@@ -277,7 +283,7 @@ const FormCrearSocio = (props) => {
 
                 {/* campo Dirección */}
 
-                <div className='col-12 col-sm-6 col-lg-4 campo'>
+                <div className='col-12 col-sm-6 col-lg-4 col-xxl-12 campo'>
 
                     <label htmlFor={SOCIO.DIRECCION} className='col-form-label col-form-label-lg'>Dirección</label>
                     <input type='text' className='form-control form-control-lg' id={SOCIO.DIRECCION} placeholder='Calle Ejemplo, 0'
@@ -294,7 +300,7 @@ const FormCrearSocio = (props) => {
 
                 {/* campo Provincia */}
 
-                <div className='col-12 col-sm-6 col-lg-4 campo'>
+                <div className='col-12 col-sm-6 col-lg-4 col-xxl-6 campo'>
 
                     <label htmlFor={SOCIO.PROVINCIA} className='col-form-label col-form-label-lg'>Provincia</label>
                     <Controller
@@ -326,7 +332,7 @@ const FormCrearSocio = (props) => {
 
                 {/* campo Ciudad */}
 
-                <div className='col-12 col-sm-6 col-lg-4 campo'>
+                <div className='col-12 col-sm-6 col-lg-4 col-xxl-6 campo'>
 
                     <label htmlFor={SOCIO.CIUDAD} className='col-form-label col-form-label-lg'>Ciudad</label>
                     <Controller
@@ -364,14 +370,14 @@ const FormCrearSocio = (props) => {
 
                 <div className='col-12'>
                     <ButtonCrear>
-                        {props.cargando ? 'cargando' : 'Crear Socio'}
+                        {cargandoCrearSocio ? 'cargando' : 'Crear Socio'}
                     </ButtonCrear>
 
                     <ButtonReset onClick={resetData} />
                 </div>
 
             </div>
-            { JSON.stringify(watch()) }
+            {/* JSON.stringify(watch()) */}
         </form>
     );
 }

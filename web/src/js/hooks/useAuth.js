@@ -1,5 +1,28 @@
 import { useState } from 'react';
-import { loginService, logoutService, permissionService, checkAuth } from '@services/authService';
+import { registerService, loginService, logoutService, permissionService, checkAuth } from '@services/authService';
+
+// hook para registrar un usuario
+export const useRegister = () => {
+
+    const [cargando, setCargando] = useState('');
+
+    const register = async (formData) => {
+
+        // está cargando
+        setCargando(true);
+
+        // recoge los datos devueltos por el servicio
+        const serviceResponse = await registerService(formData);
+
+        // termina de cargar
+        setCargando(false);
+
+        // devuelve los datos recibidos del servicio
+        return serviceResponse;
+    }
+
+    return ({ register, cargando });
+}
 
 // hook para el login
 export const useLogin = () => {
