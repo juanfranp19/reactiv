@@ -19,9 +19,9 @@ class SocioController extends Controller
 
             Gate::authorize('viewAny', Socio::class);
 
-            // devuelve el recurso ordenado por id
+            // devuelve el recurso ordenado por nombre
             $socios = SocioResource::collection(
-                Socio::orderBy('id')->get(),
+                Socio::orderBy('nombre')->get(),
             );
 
             return response()->json([
