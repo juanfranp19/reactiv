@@ -1,7 +1,7 @@
 import { Notyf } from 'notyf';
 
 const API_URL = import.meta.env.VITE_API_URL;
-const API_URL_SOCIO = API_URL + '/api/v1/socios';
+const API_URL_SOCIOS = API_URL + '/api/v1/socios';
 
 // se inicializa para que aparezcan los mensajes arriba en el centro de la pantalla
 const notyf = new Notyf({
@@ -10,6 +10,40 @@ const notyf = new Notyf({
         y: 'top'
     }
 });
+
+// servicio para obtener datos de todos los socios
+export const getSocios = async () => {
+
+    const token = localStorage.getItem('token');
+
+    try {
+
+        // envía la URL para obtener todos los socios
+        const response = await fetch(API_URL_SOCIOS, {
+            method: 'GET',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+        // respuesta de la API
+        const data = await response.json();
+
+        if (!response.ok) {
+
+            console.error(data.message || 'error obtener los datos de los socios');
+            return 0;
+        }
+
+        console.log(`datos de los socios: `, data);
+        return data;
+
+    } catch (error) {
+
+        console.error('error en getSocio: ', error.message);
+        throw error;
+    }
+}
 
 // servicio para crear un socio
 export const postSocio = async (data) => {
@@ -25,7 +59,7 @@ export const postSocio = async (data) => {
         }
 
         // envía a la URL de socio los datos del socio por método POST
-        const response = await fetch(API_URL_SOCIO, {
+        const response = await fetch(API_URL_SOCIOS, {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -41,7 +75,7 @@ export const postSocio = async (data) => {
             console.error('Error del servidor:', errorData);
 
             // mensaje del observer
-            notyf.error(errorData.error); 
+            notyf.error(errorData.error);
 
             return 0;
 
@@ -73,7 +107,7 @@ export const getSocio = async (id) => {
     try {
 
         // envía la URL para obtener un socio
-        const response = await fetch(`${API_URL_SOCIO}/${id}`, {
+        const response = await fetch(`${API_URL_SOCIOS}/${id}`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${token}`,
