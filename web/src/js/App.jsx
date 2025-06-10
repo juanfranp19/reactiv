@@ -4,6 +4,8 @@ import NavBar from '@components/common/Navbar/Navbar';
 
 import CrearSocio from '@pages/CrearSocio';
 import Dashboard from '@pages/Dashboard';
+import EntrenadorSocioDetalles from '@pages/EntrenadorSocioDetalles';
+import EntrenadorSocios from '@pages/EntrenadorSocios';
 import Error from '@pages/Error';
 import Home from '@pages/Home';
 import Login from '@pages/Login';
@@ -59,6 +61,8 @@ const App = () => {
 
                         <Route element={<EntrenadorRoutes />}>
                             {/* rutas que tienen acceso solo los entrenadores */}
+                            <Route path='/dashboard/socios' element={<EntrenadorSocios />} />
+                            <Route path='/dashboard/socios/detalles/:socioId' element={<EntrenadorSocioDetalles />} />
                             <Route path='/crear' element={<CrearSocio />} />
 
                         </Route>

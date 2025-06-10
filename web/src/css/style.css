@@ -264,6 +264,65 @@
   justify-content: center;
 }
 
+.lista-socios {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+.lista-socios .bi {
+  font-size: 70px;
+  padding: 0;
+}
+@media screen and (min-width: 576px) {
+  .lista-socios .bi {
+    font-size: 100px;
+  }
+}
+.lista-socios .socio-img {
+  width: 70px;
+  border-radius: 25%;
+}
+@media screen and (min-width: 576px) {
+  .lista-socios .socio-img {
+    width: 100px;
+  }
+}
+.lista-socios table {
+  table-layout: fixed;
+}
+.lista-socios table thead {
+  text-align: center;
+}
+@media screen and (min-width: 576px) {
+  .lista-socios table tbody tr {
+    border: 1px solid rgb(125, 125, 125);
+  }
+}
+.lista-socios table tbody tr td {
+  padding: 10px 5px;
+}
+@media screen and (min-width: 576px) {
+  .lista-socios table tbody tr td {
+    padding: 20px 7px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .lista-socios table tbody tr td {
+    padding: 20px 20px;
+  }
+}
+.lista-socios table tbody tr td .btn-detalles button {
+  width: 100px;
+}
+.lista-socios table tbody tr td .btn-detalles button .bi {
+  font-size: 20px;
+}
+
+.btn-cargar-mas-lista-socios {
+  text-align: center;
+  padding: 50px;
+}
+
 .navbar .logo-reactiv {
   width: 45px;
   padding: 0 5px;

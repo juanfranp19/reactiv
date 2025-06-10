@@ -16,7 +16,7 @@ const Breadcrumb = ({ propLastBC }) => {
     }
 
     // breadcrumbs sin link
-    const noLinkArray = ['rutina'];
+    const noLinkArray = ['detalles', 'rutina'];
 
     return (
         <nav className='breadcrumb-nav' aria-label='breadcrumb'>

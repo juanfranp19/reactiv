@@ -1,0 +1,77 @@
+.lista-socios {
+
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+
+    // iconos para socios sin imagen
+    .bi {
+        font-size: 70px;
+        padding: 0;
+
+        // estilos a partir de sm
+        @media screen and (min-width: $sm) {
+            font-size: 100px;
+        }
+    }
+
+    // imagen de socio
+    .socio-img {
+        width: 70px;
+        border-radius: 25%;
+
+        // estilos a partir de sm
+        @media screen and (min-width: $sm) {
+            width: 100px;
+        }
+    }
+
+    // estilos para la tabla
+    table {
+        // mejora el rendimiento
+        table-layout: fixed;
+
+        thead {
+            text-align: center;
+        }
+
+        tbody {
+            tr {
+                // estilos a partir de sm
+                @media screen and (min-width: $sm) {
+                    border: 1px solid rgb(125, 125, 125);
+                }
+                
+                td {
+                    padding: 10px 5px;
+
+                    // estilos a partir de sm
+                    @media screen and (min-width: $sm) {
+                        padding: 20px 7px;
+                    }
+
+                    // estilos a partir de md
+                    @media screen and (min-width: $md) {
+                        padding: 20px 20px;
+                    }
+
+                    .btn-detalles {
+                        button {
+                            width: 100px;
+
+                            .bi {
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// botón para cargar más socios
+.btn-cargar-mas-lista-socios {
+    text-align: center;
+    padding: 50px;
+}
