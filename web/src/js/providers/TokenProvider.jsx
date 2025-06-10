@@ -36,8 +36,10 @@ const TokenProvider = ({ children }) => {
                     setToken(localToken);
                     setUsername(data.name);
 
+                    // con '?' porque cuando da error al intentar cargar los datos del rol contrario
+                    // es decir, si es entrenador, da error al intentar obtener el id del socio, y viceversa
                     setEntrenadorId(data?.entrenador?.id);
-                    setSocioId(data.socio.id);
+                    setSocioId(data?.socio?.id);
 
                 } else {
                     // llama funcion que elimina todo los datos del contexto
