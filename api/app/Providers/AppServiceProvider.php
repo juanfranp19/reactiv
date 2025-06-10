@@ -6,10 +6,12 @@ use App\Models\Acceso;
 use App\Models\Rutina;
 use App\Models\Seguimiento;
 use App\Models\Socio;
+use App\Models\User;
 use App\Observers\AccesoObserver;
 use App\Observers\RutinaObserver;
 use App\Observers\SeguimientoObserver;
 use App\Observers\SocioObserver;
+use App\Observers\UserObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -33,5 +35,6 @@ class AppServiceProvider extends ServiceProvider
         Rutina::observe(RutinaObserver::class);
         Seguimiento::observe(SeguimientoObserver::class);
         Socio::observe(SocioObserver::class);
+        User::observe(UserObserver::class);
     }
 }

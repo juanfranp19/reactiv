@@ -46,7 +46,7 @@ class SocioObserver
                 }
 
                 // lo almacena en el servidor
-                $archivo->storeAs('socios', $nombre, 'local');
+                $archivo->storeAs('socios/imagen', $nombre, 'local');
                 // guarda el nombre del archivo en la tabla socios
                 $socio->imagen = $nombre;
 

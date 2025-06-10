@@ -20,6 +20,8 @@ class AuthController extends Controller
             $data = $request->validate([
                 'name' => ['required', 'string'],
                 'password' => ['required', 'min:6'],
+            ],[
+                'password.min' => 'La contraseña debe tener al menos 6 caracteres.',
             ]);
 
         } catch(\Exception $ex) {
