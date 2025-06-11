@@ -60,6 +60,7 @@ const DatosSocio = ({ refreshAllSociosData, refreshSocioData, socioData }) => {
         }
     }
 
+    // evita entrar a páginas cuyo socio id no existe
     if (socioData.length <= 0) navigateTo(-1);
 
     return (

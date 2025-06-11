@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import ButtonSave from '@components/ui/ButtonSave/ButtonSave';
 import ErrorInput from '@components/ui/ErrorInput/ErrorInput';
 
-const FormActualizarUser = ({ cargandoUpdateUser, manejarActualizarUser, userData }) => {
+const FormActualizarUser = ({ cargandoUpdateUser, isDisabled, manejarActualizarUser, userData }) => {
 
     // modelo de User
     const USER = {
@@ -62,7 +62,7 @@ const FormActualizarUser = ({ cargandoUpdateUser, manejarActualizarUser, userDat
                 <div className='col-12 col-md-6 campo'>
 
                     <label htmlFor={USER.NAME} className='col-form-label col-form-label-lg'>Nombre de usuario</label>
-                    <input type='text' className='form-control form-control-lg' id={USER.NAME}
+                    <input disabled={isDisabled} type='text' className='form-control form-control-lg' id={USER.NAME}
 
                         {...register(USER.NAME, {
                             required: {
@@ -83,7 +83,7 @@ const FormActualizarUser = ({ cargandoUpdateUser, manejarActualizarUser, userDat
                 <div className='col-12 col-md-6 campo'>
 
                     <label htmlFor={USER.PASSWORD} className='col-form-label col-form-label-lg'>Cambiar contraseña</label>
-                    <input type='password' className='form-control form-control-lg' id={USER.PASSWORD}
+                    <input disabled={isDisabled} type='password' className='form-control form-control-lg' id={USER.PASSWORD}
 
                         {...register(USER.PASSWORD, {
                             required: {
@@ -100,9 +100,13 @@ const FormActualizarUser = ({ cargandoUpdateUser, manejarActualizarUser, userDat
             <div className='row botones'>
 
                 <div className='col-12'>
-                    <ButtonSave>
-                        {cargandoUpdateUser ? 'cargando' : 'Guardar datos del usuario'}
-                    </ButtonSave>
+                    {
+                        !isDisabled && (
+                            <ButtonSave>
+                                {cargandoUpdateUser ? 'cargando' : 'Guardar datos del usuario'}
+                            </ButtonSave>
+                        )
+                    }
                 </div>
 
             </div>

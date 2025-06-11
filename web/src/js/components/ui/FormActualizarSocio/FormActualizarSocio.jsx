@@ -11,7 +11,7 @@ import ButtonDeleteArchivo from '@components/ui/ButtonDeleteArchivo/ButtonDelete
 import ButtonSave from '@components/ui/ButtonSave/ButtonSave';
 import ErrorInput from '@components/ui/ErrorInput/ErrorInput';
 
-const FormCrearSocio = ({ cargandoUpdateSocio, manejarActualizarSocio, socioData }) => {
+const FormActualizarSocio = ({ cargandoUpdateSocio, manejarActualizarSocio, socioData }) => {
 
     const [provinciaSeleccionada, setProvinciaSeleccionada] = useState('');
     const [file, setFile] = useState('');
@@ -412,4 +412,4 @@ const FormCrearSocio = ({ cargandoUpdateSocio, manejarActualizarSocio, socioData
     );
 }
 
-export default FormCrearSocio;
+export default FormActualizarSocio;

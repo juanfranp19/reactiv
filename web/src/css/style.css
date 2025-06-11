@@ -77,6 +77,21 @@
   text-align: center;
 }
 
+.eliminar-entrenador {
+  display: flex;
+  justify-content: center;
+  padding: 100px 0;
+}
+@media screen and (min-width: 576px) {
+  .eliminar-entrenador {
+    padding: 100px;
+  }
+}
+.eliminar-entrenador button {
+  width: 280px;
+  height: 50px;
+}
+
 .datos-calentamientos-seguimientos-edit {
   text-align: center;
   padding-top: 10px;
