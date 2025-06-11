@@ -1,19 +1,30 @@
 import { useParams } from 'react-router-dom';
+
 import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
-import { useObtenerSocio } from '@hooks/useSocio';
+import DatosSocio from '@components/common/DatosSocio/DatosSocio';
+
+import { useObtenerSocios, useObtenerSocio } from '@hooks/useSocio';
 
 const EntrenadorSocioDetalles = () => {
 
     const { socioId } = useParams();
 
-    const { socioData, cargando: cargandoSocioData } = useObtenerSocio(socioId);
+    const { refresh: refreshAllSociosData } = useObtenerSocios();
+    const { socioData, cargando: cargandoSocioData, refresh: refreshSocioData } = useObtenerSocio(socioId);
+
+    if (cargandoSocioData) return 'cargando';
 
     return (
         <main>
-            <DashboardCabecera propLastBC={cargandoSocioData ? 'Cargando...' : socioData.nombre}>
-                Socios registrados
+            <DashboardCabecera propLastBC={socioData.nombre}>
+                Detalles de {socioData.nombre} {socioData.apellidos}
             </DashboardCabecera>
 
+            <DatosSocio
+                refreshAllSociosData={refreshAllSociosData}
+                refreshSocioData={refreshSocioData}
+                socioData={socioData}
+            />
         </main>
     );
 }

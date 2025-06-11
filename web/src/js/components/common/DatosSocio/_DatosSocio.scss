@@ -1,0 +1,19 @@
+.eliminar-socio {
+    // se posiciona horizontalmente en el centro
+    display: flex;
+    justify-content: center;
+
+    // para que tenga espacio alrededor
+    padding: 100px 0;
+
+    // estilos a partir de sm
+    @media screen and (min-width: $sm) {
+        padding: 100px;
+    }
+
+    // button eliminar
+    button {
+        width: 250px;
+        height: 50px;
+    }
+}

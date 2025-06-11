@@ -92,6 +92,21 @@
   margin: 0 10px;
 }
 
+.eliminar-socio {
+  display: flex;
+  justify-content: center;
+  padding: 100px 0;
+}
+@media screen and (min-width: 576px) {
+  .eliminar-socio {
+    padding: 100px;
+  }
+}
+.eliminar-socio button {
+  width: 250px;
+  height: 50px;
+}
+
 .datos-taquilla {
   font-size: 20px;
   padding-top: 20px;
@@ -992,6 +1007,18 @@
     padding: 20px 180px 0 50px !important;
   }
 }
+form .titulo {
+  color: blue;
+  font-size: 25px;
+  text-align: center;
+  padding-top: 30px;
+}
+@media screen and (min-width: 576px) {
+  form .titulo {
+    text-align: start;
+    padding: 30px 0;
+  }
+}
 form .campo {
   padding: 20px;
 }
@@ -1011,6 +1038,11 @@ form .campo input::placeholder, form .campo textarea::placeholder {
 form .campo input:focus, form .campo textarea:focus {
   border-color: #ff6600;
   box-shadow: 0 0 0 0.2rem rgba(255, 102, 0, 0.2509803922);
+}
+form .campo .campo-imagen {
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 10%;
 }
 form .campo .css-t3ipsp-control {
   border-color: #ff6600 !important;
