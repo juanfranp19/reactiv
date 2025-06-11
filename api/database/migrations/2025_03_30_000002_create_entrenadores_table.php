@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('telefono')->unique();
             $table->boolean('admin')->default(0);
             $table->string('imagen')->unique()->nullable();
-            $table->unsignedBigInteger('user_id')->unique();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

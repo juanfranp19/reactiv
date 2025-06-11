@@ -21,7 +21,7 @@ class EntrenadorController extends Controller
 
             // devaulve el recurso ordenado por id
             $entrenadores = EntrenadorResource::collection(
-                Entrenador::orderBy('id')->get(),
+                Entrenador::orderBy('nombre')->get(),
             );
 
             return response()->json([
@@ -43,7 +43,7 @@ class EntrenadorController extends Controller
             Gate::authorize('create', Entrenador::class);
 
             // obtiene la información de $request y la convierte a un array asociativo
-            $entrenador = json_decode($request->getContent(), true);
+            $entrenador = $request->all();
 
             // crea el entrenador
             $entrenador = Entrenador::create($entrenador);
@@ -89,7 +89,9 @@ class EntrenadorController extends Controller
             'apellidos' => 'required',
             'email' => 'required | email',
             'telefono' => 'required',
-            'user_id' => 'required | exists:users,id'
+            'admin' => 'required',
+            //'imagen' => 'required',
+            //'user_id' => 'required | exists:users,id'
         ]);
 
         // los actualiza
@@ -97,7 +99,9 @@ class EntrenadorController extends Controller
         $entrenador->apellidos = $request->input('apellidos');
         $entrenador->email = $request->input('email');
         $entrenador->telefono = $request->input('telefono');
-        $entrenador->user_id = $request->input('user_id');
+        $entrenador->admin = $request->input('admin');
+        //$entrenador->imagen = $request->input('imagen');
+        //$entrenador->user_id = $request->input('user_id');
         $entrenador->save();
 
         return response()->json(['message' => 'Entrenador actualizado.'], 200);

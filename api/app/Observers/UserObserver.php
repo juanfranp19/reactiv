@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Models\Entrenador;
 use App\Models\Socio;
 use App\Models\User;
 use Illuminate\Support\Facades\Request;
@@ -25,7 +26,16 @@ class UserObserver
             $socio = Socio::findOrFail($request->input('socio_id'));
 
             // si ese socio ya tiene un usuario, aborta
-            if ($socio->user_id !== null) abort(409, 'Este socio ya tiene un usuario asigando');
+            if ($socio->user_id !== null) abort(409, 'Este socio ya tiene un usuario asigando.');
+        }
+
+        if ($request->has('entrenador_id')) {
+
+            // encuentra al entrenador que se le asigna al usuario
+            $entrenador = Entrenador::findOrFail($request->input('entrenador_id'));
+
+            // si ese entrenador ya tiene un usuario, aborta
+            if ($entrenador->user_id !== null) abort(409, 'Este entrenador ya tiene un usuario asigando.');
         }
     }
 
@@ -45,6 +55,18 @@ class UserObserver
 
             // actualiza el user_id de ese socio
             $socio->update([
+                'user_id' => $user->id,
+            ]);
+        }
+
+        // verifica que en los datos de entrada se encuentre entrenador_id
+        if ($request->has('entrenador_id')) {
+
+            // encuentra al entrenador que se le asigna al usuario
+            $entrenador = Entrenador::findOrFail($request->input('entrenador_id'));
+
+            // actualiza el user_id de ese entrenador
+            $entrenador->update([
                 'user_id' => $user->id,
             ]);
         }

@@ -23,7 +23,7 @@ Table socios {
   ciudad string
   imagen string [unique, null]
   cod_acceso string [unique]
-  user_id int [unique, ref:- users.id]
+  user_id int [null, ref:- users.id]
   created_at datetime
   updated_at datetime
 }
@@ -36,7 +36,7 @@ Table entrenadores {
   telefono int [unique]
   admin boolean
   imagen string [unique, null]
-  user_id int [unique, ref:- users.id]
+  user_id int [null, ref:- users.id]
   created_at datetime
   updated_at datetime
 }
