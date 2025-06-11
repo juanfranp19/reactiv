@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createMemoryHistory } from 'vue-router';
 
 import AccederView from '@views/AccederView.vue';
 import HasAccedidoView from '@views/HasAccedidoView.vue';
@@ -20,7 +20,7 @@ const routes = [
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createMemoryHistory(),
     routes,
 });
 
