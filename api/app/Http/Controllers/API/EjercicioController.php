@@ -43,7 +43,7 @@ class EjercicioController extends Controller
             Gate::authorize('create', Ejercicio::class);
 
             // obtiene la información de $request y la convierte a un array asociativo
-            $ejercicio = json_decode($request->getContent(), true);
+            $ejercicio = $request->all();
 
             // crea el ejercicio
             $ejercicio = Ejercicio::create($ejercicio);
@@ -93,7 +93,7 @@ class EjercicioController extends Controller
         // los actualiza
         $ejercicio->nombre = $request->input('nombre');
         $ejercicio->descripcion = $request->input('descripcion');
-        $ejercicio->imagen = $request->input('imagen');
+        //$ejercicio->imagen = $request->input('imagen');
         $ejercicio->grupo_id = $request->input('grupo_id');
         $ejercicio->save();
 

@@ -41,7 +41,7 @@ class ProductoController extends Controller
             Gate::authorize('create', Producto::class);
 
             // obtiene la información de $request y la convierte a un array asociativo
-            $producto = json_decode($request->getContent(), true);
+            $producto = $request->all();
 
             // crea el producto
             $producto = Producto::create($producto);

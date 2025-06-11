@@ -43,7 +43,7 @@ class CalentamientoController extends Controller
             Gate::authorize('create', Calentamiento::class);
 
             // obtiene la información de $request y la convierte a un array asociativo
-            $calentamiento = json_decode($request->getContent(), true);
+            $calentamiento = $request->all();
 
             // crea el calentamiento
             $calentamiento = Calentamiento::create($calentamiento);
@@ -92,7 +92,7 @@ class CalentamientoController extends Controller
             // actualiza valores
             $calentamiento->nombre = $request->input('nombre');
             $calentamiento->descripcion = $request->input('descripcion');
-            $calentamiento->imagen = $request->input('imagen');
+            //$calentamiento->imagen = $request->input('imagen');
             $calentamiento->save();
 
             return response()->json(['message' => 'Calentamiento actualizado.'], 200);
