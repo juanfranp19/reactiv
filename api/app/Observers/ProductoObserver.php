@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Producto;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 
 class ProductoObserver
@@ -12,32 +13,34 @@ class ProductoObserver
      */
     public function creating(Producto $producto): void
     {
-        /**
-         * aborta si los valores ya están registrados
-         */
-        if (Producto::where('nombre', $producto->nombre)->exists())   abort(409, 'Ya existe un producto con ese nombre.');
+        if (! App::runningInConsole()) {
+            /**
+             * aborta si los valores ya están registrados
+             */
+            if (Producto::where('nombre', $producto->nombre)->exists())   abort(409, 'Ya existe un producto con ese nombre.');
 
-        /**
-         * manejar imagen
-         */
-        if (request()->hasFile('imagen')) {
+            /**
+             * manejar imagen
+             */
+            if (request()->hasFile('imagen')) {
 
-            // coge el objeto File
-            $archivo = request()->file('imagen');
-            // saca el nombre
-            $nombre = $archivo->getClientOriginalName();
+                // coge el objeto File
+                $archivo = request()->file('imagen');
+                // saca el nombre
+                $nombre = $archivo->getClientOriginalName();
 
-            // si la imagen es repetida, aborta la creación del producto
-            if (Producto::where('imagen', $nombre)->exists()) {
-                abort(400, 'Ya existe un producto con esa imagen.');
+                // si la imagen es repetida, aborta la creación del producto
+                if (Producto::where('imagen', $nombre)->exists()) {
+                    abort(400, 'Ya existe un producto con esa imagen.');
+                }
+
+                // lo almacena en el servidor
+                $archivo->storeAs('productos/imagen', $nombre, 'public');
+                // guarda el nombre del archivo en la tabla productos
+                $producto->imagen = $nombre;
+            } else {
+                $producto->imagen = null;
             }
-
-            // lo almacena en el servidor
-            $archivo->storeAs('productos/imagen', $nombre, 'public');
-            // guarda el nombre del archivo en la tabla productos
-            $producto->imagen = $nombre;
-        } else {
-            $producto->imagen = null;
         }
     }
 

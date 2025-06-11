@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Calentamiento;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 
 class CalentamientoObserver
@@ -12,32 +13,34 @@ class CalentamientoObserver
      */
     public function creating(Calentamiento $calentamiento): void
     {
-        /**
-         * aborta si los valores ya están registrados
-         */
-        if (Calentamiento::where('nombre', $calentamiento->nombre)->exists())   abort(409, 'Ya existe un calentamiento con ese nombre.');
+        if (! App::runningInConsole()) {
+            /**
+             * aborta si los valores ya están registrados
+             */
+            if (Calentamiento::where('nombre', $calentamiento->nombre)->exists())   abort(409, 'Ya existe un calentamiento con ese nombre.');
 
-        /**
-         * manejar imagen
-         */
-        if (request()->hasFile('imagen')) {
+            /**
+             * manejar imagen
+             */
+            if (request()->hasFile('imagen')) {
 
-            // coge el objeto File
-            $archivo = request()->file('imagen');
-            // saca el nombre
-            $nombre = $archivo->getClientOriginalName();
+                // coge el objeto File
+                $archivo = request()->file('imagen');
+                // saca el nombre
+                $nombre = $archivo->getClientOriginalName();
 
-            // si la imagen es repetida, aborta la creación del calentamiento
-            if (Calentamiento::where('imagen', $nombre)->exists()) {
-                abort(400, 'Ya existe un calentamiento con esa imagen.');
+                // si la imagen es repetida, aborta la creación del calentamiento
+                if (Calentamiento::where('imagen', $nombre)->exists()) {
+                    abort(400, 'Ya existe un calentamiento con esa imagen.');
+                }
+
+                // lo almacena en el servidor
+                $archivo->storeAs('calentamientos/imagen', $nombre, 'public');
+                // guarda el nombre del archivo en la tabla calentamientos
+                $calentamiento->imagen = $nombre;
+            } else {
+                $calentamiento->imagen = null;
             }
-
-            // lo almacena en el servidor
-            $archivo->storeAs('calentamientos/imagen', $nombre, 'public');
-            // guarda el nombre del archivo en la tabla calentamientos
-            $calentamiento->imagen = $nombre;
-        } else {
-            $calentamiento->imagen = null;
         }
     }
 

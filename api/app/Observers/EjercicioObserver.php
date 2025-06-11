@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Ejercicio;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 
 class EjercicioObserver
@@ -12,32 +13,34 @@ class EjercicioObserver
      */
     public function creating(Ejercicio $ejercicio): void
     {
-        /**
-         * aborta si los valores ya están registrados
-         */
-        if (Ejercicio::where('nombre', $ejercicio->nombre)->exists())   abort(409, 'Ya existe un ejercicio con ese nombre.');
+        if (! App::runningInConsole()) {
+            /**
+             * aborta si los valores ya están registrados
+             */
+            if (Ejercicio::where('nombre', $ejercicio->nombre)->exists())   abort(409, 'Ya existe un ejercicio con ese nombre.');
 
-        /**
-         * manejar imagen
-         */
-        if (request()->hasFile('imagen')) {
+            /**
+             * manejar imagen
+             */
+            if (request()->hasFile('imagen')) {
 
-            // coge el objeto File
-            $archivo = request()->file('imagen');
-            // saca el nombre
-            $nombre = $archivo->getClientOriginalName();
+                // coge el objeto File
+                $archivo = request()->file('imagen');
+                // saca el nombre
+                $nombre = $archivo->getClientOriginalName();
 
-            // si la imagen es repetida, aborta la creación del ejercicio
-            if (Ejercicio::where('imagen', $nombre)->exists()) {
-                abort(400, 'Ya existe un ejercicio con esa imagen.');
+                // si la imagen es repetida, aborta la creación del ejercicio
+                if (Ejercicio::where('imagen', $nombre)->exists()) {
+                    abort(400, 'Ya existe un ejercicio con esa imagen.');
+                }
+
+                // lo almacena en el servidor
+                $archivo->storeAs('ejercicios/imagen', $nombre, 'public');
+                // guarda el nombre del archivo en la tabla ejercicios
+                $ejercicio->imagen = $nombre;
+            } else {
+                $ejercicio->imagen = null;
             }
-
-            // lo almacena en el servidor
-            $archivo->storeAs('ejercicios/imagen', $nombre, 'public');
-            // guarda el nombre del archivo en la tabla ejercicios
-            $ejercicio->imagen = $nombre;
-        } else {
-            $ejercicio->imagen = null;
         }
     }
 
