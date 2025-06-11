@@ -3,6 +3,7 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import NavBar from '@components/common/Navbar/Navbar';
 
 import Dashboard from '@pages/Dashboard';
+import EntrenadorEntrenadorCrear from '@pages/EntrenadorEntrenadorCrear';
 import EntrenadorEntrenadores from '@pages/EntrenadorEntrenadores';
 import EntrenadorSocioCrear from '@pages/EntrenadorSocioCrear';
 import EntrenadorSocioDetalles from '@pages/EntrenadorSocioDetalles';
@@ -60,6 +61,11 @@ const App = () => {
                         <Route path='/error' element={<Error />} />
                         <Route path='/dashboard' element={<Dashboard />} />
 
+                        <Route element={<EntrenadorRoutes />}>
+                        {/* rutas que tienen acceso solo los admins */}
+                        <Route path='/dashboard/entrenadores/crear' element={<EntrenadorEntrenadorCrear />} />
+
+                        </Route>
                         <Route element={<EntrenadorRoutes />}>
                             {/* rutas que tienen acceso solo los entrenadores */}
                             <Route path='/dashboard/entrenadores' element={<EntrenadorEntrenadores />} />

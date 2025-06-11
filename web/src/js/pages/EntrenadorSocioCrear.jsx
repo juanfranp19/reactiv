@@ -1,6 +1,6 @@
 import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
 import FormCrearSocio from '@components/ui/FormCrearSocio/FormCrearSocio';
-import FormCrearUser from '@components/ui/FormCrearUser/FormCrearUser';
+import FormCrearUserSocio from '@components/ui/FormCrearUserSocio/FormCrearUserSocio';
 
 import { useRegister } from '@hooks/useAuth';
 import { useObtenerSocios, useCrearSocio } from '@hooks/useSocio';
@@ -62,7 +62,7 @@ const EntrenadorSocioCrear = () => {
 
                     {/* crear usuario */}
                     <div className='row'>
-                        <FormCrearUser
+                        <FormCrearUserSocio
                             cargandoCrearUser={cargandoCrearUser}
                             cargandoSociosData={cargandoSociosData}
                             manejarCrearUser={manejarCrearUser}

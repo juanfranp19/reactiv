@@ -5,7 +5,7 @@ import ButtonCrear from '@components/ui/ButtonCrear/ButtonCrear';
 import ButtonReset from '@components/ui/ButtonReset/ButtonReset';
 import ErrorInput from '@components/ui/ErrorInput/ErrorInput';
 
-const FormCrearUser = ({ cargandoCrearUser, cargandoSociosData, manejarCrearUser, sociosData }) => {
+const FormCrearUserSocio = ({ cargandoCrearUser, cargandoSociosData, manejarCrearUser, sociosData }) => {
 
     /**
      * 
@@ -180,4 +180,4 @@ const FormCrearUser = ({ cargandoCrearUser, cargandoSociosData, manejarCrearUser
     );
 }
 
-export default FormCrearUser;
+export default FormCrearUserSocio;
