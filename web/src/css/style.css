@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
 /**
  *
  * Fonts
@@ -1004,7 +1005,41 @@
 }
 
 .dashboard-menu {
+  color: white !important;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 15px;
   padding: 20px;
+}
+@media screen and (min-width: 576px) {
+  .dashboard-menu {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .dashboard-menu {
+    padding-right: 100px;
+    padding-left: 100px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .dashboard-menu {
+    padding-right: 150px;
+    padding-left: 150px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .dashboard-menu {
+    padding-right: 155px;
+    padding-left: 155px;
+  }
+}
+.dashboard-menu a {
+  text-decoration: none;
+  color: inherit;
 }
 .dashboard-menu .datos, .dashboard-menu .item {
   border: 1px solid black;
@@ -1015,13 +1050,30 @@
   padding-bottom: 20px;
 }
 .dashboard-menu .item {
+  background-image: url("/src/assets/bg-dshb-item.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: center;
+  text-shadow: #500;
   text-align: center;
 }
 @media screen and (min-width: 576px) {
   .dashboard-menu .item {
     padding-top: 50px;
     padding-bottom: 50px;
+    padding: 50px;
   }
+}
+@media screen and (min-width: 992px) {
+  .dashboard-menu .item {
+    padding: 80px;
+  }
+}
+.dashboard-menu .item:hover {
+  border: 1px solid #00f;
+  box-shadow: 0 0 10px 2px #00f, 0 0 10px 2px;
+  animation: blue-glow 1.5s infinite alternate;
 }
 .dashboard-menu .p-left {
   padding-left: 0px;
@@ -1071,6 +1123,16 @@
   }
 }
 
+@keyframes blue-glow {
+  0% {
+    box-shadow: 0 0 8px 1px #00f, 0 0 16px 2px #00f inset;
+    border-color: #00f;
+  }
+  100% {
+    box-shadow: 0 0 32px 8px #00f, 0 0 64px 16px #00f inset;
+    border-color: #33f;
+  }
+}
 @media screen and (min-width: 576px) {
   form:not(.formlogin, .card) {
     padding: 20px 100px !important;

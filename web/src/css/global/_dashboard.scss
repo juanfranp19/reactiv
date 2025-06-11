@@ -1,6 +1,44 @@
 // estilos para dashboard
 .dashboard-menu {
+    color: white !important;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+
+    @include orbitron;
+    font-size: 15px;
+    
     padding: $dashb-menu-padding;
+
+    // estilos a partir de sm
+    @media screen and (min-width: $sm) {
+        font-size: 25px;
+    }
+
+    // estilos a partir de lg
+    @media screen and (min-width: $lg) {
+        padding-right: 100px;
+        padding-left: 100px;
+    }
+
+    // estilos a partir de xl
+    @media screen and (min-width: $xl) {
+        padding-right: 150px;
+        padding-left: 150px;
+    }
+
+    // estilos a partir de xxl
+    @media screen and (min-width: $xxl) {
+        padding-right: 155px;
+        padding-left: 155px;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 
     // para que estén ordenados en cuadrados
     .datos, .item {
@@ -13,13 +51,37 @@
         padding-bottom: $dashb-item-padding-bottom;
     }
 
+    // dentro a patir del borde
     .item {
+        background-image: url('/src/assets/bg-dshb-item.webp');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: center;
+
+        text-shadow: #500;
+
         text-align: $dashb-item-align;
 
         // estilos a partir de sm
         @media screen and (min-width: $sm) {
             padding-top: $dashb-item-padding-top-sm;
             padding-bottom: $dashb-item-padding-top-sm;
+
+            // regula tamaño del item
+            padding: 50px;
+        }
+
+        // estilos a partir de lg
+        @media screen and (min-width: $lg) {
+            // regula tamaño del itam
+            padding: 80px;
+        }
+
+        &:hover {
+            border: 1px solid #00f;
+            box-shadow: 0 0 10px 2px #00f, 0 0 10px 2px;
+            animation: blue-glow 1.5s infinite alternate;
         }
     }
 
@@ -76,5 +138,16 @@
         font-size: $dashb-subtitulo-font-size-sm;
         text-align: $dashb-subtitulo-align-sm;
         padding: $dashb-subtitulo-padding-sm;
+    }
+}
+
+@keyframes blue-glow {
+    0% {
+        box-shadow: 0 0 8px 1px #00f, 0 0 16px 2px #00f inset;
+        border-color: #00f;
+    }
+    100% {
+        box-shadow: 0 0 32px 8px #00f, 0 0 64px 16px #00f inset;
+        border-color: #33f;
     }
 }

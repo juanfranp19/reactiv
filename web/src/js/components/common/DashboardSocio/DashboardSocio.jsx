@@ -51,7 +51,7 @@ const DashboardSocio = () => {
     return (
         <div className='row'>
 
-            <div className='col-12 col-lg-9'>
+            <div className='col-12'>
                 {/* mensaje de bienvenida */}
                 <div className='row'>
                     <div className='col-12 subtitulo-dashboard'>
@@ -110,22 +110,6 @@ const DashboardSocio = () => {
                                 }
                             </DashboardSmallCard>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* card de los datos del usuario */}
-            <div className='col-3 d-none d-lg-block'>
-                <div className='row dashboard-menu'>
-                    <div className='col-12 datos'>
-                        <div className='row'>
-                            <div className='col-12'>Tus datos</div>
-                            <div className='col-12'>{cargando ? 'cargando' : socioData.nombre} {cargando ? 'cargando' : socioData.apellidos}</div>
-                            <div className='col-12'>{cargando ? 'cargando' : socioData.dni}</div>
-                            <div className='col-12'>{cargando ? 'cargando' : socioData.fecha_nac}</div>
-                            <div className='col-12'>{cargando ? 'cargando' : socioData.email}</div>
-                            <div className='col-12'>{cargando ? 'cargando' : socioData.direccion}, {cargando ? 'cargando' : socioData.ciudad}, {cargando ? 'cargando' : socioData.provincia}</div>
                         </div>
                     </div>
                 </div>
