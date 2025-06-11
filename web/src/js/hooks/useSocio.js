@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { getSocios, postSocio, getSocio } from '@services/socioService';
+import { getSocios, postSocio, getSocio, putSocio, deleteSocio } from '@services/socioService';
 
 // hook para obtener datos de todos los socios
 export const useObtenerSocios = () => {
@@ -98,4 +98,50 @@ export const useObtenerSocio = (id) => {
     }, [id, obtenerSocio]);
 
     return ({ socioData, cargando, refresh: obtenerSocio });
+}
+
+// hook para actualizar un socio
+export const useActualizarSocio = () => {
+
+    const [cargando, setCargando] = useState(false);
+
+    const updateSocio = async (formData, id) => {
+
+        // está cargando
+        setCargando(true);
+
+        // recoge los datos devueltos por el servicio
+        const serviceResponse = await putSocio(formData, id);
+
+        // termina de cargar
+        setCargando(false);
+
+        // devuelve los datos recibidos del servicio
+        return serviceResponse;
+    }
+
+    return ({ updateSocio, cargando });
+}
+
+// hook para eliminar un socio
+export const useEliminarSocio = () => {
+
+    const [cargando, setCargando] = useState(false);
+
+    const destroySocio = async (id) => {
+
+        // está cargando
+        setCargando(true);
+
+        // recoge los datos devueltos por el servicio
+        const serviceResponse = await deleteSocio(id);
+
+        // termina de cargar
+        setCargando(false);
+
+        // devuelve los datos recibidos del servicio
+        return serviceResponse;
+    }
+
+    return ({ destroySocio, cargando });
 }
