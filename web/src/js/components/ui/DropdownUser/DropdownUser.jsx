@@ -84,9 +84,19 @@ const DropdownUser = () => {
                     <li>
                         <NavLink to='/dashboard' className='dropdown-item'>Dashboard</NavLink>
                     </li>
-                    <li>
-                        <NavLink to='/dashboard/codigo-acceso' className='dropdown-item'>Código de acceso</NavLink>
-                    </li>
+                    {
+                        isSocio && (
+                            <>
+                                <li>
+                                    <NavLink to='/mi-perfil' className='dropdown-item'>Mi perfil</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to='/dashboard/codigo-acceso' className='dropdown-item'>Código de acceso</NavLink>
+                                </li>
+                            </>
+                        )
+                    }
+
                     <li>
                         <button className='dropdown-item' onClick={manejarLogout}>
                             {cargandoLogout ? 'cargando' : 'Cerrar sesión'}

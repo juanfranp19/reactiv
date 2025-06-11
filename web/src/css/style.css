@@ -282,6 +282,11 @@
   padding: 50px;
 }
 
+.lista-productos {
+  display: flex;
+  justify-content: center;
+}
+
 .lista-rut-seg-calentamientos {
   text-align: center;
   justify-content: center;

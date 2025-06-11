@@ -38,6 +38,10 @@ const DashboardEntrenador = () => {
                                 </div>
                             </DashboardBigCard>
 
+                            {/* productos */}
+
+                            <DashboardSmallCard linkTo='productos' posicion='derecha'>Productos</DashboardSmallCard>
+
                             {/* entrenadores */}
 
                             <DashboardBigCard linkTo='entrenadores'>

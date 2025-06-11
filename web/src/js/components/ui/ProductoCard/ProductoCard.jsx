@@ -20,12 +20,16 @@ const ProductoCard = (props) => {
                 <span>{props.nombre}</span>
             </div>
 
-            {/* cantidad */}
-            <div className='size'>
-                <ul className='list-size'>
-                    <li className='item-list'>{props.cantidad} unidades</li>
-                </ul>
-            </div>
+            {
+                props.cantidad && (
+                    //cantidad
+                    <div className='size'>
+                        <ul className='list-size'>
+                            <li className='item-list'>{props.cantidad} unidades</li>
+                        </ul>
+                    </div>
+                )
+            }
 
             {/* precio por unidad */}
             <div className='action'>
@@ -34,12 +38,16 @@ const ProductoCard = (props) => {
                 </div>
             </div>
 
-            {/* precio total: multiplicado por las unidades compradas */}
-            <div className='action'>
-                <div className='price'>
-                    <span>Total: {props.precio * props.cantidad} €</span>
-                </div>
-            </div>
+            {
+                props.cantidad && (
+                    // precio total: multiplicado por las unidades compradas
+                    <div className='action'>
+                        <div className='price'>
+                            <span>Total: {props.precio * props.cantidad} €</span>
+                        </div>
+                    </div>
+                )
+            }
 
             {/* fecha */}
             <div className='action'>
