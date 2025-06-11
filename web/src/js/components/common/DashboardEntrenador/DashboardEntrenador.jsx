@@ -28,7 +28,6 @@ const DashboardEntrenador = () => {
                         <div className='row dashboard-menu'>
 
                             {/* socios */}
-
                             <DashboardBigCard linkTo='socios'>
                                 <div className='col-12'>
                                     Socios registrados
@@ -38,12 +37,7 @@ const DashboardEntrenador = () => {
                                 </div>
                             </DashboardBigCard>
 
-                            {/* productos */}
-
-                            <DashboardSmallCard linkTo='productos' posicion='derecha'>Productos</DashboardSmallCard>
-
                             {/* entrenadores */}
-
                             <DashboardBigCard linkTo='entrenadores'>
                                 <div className='col-12'>
                                     Entrenadores registrados
@@ -52,6 +46,18 @@ const DashboardEntrenador = () => {
                                     Nº entrenadores: {cargandoEntrenadoresData ? 'cargando...' : entrenadoresData.length}
                                 </div>
                             </DashboardBigCard>
+
+                            {/* productos */}
+                            <DashboardSmallCard linkTo='productos' posicion='derecha'>Productos</DashboardSmallCard>
+
+                            {/* tarifas */}
+                            <DashboardSmallCard linkTo='productos' posicion='izquierda'>Tarifas</DashboardSmallCard>
+
+                            {/* calentamientos */}
+                            <DashboardSmallCard linkTo='productos' posicion='derecha'>Calentamientos</DashboardSmallCard>
+
+                            {/* ejercicios */}
+                            <DashboardSmallCard linkTo='productos' posicion='izquierda'>Ejercicios</DashboardSmallCard>
 
                         </div>
                     </div>

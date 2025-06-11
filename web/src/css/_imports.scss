@@ -8,6 +8,7 @@
 @import './variables';
 
 // archivos scss de componentes common react
+@import '../js/components/common/ActionsEntrenador/ActionsEntrenador';
 @import '../js/components/common/Carousel/Carousel';
 @import '../js/components/common/DatosCodigoAcceso/DatosCodigoAcceso';
 @import '../js/components/common/DatosEntrenador/DatosEntrenador';
@@ -30,6 +31,7 @@
 // archivos scss de componentes ui react
 @import '../js/components/ui/AccessCard/AccessCard';
 @import '../js/components/ui/Breadcrumb/Breadcrumb';
+@import '../js/components/ui/ButtonAccionEntrenador/ButtonAccionEntrenador';
 @import '../js/components/ui/ButtonAdd/ButtonAdd';
 @import '../js/components/ui/ButtonCard/ButtonCard';
 @import '../js/components/ui/ButtonCrear/ButtonCrear';

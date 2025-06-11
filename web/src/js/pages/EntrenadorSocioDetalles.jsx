@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 
+import ActionsEntrenador from '@components/common/ActionsEntrenador/ActionsEntrenador';
 import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
 import DatosSocio from '@components/common/DatosSocio/DatosSocio';
 
@@ -19,6 +20,8 @@ const EntrenadorSocioDetalles = () => {
             <DashboardCabecera propLastBC={socioData.nombre}>
                 Detalles de {socioData.nombre} {socioData.apellidos}
             </DashboardCabecera>
+
+            <ActionsEntrenador />
 
             <DatosSocio
                 refreshAllSociosData={refreshAllSociosData}
