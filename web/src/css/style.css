@@ -207,6 +207,65 @@
   font-size: 20px;
 }
 
+.lista-entrenadores {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+.lista-entrenadores .bi {
+  font-size: 70px;
+  padding: 0;
+}
+@media screen and (min-width: 576px) {
+  .lista-entrenadores .bi {
+    font-size: 100px;
+  }
+}
+.lista-entrenadores .entrenador-img {
+  width: 70px;
+  border-radius: 25%;
+}
+@media screen and (min-width: 576px) {
+  .lista-entrenadores .entrenador-img {
+    width: 100px;
+  }
+}
+.lista-entrenadores table {
+  table-layout: fixed;
+}
+.lista-entrenadores table thead {
+  text-align: center;
+}
+@media screen and (min-width: 576px) {
+  .lista-entrenadores table tbody tr {
+    border: 1px solid rgb(125, 125, 125);
+  }
+}
+.lista-entrenadores table tbody tr td {
+  padding: 10px 5px;
+}
+@media screen and (min-width: 576px) {
+  .lista-entrenadores table tbody tr td {
+    padding: 20px 7px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .lista-entrenadores table tbody tr td {
+    padding: 20px 20px;
+  }
+}
+.lista-entrenadores table tbody tr td .btn-detalles button {
+  width: 100px;
+}
+.lista-entrenadores table tbody tr td .btn-detalles button .bi {
+  font-size: 20px;
+}
+
+.btn-cargar-mas-lista-entrenadores {
+  text-align: center;
+  padding: 50px;
+}
+
 .lista-rut-seg-calentamientos {
   text-align: center;
   justify-content: center;

@@ -3,6 +3,7 @@ import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import NavBar from '@components/common/Navbar/Navbar';
 
 import Dashboard from '@pages/Dashboard';
+import EntrenadorEntrenadores from '@pages/EntrenadorEntrenadores';
 import EntrenadorSocioCrear from '@pages/EntrenadorSocioCrear';
 import EntrenadorSocioDetalles from '@pages/EntrenadorSocioDetalles';
 import EntrenadorSocios from '@pages/EntrenadorSocios';
@@ -61,6 +62,7 @@ const App = () => {
 
                         <Route element={<EntrenadorRoutes />}>
                             {/* rutas que tienen acceso solo los entrenadores */}
+                            <Route path='/dashboard/entrenadores' element={<EntrenadorEntrenadores />} />
                             <Route path='/dashboard/socios' element={<EntrenadorSocios />} />
                             <Route path='/dashboard/socios/crear' element={<EntrenadorSocioCrear />} />
                             <Route path='/dashboard/socios/detalles/:socioId' element={<EntrenadorSocioDetalles />} />

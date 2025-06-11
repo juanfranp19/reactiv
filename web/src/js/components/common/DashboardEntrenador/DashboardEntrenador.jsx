@@ -1,13 +1,14 @@
 import DashboardBigCard from '@components/ui/DashboardBigCard/DashboardBigCard';
 import DashboardSmallCard from '@components/ui/DashboardSmallCard/DashboardSmallCard';
 
-import { useObtenerEntrenador } from '@hooks/useEntrenador';
+import { useObtenerEntrenadores, useObtenerEntrenador } from '@hooks/useEntrenador';
 import { useObtenerSocios } from '@hooks/useSocio';
 import useToken from '@hooks/useToken';
 
 const DashboardEntrenador = () => {
 
     const { entrenadorId } = useToken();
+    const { entrenadoresData, cargando: cargandoEntrenadoresData } = useObtenerEntrenadores();
     const { entrenadorData, cargando: cargandoEntrenadorData } = useObtenerEntrenador(entrenadorId);
     const { sociosData, cargando: cargandoSociosData } = useObtenerSocios();
 
@@ -26,12 +27,25 @@ const DashboardEntrenador = () => {
                     <div className='col-12'>
                         <div className='row dashboard-menu'>
 
+                            {/* socios */}
+
                             <DashboardBigCard linkTo='socios'>
                                 <div className='col-12'>
                                     Socios registrados
                                 </div>
                                 <div className='col-12 reloj'>
                                     Nº socios: {cargandoSociosData ? 'cargando...' : sociosData.length}
+                                </div>
+                            </DashboardBigCard>
+
+                            {/* entrenadores */}
+
+                            <DashboardBigCard linkTo='entrenadores'>
+                                <div className='col-12'>
+                                    Entrenadores registrados
+                                </div>
+                                <div className='col-12 reloj'>
+                                    Nº entrenadores: {cargandoEntrenadoresData ? 'cargando...' : entrenadoresData.length}
                                 </div>
                             </DashboardBigCard>
 
