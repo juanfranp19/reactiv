@@ -95,7 +95,7 @@ class SocioController extends Controller
             'provincia' => 'required',
             'ciudad' => 'required',
             //'imagen' => 'required',
-            'user_id' => 'required | exists:users,id',
+            //'user_id' => 'required | exists:users,id',
         ]);
 
         // los actualiza
@@ -108,7 +108,8 @@ class SocioController extends Controller
         $socio->direccion = $request->input('direccion');
         $socio->provincia = $request->input('provincia');
         $socio->ciudad = $request->input('ciudad');
-        $socio->user_id = $request->input('user_id');
+        //$socio->imagen = $request->input('imagen');
+        //$socio->user_id = $request->input('user_id');
         $socio->save();
 
         return response()->json(['message' => 'Socio actualizado.'], 200);
