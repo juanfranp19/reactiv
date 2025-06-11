@@ -1,7 +1,7 @@
 import { Notyf } from 'notyf';
 
 const API_URL = import.meta.env.VITE_API_URL;
-const API_URL_EJERCICIOS = API_URL + '/api/v1/ejercicios';
+const API_URL_PRODUCTOS = API_URL + '/api/v1/productos';
 
 // se inicializa para que aparezcan los mensajes arriba en el centro de la pantalla
 const notyf = new Notyf({
@@ -11,15 +11,15 @@ const notyf = new Notyf({
     }
 });
 
-// servicio para obtener datos de todos los ejercicios
-export const getEjercicios = async () => {
+// servicio para obtener datos de todos los productos
+export const getProductos = async () => {
 
     const token = localStorage.getItem('token');
 
     try {
 
-        // envía la URL para obtener todos los ejercicios
-        const response = await fetch(API_URL_EJERCICIOS, {
+        // envía la URL para obtener todos los productos
+        const response = await fetch(API_URL_PRODUCTOS, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -31,22 +31,22 @@ export const getEjercicios = async () => {
 
         if (!response.ok) {
 
-            console.error(data.message || 'error obtener los datos de los ejercicios');
+            console.error(data.message || 'error obtener los datos de los productos');
             return 0;
         }
 
-        console.log(`datos de los ejercicios: `, data);
+        console.log(`datos de los productos: `, data);
         return data;
 
     } catch (error) {
 
-        console.error('error en getEjercicio: ', error.message);
+        console.error('error en getProducto: ', error.message);
         throw error;
     }
 }
 
-// servicio para crear un ejercicio
-export const postEjercicio = async (data) => {
+// servicio para crear un producto
+export const postProducto = async (data) => {
 
     try {
 
@@ -59,8 +59,8 @@ export const postEjercicio = async (data) => {
             formData.append(key, value);
         }
 
-        // envía a la URL de ejercicio los datos del ejercicio por método POST
-        const response = await fetch(API_URL_EJERCICIOS, {
+        // envía a la URL de producto los datos del producto por método POST
+        const response = await fetch(API_URL_PRODUCTOS, {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -68,7 +68,7 @@ export const postEjercicio = async (data) => {
             body: formData,
         });
 
-        // error que sale en pantalla si no se ha podido crear el ejercicio
+        // error que sale en pantalla si no se ha podido crear el producto
         if (!response.ok) {
 
             // mensaje de error del servidor
@@ -85,30 +85,30 @@ export const postEjercicio = async (data) => {
             // coge la respuesta de la API
             const okData = await response.json();
 
-            //alert('Ejercicio creado.');
-            notyf.success('Ejercicio creado.');
+            //alert('Producto creado.');
+            notyf.success('Producto creado.');
 
-            console.log('ejercicio creado: ', okData);
+            console.log('producto creado: ', okData);
             return okData;
         }
 
     } catch (error) {
 
-        notyf.error('Error al crear el ejercicio.');
-        console.error('error al crear ejercicio:', error.message);
+        notyf.error('Error al crear el producto.');
+        console.error('error al crear producto:', error.message);
         throw error;
     }
 }
 
-// servicio para obtener datos de un ejercicio
-export const getEjercicio = async (id) => {
+// servicio para obtener datos de un producto
+export const getProducto = async (id) => {
 
     const token = localStorage.getItem('token');
 
     try {
 
-        // envía la URL para obtener un ejercicio
-        const response = await fetch(`${API_URL_EJERCICIOS}/${id}`, {
+        // envía la URL para obtener un producto
+        const response = await fetch(`${API_URL_PRODUCTOS}/${id}`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -120,22 +120,22 @@ export const getEjercicio = async (id) => {
 
         if (!response.ok) {
 
-            console.error(data.message || 'error obtener los datos del ejercicio');
+            console.error(data.message || 'error obtener los datos del producto');
             return 0;
         }
 
-        console.log(`datos del ejercicio ${id}: `, data);
+        console.log(`datos del producto ${id}: `, data);
         return data;
 
     } catch (error) {
 
-        console.error('error en getEjercicio: ', error.message);
+        console.error('error en getProducto: ', error.message);
         throw error;
     }
 }
 
-// servicio para actualizar un ejercicio
-export const putEjercicio = async (data, id) => {
+// servicio para actualizar un producto
+export const putProducto = async (data, id) => {
 
     try {
 
@@ -152,7 +152,7 @@ export const putEjercicio = async (data, id) => {
         formData.append('_method', 'PUT');
 
         // envía a la URL los datos por método POST, porque no se pueden tratar imágenes en PUT
-        const response = await fetch(`${API_URL_EJERCICIOS}/${id}`, {
+        const response = await fetch(`${API_URL_PRODUCTOS}/${id}`, {
             method: 'POST',
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -160,7 +160,7 @@ export const putEjercicio = async (data, id) => {
             body: formData,
         });
 
-        // error que sale en pantalla si no se ha podido actualizar el ejercicio
+        // error que sale en pantalla si no se ha podido actualizar el producto
         if (!response.ok) {
 
             // mensaje de error del servidor
@@ -179,27 +179,27 @@ export const putEjercicio = async (data, id) => {
 
             notyf.success(okData);
 
-            console.log('ejercicio actualizado: ', okData);
+            console.log('producto actualizado: ', okData);
             return okData;
         }
 
     } catch (error) {
 
-        notyf.error('Error al actualizar el ejercicio.');
-        console.error('error al actualizar ejercicio:', error.message);
+        notyf.error('Error al actualizar el producto.');
+        console.error('error al actualizar producto:', error.message);
         throw error;
     }
 }
 
-// servicio para eliminar un ejercicio
-export const deleteEjercicio = async (id) => {
+// servicio para eliminar un producto
+export const deleteProducto = async (id) => {
 
     try {
 
         const token = localStorage.getItem('token');
 
         // envía a la URL los datos por método DELETE
-        const response = await fetch(`${API_URL_EJERCICIOS}/${id}`, {
+        const response = await fetch(`${API_URL_PRODUCTOS}/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -207,7 +207,7 @@ export const deleteEjercicio = async (id) => {
             },
         });
 
-        // error que sale en pantalla si no se ha podido eliminar el ejercicio
+        // error que sale en pantalla si no se ha podido eliminar el producto
         if (!response.ok) {
 
             // mensaje de error del servidor
@@ -227,14 +227,14 @@ export const deleteEjercicio = async (id) => {
             // mensaje del controlador
             notyf.success(okData);
 
-            console.log('ejercicio eliminado: ', okData);
+            console.log('producto eliminado: ', okData);
             return okData;
         }
 
     } catch (error) {
 
-        notyf.error('Error al eliminar el ejercicio.');
-        console.error('error al eliminar ejercicio:', error.message);
+        notyf.error('Error al eliminar el producto.');
+        console.error('error al eliminar producto:', error.message);
         throw error;
     }
 }
