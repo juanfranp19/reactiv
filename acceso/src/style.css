@@ -26,6 +26,13 @@ body {
     font-optical-sizing: auto;
     font-weight: normal;
     font-style: normal;
+
+    /* ocupa todo el alto de la pantalla */
+    min-height: 100vh;
+
+    /* para que se adapte con el alto del footer */
+    position: relative;
+    padding-bottom: 200px;
 }
 
 a {

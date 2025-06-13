@@ -1,4 +1,5 @@
 <script setup>
+import Footer from '@components/Footer.vue';
 import TopBar from '@components/TopBar.vue';
 </script>
 
@@ -8,6 +9,8 @@ import TopBar from '@components/TopBar.vue';
         <TopBar />
 
         <RouterView />
+
+        <Footer />
 
     </div>
 </template>

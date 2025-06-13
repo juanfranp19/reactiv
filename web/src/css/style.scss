@@ -4,7 +4,11 @@ body {
     background-color: $body-bg-color;
     
     // ocupa todo el alto de la pantalla
-    height: $body-height;
+    min-height: $body-height;
+
+    // para que se adapte con el alto del footer
+    position: relative;
+    padding-bottom: 200px;
 }
 
 // para quitar todos los estilo del NavLink

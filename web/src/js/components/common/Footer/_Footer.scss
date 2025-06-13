@@ -1,0 +1,34 @@
+footer {
+    background-color: rgb(97, 97, 97);
+
+    width: 100%;
+    height: 100px;
+
+    // para que se posiciona abajo del todo
+    position: absolute;
+    bottom: 0;
+
+    .licencia {
+        text-align: center;
+        margin-bottom: 10px;
+
+        // para que se posiciona abajo del todo
+        position: absolute;
+        bottom: 0;
+    }
+
+    &, a {
+        color: aliceblue;
+
+        a:hover {
+            color: rgb(255, 138, 138);
+        }
+    }
+
+    // estilos definidos por el generador de la licencia
+    img {
+        max-width: 1em;
+        max-height: 1em;
+        margin-left: .2em;
+    }
+}

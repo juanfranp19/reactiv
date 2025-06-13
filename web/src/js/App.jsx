@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 import NavBar from '@components/common/Navbar/Navbar';
+import Footer from '@components/common/Footer/Footer';
 
 import Dashboard from '@pages/Dashboard';
 import EntrenadorEntrenadorCrear from '@pages/EntrenadorEntrenadorCrear';
@@ -108,6 +109,8 @@ const App = () => {
 
                     <Route path='/*' element={<Navigate to='/dashboard' />} />
                 </Routes>
+
+                <Footer />
                     
             </PermissionProvider>
             </TokenProvider>

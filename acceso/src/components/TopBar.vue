@@ -12,11 +12,15 @@ import LogoReactiv from '@components/LogoReactiv.vue';
     </header>
 </template>
 
-<style scoped>
+<!-- sin scoped porque se tocan estilos de otros componentes -->
+<style>
 .top-bar {
     background-color: var(--rojo);
-    text-align: center;
-    height: 100px;    
+    height: 100px;
+
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
 }
 
 .top-bar .logo-reactiv {
