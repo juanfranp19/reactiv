@@ -82,16 +82,17 @@ const DropdownUser = () => {
                 {/* menú desplegable */}
                 <ul className='dropdown-fuera-offcanvas dropdown-menu dropdown-menu-end'>
                     <li>
-                        <NavLink to='/dashboard' className='dropdown-item'>Dashboard</NavLink>
+                        {/* end para que no se marque como active si está en una ruta hija */}
+                        <NavLink to='/dashboard' className='dropdown-item' end><i className='bi bi-speedometer2' /> Dashboard</NavLink>
                     </li>
                     {
                         isSocio && (
                             <>
                                 <li>
-                                    <NavLink to='/mi-perfil' className='dropdown-item'>Mi perfil</NavLink>
+                                    <NavLink to='/mi-perfil' className='dropdown-item'><i className='bi bi-person' /> Mi perfil</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/codigo-acceso' className='dropdown-item'>Código de acceso</NavLink>
+                                    <NavLink to='/dashboard/codigo-acceso' className='dropdown-item'><i className='bi bi-key' /> Código de acceso</NavLink>
                                 </li>
                             </>
                         )
@@ -99,7 +100,7 @@ const DropdownUser = () => {
 
                     <li>
                         <button className='dropdown-item' onClick={manejarLogout}>
-                            {cargandoLogout ? 'cargando' : 'Cerrar sesión'}
+                            <i className='bi bi-door-open' /> {cargandoLogout ? 'cargando' : 'Salir'}
                         </button>
                     </li>
                 </ul>

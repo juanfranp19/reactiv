@@ -12,7 +12,7 @@ const Navbar = () => {
 
     return (
         <nav className='row sticky-top'>
-            <div className='navbar navbar-expand-md bg-body-tertiary-dark navbar-dark bg-dark'>
+            <div className='navbar bg-body-tertiary-dark navbar-dark bg-dark'> {/* navbar-expand-md */}
                 <div className='container-fluid'>
 
                     {/* logo que lleva al inicio */}
@@ -21,31 +21,34 @@ const Navbar = () => {
                     </div>
 
                     {/* menú de usuario del modo móvil */}
-                    <div className='d-flex d-md-none'>
+                    <div className='d-flex'> {/* d-md-none */}
                         {token ? <DropdownUser /> : <ButtonLogin />}
                     </div>
 
                     {/* iconos de apertura del menú desplegable para móvil */}
-                    <button className='navbar-toggler' type='button' data-bs-toggle='offcanvas' data-bs-target='#mynavbar' aria-controls='offcanvasNavbar' aria-label='Toggle navigation'>
+
+                    {/* <button className='navbar-toggler' type='button' data-bs-toggle='offcanvas' data-bs-target='#mynavbar' aria-controls='offcanvasNavbar' aria-label='Toggle navigation'>
                         <i className='bi bi-list'></i>
                         <i className='bi bi-list-nested'></i>
-                    </button>
+                    </button> */}
 
                     <div className='offcanvas offcanvas-start text-bg-dark' tabIndex='-1' id='mynavbar' aria-labelledby='offcanvasNavbarLabel'>
 
                         {/* icono de Reactiv y botón de cerrar desplegable */}
-                        <div className='offcanvas-header'>
+
+                        {/* <div className='offcanvas-header'>
                             <h5 className='offcanvas-title' id='offcanvasNavbarLabel'>
                                 <LogoReactiv />
                             </h5>
                             <button type='button' className='btn-close btn-close-white' data-bs-dismiss='offcanvas' aria-label='Close'></button>
-                        </div>
+                        </div> */}
 
                         <div className='offcanvas-body navbar-collapse'>
                             {/* navbar-collapse para que los elementos se centren verticalmente en el centro */}
 
                             {/* menú que aparece tanto dentro como fuera del navbar */}
-                            <ul className='navbar-nav me-auto'>
+
+                            {/* <ul className='navbar-nav me-auto'>
                                 <li className='nav-item'>
                                     <a className='nav-link' href='javascript:void(0)'>Link</a>
                                 </li>
@@ -55,12 +58,13 @@ const Navbar = () => {
                                 <li className='nav-item'>
                                     <a className='nav-link' href='javascript:void(0)'>Link</a>
                                 </li>
-                            </ul>
+                            </ul> */}
 
                             {/* menú de usuario para tamaños más grnades de pantalla */}
-                            <div className='d-flex d-none d-md-block'>
+
+                            {/* <div className='d-flex d-none d-md-block'>
                                 {token ? <DropdownUser /> : <ButtonLogin />}
-                            </div>
+                            </div> */}
 
                         </div>
 
