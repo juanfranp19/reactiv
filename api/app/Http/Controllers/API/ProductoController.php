@@ -17,6 +17,8 @@ class ProductoController extends Controller
     {
         try {
 
+            Gate::authorize('viewAny', Producto::class);
+
             // devuelve recurso ordenado por id
             $productos = ProductoResource::collection(
                 Producto::orderBy('nombre')->get(),
@@ -60,6 +62,8 @@ class ProductoController extends Controller
      */
     public function show($id)
     {
+        Gate::authorize('view', Producto::class);
+
         // encuentra el producto
         $producto = Producto::findOrFail($id);
 

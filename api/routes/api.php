@@ -25,6 +25,8 @@ Route::prefix('/v1')->group(function () {
     Route::post('/accesos', [AccesoController::class, 'store']);
     Route::put('/accesos', [AccesoController::class, 'update']);
 
+    Route::get('/ejercicios', [EjercicioController::class, 'index']);
+
     Route::middleware(['auth:sanctum'])->group(function () {
 
         Route::get('/accesos', [AccesoController::class, 'index']);
@@ -37,7 +39,6 @@ Route::prefix('/v1')->group(function () {
         Route::put('/calentamientos/{id}', [CalentamientoController::class, 'update']);
         Route::delete('/calentamientos/{id}', [CalentamientoController::class, 'destroy']);
 
-        Route::get('/ejercicios', [EjercicioController::class, 'index']);
         Route::post('/ejercicios', [EjercicioController::class, 'store']);
         Route::get('/ejercicios/{id}', [EjercicioController::class, 'show']);
         Route::put('/ejercicios/{id}', [EjercicioController::class, 'update']);
@@ -97,7 +98,6 @@ Route::prefix('/v1')->group(function () {
         Route::put('/users/{id}', [UserController::class, 'update']);
         Route::delete('/users/{id}', [UserController::class, 'destroy']);
 
-
         Route::get('/calentamientos-rutinas/{rutina_id}', [CalentamientoRutinaController::class, 'index']);
         Route::post('/calentamientos-rutinas/{rutina_id}', [CalentamientoRutinaController::class, 'attach']);
         Route::put('/calentamientos-rutinas/{rutina_id}', [CalentamientoRutinaController::class, 'update']);
@@ -125,8 +125,7 @@ Route::prefix('/v1')->group(function () {
         Route::post('/socios-tarifas/{socio_id}', [SocioTarifaController::class, 'attach']);
         Route::put('/socios-tarifas/{socio_id}', [SocioTarifaController::class, 'update']);
         Route::delete('/socios-tarifas/{socio_id}', [SocioTarifaController::class, 'detach']);
-
     });
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

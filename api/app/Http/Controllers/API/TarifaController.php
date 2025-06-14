@@ -17,6 +17,8 @@ class TarifaController extends Controller
     {
         try {
 
+            Gate::authorize('viewAny', Tarifa::class);
+
             // devuelve el recurso ordenado por id
             $tarifas = TarifaResource::collection(
                 Tarifa::orderBy('id')->get(),
@@ -60,6 +62,8 @@ class TarifaController extends Controller
      */
     public function show($id)
     {
+        Gate::authorize('view', Tarifa::class);
+
         // encuentra la tarifa
         $tarifa = Tarifa::findOrFail($id);
 

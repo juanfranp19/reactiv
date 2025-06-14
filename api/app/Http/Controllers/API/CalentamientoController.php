@@ -17,6 +17,8 @@ class CalentamientoController extends Controller
     {
         try {
 
+            Gate::authorize('viewAny', Calentamiento::class);
+
             // devuelve el recurso, ordenado por id
             $calentamientos = CalentamientoResource::collection(
                 Calentamiento::orderBy('nombre')->get(),
@@ -63,6 +65,8 @@ class CalentamientoController extends Controller
      */
     public function show($id)
     {
+        Gate::authorize('view', Calentamiento::class);
+
         // encuentra el calentamiento
         $calentamiento = Calentamiento::findOrFail($id);
 

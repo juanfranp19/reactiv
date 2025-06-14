@@ -17,7 +17,7 @@ class EjercicioController extends Controller
     {
         try {
 
-            Gate::authorize('viewAny', Ejercicio::class);
+            //Gate::authorize('viewAny', Ejercicio::class);
 
             // devuelve el recurso ordenado por id
             $ejercicios = EjercicioResource::collection(
