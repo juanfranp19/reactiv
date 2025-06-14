@@ -80,6 +80,54 @@
     transform: translateY(0);
   }
 }
+.lista-ejercicios .scrolling-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  margin: 0 60px;
+}
+.lista-ejercicios .scrolling-card {
+  flex: 0 0 auto;
+  margin: 10px;
+  width: 75px;
+  height: 50px;
+  text-align: center;
+}
+@media screen and (min-width: 576px) {
+  .lista-ejercicios .scrolling-card {
+    width: 150px;
+    height: 100px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .lista-ejercicios .scrolling-card {
+    width: 250px;
+    height: 150px;
+  }
+}
+.lista-ejercicios .scrolling-card img {
+  width: 100%;
+  height: 100%;
+}
+.lista-ejercicios .scrolling-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+  position: relative;
+  top: 80px;
+}
+@media screen and (min-width: 576px) {
+  .lista-ejercicios .scrolling-buttons-container {
+    top: 100px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .lista-ejercicios .scrolling-buttons-container {
+    top: 125px;
+  }
+}
+
 .datos-codigo-acceso {
   text-align: center;
 }

@@ -15,6 +15,9 @@ import 'bootstrap-icons/font/bootstrap-icons.min.css';
 // notyf
 import 'notyf/notyf.min.css';
 
+// react-tooltip
+import 'react-tooltip/dist/react-tooltip.css';
+
 // css
 import '@css/style.css';
 

@@ -1,0 +1,68 @@
+//
+// código basado
+// https://onthecode.hashnode.dev/botones-de-scroll-horizontal-con-html-css-y-javascript
+//
+.lista-ejercicios {
+
+    .scrolling-container {
+        display: flex;
+
+        // hace que no se queden los datos en una misma línea
+        flex-wrap: nowrap;
+
+        // para que no se salga de la pantalla
+        overflow-x: auto;
+
+        scroll-behavior: smooth;
+        margin: 0 60px;
+    }
+
+    .scrolling-card {
+        flex: 0 0 auto;
+        //border: solid 1px black;
+        margin: 10px;
+        width: 75px;
+        height: 50px;
+        text-align: center;
+
+        // estilos a partir de sm
+        @media screen and (min-width: $sm) {
+            width: 150px;
+            height: 100px;
+        }
+
+        // estilos a partir de md
+        @media screen and (min-width: $md) {
+            width: 250px;
+            height: 150px;
+        }
+
+        // la imagen se adapta al espacio que tiene
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .scrolling-buttons-container {
+        display: flex;
+        justify-content: space-between;
+        font-size: 25px;
+        //margin-left: 25px;
+        //margin-right: 25px;
+
+        // para desplazarlo hacia abajo
+        position: relative;
+        top: 80px;
+
+        // estilos a partir de sm
+        @media screen and (min-width: $sm) {
+            top: 100px;
+        }
+
+        // estilos a partir de md
+        @media screen and (min-width: $md) {
+            top: 125px;
+        }
+    }
+}

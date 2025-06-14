@@ -14,7 +14,7 @@ const notyf = new Notyf({
 // servicio para obtener datos de todos los ejercicios
 export const getEjercicios = async () => {
 
-    const token = localStorage.getItem('token');
+    //const token = localStorage.getItem('token');
 
     try {
 
@@ -22,7 +22,7 @@ export const getEjercicios = async () => {
         const response = await fetch(API_URL_EJERCICIOS, {
             method: 'GET',
             headers: {
-                Authorization: `Bearer ${token}`,
+                //Authorization: `Bearer ${token}`,
             },
         });
 
