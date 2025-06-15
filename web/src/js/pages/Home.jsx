@@ -1,5 +1,7 @@
+import { Helmet } from 'react-helmet';
+
 import Carousel from '@components/common/Carousel/Carousel';
-import ListaEjercicios from '@components/common/ListaEjercicios/ListaEjercicios';
+import ContenidoHome from '@components/common/ContenidoHome/ContenidoHome';
 import Navbar from '@components/common/Navbar/Navbar';
 import TopBar from '@components/common/TopBar/TopBar';
 
@@ -7,6 +9,10 @@ const Home = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Reactiv</title>
+            </Helmet>
+
             <header>
                 <TopBar />
 
@@ -16,7 +22,7 @@ const Home = () => {
             </header>
 
             <main>
-                <ListaEjercicios />
+                <ContenidoHome />
             </main>
         </>
     );

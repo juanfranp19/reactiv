@@ -50,7 +50,8 @@ const Carousel = () => {
 
             <div ref={carruselRef} className='bajar-carousel col-12'>
                 <button onClick={bajarCarrusel}>
-                    <i className='bi bi-arrow-down'></i>
+                    <i className='bi bi-caret-down' />
+                    <i className='bi bi-caret-down-fill' />
                 </button>
             </div>
 

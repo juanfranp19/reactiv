@@ -1,4 +1,5 @@
 import { Navigate } from 'react-router-dom';
+
 import FormLogin from '@components/common/FormLogin/FormLogin';
 import TopBar from '@components/common/TopBar/TopBar';
 import { useLogin } from '@hooks/useAuth';
@@ -32,11 +33,11 @@ const Login = () => {
     }
 
     return (
-        <>
+        <main>
             <TopBar />
 
             <FormLogin manejarLogin={manejarLogin} cargando={cargando} />
-        </>
+        </main>
     );
 }
 

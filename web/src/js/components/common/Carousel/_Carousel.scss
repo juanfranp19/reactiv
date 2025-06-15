@@ -31,6 +31,24 @@ $altura-total-carousel: calc(#{$altura-car} - #{$altura-topbar-car} - #{$altura-
             transition: transform 0.3s ease, font-size 0.3s ease;
         }
 
+        // los inconos de flechas se alternan cuando pasas el ratón
+
+        .bi-caret-down {
+            display: block;
+        }
+        .bi-caret-down-fill {
+            display: none;
+        }
+
+        &:hover {
+            .bi-caret-down {
+                display: none !important;
+            }
+            .bi-caret-down-fill {
+                display: block;
+            }
+        }
+
         &:hover .bi:hover {
             transform: translateY(5px);
             font-size: $flecha-hover-size-car;

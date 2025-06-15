@@ -58,7 +58,7 @@ const FormLogin = (props) => {
                                         })}
                                     />
                                 </div>
-                                
+
                                 <ErrorInput>{errors.name?.message}</ErrorInput>
                             </div>
 
@@ -87,7 +87,7 @@ const FormLogin = (props) => {
                             {/* botón */}
 
                             <div className='col-12 campo'>
-                                <button type='submit' className='btn btn-primary'>
+                                <button type='submit' className='btn btn-outline-light'>
                                     {
                                         props.cargando ? 'cargando' : 'Iniciar sesión'
                                     }

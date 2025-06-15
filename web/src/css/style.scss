@@ -1,6 +1,8 @@
 @import './imports';
 
 body {
+    @include red-hat-display;
+    
     background-color: $body-bg-color;
     
     // ocupa todo el alto de la pantalla

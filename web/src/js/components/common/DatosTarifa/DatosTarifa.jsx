@@ -34,9 +34,12 @@ const DatosTarifa = ({ actions, refresh, tarifa }) => {
 
                 tarifa === undefined ? (
                     <>
-                        <div className='col-12 no-datos-tarifa-actual'>
-                            <DropdownFormAddSocioTarifa refresh={refresh} />
-                        </div>
+                        {actions && (
+
+                            <div className='col-12 no-datos-tarifa-actual'>
+                                <DropdownFormAddSocioTarifa refresh={refresh} />
+                            </div>
+                        )}
 
                         <div className='col-12 no-datos-tarifa-actual'>
                             No hay tarifa actualmente

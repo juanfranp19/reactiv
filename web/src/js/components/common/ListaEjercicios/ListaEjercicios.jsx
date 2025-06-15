@@ -55,16 +55,16 @@ const ListaEjercicios = () => {
                         cargandoEjerciciosData ? (
                             'cargando'
                         ) : (
-                            ejerciciosData.map(ejercicio => (
+                            ejerciciosData?.map(ejercicio => (
 
                                 // imagen
 
-                                <div className='scrolling-card' key={ejercicio.id}>
+                                <div className='scrolling-card' key={ejercicio?.id}>
                                     <img
                                         src={`${API_URL}/storage/ejercicios/imagen/${ejercicio?.imagen}`}
-                                        alt={ejercicio.nombre}
+                                        alt={ejercicio?.nombre}
                                         data-tooltip-id='ejercicio-tooltip'
-                                        data-tooltip-content={ejercicio.nombre}
+                                        data-tooltip-content={ejercicio?.nombre}
                                     />
 
                                     <Tooltip id='ejercicio-tooltip' />

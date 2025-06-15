@@ -1,5 +1,5 @@
 $body-height: 100vh;
-$body-bg-color: rgb(255, 255, 255);
+$body-bg-color: #d0d5e0;
 
 // media queries
 $sm: 576px;
@@ -35,6 +35,19 @@ $xxl: 1400px;
   font-family: "Orbitron", sans-serif;
   font-optical-sizing: auto;
   font-weight: bold;
+  font-style: normal;
+}
+
+@mixin audiowide-regular {
+  font-family: "Audiowide", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin red-hat-display {
+  font-family: "Red Hat Display", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -92,7 +105,7 @@ $color-icono-eliminar: #ff0000;
  */
 $formlogin-padding-top: 90px;
 $formlogin-max-width: 400px;
-$formlogin-fondo-color: rgb(255, 190, 190);
+$formlogin-fondo-color: #161A1D;
 $formlogin-radio-borde: 5px;
 
 $formlogin-campo-padding-top: $form-campo-padding - 10;

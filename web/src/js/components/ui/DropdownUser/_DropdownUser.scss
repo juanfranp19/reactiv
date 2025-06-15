@@ -1,7 +1,17 @@
 .dropdown-user {
 
     .dropdown-fuera-offcanvas {
+        background-color: #0B090A;
         position: absolute; // para que no el contenido del propdown no se quede dentro del navbar y pueda salir
+    
+        .dropdown-item {
+            color: #003cab;
+            
+            &:hover {
+                background-color: #003cab;
+                color: #0B090A;
+            }
+        }
     }
 
     .nav-link {
