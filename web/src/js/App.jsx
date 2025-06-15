@@ -18,6 +18,7 @@ import Home from '@pages/Home';
 import Login from '@pages/Login';
 import SocioAccesos from '@pages/SocioAccesos';
 import SocioCodigoAcceso from '@pages/SocioCodigoAcceso';
+import SocioMiPerfil from '@pages/SocioMiPerfil';
 import SocioProductos from '@pages/SocioProductos';
 import SocioRutinaAddCalentamiento from '@pages/SocioRutinaAddCalentamiento';
 import SocioRutinaAddEjercicio from '@pages/SocioRutinaAddEjercicio';
@@ -91,6 +92,8 @@ const App = () => {
                             <Route path='/dashboard/tus-accesos' element={<SocioAccesos />} />
 
                             <Route path='/dashboard/codigo-acceso' element={<SocioCodigoAcceso />} />
+
+                            <Route path='/dashboard/mi-perfil' element={<SocioMiPerfil />} />
 
                             <Route path='/dashboard/tus-productos' element={<SocioProductos />} />
 

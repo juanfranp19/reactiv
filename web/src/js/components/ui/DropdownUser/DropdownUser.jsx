@@ -89,7 +89,7 @@ const DropdownUser = () => {
                         isSocio && (
                             <>
                                 <li>
-                                    <NavLink to='/mi-perfil' className='dropdown-item'><i className='bi bi-person' /> Mi perfil</NavLink>
+                                    <NavLink to='/dashboard/mi-perfil' className='dropdown-item'><i className='bi bi-person' /> Mi perfil</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to='/dashboard/codigo-acceso' className='dropdown-item'><i className='bi bi-key' /> Código de acceso</NavLink>

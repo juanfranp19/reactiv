@@ -11,7 +11,7 @@ import ButtonDeleteArchivo from '@components/ui/ButtonDeleteArchivo/ButtonDelete
 import ButtonSave from '@components/ui/ButtonSave/ButtonSave';
 import ErrorInput from '@components/ui/ErrorInput/ErrorInput';
 
-const FormActualizarSocio = ({ cargandoUpdateSocio, manejarActualizarSocio, socioData }) => {
+const FormActualizarSocio = ({ isDisabled, cargandoUpdateSocio, manejarActualizarSocio, socioData }) => {
 
     const [provinciaSeleccionada, setProvinciaSeleccionada] = useState('');
     const [file, setFile] = useState('');
@@ -172,7 +172,7 @@ const FormActualizarSocio = ({ cargandoUpdateSocio, manejarActualizarSocio, soci
                 <div className='col-12 col-sm-6 col-lg-4 col-xxl-6 campo'>
 
                     <label htmlFor={SOCIO.DNI} className='col-form-label col-form-label-lg'>DNI</label>
-                    <input type='text' className='form-control form-control-lg' id={SOCIO.DNI} placeholder='00000000A'
+                    <input disabled={isDisabled} type='text' className='form-control form-control-lg' id={SOCIO.DNI} placeholder='00000000A'
 
                         {...register(SOCIO.DNI, {
                             required: {
@@ -193,7 +193,7 @@ const FormActualizarSocio = ({ cargandoUpdateSocio, manejarActualizarSocio, soci
                 <div className='col-12 col-sm-6 col-lg-4 col-xxl-6 campo'>
 
                     <label htmlFor={SOCIO.NOMBRE} className='col-form-label col-form-label-lg'>Nombre</label>
-                    <input type='text' className='form-control form-control-lg' id={SOCIO.NOMBRE}
+                    <input disabled={isDisabled} type='text' className='form-control form-control-lg' id={SOCIO.NOMBRE}
 
                         {...register(SOCIO.NOMBRE, {
                             required: {
@@ -210,7 +210,7 @@ const FormActualizarSocio = ({ cargandoUpdateSocio, manejarActualizarSocio, soci
                 <div className='col-12 col-sm-6 col-lg-4 col-xxl-6 campo'>
 
                     <label htmlFor={SOCIO.APELLIDOS} className='col-form-label col-form-label-lg'>Apellidos</label>
-                    <input type='text' className='form-control form-control-lg' id={SOCIO.APELLIDOS}
+                    <input disabled={isDisabled} type='text' className='form-control form-control-lg' id={SOCIO.APELLIDOS}
 
                         {...register(SOCIO.APELLIDOS, {
                             required: {
@@ -227,7 +227,7 @@ const FormActualizarSocio = ({ cargandoUpdateSocio, manejarActualizarSocio, soci
                 <div className='col-12 col-sm-6 col-lg-4 col-xxl-6 campo'>
 
                     <label htmlFor={SOCIO.FECHA_NAC} className='col-form-label col-form-label-lg'>Fecha de nacimiento</label>
-                    <input type='date' className='flatpickr-calendar form-control form-control-lg' id={SOCIO.FECHA_NAC}
+                    <input disabled={isDisabled} type='date' className='flatpickr-calendar form-control form-control-lg' id={SOCIO.FECHA_NAC}
 
                         {...register(SOCIO.FECHA_NAC, {
                             required: {
@@ -244,7 +244,7 @@ const FormActualizarSocio = ({ cargandoUpdateSocio, manejarActualizarSocio, soci
                 <div className='col-12 col-sm-6 col-lg-4 col-xxl-12 campo'>
 
                     <label htmlFor={SOCIO.IMAGEN} className='col-form-label col-form-label-lg'>Imagen</label>
-                    <input type='file' className='form-control form-control-lg' id={SOCIO.IMAGEN} onChange={manejarImagen} />
+                    <input disabled={isDisabled} type='file' className='form-control form-control-lg' id={SOCIO.IMAGEN} onChange={manejarImagen} />
                     {
                         // imagen actual
 
@@ -258,7 +258,9 @@ const FormActualizarSocio = ({ cargandoUpdateSocio, manejarActualizarSocio, soci
                             </div>
                         )
                     }
-                    <ButtonDeleteArchivo onClick={eliminarImagen} />
+                    {!isDisabled && (
+                        <ButtonDeleteArchivo onClick={eliminarImagen} />
+                    )}
                     {
                         // imagen añadida
 

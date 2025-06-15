@@ -8,7 +8,7 @@ import usePermission from '@hooks/usePermission';
 import { useActualizarSocio, useEliminarSocio } from '@hooks/useSocio';
 import { useActualizarUser } from '@hooks/useUser';
 
-const DatosSocio = ({ refreshAllSociosData, refreshSocioData, socioData }) => {
+const DatosSocio = ({ isDisabled, refreshAllSociosData, refreshSocioData, socioData }) => {
 
     console.log('socioData', socioData);
 
@@ -75,6 +75,7 @@ const DatosSocio = ({ refreshAllSociosData, refreshSocioData, socioData }) => {
                         cargandoUpdateSocio={cargandoUpdateSocio}
                         manejarActualizarSocio={manejarActualizarSocio}
                         socioData={socioData}
+                        isDisabled={isDisabled}
                     />
                 </div>
             </div>
