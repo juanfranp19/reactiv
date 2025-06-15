@@ -7,6 +7,7 @@ use App\Models\Socio;
 use App\Models\SocioTarifa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 
 class SocioTarifaController extends Controller
 {
@@ -57,6 +58,23 @@ class SocioTarifaController extends Controller
                 'fecha_inicio' => 'required',
                 //'fecha_fin' => 'required',
             ]);
+
+            // fecha de finalización de la última tarifa registrada
+            $ultimaFechaFin = (
+                SocioTarifa::where('socio_id', $socio_id)
+                    ->max('fecha_fin')
+            );
+
+            Log::info('ultima fecha fin ' . $ultimaFechaFin);
+
+            // comprueba que no tenga tarifas sin terminar
+            $tarifaPendiente = (
+                SocioTarifa::where('socio_id', $socio_id)
+                    ->where('fecha_inicio', '>=', $ultimaFechaFin)
+                    ->exists()
+            );
+
+            if ($ultimaFechaFin >= $request->fecha_inicio) return response()->json(['error' => 'El socio tiene tarifas pendientes en esa fecha.'], 409);
 
             // asocia la tarifa junto con los valores pivot
             $socio->tarifas()->attach($request->tarifa_id, [
@@ -118,13 +136,25 @@ class SocioTarifaController extends Controller
         // valida los campos
         $request->validate([
             'tarifa_id' => 'required|exists:tarifas,id',
+            'fecha_inicio' => 'required',
         ]);
+
+
+        Log::info($request);
 
         // si la tarifa está en el socio, lo elimina; si no, salta error
         if ($socio->tarifas()->where('tarifa_id', $request->tarifa_id)->exists()) {
 
             // elimina la tarifa del socio
-            $socio->tarifas()->detach($request->tarifa_id);
+
+            //$socio->tarifas()->detach($request->fecha_inicio);
+
+            $socio->tarifas()
+                ->newPivotStatement() // una forma de hacer consulta sobre la tabla pivote
+                ->where('tarifa_id', $request->tarifa_id)
+                ->where('socio_id', $socio_id)
+                ->where('fecha_inicio', $request->fecha_inicio)
+                ->delete();
 
             return response()->json(['message' => 'Tarifa eliminada.'], 200);
 

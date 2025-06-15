@@ -4,6 +4,7 @@ RETURNS TRIGGER
 LANGUAGE plpgsql
 AS $$
 DECLARE
+    dias_finales INTEGER;
     duracion INTEGER;
 BEGIN
 
@@ -14,8 +15,10 @@ BEGIN
     WHERE t.id = NEW.tarifa_id;
 
     IF duracion IS NOT NULL THEN
+        -- se resta un día a la duración para que no de un día de más
+        dias_finales := duracion - 1;
         -- se le asigna a la fecha_fin la suma de la fecha_inicio y la duración de la tarifa
-        NEW.fecha_fin := NEW.fecha_inicio + (duracion || ' days')::interval;
+        NEW.fecha_fin := NEW.fecha_inicio + (dias_finales || ' days')::interval;
     END IF;
 
     RETURN NEW;
