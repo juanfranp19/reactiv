@@ -1,10 +1,10 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "reactiv/api",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
-    "license": "MIT",
+    "description": "Laravel API REST de Reactiv",
+    "keywords": ["laravel", "framework", "api", "reactiv"],
+    "license": "CC BY-SA 4.0",
     "require": {
         "php": "^8.2",
         "laravel/framework": "^12.0",
