@@ -118,7 +118,7 @@ const DatosEntrenador = ({ refreshAllEntrenadoresData, refreshEntrenadorData, en
                 // eliminar entrenador
                 // solo aparecen a los admins
 
-                isAdmin && (
+                isAdmin && !entrenadorData.admin && (
                     <div className='col-12 eliminar-entrenador'>
 
                         <ButtonDelete
