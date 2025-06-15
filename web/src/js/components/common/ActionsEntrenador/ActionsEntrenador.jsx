@@ -10,7 +10,7 @@ const ActionsEntrenador = () => {
                 <ButtonAccionEntrenador>Rutinas</ButtonAccionEntrenador>
                 <ButtonAccionEntrenador>Seguimiento</ButtonAccionEntrenador>
                 <ButtonAccionEntrenador>Taquilla</ButtonAccionEntrenador>
-                <ButtonAccionEntrenador>Tarifas</ButtonAccionEntrenador>
+                <ButtonAccionEntrenador linkTo='tarifas'>Tarifas</ButtonAccionEntrenador>
             </div>
         </div>
     );

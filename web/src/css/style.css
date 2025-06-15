@@ -195,6 +195,29 @@
   padding-bottom: 30px;
 }
 
+.datos-tarifa-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.datos-tarifa-actions button {
+  margin: 10px;
+}
+@media screen and (min-width: 576px) {
+  .datos-tarifa-actions button {
+    margin: 0;
+  }
+}
+
+.no-datos-tarifa-actual {
+  text-align: center;
+  padding: 90px 0;
+}
+.no-datos-tarifa-actual .dropdown {
+  text-align: start;
+  padding-left: 100px;
+}
+
 .datos-tarifa-actual {
   background-color: #e0e0e0;
   text-align: center;

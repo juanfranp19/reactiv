@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
-import { useCrearProducto } from '@hooks/useProducto';
-import FormCrearProducto from '../components/ui/FormCrearProducto/FormCrearProducto';
 
+import DashboardCabecera from '@components/common/DashboardCabecera/DashboardCabecera';
+import FormCrearProducto from '@components/ui/FormCrearProducto/FormCrearProducto';
+
+import { useCrearProducto } from '@hooks/useProducto';
 
 const EntrenadorProductoCrear = () => {
 

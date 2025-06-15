@@ -12,6 +12,7 @@ import EntrenadorProductos from '@pages/EntrenadorProductos';
 import EntrenadorSocioCrear from '@pages/EntrenadorSocioCrear';
 import EntrenadorSocioDetalles from '@pages/EntrenadorSocioDetalles';
 import EntrenadorSocios from '@pages/EntrenadorSocios';
+import EntrenadorSocioTarifa from '@pages/EntrenadorSocioTarifa';
 import Error from '@pages/Error';
 import Home from '@pages/Home';
 import Login from '@pages/Login';
@@ -66,19 +67,22 @@ const App = () => {
                         <Route path='/dashboard' element={<Dashboard />} />
 
                         <Route element={<EntrenadorRoutes />}>
-                        {/* rutas que tienen acceso solo los admins */}
-                        <Route path='/dashboard/entrenadores/crear' element={<EntrenadorEntrenadorCrear />} />
+                            {/* rutas que tienen acceso solo los admins */}
+                            <Route path='/dashboard/entrenadores/crear' element={<EntrenadorEntrenadorCrear />} />
 
                         </Route>
                         <Route element={<EntrenadorRoutes />}>
                             {/* rutas que tienen acceso solo los entrenadores */}
                             <Route path='/dashboard/entrenadores' element={<EntrenadorEntrenadores />} />
                             <Route path='/dashboard/entrenadores/detalles/:entrenadorId' element={<EntrenadorEntrenadorDetalles />} />
+
                             <Route path='/dashboard/productos' element={<EntrenadorProductos />} />
                             <Route path='/dashboard/productos/crear' element={<EntrenadorProductoCrear />} />
+
                             <Route path='/dashboard/socios' element={<EntrenadorSocios />} />
                             <Route path='/dashboard/socios/crear' element={<EntrenadorSocioCrear />} />
                             <Route path='/dashboard/socios/detalles/:socioId' element={<EntrenadorSocioDetalles />} />
+                            <Route path='/dashboard/socios/detalles/:socioId/tarifas' element={<EntrenadorSocioTarifa />} />
 
                         </Route>
                         <Route element={<SocioRoutes />}>

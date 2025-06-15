@@ -1,3 +1,39 @@
+//
+// estilos para las acciones de los datos de la tarifa
+//
+.datos-tarifa-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    button {
+        // espacio entre los botones
+        margin: 10px;
+
+        // estilos a partir de sm
+        @media screen and (min-width: $sm) {
+            // espacio entre los botones
+            margin: 0;
+        }
+    }
+}
+
+//
+// estilos para el mensaje de que no hay tarifa actual
+//
+.no-datos-tarifa-actual {
+    text-align: center;
+    padding: 90px 0;
+
+    .dropdown {
+        text-align: start;
+        padding-left: 100px;
+    }
+}
+
+//
+// estilos tabla con los datos
+//
 .datos-tarifa-actual {
     background-color: $datos-tarifa-bg-color;
     text-align: $datos-tarifa-text-align;
