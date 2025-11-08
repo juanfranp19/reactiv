@@ -68,12 +68,6 @@ class SocioTarifaController extends Controller
             Log::info('ultima fecha fin ' . $ultimaFechaFin);
 
             // comprueba que no tenga tarifas sin terminar
-            $tarifaPendiente = (
-                SocioTarifa::where('socio_id', $socio_id)
-                    ->where('fecha_inicio', '>=', $ultimaFechaFin)
-                    ->exists()
-            );
-
             if ($ultimaFechaFin >= $request->fecha_inicio) return response()->json(['error' => 'El socio tiene tarifas pendientes en esa fecha.'], 409);
 
             // asocia la tarifa junto con los valores pivot

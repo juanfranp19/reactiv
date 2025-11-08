@@ -43,7 +43,7 @@ class SocioObserver
 
                 // si la imagen es repetida, aborta la creación del socio
                 if (Socio::where('imagen', $nombre)->exists()) {
-                    abort(400, 'Ya existe un socio con esa imagen.');
+                    abort(409, 'Ya existe un socio con esa imagen.');
                 }
 
                 // lo almacena en el servidor

@@ -97,9 +97,9 @@ Table rutinas {
 
 Table seguimientos {
   id int [pk]
-  socio_id int [ref:> socios.id]
   rutina_id int [null, ref:> rutinas.id]
   acceso_id int [null, ref:> accesos.id]
+  socio_id int [ref:> socios.id]
   observaciones text [null]
   fecha date
 
