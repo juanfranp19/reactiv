@@ -35,7 +35,7 @@ import CardMenu from '@components/CardMenu.vue';
 @media screen and (min-width: 576px) {
 
     .menu-item {
-        padding: 15vh;
+        padding: 90px;
     }
 }
 
@@ -43,7 +43,7 @@ import CardMenu from '@components/CardMenu.vue';
 @media screen and (min-width: 992px) {
 
     .menu-item {
-        padding: 25vh;
+        padding: 90px;
     }
 }
 </style>

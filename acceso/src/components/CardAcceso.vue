@@ -33,7 +33,6 @@ defineProps({
 
 <style scoped>
 .acceso-card-flex {
-    padding: 40px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,7 +53,8 @@ defineProps({
 @media screen and (min-width: 576px) {
 
     .acceso-card {
-        padding: 20px 50px 50px 50px;
+        margin: 20px;
+        padding: 20px 30px 50px 50px;
         background-color: var(--azul);
     }
 }

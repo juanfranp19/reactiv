@@ -5,10 +5,10 @@
         position: absolute; // para que no el contenido del propdown no se quede dentro del navbar y pueda salir
     
         .dropdown-item {
-            color: #003cab;
+            color: #d3d3d3;
             
             &:hover {
-                background-color: #003cab;
+                background-color: #888888;
                 color: #0B090A;
             }
         }

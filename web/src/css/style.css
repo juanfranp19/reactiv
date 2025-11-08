@@ -657,7 +657,7 @@ footer img {
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
-.flip-card-access-card:hover .flip-card-inner {
+.flip-card-access-card .flip-card-inner {
   transform: rotateY(180deg);
 }
 .flip-card-access-card .flip-card-front,
@@ -862,7 +862,7 @@ footer img {
 .button-card:hover::after {
   opacity: 0;
 }
-.button-card:hover .card-info {
+.button-card .card-info {
   color: #f7ba2b;
   transition: color 1s;
 }
@@ -990,10 +990,10 @@ footer img {
   position: absolute;
 }
 .dropdown-user .dropdown-fuera-offcanvas .dropdown-item {
-  color: #003cab;
+  color: #d3d3d3;
 }
 .dropdown-user .dropdown-fuera-offcanvas .dropdown-item:hover {
-  background-color: #003cab;
+  background-color: #888888;
   color: #0B090A;
 }
 .dropdown-user .nav-link .user-icon {
@@ -1188,7 +1188,7 @@ footer img {
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  background: linear-gradient(135deg, #c1cc9b, #acbb79, #97aa57);
+  background: linear-gradient(135deg, rgb(192.9554455446, 204.1683168317, 154.8316831683), #acbb79, rgb(151.0445544554, 169.8316831683, 87.1683168317));
 }
 @media screen and (min-width: 576px) {
   .rutina-card .item {
@@ -1208,7 +1208,7 @@ footer img {
   }
 }
 .rutina-card .accordion-button {
-  background: linear-gradient(135deg, #c1cc9b, #acbb79, #97aa57);
+  background: linear-gradient(135deg, rgb(192.9554455446, 204.1683168317, 154.8316831683), #acbb79, rgb(151.0445544554, 169.8316831683, 87.1683168317));
 }
 .rutina-card .btn-ver-rutina {
   width: 100%;
