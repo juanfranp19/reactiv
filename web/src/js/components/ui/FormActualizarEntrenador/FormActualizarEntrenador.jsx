@@ -239,9 +239,15 @@ const FormCrearEntrenador = ({ cargandoUpdateEntrenador, entrenadorData, manejar
                         />
                         <label htmlFor='entrenador-admin-false'>No</label>
                     </div>
-                    <input type='hidden'
-
-                    />
+                    {
+                        noAdmin && (
+                            <input
+                                type='hidden'
+                                value={watch(ENTRENADOR.ADMIN)}
+                                {...register(ENTRENADOR.ADMIN)}
+                            />
+                        )
+                    }
                     <ErrorInput>{errors.admin?.message}</ErrorInput>
                 </div>
 
